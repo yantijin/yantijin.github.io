@@ -5,14 +5,15 @@ date: 2018-11-02 19:51:51
 
 ## Personal Information
 
-* Name: Tijin Yan 
-* Sex: Male 
-* Age: 21
-* Major: Automation
-* Degree: College up to now
-* Years of Experience: 
-* E_mail: yantijin@163.com
-* Mobile Phone: 18811532609
+* **Name**: Tijin Yan 
+* **Sex**: Male 
+* **Age**: 21
+* **Major**: Automation
+* **Degree**: College up to now
+* **Years of Experience**: 
+* **E_mail**: yantijin@163.com
+* **Mobile Phone**: 18811532609
+* **CSDN Blog**: https://blog.csdn.net/qq_36219266
 
 ## Computer Expertise
 
