@@ -16,6 +16,15 @@ categories: Entertainment
   Cov(x,y) = E(xy)-E(x)E(y)
   $$
 
+  $$
+  \begin{bmatrix}
+  a&b&c\\
+  d&e&f
+  \end{bmatrix}
+  $$
+
+  ​
+
 * Now for  **Bold**, <u>underline</u>, and *italic*
 
 * Test on codes

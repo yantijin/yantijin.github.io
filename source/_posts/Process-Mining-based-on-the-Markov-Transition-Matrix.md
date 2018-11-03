@@ -47,8 +47,8 @@ categories: Process Mining
 
 - (6) **Selection relationship**:
 
-  - **OR-Split**: $\exists x_i, x_{\eta_k} \in X, p_{i\eta_k} >0$, if $\sum_k p_{ij} = 1$, then $\{x_{\eta_1}\# x_{\eta_2}\# ..\# x_{\eta_k},x_i > x_{\eta_k}\}$, $x_i$ is the *OR-Split* activity node
-  - **OR-Join**:  $\exists x_i, x_{\eta_k} \in X, p_{i\eta_k} >0$, if $\sum_k p_{\eta_ki} = 1$, then $\{x_{\eta_1}\#x_{\eta_2}\#..\#x_{\eta_k},x_{\eta_k} > x_i\}$, $x_i$ is the *OR-Join* activity node
+  - **OR-Split**: $\exists x_i, x_{\eta_k} \in X, p_{i\eta_k} >0$, if $\sum_k p_{ij} = 1$, then $\{x_{\eta_1}$# $x_{\eta_2}$# ..# $x_{\eta_k},x_i > x_{\eta_k}\}$, $x_i$ is the *OR-Split* activity node
+  - **OR-Join**:  $\exists x_i, x_{\eta_k} \in X, p_{i\eta_k} >0$, if $\sum_k p_{\eta_ki} = 1$, then $\{x_{\eta_1}$#$x_{\eta_2}$#..#$x_{\eta_k},x_{\eta_k} > x_i\}$, $x_i$ is the *OR-Join* activity node
 
 - (7) **Self-circulation relationship**: $\exists x_i \in X, x_{\eta_k} \ in X - \{x_i\}$, if $p_{ii} = p(p \neq 1)$, then $\{\diamond x_i; x_i > x_{\eta_k}\}$
 
@@ -69,6 +69,7 @@ categories: Process Mining
   ### Design of Process Mining Algorithm Based on the  Rules
 
   - **INPUT**: Markov matrix P, activities set X
-  - **OUTPUT**: $W_{and} = \{(x_{\eta_i},x_{\eta_2},...)|x_{\eta_1}//x_{\eta_2}//...\}$, $W = \{(x_i,x_j)|x_i\rightarrow x_j~or~x_i >x_j~or~ x_i \diamond x_j\}$,$W_select = \{(x_{\eta_i},x_{\eta_2},...)|x_{\eta_1}\#x_{\eta_2}\# ...\}$
+  - **OUTPUT**: $W_{and} = \{(x_{\eta_i},x_{\eta_2},...)|x_{\eta_1}//x_{\eta_2}//...\}$, $W = \{(x_i,x_j)|x_i\rightarrow x_j~or~x_i >x_j~or~ x_i \diamond x_j\}$,$W_{select} = \{(x_{\eta_i},x_{\eta_2},...)|$$x_{\eta_1}$#$x_{\eta_2}$#$ ...\}$
 
   ​
+
