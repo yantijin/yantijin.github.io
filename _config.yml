@@ -76,6 +76,8 @@ pagination_dir: page
 theme: next
 # Deployment
 # RSS订阅
+plugins:
+  hexo-generator-feed
 feed:
   type: atom
   path: atom.xml

@@ -1,8 +1,12 @@
 ---
 title: Process Mining based on the Markov Transition Matrix
 date: 2018-11-03 13:18:15
-tags: Markov Transition Matrix
-categories: Process Mining
+tags: 
+- Process Mining
+- Markov Transition Matrix
+categories: 
+- Process Mining
+- Markov Transition Matrix
 ---
 
 ### Main Thoughts
