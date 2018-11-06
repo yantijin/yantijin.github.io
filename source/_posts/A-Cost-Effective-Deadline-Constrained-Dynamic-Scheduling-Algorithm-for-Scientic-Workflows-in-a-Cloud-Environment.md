@@ -44,18 +44,11 @@ categories: Cloud Workflow Scheduling
   $$
 
 
-```mermaid
-graph LR
-A[Workflow Management System] --> B[Resource Provisioning Module]
-A[Workflow Management System] --> C[Wokflow Scheduling Module]
-A[Workflow Management System] --> D[Extension Manager]
-B[Resource Provisioning Module] --> E[Resource Capacity Estimation Module]
-B[Resource Provisioning Module] --> F[Resource Procedurement Module]
-```
+![structure](A-Cost-Effective-Deadline-Constrained-Dynamic-Scheduling-Algorithm-for-Scientic-Workflows-in-a-Cloud-Environment/structure.png)
 
 ## Symbols and Meanings
 
-![symbols](.\A-Cost-Effective-Deadline-Constrained-Dynamic-Scheduling-Algorithm-for-Scientic-Workflows-in-a-Cloud-Environment\symbols.png)
+![symbols](A-Cost-Effective-Deadline-Constrained-Dynamic-Scheduling-Algorithm-for-Scientic-Workflows-in-a-Cloud-Environment/symbols.png)
 
 * $MET(t_1) = \min_{VM_v\in VM_{set}}\{ET(t_i, VM_v)\}$
 
