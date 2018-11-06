@@ -44,16 +44,18 @@ categories: Cloud Workflow Scheduling
   $$
 
 
+
+
+
+
 ![structure](A-Cost-Effective-Deadline-Constrained-Dynamic-Scheduling-Algorithm-for-Scientic-Workflows-in-a-Cloud-Environment/structure.png)
 
 ## Symbols and Meanings
 
 ![symbols](A-Cost-Effective-Deadline-Constrained-Dynamic-Scheduling-Algorithm-for-Scientic-Workflows-in-a-Cloud-Environment/symbols.png)
 
-* $MET(t_1) = \min_{VM_v\in VM_{set}}\{ET(t_i, VM_v)\}$
-
-* ​
-  $$
+* $$MET(t_1) = \min_{VM_v\in VM_{set}}\{ET(t_i, VM_v)\}$$
+* $$
   \begin{equation}
   \left\{
       \begin{array}{**rc1**}
@@ -64,8 +66,7 @@ categories: Cloud Workflow Scheduling
   \end{equation}
   $$
 
-* $EFT(t_i) = EST(t_i)+MET(t_i)$ 
-
+* $$EFT(t_i) = EST(t_i)+MET(t_i)$$
 * $$
   XFT(t_i) = \begin{equation}
   \left\{
@@ -111,8 +112,7 @@ categories: Cloud Workflow Scheduling
   \end{equation}
   $$
 
-* $LST(t_i) = LFT(t_i) - MET(t_i)$
-
+* $$LST(t_i) = LFT(t_i) - MET(t_i)$$
 * $$
   \begin{equation}
   \left\{
@@ -124,9 +124,8 @@ categories: Cloud Workflow Scheduling
   \end{equation}
   $$
 
-* $MET_W = \max_{t_i\in W}(EFT(t_i))$
-
-* $CLI(v_k) = [st_k,st_k+n\times time~intervals]$
+* $$MET_W = \max_{t_i\in W}(EFT(t_i))$$
+* $$CLI(v_k) = [st_k,st_k+n\times time~intervals]$$
 
 
 
