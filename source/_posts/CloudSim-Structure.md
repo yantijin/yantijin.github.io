@@ -95,3 +95,43 @@ categories: Cloud Workflow Scheduling
   * **space-shared for tasks**: a VM has two cores, so it sun two at a time but the other two are queued until the completion of the earlier task units
 
     **time-shared for tasks**: enable the task to be scheduled at an earlier time, but significantly affecting the completion time of task units that are ahead the queue
+
+### Modeling the Cloud Market
+
+* **Modeling the cost and pricing policies**,four market-related properties are associated to a data center: cost per processing,cost per unit of memory,cost per unit of storage,cost per unit of used bandwidth.
+
+### Design and implementation of CloudSim
+
+* **DataCenter**: 
+  * Core infrastructure level services(hardware, software) offered by resource providers in a Cloud Computing environment. 
+  * Instantiates a generalized resource provisioning component that implements a set of policies for allocating bandwidth, memory and storage devices.
+* **DataCenterBroker**:
+  * Responsible for mediating between users and service providers depending on users' QoS requirements and deploys service tasks across Clouds.
+* **SANStorage**
+  * Models a storage area network that is commonly available to Cloud-based data centers for storing large chunks of data
+  * 提供接口可在任何时间对根据网络带宽的可用性对任意大的数据量进行存储和检索，但是在运行访问SAN中的文件会导致任务单元执行的额外延迟。
+* **Virtual Machine**
+  * Model an instance of Vm. Hosr部分负责VM的管理，可以同时实例化很多VMs，并且根据前述的政策(空间/时间分享)运行
+  * 每个VM中有存储其基本特征的组成部分：memory, processor, storage, VM's internal scheduling policy.
+* **Cloudlet**
+  * Models the Cloud-based application services(content delivery（内容交付）, social networking, business workflow)
+  * 每个应用程序组件都具有预先指定的指令长度（继承自GridSim的Gridlet组件）以及成功托管应用程序所需的数据传输量（提前和提取后）。
+* **CloudCoordinator**
+  * provides federation capacity to a data center.
+  * (1)communicating with other peer CloudCoordinator services and Cloud Brokers
+  * (2)monitor the internal state of a data center that plays integral role in load-balancing/application scaling decision making.(触发负载迁移的事件是有CloudSim用户通过Sensor组件来设置的)
+* **BWProvisioner**
+  * Models the provisioning policy of bandwidth to VMs.
+* **MemoryProvisioner**
+  * Represents the provisioning policy for allocating memory to VMs.
+* **VMProvisioner**
+  * Represents the provisioning policy that a VM Monitor utilizes for allocating VMs to Hosts.
+* **VMMAllocationPolicy**
+  * Implemented by a Host component that models the policies (time-shared, space shared) required for allocating processing power to VMs.
+
+![12](CloudSim-Structure\12.png)
+
+### Communication among entities
+
+![11](CloudSim-Structure\11.png)
+
