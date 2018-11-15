@@ -84,7 +84,7 @@ categories: Cloud Workflow Scheduling
 
 * CloudSim支持VM调度两种层级的操作，一种是host level(主机层)，确定给每个VM分配多少计算能力；一种是VM level(虚拟机层)，给存储在他的execution engine的特定的task分配可用处理资源。每一个层级都包含time-shared and space-shared resource allocation policies.
 
-  ![4](E:\GIT_repo\yantijin.github.io\source\_posts\CloudSim-Structure\4.png)
+  ![4](CloudSim-Structure\4.png)
 
   **note**:
 
