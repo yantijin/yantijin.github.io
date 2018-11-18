@@ -36,7 +36,7 @@ categories: Cloud Workflow Scheduling
 * **DAG** W = (T,D), $T = \{T_0,T_1,...,T_n\}$ is the set of tasks, $D = \{(T_i,T_j)|T_i,T_j\in T\}$ is the set of data or control dependencies.
 * **refertime($T_i$)**: reference execution time of $T_i$
 * **data($T_i,T_j$)** data transfer size from $T_i$ to $T_j$
-* **pred(T_i)=$\{T_j|(T_i,T_j)\in D\}$**
+* **pred(T_i)**=$\{T_j|(T_j ,T_i)\in D\}$
 *  **T_{entry}**: the entry task;**T_{exit}**: exit task 
 
 ### 云资源管理
@@ -97,3 +97,35 @@ categories: Cloud Workflow Scheduling
 ![4](Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud\4.png)
 
 * 需要注意不能违反依赖关系；This operator will not cause any dependency conflict since the order of any two tasks should have already existed in at least one parent.  
+
+* 对于task2ins和ins2type则同时进行crossover操作
+
+  * 随机选择一个切断点，而后将两个父代的task2ins字符串的第一部分进行交换。
+
+    **注意**：一个任务所在运行的VM的种类也是十分重要的，所以，如果一个任务T，在type为$p_i$的instance I上运行，现在被重新安排到类型为$p_j$的$I^*$上，那么我们应将$I^*$的类型修改为$p_i$,但是这样有可能导致其他原本安排在此VM上的任务的所选类型改变，这种情况则将$I^*$的类型随机选为$p_i$或者$p_j$;如果没有发生冲突，则对VM的type引入一个小几率的变异操作
+
+![5](Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud\5.png)
+
+### Mutation
+
+* Mutation of *order*
+
+  define all successors of task $T_i$ as
+  $$
+  succ(T_i)=\{T_j|(T_i,T_j)\in D\}
+  $$
+  **整体思想**：从pos开始向前向后查找，找到可以交换的index的最大范围，然后在这个范围内随机产生一个整数，将pos移到此位置
+  ![6](Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud\6.png)
+
+* Mutation of *task2ins* and *ins2type* :以一个小概率来对每一个位置产生一个新的有效的值
+
+### Initial Population
+
+* **假定**，种群大小为n，那么初始化时，
+  * 一个个体是通过HEFT(异构最早完成时间算法)计算，被认为是最快的调度
+  * 一个个体是在执行HEFT时同时产生的，是要产生最便宜的调度
+  * 其他n-2个个体是通过**RandTypeOrIns**来产生的。
+
+![7](Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud\7.png)
+
+**整体思想**：order是按照递增来构造的，然后随机选择一种instance type,将所有的instance的类型设为此类型，对于task2ins，则是有两种方法：第一种是将所有的任务分配到同一个instance(0)上;另一种是对每一个任务产生一个0到n-1之间的随机数。
