@@ -106,6 +106,8 @@ categories: Cloud Workflow Scheduling
 
 ![5](Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud\5.png)
 
+![5](Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud\8.png)
+
 ### Mutation
 
 * Mutation of *order*
