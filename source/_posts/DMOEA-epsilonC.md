@@ -89,7 +89,7 @@ $$
 
 ![4](DMOEA-epsilonC\4.png)
 
-* Different subproblems have different computational difficulties, therefore, it is reasonable to assign different amounts of computational effort to them based on their utility values which are defined in the line 3 of Algorithm 3 
+* Different subproblems have different computational difficulties, therefore, it is reasonable to assign different amounts of computational effort to them based on their utility values which are defined in the line 3 of Algorithm 3 
 
 ![5](DMOEA-epsilonC\5.png)
 
