@@ -43,3 +43,4 @@ b = a.copy()
 
   - 常用方法：add(value)，[已经有不会报错，但不会加进去],remove(value),[没有会报错]
   - 交集：a.intersection(b); 并集： a.union(b); 差集： a.differecnce(b)
+
