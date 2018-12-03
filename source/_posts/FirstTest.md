@@ -47,4 +47,4 @@ categories: Entertainment
 | 1    | 1    | 1    |
 | 1    | 1    | 1    |
 
-* Test on Ubuntu
+* Test on linux
