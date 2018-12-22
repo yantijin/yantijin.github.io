@@ -50,6 +50,7 @@ categories: Cloud Workflow Scheduling
 
 
 
+
 ![structure](A-Cost-Effective-Deadline-Constrained-Dynamic-Scheduling-Algorithm-for-Scientic-Workflows-in-a-Cloud-Environment/structure.png)
 
 ## Symbols and Meanings
