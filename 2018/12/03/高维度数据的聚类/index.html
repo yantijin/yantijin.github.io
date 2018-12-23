@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="machine learning,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tijin Yan" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="高维度数据的聚类高维度数据的聚类算法就是想在原来特征空间的任意方向的子空间上找到聚类  实际上降维度在高维空间很多时候并不合适  只考虑平行于坐标轴上的子空间的数量也是指数级的，为$2^d-1$种   分类基本分类： 投影聚类法和子空间聚类法是想找到平行于axis的子空间来进行聚类 correlation clustering algorithm:是针对于类别是在任意方向上的子空间的 patter">
+<meta name="keywords" content="machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高维度数据的聚类">
+<meta property="og:url" content="https://yantijin.github.io/2018/12/03/高维度数据的聚类/index.html">
+<meta property="og:site_name" content="Tijin Yan">
+<meta property="og:description" content="高维度数据的聚类高维度数据的聚类算法就是想在原来特征空间的任意方向的子空间上找到聚类  实际上降维度在高维空间很多时候并不合适  只考虑平行于坐标轴上的子空间的数量也是指数级的，为$2^d-1$种   分类基本分类： 投影聚类法和子空间聚类法是想找到平行于axis的子空间来进行聚类 correlation clustering algorithm:是针对于类别是在任意方向上的子空间的 patter">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/03/高维度数据的聚类/1.png">
+<meta property="og:updated_time" content="2018-12-21T14:52:14.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高维度数据的聚类">
+<meta name="twitter:description" content="高维度数据的聚类高维度数据的聚类算法就是想在原来特征空间的任意方向的子空间上找到聚类  实际上降维度在高维空间很多时候并不合适  只考虑平行于坐标轴上的子空间的数量也是指数级的，为$2^d-1$种   分类基本分类： 投影聚类法和子空间聚类法是想找到平行于axis的子空间来进行聚类 correlation clustering algorithm:是针对于类别是在任意方向上的子空间的 patter">
+<meta name="twitter:image" content="https://yantijin.github.io/2018/12/03/高维度数据的聚类/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://yantijin.github.io/2018/12/03/高维度数据的聚类/">
+
+
+
+
+
+  <title>高维度数据的聚类 | Tijin Yan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/yantijin"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tijin Yan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Ph.D. candidate in BIT</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            Resume
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yantijin.github.io/2018/12/03/高维度数据的聚类/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tijin Yan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tijin Yan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">高维度数据的聚类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-03T15:09:08+08:00">
+                2018-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm-Library/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm Library</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm-Library/Clustering-Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Clustering Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/03/高维度数据的聚类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/12/03/高维度数据的聚类/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/03/高维度数据的聚类/" class="leancloud_visitors" data-flag-title="高维度数据的聚类">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="高维度数据的聚类"><a href="#高维度数据的聚类" class="headerlink" title="高维度数据的聚类"></a>高维度数据的聚类</h1><p>高维度数据的聚类算法就是想在原来特征空间的任意方向的子空间上找到聚类</p>
+<ul>
+<li><p>实际上降维度在高维空间很多时候并不合适</p>
+<p><img src="/2018/12/03/高维度数据的聚类/1.png" alt="1"></p>
+<p>只考虑平行于坐标轴上的子空间的数量也是<strong>指数级</strong>的，为$2^d-1$种</p>
+</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="基本分类："><a href="#基本分类：" class="headerlink" title="基本分类："></a>基本分类：</h3><ul>
+<li>投影聚类法和子空间聚类法是想找到平行于axis的子空间来进行聚类</li>
+<li>correlation clustering algorithm:是针对于类别是在任意方向上的子空间的</li>
+<li>pattern-based聚类算法：有些是限制在平行于axis上，有些是对于任意方向上的子空间的特殊情况，比较杂</li>
+</ul>
+<h3 id="基于问题的分类"><a href="#基于问题的分类" class="headerlink" title="基于问题的分类"></a>基于问题的分类</h3><ul>
+<li>Projected clustering algorithms:<ul>
+<li>为每一个点找到一个准确的子空间聚类</li>
+</ul>
+</li>
+<li>“Soft” Projected clustering algorithm<ul>
+<li>不同的属性有不同的权重，所有属性构成了一个类，通常一个子空间不会“强硬”地分配给一个类</li>
+</ul>
+</li>
+<li>Subspace clustering algorithm<ul>
+<li>找到可以明确类别的所有子空间</li>
+</ul>
+</li>
+<li>Hybrid Algorithm<ul>
+<li>找到可能交叠的类，不要求找到子空间上的所有聚类，</li>
+</ul>
+</li>
+</ul>
+<h3 id="基于算法的分类："><a href="#基于算法的分类：" class="headerlink" title="基于算法的分类："></a>基于算法的分类：</h3><ul>
+<li>自上而下的方法<ul>
+<li>通过确定给定点集的属性子集，确定从全维空间开始的集群的子空间，使得当投影到相应的子空间时，这些点满足给定的集群标准</li>
+<li><strong>局限性</strong>：为了确定一个类对应的子空间，必须知道一些聚类的成员；为了确定聚类的成员，每个类对应的子空间必须知道，这是一个<strong>循环的依赖关系</strong></li>
+<li>方法：有一个<strong>条件很高的假设</strong>，一个类对应的子空间可以通过这个类或者类成员的邻域来确定</li>
+</ul>
+</li>
+<li>从底向上的方法：<ul>
+<li>类似于找频繁项集的方法，如Apriori算法</li>
+<li><strong>注意</strong>:有些从底向上的算法不用Spriori算法来进行搜索，而是用一些启发式的算法</li>
+</ul>
+</li>
+</ul>
+<h2 id="现有算法的介绍和分类"><a href="#现有算法的介绍和分类" class="headerlink" title="现有算法的介绍和分类"></a>现有算法的介绍和分类</h2><h3 id="Projeceted-Clustering-Algorithm"><a href="#Projeceted-Clustering-Algorithm" class="headerlink" title="Projeceted Clustering Algorithm"></a>Projeceted Clustering Algorithm</h3><ul>
+<li><strong>PROCLUS</strong>[Aggarwal et al. 1999]:分为三个阶段：初始化阶段，迭代阶段，类别改进阶段<a href="https://yantijin.github.io/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/">参考博客</a></li>
+<li><strong>FINDIT</strong>[Woo et al. 2004]:采用了额外的启发式策略来提高效率和聚类的准确性</li>
+<li><strong>SSPC</strong>[Yip et al. 2005]: 通过以标记对象和/或标记属性的形式使用领域知识，提供进一步提高准确性的能力。</li>
+<li><strong>DBSCAN</strong>[Ester et al. 1996]: 基于密度的聚类方法</li>
+<li><strong>PreDeCon</strong>[Bohm et al. 2004]: 基于DBSCAN算法提出了一种特出的距离方法来获取每个类别的子空间，称为<strong>subspace preference</strong>,计算子空间偏好度(subspace preference),表示p点聚类最好时能够达到的最大维度的子空间,其中一个维度称为与子空间偏好度相关,若这些点在p点很近的区域内的方差在一个阈值之下.计算距离则是带有权重欧氏距离,和子空间偏好度有关的维度的权重远大于1，其他的维度的权重为1。<strong>缺点</strong>是一些输入的参数很难猜</li>
+<li><strong>CLTree</strong>[Liu et al. 2000]: 基本思想是把现有的所有点标记为一类，然后加入在数据空间均匀分布的一些点作为一个不同的类，然后训练决策树来区分，<strong>缺点</strong>： 根据信息增益确定属性分类计算量太大，叠加的人工数据对于结果有很大影响</li>
+</ul>
+<h3 id="“Soft”-Projected-Clustering-Algorithm"><a href="#“Soft”-Projected-Clustering-Algorithm" class="headerlink" title="“Soft”-Projected Clustering Algorithm"></a>“Soft”-Projected Clustering Algorithm</h3><p>目前都采用一个权重的框架（所有属性的权重都大于0），这些研究主要和数据分析以及机器学习系那个管，目的是为了在聚类的过程中能够保持对一个目标函数的优化的可能性</p>
+<ul>
+<li><strong>LAC(Locally Adaptive Clustering)</strong>[Domeniconi et al. 2004]：初始化k个中心以及k个d维权重向量(假设有d个属性)，通过调整权重来尽量达到k个高斯分布</li>
+<li><strong>Weighted k-means</strong>[Cheng et al. 2008]: 与LAC很像，但是他允许纳入进一步的约束</li>
+<li><strong>COSA</strong>[Friedman and Meulman 2004]:推导出一个可以用于任何聚类算法的相似度矩阵(woc这个思路牛批!),每个属性的权重为</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{the~distance ~of ~point ~p ~to~ all~ k-nearest neighbor~of~ p~ in~ that~ attribute}{the~ distance~ of ~point~ p~ to~ all~ k-nearest~ neighbor~ of~ p~ in~ all ~attribbutes}</script><h3 id="Subspace-Clustering-Algorithms"><a href="#Subspace-Clustering-Algorithms" class="headerlink" title="Subspace Clustering Algorithms:"></a>Subspace Clustering Algorithms:</h3><ul>
+<li><strong>CLIQUE</strong>:利用了基于网格的聚类方法，数据空间由轴平行网格划分为宽度为$\epsilon$的等分单位。只有一个网格中含有不少于$\tau$个点才会被认为是一个dense unit，那么一个cluster被定义为临近dense unit的最大集合，可以采用类似Apriori的思想，先看k维上的dense units，然后根据k维上的dense units确定(k+1)维上的dense units</li>
+<li><strong>ENCLUS</strong>[Cheng et al. 1999]: 也是利用grid，但是是为了找可能存在一个或者多个clusters 的子空间</li>
+<li><strong>MAFIA</strong>[Nagesh et al. 2001]: 与CLIQUE很相似，但是是采用了一个自适应调整的网格</li>
+<li><strong>nCluster</strong>[Liu et al. 2007]：CLIQUE的变体，允许长度为δ的重叠窗口作为网格的一维单元。</li>
+<li><strong>SUBCLU</strong>[Kailing et al. 2004]：对于DBSCAN算法来说，密度相连集合满足向下闭合特性。所以可以在子空间中按照Apriori算法的思路来进行聚类,<strong>注意</strong>：一个density threshold（不管是SUBCLU还是基于网格的），一个tighter的阈值在低维度上区分度很好，但是在高位上可能会损失cluster，而较为宽松的阈值可以发现高维度的cluster，但是在低维度的聚类上产生额外的数量的类</li>
+</ul>
+<h3 id="混合聚类算法-Hybrid-Clustering-Algorithms"><a href="#混合聚类算法-Hybrid-Clustering-Algorithms" class="headerlink" title="混合聚类算法(Hybrid Clustering Algorithms):"></a>混合聚类算法(Hybrid Clustering Algorithms):</h3><ul>
+<li><strong>DOC</strong> [Procopiuc et al. 2002]: 使用全局密度阈值通过包含至少α个点的固定边长w的超立方体来定义子空间簇。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/" rel="next" title="A Fast Algorithm for Projected Clustering">
+                <i class="fa fa-chevron-left"></i> A Fast Algorithm for Projected Clustering
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/03/那些踩过的python坑/" rel="prev" title="那些踩过的python坑">
+                那些踩过的python坑 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Tijin Yan">
+            
+              <p class="site-author-name" itemprop="name">Tijin Yan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yantijin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yantijin@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qq_36219266" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+
+        <div id="music163player">
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=32196440&auto=1&height=66"></iframe>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#高维度数据的聚类"><span class="nav-number">1.</span> <span class="nav-text">高维度数据的聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">1.1.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本分类："><span class="nav-number">1.1.1.</span> <span class="nav-text">基本分类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于问题的分类"><span class="nav-number">1.1.2.</span> <span class="nav-text">基于问题的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于算法的分类："><span class="nav-number">1.1.3.</span> <span class="nav-text">基于算法的分类：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现有算法的介绍和分类"><span class="nav-number">1.2.</span> <span class="nav-text">现有算法的介绍和分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Projeceted-Clustering-Algorithm"><span class="nav-number">1.2.1.</span> <span class="nav-text">Projeceted Clustering Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“Soft”-Projected-Clustering-Algorithm"><span class="nav-number">1.2.2.</span> <span class="nav-text">“Soft”-Projected Clustering Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subspace-Clustering-Algorithms"><span class="nav-number">1.2.3.</span> <span class="nav-text">Subspace Clustering Algorithms:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混合聚类算法-Hybrid-Clustering-Algorithms"><span class="nav-number">1.2.4.</span> <span class="nav-text">混合聚类算法(Hybrid Clustering Algorithms):</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tijin Yan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">25.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.loca.pathname, 
+            owner: 'yantijin',
+            repo: 'yantijin.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'cbaeed29815b334304b5af6f4789f2a7fe3353cf',
+            
+                client_id: 'a246c92a051f6d05de74'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz',
+        appKey: 'MHEhvjPuKazCLe7uCI9f3rpf',
+        placeholder: 'Welcome for comments',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz", "MHEhvjPuKazCLe7uCI9f3rpf");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

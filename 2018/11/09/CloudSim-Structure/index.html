@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CloudSim toolkit introduction,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tijin Yan" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Basic Concepts and TerminologiesLayered Design  User-Level Middleware: providing PaaS capabilities (1) Includes the software frameworks such as Web 2.0 Interfaces  (2) provides the programming environ">
+<meta name="keywords" content="CloudSim toolkit introduction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CloudSim Structure">
+<meta property="og:url" content="https://yantijin.github.io/2018/11/09/CloudSim-Structure/index.html">
+<meta property="og:site_name" content="Tijin Yan">
+<meta property="og:description" content="Basic Concepts and TerminologiesLayered Design  User-Level Middleware: providing PaaS capabilities (1) Includes the software frameworks such as Web 2.0 Interfaces  (2) provides the programming environ">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/09/CloudSim-Structure/StructureofCloudPlatform.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/09/CloudSim-Structure/2.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/09/CloudSim-Structure/3.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/09/CloudSim-Structure/4.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/09/CloudSim-Structure/12.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/09/CloudSim-Structure/11.png">
+<meta property="og:updated_time" content="2018-12-21T14:52:14.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CloudSim Structure">
+<meta name="twitter:description" content="Basic Concepts and TerminologiesLayered Design  User-Level Middleware: providing PaaS capabilities (1) Includes the software frameworks such as Web 2.0 Interfaces  (2) provides the programming environ">
+<meta name="twitter:image" content="https://yantijin.github.io/2018/11/09/CloudSim-Structure/StructureofCloudPlatform.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://yantijin.github.io/2018/11/09/CloudSim-Structure/">
+
+
+
+
+
+  <title>CloudSim Structure | Tijin Yan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/yantijin"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tijin Yan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Ph.D. candidate in BIT</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            Resume
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yantijin.github.io/2018/11/09/CloudSim-Structure/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tijin Yan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tijin Yan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CloudSim Structure</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-09T21:01:33+08:00">
+                2018-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Workflow-Scheduling/" itemprop="url" rel="index">
+                    <span itemprop="name">Cloud Workflow Scheduling</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/09/CloudSim-Structure/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/11/09/CloudSim-Structure/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/09/CloudSim-Structure/" class="leancloud_visitors" data-flag-title="CloudSim Structure">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Basic-Concepts-and-Terminologies"><a href="#Basic-Concepts-and-Terminologies" class="headerlink" title="Basic Concepts and Terminologies"></a>Basic Concepts and Terminologies</h2><h3 id="Layered-Design"><a href="#Layered-Design" class="headerlink" title="Layered Design"></a>Layered Design</h3><p><img src="/2018/11/09/CloudSim-Structure/StructureofCloudPlatform.png" alt="StructureofCloudPlatform"></p>
+<ul>
+<li><p><strong>User-Level Middleware</strong>: providing PaaS capabilities</p>
+<p>(1) Includes the software frameworks such as Web 2.0 Interfaces </p>
+<p>(2) provides the programming environments and composition tools that ease the creation, deployment, and execution of applications in Clouds </p>
+</li>
+<li><p><strong>Core Middleware</strong>:</p>
+<p>(1) Implements the platform level services that provide runtime environment enabling Cloud computing capabilities to application services built using User-Level Middlewares </p>
+<p>(2) Core services at this layer includes Dynamic SLA(Service Level-Agreement) Management, Accounting, Billing, Execution monitoring and management, and Pricing.  </p>
+</li>
+<li><p><strong>System Level</strong>:</p>
+<p>(1) Exist massive physical resources (storage servers and application servers) that power the data centers.</p>
+<p>(2) Servers are transparently managed by the higher level virtualization</p>
+<p>(3) VMs are isolated from each other.</p>
+</li>
+</ul>
+<h3 id="Federation-Inter-Networking-of-Clouds"><a href="#Federation-Inter-Networking-of-Clouds" class="headerlink" title="Federation (Inter-Networking) of Clouds"></a>Federation (Inter-Networking) of Clouds</h3><ul>
+<li><p>现有系统不支持用于动态协调不同数据中心之间的负载分解的机制和策略，以便确定用于托管应用服务的最佳位置以实现合理的服务满意度水平。</p>
+</li>
+<li><p>云服务提供商无法预测消费其服务的用户的地理分布，因此负载协调必须自动发生，并且服务的分配必须根据负载行为的变化而变化。</p>
+<p><img src="/2018/11/09/CloudSim-Structure/2.png" alt="StructureofCloudPlatform"></p>
+<ul>
+<li><strong>Cloud coordinator</strong>的作用<ul>
+<li>(1)提供云服务：包括基础设施和平台级别的</li>
+<li>(2)跟踪数据中心的负载，并且承担与其他云服务商在需求高峰期的时候进行服务的动态规划的协调</li>
+<li>(3)检测应用的执行和约定的SLAs(服务等级协议)被传送</li>
+</ul>
+</li>
+<li><strong>Cloud Exchange(CEx)</strong>的作用<ul>
+<li>bring together service providers and consumers</li>
+<li>汇总云代理的基础需求，并根据Cloud Coordinators发布的可用的资源进行评估</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="CloudSim-Architecture"><a href="#CloudSim-Architecture" class="headerlink" title="CloudSim Architecture"></a>CloudSim Architecture</h2><h3 id="Basic-architecture"><a href="#Basic-architecture" class="headerlink" title="Basic architecture"></a>Basic architecture</h3><p><img src="/2018/11/09/CloudSim-Structure/3.png" alt="3"></p>
+<ul>
+<li><strong>SimJava discrete event simulation engine</strong>: <ul>
+<li>Implements the core functionalities required for higher-level simulation frameworks, creation of system components.(services, host, data center, broker, virtual machines), communication between components and management of the simulation clock.</li>
+</ul>
+</li>
+<li><strong>GridSim</strong><ul>
+<li>用于建模多个网格基础设施的高级软件组件，包括网络和相关的流量配置文件;</li>
+<li>基础网格组件，比如 resources, data sets, workflow traces, and information services.</li>
+</ul>
+</li>
+<li><strong>CloudSim</strong><ul>
+<li>拓展了Gridsim的公开的核心函数</li>
+<li>赋予虚拟云端的数据中心环境的模型和仿真提供了很好的支持，比如，虚拟机，内存和带宽的专用管理界面</li>
+<li>可以实例化和透明管理数千个系统组成的云计算基础系统架构</li>
+<li>可以配置VMs，管理应用的运行，并且可以动态监视</li>
+<li>云服务商可以研究：不同分配hosts方法的效益等</li>
+</ul>
+</li>
+<li><strong>User Code</strong><ul>
+<li>exposes configuration related functionalities for <strong>hosts</strong>(number of machines, their specifications and so on), <strong>applications</strong>(number of tasks and their requirements), <strong>VMs</strong>, number of <strong>users</strong> and their <strong>application types</strong> and <strong>broker</strong> scheduling policies.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Modeling-the-clouds"><a href="#Modeling-the-clouds" class="headerlink" title="Modeling the clouds"></a>Modeling the clouds</h3><ul>
+<li>与云相关的核心硬件基础架构服务由<strong>数据中心组件</strong>在模拟器中建模，用于处理服务请求，请求是在VM中沙箱化的应用程序元素，需要在Datacenter的主机组件上分配一部分处理能力。 </li>
+<li><strong>NOTE</strong>:VM的处理包括VM整个生命周期的一些列操作：为VM配置一个主机，VM的创建，VM的销毁和VM的移植。</li>
+<li>Datacenter是由一系列的的主机(host)构成，主机可以管理VMs，主机在云中代表一个物理计算节点。 Host提供了支持单核和多核节点的建模与仿真的接口</li>
+<li>分配VMs到Hosts是<strong>虚拟机配置</strong>部分的功能： 这一部分有很多方法，从用户角度的，从系统角度的，默认的是FCFS(First Come First Service)  </li>
+<li>The allocation of cores to VMs is done based on a host allocation. Each host components instantiates a VM scheduler component that implements the space-shared or time shared policies for allocating cores to VMs. </li>
+</ul>
+<h3 id="Modeling-the-VM-allocation"><a href="#Modeling-the-VM-allocation" class="headerlink" title="Modeling the VM allocation"></a>Modeling the VM allocation</h3><ul>
+<li><p>云计算与网格计算最大的一个不同之处就是采用了大量的虚拟化技术和工具。</p>
+</li>
+<li><p>需要考虑的因素就是：避免创建需要比主机中可用处理能力更强的处理能力的VM</p>
+</li>
+<li><p>CloudSim支持VM调度两种层级的操作，一种是host level(主机层)，确定给每个VM分配多少计算能力；一种是VM level(虚拟机层)，给存储在他的execution engine的特定的task分配可用处理资源。每一个层级都包含time-shared and space-shared resource allocation policies.</p>
+<p><img src="/2018/11/09/CloudSim-Structure/4.png" alt="4"></p>
+<p><strong>note</strong>:</p>
+<ul>
+<li><p><strong>space-shared for VMs</strong>: only one VM can run at a given instance of time</p>
+<p><strong>time-shared for VMs</strong>: the core is shared, the amount of processing power available to the VM is lesser than space-shared</p>
+</li>
+<li><p><strong>space-shared for tasks</strong>: a VM has two cores, so it sun two at a time but the other two are queued until the completion of the earlier task units</p>
+<p><strong>time-shared for tasks</strong>: enable the task to be scheduled at an earlier time, but significantly affecting the completion time of task units that are ahead the queue</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Modeling-the-Cloud-Market"><a href="#Modeling-the-Cloud-Market" class="headerlink" title="Modeling the Cloud Market"></a>Modeling the Cloud Market</h3><ul>
+<li><strong>Modeling the cost and pricing policies</strong>,four market-related properties are associated to a data center: cost per processing,cost per unit of memory,cost per unit of storage,cost per unit of used bandwidth.</li>
+</ul>
+<h3 id="Design-and-implementation-of-CloudSim"><a href="#Design-and-implementation-of-CloudSim" class="headerlink" title="Design and implementation of CloudSim"></a>Design and implementation of CloudSim</h3><ul>
+<li><strong>DataCenter</strong>: <ul>
+<li>Core infrastructure level services(hardware, software) offered by resource providers in a Cloud Computing environment. </li>
+<li>Instantiates a generalized resource provisioning component that implements a set of policies for allocating bandwidth, memory and storage devices.</li>
+</ul>
+</li>
+<li><strong>DataCenterBroker</strong>:<ul>
+<li>Responsible for mediating between users and service providers depending on users’ QoS requirements and deploys service tasks across Clouds.</li>
+</ul>
+</li>
+<li><strong>SANStorage</strong><ul>
+<li>Models a storage area network that is commonly available to Cloud-based data centers for storing large chunks of data</li>
+<li>提供接口可在任何时间对根据网络带宽的可用性对任意大的数据量进行存储和检索，但是在运行访问SAN中的文件会导致任务单元执行的额外延迟。</li>
+</ul>
+</li>
+<li><strong>Virtual Machine</strong><ul>
+<li>Model an instance of Vm. Hosr部分负责VM的管理，可以同时实例化很多VMs，并且根据前述的政策(空间/时间分享)运行</li>
+<li>每个VM中有存储其基本特征的组成部分：memory, processor, storage, VM’s internal scheduling policy.</li>
+</ul>
+</li>
+<li><strong>Cloudlet</strong><ul>
+<li>Models the Cloud-based application services(content delivery（内容交付）, social networking, business workflow)</li>
+<li>每个应用程序组件都具有预先指定的指令长度（继承自GridSim的Gridlet组件）以及成功托管应用程序所需的数据传输量（提前和提取后）。</li>
+</ul>
+</li>
+<li><strong>CloudCoordinator</strong><ul>
+<li>provides federation capacity to a data center.</li>
+<li>(1)communicating with other peer CloudCoordinator services and Cloud Brokers</li>
+<li>(2)monitor the internal state of a data center that plays integral role in load-balancing/application scaling decision making.(触发负载迁移的事件是有CloudSim用户通过Sensor组件来设置的)</li>
+</ul>
+</li>
+<li><strong>BWProvisioner</strong><ul>
+<li>Models the provisioning policy of bandwidth to VMs.</li>
+</ul>
+</li>
+<li><strong>MemoryProvisioner</strong><ul>
+<li>Represents the provisioning policy for allocating memory to VMs.</li>
+</ul>
+</li>
+<li><strong>VMProvisioner</strong><ul>
+<li>Represents the provisioning policy that a VM Monitor utilizes for allocating VMs to Hosts.</li>
+</ul>
+</li>
+<li><strong>VMMAllocationPolicy</strong><ul>
+<li>Implemented by a Host component that models the policies (time-shared, space shared) required for allocating processing power to VMs.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2018/11/09/CloudSim-Structure/12.png" alt="12"></p>
+<h3 id="Communication-among-entities"><a href="#Communication-among-entities" class="headerlink" title="Communication among entities"></a>Communication among entities</h3><p><img src="/2018/11/09/CloudSim-Structure/11.png" alt="11"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CloudSim-toolkit-introduction/" rel="tag"># CloudSim toolkit introduction</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/07/看见-柴静/" rel="next" title="看见_柴静">
+                <i class="fa fa-chevron-left"></i> 看见_柴静
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/11/python-numpy练习/" rel="prev" title="python numpy练习">
+                python numpy练习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Tijin Yan">
+            
+              <p class="site-author-name" itemprop="name">Tijin Yan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yantijin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yantijin@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qq_36219266" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+
+        <div id="music163player">
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=32196440&auto=1&height=66"></iframe>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Concepts-and-Terminologies"><span class="nav-number">1.</span> <span class="nav-text">Basic Concepts and Terminologies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Layered-Design"><span class="nav-number">1.1.</span> <span class="nav-text">Layered Design</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Federation-Inter-Networking-of-Clouds"><span class="nav-number">1.2.</span> <span class="nav-text">Federation (Inter-Networking) of Clouds</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CloudSim-Architecture"><span class="nav-number">2.</span> <span class="nav-text">CloudSim Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-architecture"><span class="nav-number">2.1.</span> <span class="nav-text">Basic architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modeling-the-clouds"><span class="nav-number">2.2.</span> <span class="nav-text">Modeling the clouds</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modeling-the-VM-allocation"><span class="nav-number">2.3.</span> <span class="nav-text">Modeling the VM allocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modeling-the-Cloud-Market"><span class="nav-number">2.4.</span> <span class="nav-text">Modeling the Cloud Market</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-and-implementation-of-CloudSim"><span class="nav-number">2.5.</span> <span class="nav-text">Design and implementation of CloudSim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Communication-among-entities"><span class="nav-number">2.6.</span> <span class="nav-text">Communication among entities</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tijin Yan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">25.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.loca.pathname, 
+            owner: 'yantijin',
+            repo: 'yantijin.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'cbaeed29815b334304b5af6f4789f2a7fe3353cf',
+            
+                client_id: 'a246c92a051f6d05de74'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz',
+        appKey: 'MHEhvjPuKazCLe7uCI9f3rpf',
+        placeholder: 'Welcome for comments',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz", "MHEhvjPuKazCLe7uCI9f3rpf");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

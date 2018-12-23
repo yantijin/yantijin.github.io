@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Cloud Workflow Scheduling,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tijin Yan" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="概述基础知识 DAG调度属于静态调度问题，现有算法可以分为三大类：  list scheduling:主要思想是计算出每个任务的优先级，然后按照优先级来进行处理。K.Shin定义了三种类型的任务优先级： (1)S-Level:按照从当前结点到最后结点的最长路径(不考虑传输代价) (2)B-Level:按照从当前结点到最后结点的最长路径(考虑传输代价) (3)T-Level:从开始结点到当前结点的最">
+<meta name="keywords" content="Cloud Workflow Scheduling">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Novel Task-Duplication Based Clustering Algorithm for Heterogeneous Computing Environments">
+<meta property="og:url" content="https://yantijin.github.io/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/index.html">
+<meta property="og:site_name" content="Tijin Yan">
+<meta property="og:description" content="概述基础知识 DAG调度属于静态调度问题，现有算法可以分为三大类：  list scheduling:主要思想是计算出每个任务的优先级，然后按照优先级来进行处理。K.Shin定义了三种类型的任务优先级： (1)S-Level:按照从当前结点到最后结点的最长路径(不考虑传输代价) (2)B-Level:按照从当前结点到最后结点的最长路径(考虑传输代价) (3)T-Level:从开始结点到当前结点的最">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/1.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/2.png">
+<meta property="og:updated_time" content="2018-12-22T04:00:10.542Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A Novel Task-Duplication Based Clustering Algorithm for Heterogeneous Computing Environments">
+<meta name="twitter:description" content="概述基础知识 DAG调度属于静态调度问题，现有算法可以分为三大类：  list scheduling:主要思想是计算出每个任务的优先级，然后按照优先级来进行处理。K.Shin定义了三种类型的任务优先级： (1)S-Level:按照从当前结点到最后结点的最长路径(不考虑传输代价) (2)B-Level:按照从当前结点到最后结点的最长路径(考虑传输代价) (3)T-Level:从开始结点到当前结点的最">
+<meta name="twitter:image" content="https://yantijin.github.io/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://yantijin.github.io/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/">
+
+
+
+
+
+  <title>A Novel Task-Duplication Based Clustering Algorithm for Heterogeneous Computing Environments | Tijin Yan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/yantijin"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tijin Yan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Ph.D. candidate in BIT</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            Resume
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yantijin.github.io/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tijin Yan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tijin Yan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">A Novel Task-Duplication Based Clustering Algorithm for Heterogeneous Computing Environments</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-17T08:20:53+08:00">
+                2018-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Workflow-Scheduling/" itemprop="url" rel="index">
+                    <span itemprop="name">Cloud Workflow Scheduling</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/" class="leancloud_visitors" data-flag-title="A Novel Task-Duplication Based Clustering Algorithm for Heterogeneous Computing Environments">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ul>
+<li><p>DAG调度属于静态调度问题，现有算法可以分为三大类：</p>
+<ul>
+<li><p>list scheduling:主要思想是计算出每个任务的优先级，然后按照优先级来进行处理。K.Shin定义了三种类型的任务优先级：</p>
+<p>(1)S-Level:按照从当前结点到最后结点的最长路径(不考虑传输代价)</p>
+<p>(2)B-Level:按照从当前结点到最后结点的最长路径(考虑传输代价)</p>
+<p>(3)T-Level:从开始结点到当前结点的最长路径(考虑传输代价)</p>
+</li>
+<li><p>cluster-based scheduling:首先进行任务聚类，然后对类分配到不同的处理器上，然后可能对类进一步合并</p>
+</li>
+<li><p>task duplication-based scheduling：思想就是可以减少传输代价，充分利用处理器空闲的时间</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="以往算法的问题及本文主要贡献"><a href="#以往算法的问题及本文主要贡献" class="headerlink" title="以往算法的问题及本文主要贡献"></a>以往算法的问题及本文主要贡献</h3><ul>
+<li>以往算法有以下问题：<ul>
+<li>(1)非常依赖一些关键的参数，比如最早完成时间，但是提前计算得到的这些参数可能并不准确，会导致得到局部最优解</li>
+<li>(2)在现有的算法下，一旦task duplication是无效的就会弃用，但是实际上有可能当其他复制的task被执行之后这个任务复制又会变得有用了</li>
+</ul>
+</li>
+<li>本文贡献：(Task Duplication based Clustering Algorithm)<ul>
+<li>(1)New definition of <strong>Key Parameters</strong>:(文章中说和baseline algorithm TANH比较，比如定义est的时候，如果前后两个任务在一个处理器上，就不用考虑传输代价，会比较准确，不过这不是应该的么，这也算创新？？)</li>
+<li>(2)Improving the initial clustering:现有的算法都是将一个父节点的任务进行复制，而TDCA也会考虑等待其他类中的父节点将结果传输过来</li>
+<li>(3)Considering of the chain reaction：进行任务复制的时候看链式反应现象，有可能现在没用，但是过一段时间就有用了</li>
+</ul>
+</li>
+</ul>
+<h2 id="问题及基本符号定义"><a href="#问题及基本符号定义" class="headerlink" title="问题及基本符号定义"></a>问题及基本符号定义</h2><h3 id="符号定义"><a href="#符号定义" class="headerlink" title="符号定义"></a>符号定义</h3><ul>
+<li>DAG=<v,e,p,t,c>. V:任务节点的集合; n:任务的数目; E:边的集合(依赖关系); e:边的数量; P是处理器的集合，共m种; T是$n\times m$的矩阵，T(i,p)代表第i个任务在第p种处理器上进行的代价; C是$n\times n$的矩阵，代表了任务之间的传输代价(communication costs)</v,e,p,t,c></li>
+<li>PRED(i):代表i的父节点的集合; SUCC(i)代表i的子节点的集合;</li>
+</ul>
+<h2 id="算法简介"><a href="#算法简介" class="headerlink" title="算法简介"></a>算法简介</h2><ul>
+<li>基于TANH算法进行改进的，所以先对TANH算法进行简介，然后则是本文提出的TDCA算法</li>
+</ul>
+<h3 id="TANH算法"><a href="#TANH算法" class="headerlink" title="TANH算法"></a>TANH算法</h3><ul>
+<li><p>Parameter calculation:</p>
+<p>The processor is defined as <strong>favorite</strong> if using that for execution of task j(j $\in$ V) results in a minimum completion time for the task j.  </p>
+<ul>
+<li><em>est(i)</em>:最早开始时间</li>
+<li><em>ect(i)</em>:最早完成时间</li>
+<li>favorite processors: 取值范围为<em>fproc(i,1)</em>到<em>fproc(i,m)</em></li>
+<li>favorite predecessor: fpred(i)</li>
+<li><em>level(i)</em>: B-level</li>
+<li><em>last(i)</em>: latest allowable starting time</li>
+<li><em>lact(i)</em>: latest allowable completion time</li>
+</ul>
+</li>
+<li><p>Initial Cluster Generation:首先按照<em>level</em>值进行不减的排序，而后每次选择未被安排的任务，并加入到新的cluster中，然后迭代进行如下的过程：</p>
+<p>每次添加i的一个父节点(一般是fproc(i)),直到每个节点都被加入到类中。整个类被安排到一个不被占用的处理器上，如果所有处理器都被占用，则将其安排到一个虚拟的处理器上，并且一个任务的执行时间定为此任务的平均运行时间</p>
+</li>
+<li><p>Task duplication or clustering merging:如果存在类被安排到虚拟结点，则此步要进行cluster的合并，思想是将任务计算量大的和任务计算量小的合并在一起，从而使得被合并的类的总计算量只有少量的增长。如果没有类被安排到虚拟节点，则尝试进行任务复制，比如任务集合$\{x_1,x_2,…,x_k\}$, TANH可以把任务$x_1$到$x_{i-1}$复制到另一个处理器q，q是从$fproc(x_{i-1},1)$到$fproc(x_{i-1},m)$中第一个不被占用的处理器，而后把$fpred(x_i),fpred(fpred(x_i)),…$，依次加入</p>
+</li>
+</ul>
+<h3 id="TDCA算法"><a href="#TDCA算法" class="headerlink" title="TDCA算法"></a>TDCA算法</h3><ul>
+<li>分为四个阶段：聚类初始化，任务复制来减少完成时间，类别的合并来得到一个初步的调度，增加阶段用于利用处理器的空闲时间。</li>
+</ul>
+<h4 id="符号定义-1"><a href="#符号定义-1" class="headerlink" title="符号定义"></a>符号定义</h4><ul>
+<li><em>Communication Cost</em>:<script type="math/tex; mode=display">
+\begin{equation}
+\delta(j,i,q,p) = \left\{
+    \begin{array}{**rc1**}
+  0&q=p\\
+  C(j,i)& q\neq p
+    \end{array}
+\right.<j,i> \in E
+\end{equation}</script></li>
+</ul>
+<ul>
+<li><em>Earliest Starting Time</em>:<script type="math/tex; mode=display">
+est(i,p) = \max_{j\in PRED(i)}\{\min_{q\in P}\{ect(j,q)+\delta(j,i,q,p)\}\}</script></li>
+</ul>
+<ul>
+<li><p><em>Earlist Completion Time</em>:</p>
+<script type="math/tex; mode=display">
+ect(i,p) = est(i,p) + T(i,p)</script></li>
+<li><p><em>The r<strong>th</strong> Favorite Processor</em>:</p>
+<script type="math/tex; mode=display">
+ect(i,fproc(i,1))\leq ... \leq ect(i,fproc(i,r))</script></li>
+</ul>
+<ul>
+<li><em>Critical Predecessor</em>:假设所有任务都分配给最喜欢的处理器，cpred（i）是将其结果发送到任务i的最后一个前任。<script type="math/tex; mode=display">
+cpred(i) = argmax_{j\in PRED(i)}\{ect(j,fproc(j,1)) + \delta(j,i,fproc(j,1),fproc(i,1))\}</script></li>
+</ul>
+<ul>
+<li><p><em>Task Priority</em>:(采用B-Level)</p>
+<script type="math/tex; mode=display">
+level(i) = max_{k\in SUCC(i)}\{level(k)+C(i,k)\}+\max_{q\in P}(T(i,q))</script></li>
+<li><p><em>Critical Predecessor Trail</em>:The critical predecessor trail of a task i is defined as cpred(i), cpred(cpred(i)),…, up to the entry-node.</p>
+</li>
+</ul>
+<h4 id="任务初始聚类"><a href="#任务初始聚类" class="headerlink" title="任务初始聚类"></a>任务初始聚类</h4><ul>
+<li><p>在TANH中，如果i有多个父节点，而$j = fpred(i)$还没有被安排，那么直接将其安排到i的处理器p上，但是TDCA还要考虑是否满足下式，不满足则说明可以直接将j安排到favorite processor上，然后等从j给i传输信息</p>
+<script type="math/tex; mode=display">
+ect(j,p)\leq ect(j,fproc(j,1)) + C(j,i)</script></li>
+<li><p>如果j = cpred(i)和i不属于一个类，当上述不等式不成立时，选择未被安排的父节点k使得上式成立，如果这样的结点有很多个，我们选择最小的ect(k,p)</p>
+</li>
+<li><p>迭代停止条件:(1)到达开始的结点；(2)如果j=cpred(i)没有被同一个处理器安排，并且找不到未被安排的父节点满足上述不等式，那么就停止迭代</p>
+</li>
+</ul>
+<p>两点评论：</p>
+<p>(1)由于ect只是估计并不准确，并且有可能fproc(j,1)已经被占用，因此上述不等式不能正确的知道j是否对于i有益</p>
+<p>(2)如果任务数量n远大于处理器的数量m，那么会没有不被占用的处理器，此时停止任务聚类，然后根据当前的安排，将未被安排的任务安排到一个可以最小化开始时间的处理器上面</p>
+<p><img src="/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/1.png" alt="1"></p>
+<h4 id="Task-Duplication"><a href="#Task-Duplication" class="headerlink" title="Task Duplication"></a>Task Duplication</h4><p>假设$X_p = (x_1,x_2,…,x_k)$表示安排到处理器p上的任务集合，那么现在有两种情况需要处理:(1)先进行检查看对于$i\in [2,k]$,是否存在$cpred(x_i)\neq x_{i-1}$,如果存在则说明前一个结点不是$x_i$的父节点的最晚结点，故而中间需要等待，即中间存在空闲时间，可以用来执行复制的任务;(2)检查$x_1$是否是开始结点，如果不是，则对$x_1$的父结点的踪迹(这个点是啥意思？？)不断执行任务复制</p>
+<p><img src="/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/2.png" alt="2"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Cloud-Workflow-Scheduling/" rel="tag"># Cloud Workflow Scheduling</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/11/安装教程/" rel="next" title="安装教程">
+                <i class="fa fa-chevron-left"></i> 安装教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/" rel="prev" title="Yading: fast clustering of large-scale time series data">
+                Yading: fast clustering of large-scale time series data <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Tijin Yan">
+            
+              <p class="site-author-name" itemprop="name">Tijin Yan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yantijin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yantijin@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qq_36219266" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+
+        <div id="music163player">
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=32196440&auto=1&height=66"></iframe>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以往算法的问题及本文主要贡献"><span class="nav-number">1.2.</span> <span class="nav-text">以往算法的问题及本文主要贡献</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题及基本符号定义"><span class="nav-number">2.</span> <span class="nav-text">问题及基本符号定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#符号定义"><span class="nav-number">2.1.</span> <span class="nav-text">符号定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法简介"><span class="nav-number">3.</span> <span class="nav-text">算法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TANH算法"><span class="nav-number">3.1.</span> <span class="nav-text">TANH算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TDCA算法"><span class="nav-number">3.2.</span> <span class="nav-text">TDCA算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#符号定义-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">符号定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任务初始聚类"><span class="nav-number">3.2.2.</span> <span class="nav-text">任务初始聚类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Task-Duplication"><span class="nav-number">3.2.3.</span> <span class="nav-text">Task Duplication</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tijin Yan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">25.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.loca.pathname, 
+            owner: 'yantijin',
+            repo: 'yantijin.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'cbaeed29815b334304b5af6f4789f2a7fe3353cf',
+            
+                client_id: 'a246c92a051f6d05de74'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz',
+        appKey: 'MHEhvjPuKazCLe7uCI9f3rpf',
+        placeholder: 'Welcome for comments',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz", "MHEhvjPuKazCLe7uCI9f3rpf");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

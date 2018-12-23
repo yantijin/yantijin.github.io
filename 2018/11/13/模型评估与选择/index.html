@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="machine learning,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tijin Yan" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="本章基本概念 错误率(error rate): 在m个样本中假设有a个样本分类错误，则错误率$E = a/m$,相应地，$1-a/m$称为精度(accuracy) 实际预测输出与样本真实输出的误差称为“误差”(error),在训练集上的误差称为训练(training)误差\经验(empirical)误差，在新样本上的误差称为泛化误差 过拟合overfitting：泛化能力很差；欠拟合(underf">
+<meta name="keywords" content="machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模型评估与选择">
+<meta property="og:url" content="https://yantijin.github.io/2018/11/13/模型评估与选择/index.html">
+<meta property="og:site_name" content="Tijin Yan">
+<meta property="og:description" content="本章基本概念 错误率(error rate): 在m个样本中假设有a个样本分类错误，则错误率$E = a/m$,相应地，$1-a/m$称为精度(accuracy) 实际预测输出与样本真实输出的误差称为“误差”(error),在训练集上的误差称为训练(training)误差\经验(empirical)误差，在新样本上的误差称为泛化误差 过拟合overfitting：泛化能力很差；欠拟合(underf">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/13/模型评估与选择/5.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/13/模型评估与选择/6.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/13/模型评估与选择/7.png">
+<meta property="og:updated_time" content="2018-12-21T14:52:14.148Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模型评估与选择">
+<meta name="twitter:description" content="本章基本概念 错误率(error rate): 在m个样本中假设有a个样本分类错误，则错误率$E = a/m$,相应地，$1-a/m$称为精度(accuracy) 实际预测输出与样本真实输出的误差称为“误差”(error),在训练集上的误差称为训练(training)误差\经验(empirical)误差，在新样本上的误差称为泛化误差 过拟合overfitting：泛化能力很差；欠拟合(underf">
+<meta name="twitter:image" content="https://yantijin.github.io/2018/11/13/模型评估与选择/5.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://yantijin.github.io/2018/11/13/模型评估与选择/">
+
+
+
+
+
+  <title>模型评估与选择 | Tijin Yan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/yantijin"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tijin Yan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Ph.D. candidate in BIT</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            Resume
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yantijin.github.io/2018/11/13/模型评估与选择/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tijin Yan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tijin Yan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">模型评估与选择</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T23:19:44+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">machine learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/模型评估与选择/" itemprop="url" rel="index">
+                    <span itemprop="name">模型评估与选择</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/13/模型评估与选择/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/11/13/模型评估与选择/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/13/模型评估与选择/" class="leancloud_visitors" data-flag-title="模型评估与选择">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="本章基本概念"><a href="#本章基本概念" class="headerlink" title="本章基本概念"></a>本章基本概念</h2><ul>
+<li><strong>错误率(error rate)</strong>: 在m个样本中假设有a个样本分类错误，则错误率$E = a/m$,相应地，$1-a/m$称为<strong>精度(accuracy)</strong></li>
+<li>实际预测输出与样本真实输出的误差称为“误差”(error),在训练集上的误差称为<strong>训练(training)误差\经验(empirical)误差</strong>，在新样本上的误差称为<strong>泛化误差</strong></li>
+<li><strong>过拟合overfitting</strong>：泛化能力很差；<strong>欠拟合(underfitting)</strong>:对训练样本的一般性质尚未学习好。</li>
+</ul>
+<h2 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h2><ul>
+<li>注意测试集和训练集的数据分布应该尽量保持一致，一般采用分层采样(stratified sampling)</li>
+</ul>
+<h3 id="留出法"><a href="#留出法" class="headerlink" title="留出法"></a>留出法</h3><ul>
+<li>将数据集D拆分为两个互斥的集合，其中一个集合为训练集S，另一个为测试集T，$D = S\cup T,S\cap T =\emptyset$</li>
+<li>一般采用若干次随机划分、重复进行实验评估后取平均值作为留出法的评估结果</li>
+</ul>
+<h3 id="交叉验证法-K折交叉验证"><a href="#交叉验证法-K折交叉验证" class="headerlink" title="交叉验证法/K折交叉验证"></a>交叉验证法/K折交叉验证</h3><ul>
+<li>将数据集划分为k个大小相似的互斥子集，即$D = D_1\cup D_2\cup … \cup D_k,D_i\cap D_j =\emptyset(i\neq j)$,注意每个子集$D_i$都尽可能保持数据分布的一致性</li>
+<li>与留出法相似，通常要随机使用不同 划分重复p次，最终的结果是这p次k折交叉验证结果的均值。</li>
+</ul>
+<h3 id="自助法"><a href="#自助法" class="headerlink" title="自助法"></a>自助法</h3><ul>
+<li>对于样本集D，采用<strong>有放回采样</strong>：每次随机取一个，然后放回，直到构成一个新的样本集$D’$,样本在m次采样中始终不被采集到的概率为$(1-\frac{1}{m})^m = \frac{1}{e}\approx 0.368$,故而约有36.8%的样本未出现在D’中，用$D/D’$用作测试集</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>自助法在数据集较小，难以有效划分训练/测试集时很有用，而且能够从初始集中产生多个不同的训练集，对于集成学习等方法有很大的好处；但是他改变了初始数据集的分布，会引入<strong>估计偏差(estimation error)</strong>，因此在数据量组都的情况下，推荐使用留出法和交叉验证法。</li>
+</ul>
+<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><h3 id="回归任务"><a href="#回归任务" class="headerlink" title="回归任务"></a>回归任务</h3><ul>
+<li><strong>回归</strong>任务最常用的性能度量就是<strong>“均方误差(mean squared error)”</strong><script type="math/tex; mode=display">
+E(f;D)=\frac{1}{m}\sum^m_{i=1}(f(x_i)-y_i)^2</script>更一般地，对于数据分布D和概率密度函数p(.),均方误差可描述为<script type="math/tex; mode=display">
+E(f;D) = \int_{x\sim D}(f(x)-y)^2p(x)dx</script></li>
+</ul>
+<h3 id="分类任务"><a href="#分类任务" class="headerlink" title="分类任务"></a>分类任务</h3><ul>
+<li><p>对于样例集D，</p>
+<p><strong>错误率</strong>定义为</p>
+<script type="math/tex; mode=display">
+E(f;D)=\frac{1}{m}\sum^m_{i=1}\|(f(x_i)\neq y_i)</script><p><strong>精度</strong>定义为</p>
+<script type="math/tex; mode=display">
+acc(f;D) = \frac{1}{m}\sum^m_{i=1}\|(f(x_i) = y_i)</script><p>更一般地，对于数据分布D和概率密度函数p(.)，错误率和精度可分别描述为</p>
+<script type="math/tex; mode=display">
+E(f;D)=\int_{x\sim D}\|(f(x)\neq y)p(x)dx\\
+acc(f;D) = \int_{x\sim D}\|(f(x) = y)p(x)dx = 1-E(f;D)</script></li>
+</ul>
+<ul>
+<li><strong>混淆矩阵(confusion matrix)</strong>:</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>真实情况</th>
+<th>预测结果</th>
+<th>预测结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>正例</td>
+<td>反例</td>
+</tr>
+<tr>
+<td>正例</td>
+<td>TP(真正例)</td>
+<td>FN(假反例)</td>
+</tr>
+<tr>
+<td>反例</td>
+<td>FP(假正例)</td>
+<td>TN(真反例)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>  <strong>查准率P</strong>: $P = \frac{TP}{TP+FP}$</p>
+<p>  <strong>查全率R</strong>：$R = \frac{TP}{TP+FN}$</p>
+<p>  查准率和查全率是相互矛盾的量，从而有P-R曲线，若一个学习器的P-R曲线被另一个学习器的曲线完全包住，则可断言后者的性能优于前者；对于互相交叉的，可以看<strong>平衡点</strong>，即查准率等于查全率的点，哪个比较大就认为哪个就好一点<br>  <img src="/2018/11/13/模型评估与选择/5.png" alt="5"><br>  在一些应用中，查准率和查全率的重视程度不同，可用<strong>F1</strong>度量来进行评价：</p>
+<script type="math/tex; mode=display">
+  F_{\beta} = \frac{(1+\beta^2)\times P\times R}{(\beta^2\times P)+R}</script><p>  如果是在n个二分类混淆矩阵上综合考察查准率和查全率，有两种方法</p>
+<ul>
+<li>在各混淆矩阵上分别计算出查准率和查全率，再计算平均自，得到<strong>宏查准率</strong>，<strong>宏查全率</strong>以及相应的<strong>宏F1</strong></li>
+<li>现将各混淆矩阵的对应元素进行平均，得到TP,FP,TN,FN的平均值，而后计算出<strong>微查准率</strong>，<strong>微查全率</strong>和<strong>微F1</strong></li>
+</ul>
+<ul>
+<li><p><strong>ROC 与 AUC</strong></p>
+<p>ROC(受试者工作特征)，横纵坐标分别为：</p>
+<p>假正例率：$FPR = \frac{FP}{TN+FP}$</p>
+<p>真正例率：$TPR = \frac{TP}{TP+FN}$</p>
+<ul>
+<li>若一个学习器的<strong>ROC</strong>曲线被另一个学习器的曲线完全包住，则可断言后者的性能优于前者；如果交叉，则一般用<strong>AUC</strong>(ROC曲线下的面积)来衡量<script type="math/tex; mode=display">
+AUC = \frac{1}{2}\sum^{m-1}_{i=1}(x_{i+1}-x_i).(y_i+y_{i+1})</script>给定$m^+$个正实例和$m^-$个反例，令$D^+$和$D^-$分别表示正反例集合，则排序<strong>损失(loss)</strong>定义为：<script type="math/tex; mode=display">
+l_{rank} = \frac{1}{m^+m^-}\sum_{x^+\in D^+}\sum_{x^-\in D^-}(\|(f(x^+)<f(x^-))+\frac{1}{2}\|(f(x^+)=f(x^-)))</script>即，若正例的预测值小于反例，则记一个罚分，若相等，则记0.5个罚分<script type="math/tex; mode=display">
+AUC = 1-L_{rank}</script></li>
+</ul>
+</li>
+<li><p><strong>代价敏感错误率与代价曲线</strong></p>
+<p>不同的错误造成的代价可能是不同的，此时要赋予其权重。<br><img src="/2018/11/13/模型评估与选择/6.png" alt="6"><br>一般$cost_{ii} = 0$,若将第0类别判别为比第1类所造成的损失更大，则$cost_{01}&gt;cost_{10}$,损失程度相差越大，两个代价矩阵的差值越大。此时对应的代价敏感错误率为</p>
+<script type="math/tex; mode=display">
+E(f;D;cost)=\frac{1}{m}(\sum_{x_i\in D^+}\|(f(x_i)\neq y_i)\times cost_{01}+\sum_{x_i\in D^-}\|(f(x_i)\neq y_i)\times cost_{10})</script><p>相应的，此时ROC曲线不能直接反应出学习期的期望总体代价，而可以通过<strong>代价曲线（cost curve）</strong>来达到该目的：</p>
+<ul>
+<li><p>横轴为取值为[0,1]的正例概率代价：</p>
+<script type="math/tex; mode=display">
+P(+)cost = \frac{p\times cost_{01}}{p\times cost_{01}+(1-p)\times cost_{10}}</script><p>其中p为样例为正例的概率</p>
+</li>
+<li><p>纵轴为取值为[0,1]的归一化代价</p>
+<script type="math/tex; mode=display">
+cost_{norm} = \frac{FNR\times p\times cost_{01}+FPR\times(1-p)\times cost_{10}}{p\times cost_{01}+(1-p)\times cost_{10}}</script><p>$FNR = 1-TPR$是假反例率，ROC曲线上的没一点对应了代价平面上的一条线段。</p>
+<p><img src="/2018/11/13/模型评估与选择/7.png" alt="7"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="比较检验"><a href="#比较检验" class="headerlink" title="比较检验"></a>比较检验</h2><p>此部分内容见整理的数理统计内容</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/Basic-Conceptions/" rel="next" title="Basic Conceptions">
+                <i class="fa fa-chevron-left"></i> Basic Conceptions
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/14/数理统计/" rel="prev" title="数理统计">
+                数理统计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Tijin Yan">
+            
+              <p class="site-author-name" itemprop="name">Tijin Yan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yantijin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yantijin@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qq_36219266" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+
+        <div id="music163player">
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=32196440&auto=1&height=66"></iframe>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#本章基本概念"><span class="nav-number">1.</span> <span class="nav-text">本章基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估方法"><span class="nav-number">2.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#留出法"><span class="nav-number">2.1.</span> <span class="nav-text">留出法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉验证法-K折交叉验证"><span class="nav-number">2.2.</span> <span class="nav-text">交叉验证法/K折交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自助法"><span class="nav-number">2.3.</span> <span class="nav-text">自助法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能度量"><span class="nav-number">3.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回归任务"><span class="nav-number">3.1.</span> <span class="nav-text">回归任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类任务"><span class="nav-number">3.2.</span> <span class="nav-text">分类任务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较检验"><span class="nav-number">4.</span> <span class="nav-text">比较检验</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tijin Yan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">25.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.loca.pathname, 
+            owner: 'yantijin',
+            repo: 'yantijin.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'cbaeed29815b334304b5af6f4789f2a7fe3353cf',
+            
+                client_id: 'a246c92a051f6d05de74'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz',
+        appKey: 'MHEhvjPuKazCLe7uCI9f3rpf',
+        placeholder: 'Welcome for comments',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz", "MHEhvjPuKazCLe7uCI9f3rpf");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

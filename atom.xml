@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Tijin Yan</title>
+  
+  <subtitle>Ph.D. candidate in BIT</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://yantijin.github.io/"/>
+  <updated>2018-12-23T02:39:28.625Z</updated>
+  <id>https://yantijin.github.io/</id>
+  
+  <author>
+    <name>Tijin Yan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Yading: fast clustering of large-scale time series data</title>
+    <link href="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/"/>
+    <id>https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/</id>
+    <published>2018-12-21T01:34:18.000Z</published>
+    <updated>2018-12-23T02:39:28.625Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Algorithm Library" scheme="https://yantijin.github.io/categories/Algorithm-Library/"/>
+    
+      <category term="Clustering Algorithm" scheme="https://yantijin.github.io/categories/Algorithm-Library/Clustering-Algorithm/"/>
+    
+    
+      <category term="Clustering Algorithm" scheme="https://yantijin.github.io/tags/Clustering-Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>A Novel Task-Duplication Based Clustering Algorithm for Heterogeneous Computing Environments</title>
+    <link href="https://yantijin.github.io/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/"/>
+    <id>https://yantijin.github.io/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/</id>
+    <published>2018-12-17T00:20:53.000Z</published>
+    <updated>2018-12-22T04:00:10.542Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;h3 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
+    
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/tags/Cloud-Workflow-Scheduling/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安装教程</title>
+    <link href="https://yantijin.github.io/2018/12/11/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    <id>https://yantijin.github.io/2018/12/11/安装教程/</id>
+    <published>2018-12-11T11:39:37.000Z</published>
+    <updated>2018-12-21T14:52:14.141Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;大数据范畴&quot;&gt;&lt;a href=&quot;#大数据范畴&quot; class=&quot;headerlink&quot; title=&quot;大数据范畴&quot;&gt;&lt;/a&gt;大数据范畴&lt;/h1&gt;&lt;h2 id=&quot;Ubuntu16-04-安装Hadoop伪分布式&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="安装教程" scheme="https://yantijin.github.io/categories/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="安装教程" scheme="https://yantijin.github.io/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VIM快捷键配置</title>
+    <link href="https://yantijin.github.io/2018/12/04/VIM%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE/"/>
+    <id>https://yantijin.github.io/2018/12/04/VIM快捷键配置/</id>
+    <published>2018-12-04T12:45:18.000Z</published>
+    <updated>2018-12-21T14:52:14.134Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;VIM常用快捷键设置&quot;&gt;&lt;a href=&quot;#VIM常用快捷键设置&quot; class=&quot;headerlink&quot; title=&quot;VIM常用快捷键设置&quot;&gt;&lt;/a&gt;VIM常用快捷键设置&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;,nn:打开文件树&lt;br&gt;​   
+        
+      
+    
+    </summary>
+    
+      <category term="Life" scheme="https://yantijin.github.io/categories/Life/"/>
+    
+    
+      <category term="Interesting Things" scheme="https://yantijin.github.io/tags/Interesting-Things/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>那些踩过的python坑</title>
+    <link href="https://yantijin.github.io/2018/12/03/%E9%82%A3%E4%BA%9B%E8%B8%A9%E8%BF%87%E7%9A%84python%E5%9D%91/"/>
+    <id>https://yantijin.github.io/2018/12/03/那些踩过的python坑/</id>
+    <published>2018-12-03T07:14:53.000Z</published>
+    <updated>2018-12-21T14:52:14.170Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;列表&quot;&gt;&lt;a href=&quot;#列表&quot; class=&quot;headerlink&quot; title=&quot;列表&quot;&gt;&lt;/a&gt;列表&lt;/h2&gt;&lt;h3 id=&quot;列表复制和删除&quot;&gt;&lt;a href=&quot;#列表复制和删除&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="language" scheme="https://yantijin.github.io/categories/language/"/>
+    
+      <category term="python" scheme="https://yantijin.github.io/categories/language/python/"/>
+    
+    
+      <category term="python" scheme="https://yantijin.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>高维度数据的聚类</title>
+    <link href="https://yantijin.github.io/2018/12/03/%E9%AB%98%E7%BB%B4%E5%BA%A6%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB/"/>
+    <id>https://yantijin.github.io/2018/12/03/高维度数据的聚类/</id>
+    <published>2018-12-03T07:09:08.000Z</published>
+    <updated>2018-12-21T14:52:14.170Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;高维度数据的聚类&quot;&gt;&lt;a href=&quot;#高维度数据的聚类&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Algorithm Library" scheme="https://yantijin.github.io/categories/Algorithm-Library/"/>
+    
+      <category term="Clustering Algorithm" scheme="https://yantijin.github.io/categories/Algorithm-Library/Clustering-Algorithm/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>A Fast Algorithm for Projected Clustering</title>
+    <link href="https://yantijin.github.io/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/"/>
+    <id>https://yantijin.github.io/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/</id>
+    <published>2018-11-28T09:07:01.000Z</published>
+    <updated>2018-12-21T14:52:14.106Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;投影聚类法&quot;&gt;&lt;a href=&quot;#投影聚类法&quot; class=&quot;headerlink&quot; title=&quot;投影聚类法&quot;&gt;&lt;/a&gt;投影聚类法&lt;/h2&gt;&lt;h3 id=&quot;Basic-Conceprions&quot;&gt;&lt;a href=&quot;#Basic-Conceprions&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Algorithm Library" scheme="https://yantijin.github.io/categories/Algorithm-Library/"/>
+    
+      <category term="Clustering Algorithm" scheme="https://yantijin.github.io/categories/Algorithm-Library/Clustering-Algorithm/"/>
+    
+    
+      <category term="Clustering Algorithm" scheme="https://yantijin.github.io/tags/Clustering-Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DMOEA-epsilonC</title>
+    <link href="https://yantijin.github.io/2018/11/27/DMOEA-epsilonC/"/>
+    <id>https://yantijin.github.io/2018/11/27/DMOEA-epsilonC/</id>
+    <published>2018-11-27T10:06:47.000Z</published>
+    <updated>2018-12-21T14:52:14.119Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;主要贡献&quot;&gt;&lt;a href=&quot;#主要贡献&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
+    
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/tags/Cloud-Workflow-Scheduling/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>algorithm-lib</title>
+    <link href="https://yantijin.github.io/2018/11/18/algorithm-lib/"/>
+    <id>https://yantijin.github.io/2018/11/18/algorithm-lib/</id>
+    <published>2018-11-18T15:31:57.000Z</published>
+    <updated>2018-12-21T14:52:14.136Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;聚类算法&quot;&gt;&lt;a href=&quot;#聚类算法&quot; class=&quot;headerlink&quot; title=&quot;聚类算法&quot;&gt;&lt;/a&gt;聚类算法&lt;/h1&gt;&lt;h2 id=&quot;Partitional-Clustering-Algorithm&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Algorithm Library" scheme="https://yantijin.github.io/categories/Algorithm-Library/"/>
+    
+    
+      <category term="algorithm" scheme="https://yantijin.github.io/tags/algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>进化算法库</title>
+    <link href="https://yantijin.github.io/2018/11/18/%E8%BF%9B%E5%8C%96%E7%AE%97%E6%B3%95%E5%BA%93/"/>
+    <id>https://yantijin.github.io/2018/11/18/进化算法库/</id>
+    <published>2018-11-18T02:26:13.000Z</published>
+    <updated>2018-12-21T14:52:14.154Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;NSGA族&quot;&gt;&lt;a href=&quot;#NSGA族&quot; class=&quot;headerlink&quot; title=&quot;NSGA族&quot;&gt;&lt;/a&gt;NSGA族&lt;/h2&gt;&lt;h3 id=&quot;NSGA的缺陷：&quot;&gt;&lt;a href=&quot;#NSGA的缺陷：&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
+    
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/tags/Cloud-Workflow-Scheduling/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>决策树</title>
+    <link href="https://yantijin.github.io/2018/11/17/%E5%86%B3%E7%AD%96%E6%A0%91/"/>
+    <id>https://yantijin.github.io/2018/11/17/决策树/</id>
+    <published>2018-11-17T12:44:05.000Z</published>
+    <updated>2018-12-21T14:52:14.139Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;决策树&quot;&gt;&lt;a href=&quot;#决策树&quot; class=&quot;headerlink&quot; title=&quot;决策树&quot;&gt;&lt;/a&gt;决策树&lt;/h2&gt;&lt;h3 id=&quot;决策树建树的基本流程&quot;&gt;&lt;a href=&quot;#决策树建树的基本流程&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="决策树" scheme="https://yantijin.github.io/categories/machine-learning/%E5%86%B3%E7%AD%96%E6%A0%91/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线性模型</title>
+    <link href="https://yantijin.github.io/2018/11/17/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://yantijin.github.io/2018/11/17/线性模型/</id>
+    <published>2018-11-17T11:05:18.000Z</published>
+    <updated>2018-12-22T04:00:10.573Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;线性回归&quot;&gt;&lt;a href=&quot;#线性回归&quot; class=&quot;headerlink&quot; title=&quot;线性回归&quot;&gt;&lt;/a&gt;线性回归&lt;/h2&gt;&lt;h3 id=&quot;基本形式&quot;&gt;&lt;a href=&quot;#基本形式&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="线性模型" scheme="https://yantijin.github.io/categories/machine-learning/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Evolutionary Multi-Objective Workflow Scheduling in Cloud</title>
+    <link href="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/"/>
+    <id>https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/</id>
+    <published>2018-11-16T10:57:43.000Z</published>
+    <updated>2018-12-21T14:52:14.124Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Main-idea&quot;&gt;&lt;a href=&quot;#Main-idea&quot; class=&quot;headerlink&quot; title=&quot;Main idea&quot;&gt;&lt;/a&gt;Main idea&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;:
+        
+      
+    
+    </summary>
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
+    
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/tags/Cloud-Workflow-Scheduling/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WorkflowSim Structure</title>
+    <link href="https://yantijin.github.io/2018/11/15/WorkflowSim-Structure/"/>
+    <id>https://yantijin.github.io/2018/11/15/WorkflowSim-Structure/</id>
+    <published>2018-11-15T02:39:41.000Z</published>
+    <updated>2018-12-21T14:52:14.134Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Characteristic&quot;&gt;&lt;a href=&quot;#Characteristic&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
+    
+    
+      <category term="WorkflowSim toolkit introduction" scheme="https://yantijin.github.io/tags/WorkflowSim-toolkit-introduction/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数理统计</title>
+    <link href="https://yantijin.github.io/2018/11/14/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    <id>https://yantijin.github.io/2018/11/14/数理统计/</id>
+    <published>2018-11-14T01:58:43.000Z</published>
+    <updated>2018-12-21T14:52:14.141Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;总体样本和抽样分布&quot;&gt;&lt;a href=&quot;#总体样本和抽样分布&quot; class=&quot;headerlink&quot; title=&quot;总体样本和抽样分布&quot;&gt;&lt;/a&gt;总体样本和抽样分布&lt;/h1&gt;&lt;h2 id=&quot;总体样本&quot;&gt;&lt;a href=&quot;#总体样本&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="数理统计" scheme="https://yantijin.github.io/categories/machine-learning/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模型评估与选择</title>
+    <link href="https://yantijin.github.io/2018/11/13/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%8E%E9%80%89%E6%8B%A9/"/>
+    <id>https://yantijin.github.io/2018/11/13/模型评估与选择/</id>
+    <published>2018-11-13T15:19:44.000Z</published>
+    <updated>2018-12-21T14:52:14.148Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;本章基本概念&quot;&gt;&lt;a href=&quot;#本章基本概念&quot; class=&quot;headerlink&quot; title=&quot;本章基本概念&quot;&gt;&lt;/a&gt;本章基本概念&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;错误率(error rate)&lt;/strong&gt;:
+        
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="模型评估与选择" scheme="https://yantijin.github.io/categories/machine-learning/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%8E%E9%80%89%E6%8B%A9/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Basic Conceptions</title>
+    <link href="https://yantijin.github.io/2018/11/13/Basic-Conceptions/"/>
+    <id>https://yantijin.github.io/2018/11/13/Basic-Conceptions/</id>
+    <published>2018-11-13T14:15:59.000Z</published>
+    <updated>2018-12-21T14:52:14.112Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Basic-conception&quot;&gt;&lt;a href=&quot;#Basic-conception&quot; class=&quot;headerlink&quot; title=&quot;Basic conception&quot;&gt;&lt;/a&gt;Basic
+        
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="basic conception" scheme="https://yantijin.github.io/categories/machine-learning/basic-conception/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python numpy练习</title>
+    <link href="https://yantijin.github.io/2018/11/11/python-numpy%E7%BB%83%E4%B9%A0/"/>
+    <id>https://yantijin.github.io/2018/11/11/python-numpy练习/</id>
+    <published>2018-11-11T03:38:04.000Z</published>
+    <updated>2018-12-21T14:52:14.139Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;以下为转载内容&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;100-numpy-exercises&quot;&gt;&lt;a href=&quot;#100-numpy-exercises&quot; class=&quot;headerlink&quot; title=&quot;100 numpy
+        
+      
+    
+    </summary>
+    
+      <category term="language" scheme="https://yantijin.github.io/categories/language/"/>
+    
+      <category term="python" scheme="https://yantijin.github.io/categories/language/python/"/>
+    
+    
+      <category term="python" scheme="https://yantijin.github.io/tags/python/"/>
+    
+      <category term="language" scheme="https://yantijin.github.io/tags/language/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CloudSim Structure</title>
+    <link href="https://yantijin.github.io/2018/11/09/CloudSim-Structure/"/>
+    <id>https://yantijin.github.io/2018/11/09/CloudSim-Structure/</id>
+    <published>2018-11-09T13:01:33.000Z</published>
+    <updated>2018-12-21T14:52:14.113Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Basic-Concepts-and-Terminologies&quot;&gt;&lt;a href=&quot;#Basic-Concepts-and-Terminologies&quot; class=&quot;headerlink&quot; title=&quot;Basic Concepts and
+        
+      
+    
+    </summary>
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
+    
+    
+      <category term="CloudSim toolkit introduction" scheme="https://yantijin.github.io/tags/CloudSim-toolkit-introduction/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>看见_柴静</title>
+    <link href="https://yantijin.github.io/2018/11/07/%E7%9C%8B%E8%A7%81-%E6%9F%B4%E9%9D%99/"/>
+    <id>https://yantijin.github.io/2018/11/07/看见-柴静/</id>
+    <published>2018-11-07T10:02:07.000Z</published>
+    <updated>2018-12-21T14:52:14.153Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Life" scheme="https://yantijin.github.io/categories/Life/"/>
+    
+    
+      <category term="read" scheme="https://yantijin.github.io/tags/read/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="machine learning,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tijin Yan" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="线性回归基本形式 y = \omega^T x+b而线性回归的目标为试图得到  f(x_i)=\omega x_i +b,使得 f(x_i)\simeq y_i对于多元线性回归，可以采用最小二乘法，其中（把b加入$\omega$中去）  X = \begin{bmatrix} x_{11}&amp;x_{12}&amp;\cdots&amp;x_{1d}&amp;1\\ x_{21}&amp;x_{22}&amp;\cdots&amp;x_{2d}&amp;1">
+<meta name="keywords" content="machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性模型">
+<meta property="og:url" content="https://yantijin.github.io/2018/11/17/线性模型/index.html">
+<meta property="og:site_name" content="Tijin Yan">
+<meta property="og:description" content="线性回归基本形式 y = \omega^T x+b而线性回归的目标为试图得到  f(x_i)=\omega x_i +b,使得 f(x_i)\simeq y_i对于多元线性回归，可以采用最小二乘法，其中（把b加入$\omega$中去）  X = \begin{bmatrix} x_{11}&amp;x_{12}&amp;\cdots&amp;x_{1d}&amp;1\\ x_{21}&amp;x_{22}&amp;\cdots&amp;x_{2d}&amp;1">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-22T04:00:10.573Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线性模型">
+<meta name="twitter:description" content="线性回归基本形式 y = \omega^T x+b而线性回归的目标为试图得到  f(x_i)=\omega x_i +b,使得 f(x_i)\simeq y_i对于多元线性回归，可以采用最小二乘法，其中（把b加入$\omega$中去）  X = \begin{bmatrix} x_{11}&amp;x_{12}&amp;\cdots&amp;x_{1d}&amp;1\\ x_{21}&amp;x_{22}&amp;\cdots&amp;x_{2d}&amp;1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://yantijin.github.io/2018/11/17/线性模型/">
+
+
+
+
+
+  <title>线性模型 | Tijin Yan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/yantijin"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tijin Yan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Ph.D. candidate in BIT</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            Resume
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yantijin.github.io/2018/11/17/线性模型/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tijin Yan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tijin Yan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">线性模型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T19:05:18+08:00">
+                2018-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">machine learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/线性模型/" itemprop="url" rel="index">
+                    <span itemprop="name">线性模型</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/17/线性模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/11/17/线性模型/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/17/线性模型/" class="leancloud_visitors" data-flag-title="线性模型">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><script type="math/tex; mode=display">
+y = \omega^T x+b</script><p>而线性回归的目标为试图得到</p>
+<script type="math/tex; mode=display">
+f(x_i)=\omega x_i +b,使得 f(x_i)\simeq y_i</script><p>对于多元线性回归，可以采用<strong>最小二乘法</strong>，其中（把b加入$\omega$中去）</p>
+<script type="math/tex; mode=display">
+X = \begin{bmatrix}
+x_{11}&x_{12}&\cdots&x_{1d}&1\\
+x_{21}&x_{22}&\cdots&x_{2d}&1\\
+\vdots&\vdots&\ddots&\vdots&\vdots\\
+x_{m1}&x_{m2}&\cdots&x_{md}&1
+\end{bmatrix}=\begin{bmatrix}
+x_1^T&1\\
+x_2^T&1\\
+\vdots&\vdots\\
+x_m^T&1
+\end{bmatrix}\\
+\\
+y = (y_1;y_2;\cdots;y_m)</script><p>那么对于性能指标$E=(y-X\hat\omega)^T(y-X\hat\omega)$来说，</p>
+<script type="math/tex; mode=display">
+\frac{\partial E}{\partial\hat \omega} = 2X^T(X\hat \omega-y)</script><script type="math/tex; mode=display">
+\hat \omega^* = (X^TX)^{-1}X^Ty</script><p>故而此时的线性回归模型为</p>
+<script type="math/tex; mode=display">
+f(\hat x_i^T)=\hat x_i^T(X^TX)^{-1}X^Ty</script><ul>
+<li>问题是有时候$X^TX$并不是满秩的，此时系统有多个解，如何选择将由学习算法的归纳偏好来决定，常见做法是引入<strong>正则化(generalization)项</strong></li>
+</ul>
+<h3 id="广义的线性回归"><a href="#广义的线性回归" class="headerlink" title="广义的线性回归"></a>广义的线性回归</h3><ul>
+<li>对数线性回归形式<script type="math/tex; mode=display">
+lny = \omega^Tx+b</script>对于更一般的，可考虑<script type="math/tex; mode=display">
+y=g^{-1}(\omega^Tx+b)</script></li>
+</ul>
+<h3 id="对数几率回归"><a href="#对数几率回归" class="headerlink" title="对数几率回归"></a>对数几率回归</h3><ul>
+<li><p>形式：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+y = \frac{1}{1+e^{-(\omega^2x+b)}}
+\end{align}</script><p>故而，</p>
+<script type="math/tex; mode=display">
+ln(\frac{y}{1-y})=\omega^Tx+b</script><p>其中,$ln(\frac{y}{1-y})$称为<strong>对数几率</strong></p>
+<p>对于二分类问题，上式还等价于</p>
+<script type="math/tex; mode=display">
+ln\frac{p(y=1|x)}{p(y=0|x)}=\omega^Tx+b\\
+p(y=1|x)=\frac{e^{\omega^Tx+b}}{1+e^{\omega^Tx+b}}\\
+p(y=0|x)=\frac{1}{1+e^{\omega^Tx+b}}</script><p>可以通过<strong>极大似然法</strong>来估计$\omega$和b，对于给定数据集，他的似然函数为</p>
+<script type="math/tex; mode=display">
+l(\omega,b)=\sum_{i=1}^mlnp(y_i|x_i;\omega,b)</script><p>而</p>
+<script type="math/tex; mode=display">
+p(y_i|x_i;\omega,b)=y_ip_1(\hat x_i;\beta)+(1-y_i)p_0(\hat x_i;\beta)</script><p>最大化$l(\omega,b)$相当于最小化下式，<a href="https://blog.csdn.net/VictoriaW/article/details/77947535" target="_blank" rel="noopener">推导过程</a></p>
+<script type="math/tex; mode=display">
+l(\beta)=\sum^{n}_{i=1}(-y_i\beta^T\hat x_i+ln(1+e^{\beta^T\hat x_i}))</script><p>上式是一个关于$\beta$的高阶可导连续凸函数，可用牛顿法求解，</p>
+<script type="math/tex; mode=display">
+\beta^{t+1}=\beta^t-(\frac{\partial^2l(\beta)}{\partial\beta\partial \beta^T})^{-1}\frac{\partial l(\beta)}{\partial \beta}</script></li>
+</ul>
+<h3 id="线性-Fisher判别分析-Linear-Discriminant-Analysis"><a href="#线性-Fisher判别分析-Linear-Discriminant-Analysis" class="headerlink" title="线性/Fisher判别分析(Linear Discriminant Analysis)"></a>线性/Fisher判别分析(Linear Discriminant Analysis)</h3><ul>
+<li><p>主要思想：对给定训练集，设法将所有样例投影到一条直线上，使得同类样例的投影点尽可能接近，异类样例的投影点尽可能远离；下面用$X_i,\mu_i,\Sigma_i$分别表示第$i\in\{0,1\}$类示例的集合，均值向量，协方差矩阵</p>
+<p>则样本中心在直线上的投影为$\omega^T\mu_i$,若将样本投影到直线上，样本的协方差为$\omega^T\Sigma_i\omega$</p>
+<p>那么，为了让同类样例的投影点尽可能接近，可以让同类样例投影点的协方差尽可能小，即$\omega^T\Sigma_0\omega+\omega^T\Sigma_1\omega$尽可能小；而欲使异类样例的投影点尽可能远离，可以让类中心之间的距离尽可能大，即$\parallel \omega^T\mu_0-\omega^T\mu_1\parallel_2^2$尽可能大，故而将目标函数设为</p>
+<script type="math/tex; mode=display">
+J=\frac{\parallel \omega^T\mu_0-\omega^T\mu_1\parallel_2^2}{\omega^T\Sigma_0\omega+\omega^T\Sigma_1\omega}</script><p>定义<strong>类内散度矩阵</strong>为</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+S_\omega &=&\Sigma_0+\Sigma_1\\
+&=&\sum_{x\in X_0}(x-\mu_0)(x-\mu_0)^T+\sum_{x\in X_1}(x-\mu_1)(x-\mu_1)^T
+\end{aligned}
+\end{equation}</script><p><strong>类间散度矩阵</strong></p>
+<script type="math/tex; mode=display">
+S_b=(\mu_0-\mu_1)(\mu_0-\mu_1)^T</script><p>那么，<strong>目标函数</strong>可以重写为$J=\frac{\omega^TS_b\omega}{\omega^TS_\omega\omega}$,称之为<strong>广义瑞利商</strong>,因为分子分母均为$\omega$的二次项，因此目标函数的解与$\omega$的长度无关，只与其方向有关，不失一般性，令分母为1</p>
+<p>最终，问题变成了</p>
+<script type="math/tex; mode=display">
+\min_{\omega}~~~-\omega^TS_b\omega\\
+s.t.~~~\omega^TS_{\omega}\omega=1</script><p>用<strong>拉格朗日乘子法</strong>可得</p>
+<script type="math/tex; mode=display">
+S_b\omega=\lambda S_{\omega}\omega</script><p>注意到$S_b\omega$的方向恒为$\mu_0-\mu_1$，不妨令</p>
+<script type="math/tex; mode=display">
+S_b\omega=\lambda(\mu_0-\mu_1)</script><p>故而，有</p>
+<script type="math/tex; mode=display">
+\omega=\S^{-1}_{\omega}(\mu_0-\mu_1)</script><p><strong>对于多分类任务来说</strong>,可以对其进一步拓展。</p>
+</li>
+</ul>
+<h3 id="多分类学习"><a href="#多分类学习" class="headerlink" title="多分类学习"></a>多分类学习</h3><ul>
+<li><p>一般是基于一些基本策略，利用二分类学习器来解决多分类问题。</p>
+</li>
+<li><p><strong>拆分法</strong>:</p>
+<p>给定数据集$D=\{(x_1,y_1),(x_2,y_2),…,(x_m,y_m)\},y_i\in\{C_1,C_2,…,C_N\}​$</p>
+<ul>
+<li>一对一(OvO):将N个类别两两配对，产生$\frac{N(N-1)}{2}​$个二分任务，最终测试阶段，新样本同时提交给所有分类器，通过投票来选择最终分类结果</li>
+<li>一对其余(OvR):每次将一个类的样例作为正例，所有其他类的样例作为反例来训练N个分类器。在测试时若有一个分类器预测为正类，则对应类别标记作为最终分类结果；若有多个分类器预测为正类，则通常考虑各分类器的预测置信度，选择置信度最大的类别标记作为预测结果</li>
+<li>多对多(MvM):每次将若干个类作为正类，若干个其他类作为反类，一般用<strong>纠错输出码(Error Correction Output Codes)</strong>来进行校正<ul>
+<li>编码：对N个类别进行M次划分，每次划分将一部分类划为正类，一部分划为反类，从而形成一个二分类训练集，这样一共产生M个训练集，可训练处M个分类器。</li>
+<li>解码：M个分类器分别对测试样本进行测试，这些测试的标记组成一个编码，将此编码与每个类别各自的编码进行比较，返回其中距离最小的类别作为最终预测结果。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="类别不平衡问题"><a href="#类别不平衡问题" class="headerlink" title="类别不平衡问题"></a>类别不平衡问题</h3><ul>
+<li>有时候训练集中正反例的数目差距比较大，而前面的推导都是基于两者相同产生的，即<script type="math/tex; mode=display">
+\frac{y}{1-y}>1,则为正例</script>现在应该改为,($m^+$,$m^-$分别为正负实例的个数)<script type="math/tex; mode=display">
+\frac{y}{1-y}>\frac{m^+}{m^-}</script>即应该让<script type="math/tex; mode=display">
+\frac{y'}{1-y'}=\frac{y}{1-y}\times\frac{m^-}{m^+}</script></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/" rel="next" title="Evolutionary Multi-Objective Workflow Scheduling in Cloud">
+                <i class="fa fa-chevron-left"></i> Evolutionary Multi-Objective Workflow Scheduling in Cloud
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/17/决策树/" rel="prev" title="决策树">
+                决策树 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Tijin Yan">
+            
+              <p class="site-author-name" itemprop="name">Tijin Yan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yantijin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yantijin@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qq_36219266" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+
+        <div id="music163player">
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=32196440&auto=1&height=66"></iframe>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归"><span class="nav-number">1.</span> <span class="nav-text">线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本形式"><span class="nav-number">1.1.</span> <span class="nav-text">基本形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广义的线性回归"><span class="nav-number">1.2.</span> <span class="nav-text">广义的线性回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对数几率回归"><span class="nav-number">1.3.</span> <span class="nav-text">对数几率回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性-Fisher判别分析-Linear-Discriminant-Analysis"><span class="nav-number">1.4.</span> <span class="nav-text">线性/Fisher判别分析(Linear Discriminant Analysis)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分类学习"><span class="nav-number">1.5.</span> <span class="nav-text">多分类学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类别不平衡问题"><span class="nav-number">1.6.</span> <span class="nav-text">类别不平衡问题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tijin Yan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">25.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.loca.pathname, 
+            owner: 'yantijin',
+            repo: 'yantijin.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'cbaeed29815b334304b5af6f4789f2a7fe3353cf',
+            
+                client_id: 'a246c92a051f6d05de74'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz',
+        appKey: 'MHEhvjPuKazCLe7uCI9f3rpf',
+        placeholder: 'Welcome for comments',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz", "MHEhvjPuKazCLe7uCI9f3rpf");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

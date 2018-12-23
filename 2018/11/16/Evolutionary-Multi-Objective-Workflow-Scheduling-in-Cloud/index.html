@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Cloud Workflow Scheduling,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tijin Yan" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Main idea Objective: optimize both makespan and cost  Main Contributions:  突出显示直接应用于云的现有调度算法的挑战，利用真实的云特性制定云工作流调度问题。 使用基于实例的IaaS风格方案制定定价选项，但不指定特定的定价规则  present the EMO(Evolutionary Multi-Objective) alg">
+<meta name="keywords" content="Cloud Workflow Scheduling">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Evolutionary Multi-Objective Workflow Scheduling in Cloud">
+<meta property="og:url" content="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/index.html">
+<meta property="og:site_name" content="Tijin Yan">
+<meta property="og:description" content="Main idea Objective: optimize both makespan and cost  Main Contributions:  突出显示直接应用于云的现有调度算法的挑战，利用真实的云特性制定云工作流调度问题。 使用基于实例的IaaS风格方案制定定价选项，但不指定特定的定价规则  present the EMO(Evolutionary Multi-Objective) alg">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/1.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/2.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/3.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/4.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/5.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/8.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/6.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/7.png">
+<meta property="og:updated_time" content="2018-12-21T14:52:14.124Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Evolutionary Multi-Objective Workflow Scheduling in Cloud">
+<meta name="twitter:description" content="Main idea Objective: optimize both makespan and cost  Main Contributions:  突出显示直接应用于云的现有调度算法的挑战，利用真实的云特性制定云工作流调度问题。 使用基于实例的IaaS风格方案制定定价选项，但不指定特定的定价规则  present the EMO(Evolutionary Multi-Objective) alg">
+<meta name="twitter:image" content="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/">
+
+
+
+
+
+  <title>Evolutionary Multi-Objective Workflow Scheduling in Cloud | Tijin Yan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/yantijin"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tijin Yan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Ph.D. candidate in BIT</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            Resume
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tijin Yan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tijin Yan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Evolutionary Multi-Objective Workflow Scheduling in Cloud</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-16T18:57:43+08:00">
+                2018-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Workflow-Scheduling/" itemprop="url" rel="index">
+                    <span itemprop="name">Cloud Workflow Scheduling</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/" class="leancloud_visitors" data-flag-title="Evolutionary Multi-Objective Workflow Scheduling in Cloud">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Main-idea"><a href="#Main-idea" class="headerlink" title="Main idea"></a>Main idea</h2><ul>
+<li><p><strong>Objective</strong>: optimize both makespan and cost</p>
+</li>
+<li><p><strong>Main Contributions</strong>:</p>
+<ul>
+<li><p>突出显示直接应用于云的现有调度算法的挑战，利用真实的云特性制定云工作流调度问题。</p>
+<p>使用基于实例的IaaS风格方案制定定价选项，但不指定特定的定价规则</p>
+</li>
+<li><p>present the EMO(Evolutionary Multi-Objective) algorithm for the modeled workflow scheduling problem.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Challenges-for-Scheduling-Workflows-in-Cloud"><a href="#Challenges-for-Scheduling-Workflows-in-Cloud" class="headerlink" title="Challenges for Scheduling Workflows in Cloud"></a>Challenges for Scheduling Workflows in Cloud</h2><h3 id="云计算和网格计算模型的差别"><a href="#云计算和网格计算模型的差别" class="headerlink" title="云计算和网格计算模型的差别"></a>云计算和网格计算模型的差别</h3><ul>
+<li><p>the complex pricing schemes:在云环境下一个任务的cost在调度之前很难精准地预算；</p>
+<p>大多数调度的启发式算法还要求知道每个任务的cost来进行优先级排序或者处理器的选择。</p>
+</li>
+<li><p>the large-size resource pools：在传统异构的环境中，资源池是有限的，所以有些算法是遍历资源池来进行处理器的选择，但是对于云环境不使用。</p>
+</li>
+<li><p>有一种是把所有种类的instance(VMs)做成一个列表，但是依然太大了。</p>
+</li>
+</ul>
+<h2 id="Workflow-Scheduling-Problem"><a href="#Workflow-Scheduling-Problem" class="headerlink" title="Workflow Scheduling Problem"></a>Workflow Scheduling Problem</h2><h3 id="基本概念定义"><a href="#基本概念定义" class="headerlink" title="基本概念定义"></a>基本概念定义</h3><ul>
+<li><strong>DAG</strong> W = (T,D), $T = \{T_0,T_1,…,T_n\}$ is the set of tasks, $D = \{(T_i,T_j)|T_i,T_j\in T\}$ is the set of data or control dependencies.</li>
+<li><strong>refertime($T_i$)</strong>: reference execution time of $T_i$</li>
+<li><strong>data($T_i,T_j$)</strong> data transfer size from $T_i$ to $T_j$</li>
+<li><strong>pred(T_i)</strong>=$\{T_j|(T_j ,T_i)\in D\}$</li>
+<li><strong>T_{entry}</strong>: the entry task;<strong>T_{exit}</strong>: exit task </li>
+</ul>
+<h3 id="云资源管理"><a href="#云资源管理" class="headerlink" title="云资源管理"></a>云资源管理</h3><ul>
+<li><p>认为云端的instances是无穷的，用$I=\{I_0,I_1,…\}$来形容所有可用的instances。$P =\{P_0,P_1,…,P_m\}$代表所有的instances的类型，共m种。</p>
+</li>
+<li><p>用$cu(P_i)$来代表instance type $P_i$的计算单元（compute unit），并且假设<strong>如果一个instacne的CU变为原来的两倍，执行时间会缩短为原来的一半</strong>,故而任务$T_i$的实际运行时间为</p>
+<script type="math/tex; mode=display">
+Time_{comp}(T_i)=\frac{refertime(T_i)}{cu(P_j)}</script></li>
+<li><p>带宽 $bw(P_i)$代表instance type $P_i$的带宽，那么$T_i$和$T_j$之间的communication time (忽略setup delays)为</p>
+<script type="math/tex; mode=display">
+Time_{comm}(T_i,T_j)=\begin{equation}
+\left\{
+    \begin{array}{**rc1**}
+    \frac{data(T_i,T_j)}{min\{bw(P_p),bw(P_q)\}},~~~p\neq q\\
+    0,~~~p=q
+    \end{array}
+\right.
+\end{equation}</script></li>
+<li><p><strong>定价模型</strong>：用$M=\{M_0,M_1,…,M_k\}$来表示IaaS提供的pricing options，并且定义了函数<strong>charge</strong>$(M_h,P_j,I_i)$计算用定价模型$M_h$来算type为$P_j$的instance $I_i$.</p>
+</li>
+</ul>
+<h3 id="工作流调度问题定义"><a href="#工作流调度问题定义" class="headerlink" title="工作流调度问题定义"></a>工作流调度问题定义</h3><ul>
+<li>已知$W=(T,D)$，并且有IaaS平台$S=(I,P,M)$,那么一个调度问题就是要产生一个或多个下列形式的解 $R = (Ins, Type, Order)$，其中<script type="math/tex; mode=display">
+Ins: T\rightarrow I, Ins(T_i) = I_j\\
+Type: I\rightarrow P, Type(I_s) = P_t</script><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/1.png" alt="1"></li>
+</ul>
+<h2 id="多目标进化算法优化"><a href="#多目标进化算法优化" class="headerlink" title="多目标进化算法优化"></a>多目标进化算法优化</h2><ul>
+<li>最主要的贡献就是：present a whole set of the exploration operations, including encoding, population initialization, crossover, and mutation. These operations can work with any exploitation operation (e.g., fitness assignment, selection) in the EMO area </li>
+</ul>
+<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/2.png" alt="2"></p>
+<p>其中$avail(Ins(T_i))$为instance $I_i$可用的时间，他是通过$FT(T_i)$来更新的</p>
+<h3 id="Encoding"><a href="#Encoding" class="headerlink" title="Encoding"></a>Encoding</h3><ul>
+<li><p>由于解的形式为$R = (Ins, Type, Order)$,所以染色体分为三段。</p>
+<p><strong>order</strong>是所有任务序列的排列，如果i在j前面，则$T_i$会比$T_j$先确定用hosting instance(VM),但是并不意味$T_i$比$T_j$先执行。</p>
+<p><strong>task2ins</strong>:是长度为n（假设有n中类型）的映射<em>Ins</em>的向量,其中index代表一个任务，他的值代表选择哪一个instance来执行此任务。例如tak2ins[i]=j就是让$T_i$被安排到一个index为j的instance($I_j$)上。</p>
+<p><strong>ins2type</strong>:一个从instance index映射到他们类型的映射，例如ins2type[j] = k表示instance $I_j$的类型为$P_k$</p>
+</li>
+</ul>
+<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/3.png" alt="3"></p>
+<h3 id="Crossover"><a href="#Crossover" class="headerlink" title="Crossover"></a>Crossover</h3><p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/4.png" alt="4"></p>
+<ul>
+<li><p>需要注意不能违反依赖关系；This operator will not cause any dependency conflict since the order of any two tasks should have already existed in at least one parent.  </p>
+</li>
+<li><p>对于task2ins和ins2type则同时进行crossover操作</p>
+<ul>
+<li><p>随机选择一个切断点，而后将两个父代的task2ins字符串的第一部分进行交换。</p>
+<p><strong>注意</strong>：一个任务所在运行的VM的种类也是十分重要的，所以，如果一个任务T，在type为$p_i$的instance I上运行，现在被重新安排到类型为$p_j$的$I^{<em>}$上，那么我们应将$I^{</em>}$的类型修改为$p_i$,但是这样有可能导致其他原本安排在此VM上的任务的所选类型改变，这种情况则将$I^{*}$的类型随机选为$p_i$或者$p_j$;如果没有发生冲突，则对VM的type引入一个小几率的变异操作</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/5.png" alt="5"></p>
+<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/8.png" alt="5"></p>
+<h3 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h3><ul>
+<li><p>Mutation of <em>order</em></p>
+<p>define all successors of task $T_i$ as</p>
+<script type="math/tex; mode=display">
+succ(T_i)=\{T_j|(T_i,T_j)\in D\}</script><p><strong>整体思想</strong>：从pos开始向前向后查找，找到可以交换的index的最大范围，然后在这个范围内随机产生一个整数，将pos移到此位置<br><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/6.png" alt="6"></p>
+</li>
+<li><p>Mutation of <em>task2ins</em> and <em>ins2type</em> :以一个小概率来对每一个位置产生一个新的有效的值</p>
+</li>
+</ul>
+<h3 id="Initial-Population"><a href="#Initial-Population" class="headerlink" title="Initial Population"></a>Initial Population</h3><ul>
+<li><strong>假定</strong>，种群大小为n，那么初始化时，<ul>
+<li>一个个体是通过HEFT(异构最早完成时间算法)计算，被认为是最快的调度</li>
+<li>一个个体是在执行HEFT时同时产生的，是要产生最便宜的调度</li>
+<li>其他n-2个个体是通过<strong>RandTypeOrIns</strong>来产生的。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/7.png" alt="7"></p>
+<p><strong>整体思想</strong>：order是按照递增来构造的，然后随机选择一种instance type,将所有的instance的类型设为此类型，对于task2ins，则是有两种方法：第一种是将所有的任务分配到同一个instance(0)上;另一种是对每一个任务产生一个0到n-1之间的随机数。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Cloud-Workflow-Scheduling/" rel="tag"># Cloud Workflow Scheduling</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/15/WorkflowSim-Structure/" rel="next" title="WorkflowSim Structure">
+                <i class="fa fa-chevron-left"></i> WorkflowSim Structure
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/17/线性模型/" rel="prev" title="线性模型">
+                线性模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Tijin Yan">
+            
+              <p class="site-author-name" itemprop="name">Tijin Yan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yantijin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yantijin@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qq_36219266" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+
+        <div id="music163player">
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=32196440&auto=1&height=66"></iframe>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Main-idea"><span class="nav-number">1.</span> <span class="nav-text">Main idea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Challenges-for-Scheduling-Workflows-in-Cloud"><span class="nav-number">2.</span> <span class="nav-text">Challenges for Scheduling Workflows in Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#云计算和网格计算模型的差别"><span class="nav-number">2.1.</span> <span class="nav-text">云计算和网格计算模型的差别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Workflow-Scheduling-Problem"><span class="nav-number">3.</span> <span class="nav-text">Workflow Scheduling Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念定义"><span class="nav-number">3.1.</span> <span class="nav-text">基本概念定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#云资源管理"><span class="nav-number">3.2.</span> <span class="nav-text">云资源管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作流调度问题定义"><span class="nav-number">3.3.</span> <span class="nav-text">工作流调度问题定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多目标进化算法优化"><span class="nav-number">4.</span> <span class="nav-text">多目标进化算法优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Encoding"><span class="nav-number">4.1.</span> <span class="nav-text">Encoding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crossover"><span class="nav-number">4.2.</span> <span class="nav-text">Crossover</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mutation"><span class="nav-number">4.3.</span> <span class="nav-text">Mutation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Initial-Population"><span class="nav-number">4.4.</span> <span class="nav-text">Initial Population</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tijin Yan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">25.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.loca.pathname, 
+            owner: 'yantijin',
+            repo: 'yantijin.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'cbaeed29815b334304b5af6f4789f2a7fe3353cf',
+            
+                client_id: 'a246c92a051f6d05de74'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz',
+        appKey: 'MHEhvjPuKazCLe7uCI9f3rpf',
+        placeholder: 'Welcome for comments',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz", "MHEhvjPuKazCLe7uCI9f3rpf");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
