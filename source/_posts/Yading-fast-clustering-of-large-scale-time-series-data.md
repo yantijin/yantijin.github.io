@@ -35,7 +35,7 @@ categories:
 
   - (3)DTW(动态时间弯曲距离)：
 
-    ![2](/Yading-fast-clustering-of-large-scale-time-series-data/2.png)
+    ![2](Yading-fast-clustering-of-large-scale-time-series-data/2.png)
 
 - Data Reduction:分为降维或者减少时间序列的数量(size)
 
