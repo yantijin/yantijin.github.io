@@ -17,7 +17,7 @@ categories:
 
 - 现在的聚类算法可以大致分为两类：根据**相似性度量**是否是直接用在输入的数据集上的还是用在从数据集中提取的特征上的
 
-  - 第一类： Golay et al 研究了三种时间序列的相似性度量，欧氏距离，两个基于互相关性的距离； Liao et all 采用DTW(Dynamic Time Warping)动态时间扭曲和遗传聚类来对时间序列进行分类
+  - 第一类： Golay et al 研究了三种时间序列的相似性度量，欧氏距离，两个基于互相关性的距离； Liao et all 采用DTW(Dynamic Time Warping)动态时间弯曲和遗传聚类来对时间序列进行分类
   - 第二类：是基于时间序列是根据内在的模型和概率分布的假设来进行聚类的。比如ARMA(Auto-Aggressive Integrated Moving Average)算法,高斯混合算法，缺点是是模型的学习的计算复杂度很高
 
 - 相似性度量：
@@ -101,13 +101,14 @@ categories:
     $$
 
 
+
 ### 降维度
 
-- 采用分段聚合近似(PAA)，从$T_i := (t_{i1},t_{i2},...,t_{iD})$转换为$T_i' := (\tau_{i1],...,\tau_{id}})$公式如下
+- 采用分段聚合近似(PAA)，从$T_i := (t_{i1},t_{i2},...,t_{iD})$转换为$T_i' := (\tau_{i1},...,\tau_{id})$公式如下
 $$
 \tau_{ij} = \frac{d}{D}\sum^{\frac{D}{d}j}_{k = \frac{D}{d}(j-1)+1}t_{ik}
 $$
-一个关键的步骤就是要确定d的大小，根据**香农采样定理**，如果最高频率为B，那么采样频率为2B时可以无损复原，文章中提出了**基于自相关性的方法来大概确定时间序列的频率上界**，首先根据自相关曲线$g_i$的第一个局部最小点确定临界频率，为$g_i(y) = \sum^{D-y}_{j=1}t_{ij}t_{i(j+y)}$,其中y是滞后。如果对于某一个$y'$,$g_i$存在一个极小值，如果$g_i(y')<0$,$y'$与典型半衰期有关，再次情况下，我们把$1/y_i'$叫做$T_i$的临界频率。$y_i'$越小，代表着他的临界频率越大，找到所有的临界频率之后，我们按照降序进行排列，选择一个较高的百分比，如80%，来对所有的时间序列的上界进行估计，不用小的临界频率值的原因是降低额外噪声的影响。
+一个关键的步骤就是要确定d的大小，根据**香农采样定理**，如果最高频率为B，那么采样频率为2B时可以无损复原，文章中提出了**基于自相关性的方法来大概确定时间序列的频率上界**，首先根据自相关曲线$g_i$的第一个局部最小点确定临界频率，为$g_i(y) = \sum^{D-y}_{j=1}t_{ij}t_{i(j+y)}$,其中y是滞后。如果对于某一个$y'$,$g_i$存在一个极小值，如果$g_i(y')<0$,$y'$与典型半衰期有关，在此情况下，我们把$1/y_i'$叫做$T_i$的临界频率。$y_i'$越小，代表着他的临界频率越大，找到所有的临界频率之后，我们按照降序进行排列，选择一个较高的百分比，如80%，来对所有的时间序列的上界进行估计，不用小的临界频率值的原因是降低额外噪声的影响。
 
 - 自相关曲线可以通过快速傅里叶变换求取
 
@@ -128,7 +129,7 @@ $$
 
 * 实际的时间序列有相位的变化，随机的噪声，影响聚类的效果
 
-* 如果两个时间序列相位差别很小，那么他的L1范数也很小，随着数据集size的增大，对于有很大相位差的两个时间序列，基于密度的聚类算法可以保证将两个时间序列聚类
+* 如果两个时间序列相位差别很小，那么他的L1范数也很小，随着数据集size的增大，对于有很大相位差的两个时间序列，基于密度的聚类算法可以保证将两个时间序列聚类，因为他们可以通过一系列的中间的有小相位扰动的时间序列实例相连
 
 * **给出了关于相位扰动和噪声理论上的边界，找到了数据size n，相位扰动上界**$\Delta$**以及事件：时间序列之间相位差别小于**$\Delta$**的可以被聚类在一起 发生的概率P之间的关系，从而**$\Delta$**可以根据P和n来确定**
 
@@ -138,9 +139,9 @@ $$
   $$
   **Lemma 3:**$P(E_n)\geq 1-n(1-\frac{\epsilon}{mMk\Delta})^n$
 
-  **证明**：(1)首先证明$\exist M,s.t., L_1(T(a),T(a-\delta)) := \sum^m_{i=1}|f(a+ib)-f(a+ib-\delta|\leq mM\delta$
+  **证明**：(1)首先证明$\exist M,s.t., L_1(T(a),T(a-\delta)) := \sum^m_{i=1}|f(a+ib)-f(a+ib-\delta|\leq mM\delta$，意义就是只要相位误差足够小，那么他们两个之间的$L_1$距离就可以足够小。
 
-  （2)把区间$[0,\Delta]$分为若干个小区间，长度为$\frac{\epsilon}{mMk}$,下面分情况进行讨论， 如果每个小区间对应最少一个时间序列，那么$L_1(T(a),its~KNN)\leq  mM\times \frac{\epsilon}{mMk}\times k =\epsilon$,此时，所有的时间序列都是个hi密度相连的，他们可以被聚类到一起。
+  (2)把区间$[0,\Delta]$分为若干个小区间，长度为$\frac{\epsilon}{mMk}$,下面分情况进行讨论， 如果每个小区间对应最少一个时间序列，那么$L_1(T(a),its~KNN)\leq  mM\times \frac{\epsilon}{mMk}\times k =\epsilon$,此时，所有的时间序列都是密度相连的，他们可以被聚类到一起。
 
   (3)定义事件$U_j = \{j^{th} ~bucket~is~empty\}$，那么
   $$
@@ -156,14 +157,26 @@ $$
   $$
 
 
-
 * 密度估计：思想是画出$k_{dis}$图来，根据斜率来进行density radius的选择，定义经验分布函数为
   $$
   EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}
   $$
-  **Lemma 4**: $EDF_k(r)\approx \sum^N_{m=k+1}P(E_{m,r})$，其中$P(E_{m,r}) = C_{N-1}^{m-1}P_r^{m-1}(1-P_r)^{N-m}, P_r = \frac{V_r}{V}=\frac{c_d\times r^d}{V}$,$V_r$是在d维$L_p$空间上的超球面的体积，例如在欧氏空间上， $c_d = \frac{\pi^{d/2}}{\Gamma(\frac{d}{2}+1)}$,(注意 $\Gamma(n) = (n-1)!$)
+  ** Lemma 4**: $EDF_k(r)\approx \sum^N_{m=k+1}P(E_{m,r})$，其中$P(E_{m,r}) = C_{N-1}^{m-1}P_r^{m-1}(1-P_r)^{N-m}, P_r = \frac{V_r}{V}=\frac{c_d\times r^d}{V}$,$V_r$是在d维$L_p$空间上的超球面的体积，例如在欧氏空间上， $c_d = \frac{\pi^{d/2}}{\Gamma(\frac{d}{2}+1)}$,(注意 $\Gamma(n) = (n-1)!$)，注意到$k_{dis}$图中的Y轴拐点在$EDF_k\sim r$图中对应的是x轴拐点
 
-  **Lemma 5**：$k_{dis}$图上面Y值的拐点是density radius
+  **Lemma 5**：$k_{dis}$图上面Y轴的拐点是density radius
 
-  **Proof:** 
+  ![5](Yading-fast-clustering-of-large-scale-time-series-data\5.jpg)
 
+![6](Yading-fast-clustering-of-large-scale-time-series-data\6.jpg)
+
+### 分配
+
+* 在采样数据集上聚类完成之后，需要对数据集中其他没有标签的数据进行分类
+
+  分配过程需要计算每一对有标记和无标记数据之间的距离，这样它的时间复杂度是O(Nsd)，文章中提出了一种修建策略，如下图所示，如果一个无标签数据a距离一个有标签数据b的距离dis大于$\epsilon$,那么对于距离b为$\epsilon$的有标签数据与a点的距离来说，根据三角不等式,$distance -(distance-\epsilon)<new_dis$,也就是说也是大于$\epsilon$的
+
+  ![7](Yading-fast-clustering-of-large-scale-time-series-data\7.jpg)
+
+  并且设计了一个叫做 Sorted Neighbor Graph(SNG)的数据结构来实现上述的修剪策略。在样本集进行聚类的时候，如果点b是一个核心点，那么把他加进SNG，并且把b点和样本集中其他实例之间的距离按照降序排列，在这过程中用到了**快速排序**的方法，因此SNG的时间复杂度为$O(s^2logs)$.
+
+  ![8](Yading-fast-clustering-of-large-scale-time-series-data\8.jpg)
