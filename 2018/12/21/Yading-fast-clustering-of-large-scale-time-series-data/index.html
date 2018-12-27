@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/6.jpg">
 <meta property="og:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/7.jpg">
 <meta property="og:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/8.jpg">
-<meta property="og:updated_time" content="2018-12-23T15:42:36.425Z">
+<meta property="og:updated_time" content="2018-12-26T09:02:28.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yading: fast clustering of large-scale time series data">
 <meta name="twitter:description" content="概述 包括三个步骤：  (1)从数据集中采样; (2)在采样的数据集上面进行聚类算法; (3)将数据集中其他的数据根据采样数据集的类别进行分类   现在的聚类算法可以大致分为两类：根据相似性度量是否是直接用在输入的数据集上的还是用在从数据集中提取的特征上的  第一类： Golay et al 研究了三种时间序列的相似性度量，欧氏距离，两个基于互相关性的距离； Liao et all 采用DTW(D">
@@ -485,7 +485,7 @@ where~~~ m\leq sp_i,~~~\sigma = \sqrt{sp_i(1-p_i)}</script><p>那么根据上面
 \begin{equation}
 \begin{aligned}
 \frac{(m-sp_i)^2}{sp_i(1-p_i)} &\geq& z_\alpha^2\\
-m^2+s^2p_i^2-2msp_i&\geq& sp_iz_{\alpha}^2-sp_I^2z_{\alpha}^2\\
+m^2+s^2p_i^2-2msp_i&\geq& sp_iz_{\alpha}^2-sp_i^2z_{\alpha}^2\\
 \frac{m^2}{s}+sp_i^2-2mp_i&\geq& p_iz_\alpha^2-p_i^2z_\alpha^2\\
 p_i^2-2p_i\frac{m+z_{\alpha}^2/2}{s+z_\alpha^2}&\geq& -\frac{m^2}{s(s+z_{\alpha}^2)}\\
 (p_i-\frac{m+z_{\alpha}^2/2}{s+z_\alpha^2})^2&\geq&(\frac{m+z_{\alpha}^2/2}{s+z_\alpha^2})^2-\frac{m^2}{s(s+z_\alpha^2)},m\leq sp_i
@@ -519,9 +519,9 @@ g(y) = IFFT[S(f)]</script><p><img src="/2018/12/21/Yading-fast-clustering-of-lar
 <h3 id="基于密度的聚类"><a href="#基于密度的聚类" class="headerlink" title="基于密度的聚类"></a>基于密度的聚类</h3><ul>
 <li><p>采用L1范数作为距离相似性度量（因为对于冲击噪声的鲁棒性和计算简便性）</p>
 </li>
-<li><p>对于数据集的分布没有假设、</p>
+<li><p>对于数据集的分布没有假设</p>
 </li>
-<li><p>用PCA来对数据集降维到两个维度的子空间上来观察它的空间分布</p>
+<li><p>用PCA来对数据集降维到两个维度的子空间上来观察它的空间分布D</p>
 </li>
 <li><p>实际的时间序列有相位的变化，随机的噪声，影响聚类的效果</p>
 </li>
@@ -597,6 +597,10 @@ EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}</script><p><strong> Lemm
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/27/概率图模型/" rel="prev" title="概率图模型">
+                概率图模型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -682,7 +686,7 @@ EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}</script><p><strong> Lemm
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -693,7 +697,7 @@ EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}</script><p><strong> Lemm
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -812,7 +816,7 @@ EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}</script><p><strong> Lemm
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.8k</span>
+    <span title="Site words total count">26.9k</span>
   
 </div>
 

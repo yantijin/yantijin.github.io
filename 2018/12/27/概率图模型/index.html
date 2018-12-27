@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="machine learning,">
 
 
 
@@ -81,13 +81,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tijin Yan">
-<meta property="og:url" content="https://yantijin.github.io/archives/2018/11/page/2/index.html">
+<meta name="description" content="贝叶斯网络基本概念 贝叶斯网又称为信念网(belief network)，借助DAG来描述属性之间的依赖关系  一个贝叶斯网B由结构G和参数$\Theta$构成，即$B=$  贝叶斯网的结构有效表达了属性之间的条件独立性，若给定父节点集，贝叶斯网假设每个属性与它的非后裔属性独立，于是$B=$将属性$x_1,x_2,…,x_d$的联合概率分布定义为  P_B(x_1,x_2,...,x_d)=\Pi">
+<meta name="keywords" content="machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概率图模型">
+<meta property="og:url" content="https://yantijin.github.io/2018/12/27/概率图模型/index.html">
 <meta property="og:site_name" content="Tijin Yan">
+<meta property="og:description" content="贝叶斯网络基本概念 贝叶斯网又称为信念网(belief network)，借助DAG来描述属性之间的依赖关系  一个贝叶斯网B由结构G和参数$\Theta$构成，即$B=$  贝叶斯网的结构有效表达了属性之间的条件独立性，若给定父节点集，贝叶斯网假设每个属性与它的非后裔属性独立，于是$B=$将属性$x_1,x_2,…,x_d$的联合概率分布定义为  P_B(x_1,x_2,...,x_d)=\Pi">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/27/概率图模型/1.jpg">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/27/概率图模型/2.jpg">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/27/概率图模型/3.jpg">
+<meta property="og:updated_time" content="2018-12-27T02:57:58.650Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tijin Yan">
+<meta name="twitter:title" content="概率图模型">
+<meta name="twitter:description" content="贝叶斯网络基本概念 贝叶斯网又称为信念网(belief network)，借助DAG来描述属性之间的依赖关系  一个贝叶斯网B由结构G和参数$\Theta$构成，即$B=$  贝叶斯网的结构有效表达了属性之间的条件独立性，若给定父节点集，贝叶斯网假设每个属性与它的非后裔属性独立，于是$B=$将属性$x_1,x_2,…,x_d$的联合概率分布定义为  P_B(x_1,x_2,...,x_d)=\Pi">
+<meta name="twitter:image" content="https://yantijin.github.io/2018/12/27/概率图模型/1.jpg">
 
 
 
@@ -117,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://yantijin.github.io/archives/2018/11/page/2/">
+  <link rel="canonical" href="https://yantijin.github.io/2018/12/27/概率图模型/">
 
 
 
 
 
-  <title>Archive | Tijin Yan</title>
+  <title>概率图模型 | Tijin Yan</title>
   
 
 
@@ -142,7 +151,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/yantijin"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
@@ -247,356 +256,283 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yantijin.github.io/2018/12/27/概率图模型/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tijin Yan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tijin Yan">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">概率图模型</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-27T09:01:43+08:00">
+                2018-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 26 posts in total. Keep on posting.
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">machine learning</span>
+                  </a>
+                </span>
 
-      
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/概率图模型/" itemprop="url" rel="index">
+                    <span itemprop="name">概率图模型</span>
+                  </a>
+                </span>
 
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/27/概率图模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/12/27/概率图模型/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
+             <span id="/2018/12/27/概率图模型/" class="leancloud_visitors" data-flag-title="概率图模型">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/13/Basic-Conceptions/" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">Basic Conceptions</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.1k
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-13T22:15:59+08:00" content="2018-11-13">
-          11-13
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/11/python-numpy练习/" itemprop="url">
-              
-                <span itemprop="name">python numpy练习</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-11T11:38:04+08:00" content="2018-11-11">
-          11-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/09/CloudSim-Structure/" itemprop="url">
-              
-                <span itemprop="name">CloudSim Structure</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-09T21:01:33+08:00" content="2018-11-09">
-          11-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h2 id="贝叶斯网络"><a href="#贝叶斯网络" class="headerlink" title="贝叶斯网络"></a>贝叶斯网络</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li><p>贝叶斯网又称为<strong>信念网(belief network)</strong>，借助DAG来描述属性之间的依赖关系</p>
+</li>
+<li><p>一个贝叶斯网B由结构G和参数$\Theta$构成，即$B=<g,\theta>$</g,\theta></p>
+<ul>
+<li><p>贝叶斯网的结构有效表达了属性之间的条件独立性，若给定父节点集，贝叶斯网假设每个属性与它的非后裔属性独立，于是$B=<g,\theta>$将属性$x_1,x_2,…,x_d$的联合概率分布定义为</g,\theta></p>
+<script type="math/tex; mode=display">
+P_B(x_1,x_2,...,x_d)=\Pi^d_{i=1}P_B(x_i|\pi_i)=\Pi^d_{i=1}\theta_{x_i|\pi_i}</script><p><img src="/2018/12/27/概率图模型/1.jpg" alt="1"></p>
+<p>例如对于上图，联合概率分布为</p>
+<script type="math/tex; mode=display">
+P_B(x_1,x_2,x_3,x_4,x_5)=P(x_1)P(x_2)P(x_3|x_1)P(x_4|x_1,x_2,)P(x_5|x_2)</script><p><img src="/2018/12/27/概率图模型/2.jpg" alt="2"></p>
+<p>对于同父结构，给定$x_1$的取值，$x_3$和$x_4$条件独立；在V型结构，给定$x_4$的值，那么$x_1$和$x_2$必不独立，但是若$x_4$未知，则$x_1,x_2$是相互独立的；在顺序结构中，给定x的值，则y与z条件独立；</p>
+<p><strong>边际独立性(marginal independence)</strong>: </p>
+<script type="math/tex; mode=display">
+P(x_1,x_2)=\sum_{x_4}P(x_1,x_2,x_4)=\sum_{x_4}P(x_4|x_1,x_2)P(x_1)P(x_2)=P(x_1)P(x_2)</script></li>
+</ul>
+</li>
+</ul>
+<h2 id="概率图模型"><a href="#概率图模型" class="headerlink" title="概率图模型"></a>概率图模型</h2><h3 id="隐马尔可夫模型"><a href="#隐马尔可夫模型" class="headerlink" title="隐马尔可夫模型"></a>隐马尔可夫模型</h3><ul>
+<li><p>假定所关心的变量集合为Y，可观测的变量集合为O，其他变量的集合为R，“生成式”模型考虑联合分布$P(Y,R,O)$，“判别式”模型考虑调剂那份不$P(Y,R|O)$.给定一组观测变量值，推断就是要由$P(Y,R,O)$或者$P(Y,R|O)$得到条件概率分布$P(Y|O)$</p>
+</li>
+<li><p><strong>概率图模型</strong>是一类用图来表达变量相关关系的概率模型。大致可以分为两类：</p>
+<ul>
+<li><p>使用DAG表示变量之间的依赖关系，称为有向图模型或贝叶斯网</p>
+</li>
+<li><p>使用无向图表示变量之间的相互关系，称为无向图模型或者马尔可夫网</p>
+</li>
+<li><p><strong>隐马尔可夫模型</strong>(HMM)是结构最简单的动态贝叶斯网，变量可以分为两组，第一组是状态/隐变量，第二组是观测变量</p>
+<p><img src="/2018/12/27/概率图模型/3.jpg" alt="3"></p>
+<p>所有变量的联合概率分布为</p>
+<script type="math/tex; mode=display">
+P(x_1,y_1,...,x_n,y_n)=P(y_1)P(x_1|y_1)\Pi^n_{i=2}P(y_i|y_{i-1})P(x_i|y_i)</script><p><strong>参数</strong>确定：</p>
+<p>状态转移概率： $A=[a_{ij}]_{N\times N}$,其中 $a_{ij}=P(y_{t+1}=s_j|y_t=s_i)$,$i,j\in[1,N]$</p>
+<p>输出观测概率：$B=[b_{ij}]_{N\times M}$,其中$b_{ij} = P(x_t=o_j|y_t=s_i)$,$i\in [1,N],j\in [1,M]$</p>
+<p>初始状态概率：$\pi=(\pi_1,\pi_2,…\pi_N)$,其中$\pi_i=P(y_1=s_i),i\in[1,N]$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="马尔可夫随机场"><a href="#马尔可夫随机场" class="headerlink" title="马尔可夫随机场"></a>马尔可夫随机场</h3><ul>
+<li><p>马尔可夫随机场是典型的马尔可夫网，这是一种著名的无向图模型。图中每一个节点代表一个或者一组变量，边表示节点之间的依赖关系，马尔可夫随机场中有一组<strong>势函数</strong>，主要用于定义概率分布函数</p>
+</li>
+<li><p>若图中的任意两节点都有边相连接，则称该节点集为<strong>团</strong>，若在一个团中加入任何另外一个节点都不能构成团，那么此团称为<strong>极大团</strong>，在马尔可夫随机场中，多变量之间的联合概率分布能基于团分解为多个因子的乘积，每个因子仅与一个团相关，对于n和变量$x=\{x_1,x_2,…,x_n\}$,所有团构成的集合C，以及团$Q\in C$对应的变量集合为$x_{Q}$,联合概率定义为</p>
+<script type="math/tex; mode=display">
+P(x)=\frac{1}{Z}\Pi_{Q\in C}\psi_Q(x_Q)</script><p>其中$\psi_Q$为与团Q对应的是函数，$Z=\sum_x\Pi_{Q\in C}\psi_Q(x_Q)$为规范化因子</p>
+<p>但是，若变量的个数较多，那么团的数目也会很多，计算复杂，注意到若Q不是极大团，则它一定被一个极大团$Q^<em>$包围，那么可以重新定义联合概率P,界定所有极大团集合为$C^</em>$</p>
+<script type="math/tex; mode=display">
+P(x)=\frac{1}{Z^*}\Pi_{Q\in C^*}\psi_Q(x_Q)</script><p>其中$Z^<em> =\sum_x\Pi_{Q\in C^</em>}\psi_Q(x_Q)$为规范化因子</p>
+</li>
+<li><p>若从节点集A中的节点到B中节点都必须经过C中的节点，那么C称为<strong>分离集</strong>，对于马尔可夫随机场，有<strong>全局马尔可夫性</strong>:给定两个变量子集的分离集，则这两个变量子集条件独立。也即是$x_A和x_B$在给定$x_C$的条件下独立</p>
+</li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/07/看见-柴静/" itemprop="url">
-              
-                <span itemprop="name">看见_柴静</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-07T18:02:07+08:00" content="2018-11-07">
-          11-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/06/A-Cost-Effective-Deadline-Constrained-Dynamic-Scheduling-Algorithm-for-Scientic-Workflows-in-a-Cloud-Environment/" itemprop="url">
-              
-                <span itemprop="name">A Cost-Effective Deadline-Constrained Dynamic Scheduling Algorithm for Scientic Workflows in a Cloud Environment</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-06T17:06:11+08:00" content="2018-11-06">
-          11-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/04/Interesting-Things/" itemprop="url">
-              
-                <span itemprop="name">Interesting Things</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-04T14:08:33+08:00" content="2018-11-04">
-          11-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/04/hexo-configuration-on-multiple-computers/" itemprop="url">
-              
-                <span itemprop="name">hexo configuration on multiple computers</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-04T10:47:42+08:00" content="2018-11-04">
-          11-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/03/Process-Mining-based-on-the-Markov-Transition-Matrix/" itemprop="url">
-              
-                <span itemprop="name">Process Mining based on the Markov Transition Matrix</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-03T13:18:15+08:00" content="2018-11-03">
-          11-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/02/FirstTest/" itemprop="url">
-              
-                <span itemprop="name">FirstTest</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-02T09:49:22+08:00" content="2018-11-02">
-          11-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/" rel="next" title="Yading: fast clustering of large-scale time series data">
+                <i class="fa fa-chevron-left"></i> Yading: fast clustering of large-scale time series data
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2018/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2018/11/">1</a><span class="page-number current">2</span>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -604,6 +540,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -624,8 +571,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -720,6 +676,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯网络"><span class="nav-number">1.</span> <span class="nav-text">贝叶斯网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概率图模型"><span class="nav-number">2.</span> <span class="nav-text">概率图模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔可夫模型"><span class="nav-number">2.1.</span> <span class="nav-text">隐马尔可夫模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔可夫随机场"><span class="nav-number">2.2.</span> <span class="nav-text">马尔可夫随机场</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -866,6 +838,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -912,6 +888,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.loca.pathname, 
+            owner: 'yantijin',
+            repo: 'yantijin.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'cbaeed29815b334304b5af6f4789f2a7fe3353cf',
+            
+                client_id: 'a246c92a051f6d05de74'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 

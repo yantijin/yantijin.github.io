@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yantijin.github.io/"/>
-  <updated>2018-12-23T15:42:36.425Z</updated>
+  <updated>2018-12-27T02:57:58.650Z</updated>
   <id>https://yantijin.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>概率图模型</title>
+    <link href="https://yantijin.github.io/2018/12/27/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://yantijin.github.io/2018/12/27/概率图模型/</id>
+    <published>2018-12-27T01:01:43.000Z</published>
+    <updated>2018-12-27T02:57:58.650Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;贝叶斯网络&quot;&gt;&lt;a href=&quot;#贝叶斯网络&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯网络&quot;&gt;&lt;/a&gt;贝叶斯网络&lt;/h2&gt;&lt;h3 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="概率图模型" scheme="https://yantijin.github.io/categories/machine-learning/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Yading: fast clustering of large-scale time series data</title>
     <link href="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/"/>
     <id>https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/</id>
     <published>2018-12-21T01:34:18.000Z</published>
-    <updated>2018-12-23T15:42:36.425Z</updated>
+    <updated>2018-12-26T09:02:28.443Z</updated>
     
     <summary type="html">
     
@@ -533,32 +561,6 @@
     
     
       <category term="CloudSim toolkit introduction" scheme="https://yantijin.github.io/tags/CloudSim-toolkit-introduction/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>看见_柴静</title>
-    <link href="https://yantijin.github.io/2018/11/07/%E7%9C%8B%E8%A7%81-%E6%9F%B4%E9%9D%99/"/>
-    <id>https://yantijin.github.io/2018/11/07/看见-柴静/</id>
-    <published>2018-11-07T10:02:07.000Z</published>
-    <updated>2018-12-21T14:52:14.153Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Life" scheme="https://yantijin.github.io/categories/Life/"/>
-    
-    
-      <category term="read" scheme="https://yantijin.github.io/tags/read/"/>
     
   </entry>
   
