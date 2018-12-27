@@ -77,7 +77,7 @@ categories:
     \begin{equation}
     \begin{aligned}
     \frac{(m-sp_i)^2}{sp_i(1-p_i)} &\geq& z_\alpha^2\\
-    m^2+s^2p_i^2-2msp_i&\geq& sp_iz_{\alpha}^2-sp_I^2z_{\alpha}^2\\
+    m^2+s^2p_i^2-2msp_i&\geq& sp_iz_{\alpha}^2-sp_i^2z_{\alpha}^2\\
     \frac{m^2}{s}+sp_i^2-2mp_i&\geq& p_iz_\alpha^2-p_i^2z_\alpha^2\\
     p_i^2-2p_i\frac{m+z_{\alpha}^2/2}{s+z_\alpha^2}&\geq& -\frac{m^2}{s(s+z_{\alpha}^2)}\\
     (p_i-\frac{m+z_{\alpha}^2/2}{s+z_\alpha^2})^2&\geq&(\frac{m+z_{\alpha}^2/2}{s+z_\alpha^2})^2-\frac{m^2}{s(s+z_\alpha^2)},m\leq sp_i
@@ -102,6 +102,8 @@ categories:
 
 
 
+
+
 ### 降维度
 
 - 采用分段聚合近似(PAA)，从$T_i := (t_{i1},t_{i2},...,t_{iD})$转换为$T_i' := (\tau_{i1},...,\tau_{id})$公式如下
@@ -123,9 +125,9 @@ $$
 
 * 采用L1范数作为距离相似性度量（因为对于冲击噪声的鲁棒性和计算简便性）
 
-* 对于数据集的分布没有假设、
+* 对于数据集的分布没有假设
 
-* 用PCA来对数据集降维到两个维度的子空间上来观察它的空间分布
+* 用PCA来对数据集降维到两个维度的子空间上来观察它的空间分布D
 
 * 实际的时间序列有相位的变化，随机的噪声，影响聚类的效果
 
@@ -157,6 +159,8 @@ $$
   $$
 
 
+
+
 * 密度估计：思想是画出$k_{dis}$图来，根据斜率来进行density radius的选择，定义经验分布函数为
   $$
   EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}
@@ -173,7 +177,7 @@ $$
 
 * 在采样数据集上聚类完成之后，需要对数据集中其他没有标签的数据进行分类
 
-  分配过程需要计算每一对有标记和无标记数据之间的距离，这样它的时间复杂度是O(Nsd)，文章中提出了一种修建策略，如下图所示，如果一个无标签数据a距离一个有标签数据b的距离dis大于$\epsilon$,那么对于距离b为$\epsilon$的有标签数据与a点的距离来说，根据三角不等式,$distance -(distance-\epsilon)<new_dis$,也就是说也是大于$\epsilon$的
+  分配过程需要计算每一对有标记和无标记数据之间的距离，这样它的时间复杂度是O(Nsd)，文章中提出了一种修建策略，如下图所示，如果一个无标签数据a距离一个有标签数据b的距离dis大于$\epsilon$,那么对于距离b为$\epsilon$的有标签数据与a点的距离来说，根据三角不等式,$distance -(distance-\epsilon)<new\_dis$,也就是说也是大于$\epsilon$的
 
   ![7](Yading-fast-clustering-of-large-scale-time-series-data\7.jpg)
 

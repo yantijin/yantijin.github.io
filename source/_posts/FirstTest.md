@@ -11,7 +11,7 @@ categories: Entertainment
 
 ### head3
 
-* Now we can test the support for formulas, $x^2 + 2x+ 1 =\frac{1}{2} g$
+* Now we can test the support for formulas, $x^2 + 2x+ 1 =\frac{1}{2} g$,$\Perp$
   $$
   Cov(x,y) = E(xy)-E(x)E(y)
   $$
