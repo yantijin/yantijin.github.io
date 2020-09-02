@@ -8,7 +8,7 @@ subtitle: Ph.D. candidate in BIT
 description:
 keywords:
 author: Tijin Yan
-language:
+language: en
 timezone:
 
 # URL
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: hexo-theme-next
 # Deployment
 # RSS订阅
 plugins:

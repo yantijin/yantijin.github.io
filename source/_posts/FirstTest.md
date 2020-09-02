@@ -11,7 +11,7 @@ categories: Entertainment
 
 ### head3
 
-* Now we can test the support for formulas, $x^2 + 2x+ 1 =\frac{1}{2} g$,$\Perp$
+* Now we can test the support for formulas, $x^2 + 2x+ 1 =\frac{1}{2} g$,
   $$
   Cov(x,y) = E(xy)-E(x)E(y)
   $$
@@ -23,7 +23,7 @@ categories: Entertainment
   \end{bmatrix}
   $$
 
-  ​
+  
 
 * Now for  **Bold**, <u>underline</u>, and *italic*
 
