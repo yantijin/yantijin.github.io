@@ -116,7 +116,7 @@ $$
 
 ### MADE: Masked Autoencoder for Distribution Estimation 
 
-<img src="Flow-based-Models/made.png" style="zoom:80%;" />
+<img src="Flow-based-Models/mad.png" style="zoom:80%;" />
 
 参考https://github.com/karpathy/pytorch-made
 
