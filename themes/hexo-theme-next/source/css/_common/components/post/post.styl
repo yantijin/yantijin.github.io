@@ -71,3 +71,15 @@
 @import 'post-copyright' if (hexo-config('creative_commons.post'));
 
 @import 'post-followme' if (hexo-config('follow_me'));
+
+
+.post-body p a{
+  color: #428BCA;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+  &:hover {
+    color: #fc6423;
+    border-bottom: none;
+    border-bottom: 1px solid #fc6423;
+  }
+}
