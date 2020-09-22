@@ -89,12 +89,14 @@ A collection of resources regarding the interplay between differential equations
 ### Neural SDEs
 
 * Neural SDE: Stabilizing Neural ODE Networks with Stochastic Noise: [arXiv19](https://arxiv.org/abs/1906.02355)
-
 * Neural Jump Stochastic Differential Equations: [arXiv19](https://arxiv.org/abs/1905.10403)
-
 * Towards Robust and Stable Deep Learning Algorithms for Forward Backward Stochastic Differential Equations: [arXiv19](https://arxiv.org/abs/1910.11623)
-
 * Scalable Gradients and Variational Inference for Stochastic Differential Equations: [AISTATS20](https://arxiv.org/abs/2001.01328)
+
+### Neural CDEs
+
+* Neural Controlled Differential Equations for Irregular Time Series: [ArXiv2020](https://arxiv.org/abs/2005.08926)
+* Neural CDEs for Long Time Series via the Log-ODE Method: [ArXiv2020](https://arxiv.org/abs/2009.08295)
 
 ### Normalizing Flows
 
