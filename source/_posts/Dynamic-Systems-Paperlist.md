@@ -2,6 +2,9 @@
 title: Dynamic Systems Paperlist
 date: 2020-09-12 13:29:52
 tags: machine learning
+categories:
+- machine learning
+- PaperList
 ---
 
 > PaperList For Dynamic systems with DNN <!-- more-->

@@ -2,6 +2,9 @@
 title: Dynamic GNN PaperList
 date: 2020-09-18 23:19:49
 tags: Machine Learning
+categories:
+- machine learning
+- PaperList
 ---
 
 AAAI 2018:

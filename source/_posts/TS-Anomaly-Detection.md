@@ -2,6 +2,9 @@
 title: TS Anomaly Detection
 date: 2020-09-12 22:14:39
 tags: Applications
+categories:
+- machine learning
+- PaperList
 ---
 
 > PaperList for TS anomaly detection <!--more-->

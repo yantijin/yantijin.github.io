@@ -4,6 +4,9 @@ date: 2020-09-23 00:23:00
 tags: 
 - math
 - ODE
+categories:
+- math
+- ODE
 ---
 
 ## 一、基本概念

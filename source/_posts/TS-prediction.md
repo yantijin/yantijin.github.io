@@ -2,6 +2,9 @@
 title: TS prediction
 date: 2020-09-06 22:14:53
 tags: Applications
+categories:
+- machine learning
+- PaperList
 ---
 
 ## TS Prediction
