@@ -22,8 +22,7 @@ A collection of resources regarding the interplay between differential equations
 	* [General Architectures](#general-architectures)
 	
 	* [Neural ODEs](#neural-odes)
-	
-		* [Training of Neural ODEs](#training-of-neural-odes)
+	* [Training of Neural ODEs](#training-of-neural-odes)
 		
 	* [Neural SDEs](#neural-sdes)
 	
@@ -72,16 +71,26 @@ A collection of resources regarding the interplay between differential equations
 ### Neural ODEs
 
 * Neural Ordinary Differential Equations: [NeurIPS18](https://arxiv.org/pdf/1806.07366.pdf)
+
 * Graph Neural Ordinary Differential Equations: [arXiv19](https://arxiv.org/abs/1911.07532)
+
 * Augmented Neural ODEs: [NeurIPS19](https://arxiv.org/abs/1904.01681)
+
 * Latent ODEs for Irregularly-Sampled Time Series: [arXiv19](https://arxiv.org/abs/1907.03907)
+
 * ODE2VAE: Deep generative second order ODEs with Bayesian neural networks: [NeurIPS19](https://arxiv.org/pdf/1905.10994.pdf)
+
 * Symplectic ODE-Net: Learning Hamiltonian Dynamics with Control: [arXiv19](https://arxiv.org/abs/1909.12077)
+
 * How to Train you Neural ODE: [arXiv20](https://arxiv.org/abs/2002.02798)
+
 * Dissecting Neural ODEs: [arXiv20](https://arxiv.org/abs/2002.08071)
+
 * Stable Neural Flows: [arXiv20](https://arxiv.org/abs/2003.08063)
+
 * On Second Order Behaviour in Augmented Neural ODEs [arXiv20](https://arxiv.org/abs/2006.07220)
-* Neural Controlled Differential Equations for Irregular Time Series: [arXiv20](https://arxiv.org/abs/2005.08926)
+
+*"Hey, that's not an ODE": Faster ODE Adjoints with 12 Lines of Code [arXiv20]()
 
 #### Training of Neural ODEs
 
@@ -114,6 +123,7 @@ A collection of resources regarding the interplay between differential equations
 * Learning Dynamics of Attention: Human Prior for Interpretable Machine Reasoning: [NeurIPS19](https://arxiv.org/abs/1905.11666)
 *  Graph Neural Ordinary Differential Equations  [arXiv19](https://arxiv.org/abs/1911.07532)
 *  Continuous graph neural networks [ICML2020](https://arxiv.org/abs/1912.00967)
+*  Neural Dynamics on Complex Networks [arXiv19](https://arxiv.org/pdf/1908.06491.pdf)
 
 ## Deep Learning Methods for Differential Equations
 

@@ -2,6 +2,9 @@
 title: Dynamic Systems for Deep Learning
 date: 2020-09-06 21:30:30
 tags: machine learning
+categories: 
+- machine learning
+- Neural ODE
 ---
 
 > 本文将从动力学系统角度去理解深度神经网络。<!--more-->
@@ -93,6 +96,24 @@ $$
 $$
 \frac{d a_{aug}(t)}{dt} = -[a(t)~~ a_{\theta}(t)~~ a_t(t)] \frac{\partial f_{aug}}{\partial [z, \theta, t]}(t) = -[a\frac{\partial f}{\partial z}~~ a\frac{\partial f}{\partial \theta}~~a\frac{\partial f}{\partial z}](t)
 $$
+
+## FASTER ODE ADJOINTS WITH 12 LINES OF CODE 
+
+> 类似于event_triggered MPC的思想，满足一定条件时不进行计算，不满足时才进行计算, [code](https://github.com/patrick-kidger/FasterNeuralDiffEq)
+
+对于下述广义形式的ODE问题：
+$$
+y(t) = y(\tau) + \int^t_{\tau} f(s, y(s))ds~~~y(t)\in R^d 
+$$
+假设$\hat y(t)$表示对应时刻的估计值，一旦有估计值，可以继续进行计算得到 $\hat y_{candidate}(t+\Delta)$, 此外， $y_{err}\in R^d$表示进行此步计算后，每个channel的numerical error。则对于给定的绝对容忍度$\text{ATOL}$（一般$1e-9$）和相对误差容忍度，以及对应的norm（比如$||y||=\sqrt{\frac{1}{d}\sum^d_{i=1}y_i^2}$）,则定义
+$$
+\text{SCALE} = \text{ATOL} + \text{RTOL} . \text{max}(\hat y, \hat y_{candidate}(t+\Delta t))\in R^d
+$$
+其中$\text{max}$是按每个channel来取的，则对应的误差率为 $\text{error ratio}$
+$$
+r = ||\frac{y_{err}}{\text{SCALE}}||\in R
+$$
+如果$r<1$，则认为这个误差是可以被接受的，不需要重新计算，直接令 $\hat y(t+\Delta) = \hat y_{candidate}(t+\Delta)$；反之，则认为上述的误差太大，选取更小的$\Delta$并进行测试。
 
 ## Deep Equilibrium Models
 
