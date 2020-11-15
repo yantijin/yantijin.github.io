@@ -268,50 +268,6 @@
   </entry>
   
   <entry>
-    <title>win10安装ubuntu子系统并配置C++环境</title>
-    <link href="https://yantijin.github.io/2019/02/19/win10%E5%AE%89%E8%A3%85ubuntu%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%B9%B6%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83/"/>
-    <id>https://yantijin.github.io/2019/02/19/win10安装ubuntu子系统并配置C-环境/</id>
-    <published>2019-02-19T14:34:43.000Z</published>
-    <updated>2019-02-19T14:36:39.706Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;win10安装Ubuntu&quot;&gt;&lt;a href=&quot;#win10安装Ubuntu&quot; class=&quot;headerlink&quot; title=&quot;win10安装Ubuntu&quot;&gt;&lt;/a&gt;win10安装Ubuntu&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;设置-&amp;gt;更新和安全-&amp;gt;开发人员模式&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;控制面板-&amp;gt;程序和功能-&amp;gt;启动或关闭Windows功能中勾选 适用于linux的windows子系统，然后重启电脑&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;从微软商店安装Ubuntu18.04，然后在启动项中点击图标进行安装，过程中会要求输入名字以及设置密码&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;修改软件源&lt;/p&gt;
-&lt;figure class=&quot;highlight powershell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak &lt;span class=&quot;comment&quot;&gt;#做备份&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo vim /etc/apt/sources.list &lt;span class=&quot;comment&quot;&gt;# 更换软件源 参考https://blog.csdn.net/zhangjiahao14/article/details/80554616&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="安装教程" scheme="https://yantijin.github.io/categories/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="C++" scheme="https://yantijin.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ticc_kdd2017</title>
-    <link href="https://yantijin.github.io/2018/12/27/ticc-kdd2017/"/>
-    <id>https://yantijin.github.io/2018/12/27/ticc-kdd2017/</id>
-    <published>2018-12-27T03:03:38.000Z</published>
-    <updated>2018-12-27T03:03:38.417Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>概率图模型</title>
     <link href="https://yantijin.github.io/2018/12/27/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/"/>
     <id>https://yantijin.github.io/2018/12/27/概率图模型/</id>
@@ -501,6 +457,53 @@ r = \frac{\sum^{n}_{i=1}(X_i-\bar X)(Y_i-\bar Y)}{\sqrt{\sum^{n}_{i=1}(X_i-\bar 
     
     
       <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>A Fast Algorithm for Projected Clustering</title>
+    <link href="https://yantijin.github.io/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/"/>
+    <id>https://yantijin.github.io/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/</id>
+    <published>2018-11-28T09:07:01.000Z</published>
+    <updated>2018-12-21T14:52:14.106Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;投影聚类法&quot;&gt;&lt;a href=&quot;#投影聚类法&quot; class=&quot;headerlink&quot; title=&quot;投影聚类法&quot;&gt;&lt;/a&gt;投影聚类法&lt;/h2&gt;&lt;h3 id=&quot;Basic-Conceprions&quot;&gt;&lt;a href=&quot;#Basic-Conceprions&quot; class=&quot;headerlink&quot; title=&quot;Basic Conceprions&quot;&gt;&lt;/a&gt;Basic Conceprions&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="Algorithm Library" scheme="https://yantijin.github.io/categories/Algorithm-Library/"/>
+    
+      <category term="Clustering Algorithm" scheme="https://yantijin.github.io/categories/Algorithm-Library/Clustering-Algorithm/"/>
+    
+    
+      <category term="Clustering Algorithm" scheme="https://yantijin.github.io/tags/Clustering-Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DMOEA-epsilonC</title>
+    <link href="https://yantijin.github.io/2018/11/27/DMOEA-epsilonC/"/>
+    <id>https://yantijin.github.io/2018/11/27/DMOEA-epsilonC/</id>
+    <published>2018-11-27T10:06:47.000Z</published>
+    <updated>2018-12-21T14:52:14.119Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;主要贡献&quot;&gt;&lt;a href=&quot;#主要贡献&quot; class=&quot;headerlink&quot; title=&quot;主要贡献&quot;&gt;&lt;/a&gt;主要贡献&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;首次将$\epsilon$约束法和分解的方法合并起来，&lt;/li&gt;
+&lt;li&gt;在优化的过程中，使用了主函数变化的策略，&lt;/li&gt;
+&lt;li&gt;由于不同问题的计算复杂度不同，则需要对计算资源进行动态分配&lt;/li&gt;
+&lt;li&gt;并且使用了解和子问题的匹配，子问题和解的匹配等方法来平衡解的多样性和收敛性之间的关系&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
+    
+    
+      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/tags/Cloud-Workflow-Scheduling/"/>
     
   </entry>
   
