@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yantijin.github.io/"/>
-  <updated>2019-02-19T14:36:39.706Z</updated>
+  <updated>2020-11-15T03:45:59.018Z</updated>
   <id>https://yantijin.github.io/</id>
   
   <author>
@@ -17,6 +17,257 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>NIPS 20 paperlist</title>
+    <link href="https://yantijin.github.io/2020/11/15/NIPS20-paperlist/"/>
+    <id>https://yantijin.github.io/2020/11/15/NIPS20-paperlist/</id>
+    <published>2020-11-15T03:45:08.000Z</published>
+    <updated>2020-11-15T03:45:59.018Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;NeuraIPS’20&quot;&gt;&lt;a href=&quot;#NeuraIPS’20&quot; class=&quot;headerlink&quot; title=&quot;NeuraIPS’20&quot;&gt;&lt;/a&gt;NeuraIPS’20&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="Irregular Sampled TS" scheme="https://yantijin.github.io/categories/machine-learning/Irregular-Sampled-TS/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Irregular Time Series Papers</title>
+    <link href="https://yantijin.github.io/2020/11/15/Irregular-Time-Series-Papers/"/>
+    <id>https://yantijin.github.io/2020/11/15/Irregular-Time-Series-Papers/</id>
+    <published>2020-11-15T03:37:08.000Z</published>
+    <updated>2020-11-15T03:45:10.907Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文将对于非周期采样时序数据的预测问题做一个初步的总结&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="Irregular Sampled TS" scheme="https://yantijin.github.io/categories/machine-learning/Irregular-Sampled-TS/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ODE数值解</title>
+    <link href="https://yantijin.github.io/2020/09/24/ODE%E6%95%B0%E5%80%BC%E8%A7%A3/"/>
+    <id>https://yantijin.github.io/2020/09/24/ODE数值解/</id>
+    <published>2020-09-23T16:20:43.000Z</published>
+    <updated>2020-10-09T03:15:51.202Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自  &lt;strong&gt;李森科在zhihu&lt;/strong&gt; &lt;a href=&quot;https://zhuanlan.zhihu.com/p/70255604&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="math" scheme="https://yantijin.github.io/categories/math/"/>
+    
+      <category term="ODE" scheme="https://yantijin.github.io/categories/math/ODE/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>神经了的ODE: Neural CDE</title>
+    <link href="https://yantijin.github.io/2020/09/23/%E7%A5%9E%E7%BB%8F%E4%BA%86%E7%9A%84ODE-Neural-CDE/"/>
+    <id>https://yantijin.github.io/2020/09/23/神经了的ODE-Neural-CDE/</id>
+    <published>2020-09-23T15:19:29.000Z</published>
+    <updated>2020-10-09T03:15:51.203Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Neural-Controlled-Differential-Equations-for-Irregular-Time-Series&quot;&gt;&lt;a href=&quot;#Neural-Controlled-Differential-Equations-for-Irregular-Time-Series&quot; class=&quot;headerlink&quot; title=&quot;Neural Controlled Differential Equations for Irregular Time Series&quot;&gt;&lt;/a&gt;Neural Controlled Differential Equations for Irregular Time Series&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;Neural ODE的缺点是一旦初值确定，轨迹便确定，中间无法对轨迹进行修正，本文引入受控微分方程概念，使得后续拿到的数据得到进一步利用。&lt;a href=&quot;http://arxiv.org/abs/2005.08926&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ArXiv&lt;/a&gt;, &lt;a href=&quot;https://github.com/patrick-kidger/NeuralCDE&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;code&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="Neural ODE" scheme="https://yantijin.github.io/categories/machine-learning/Neural-ODE/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ODE基础</title>
+    <link href="https://yantijin.github.io/2020/09/23/ODE%E5%9F%BA%E7%A1%80/"/>
+    <id>https://yantijin.github.io/2020/09/23/ODE基础/</id>
+    <published>2020-09-22T16:23:00.000Z</published>
+    <updated>2020-10-09T03:15:51.201Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;一、基本概念&quot;&gt;&lt;a href=&quot;#一、基本概念&quot; class=&quot;headerlink&quot; title=&quot;一、基本概念&quot;&gt;&lt;/a&gt;一、基本概念&lt;/h2&gt;&lt;p&gt;在学习常微分方程之前，我们先了解一些基本的概念；我们在中学的时候都学过解方程（如： &lt;img src=&quot;https://www.zhihu.com/equation?tex=x%5E2%2B5%3D0&quot; alt=&quot;[公式]&quot;&gt; ），不过那都是函数方程（ &lt;img src=&quot;https://www.zhihu.com/equation?tex=f%28x%29%3D0&quot; alt=&quot;[公式]&quot;&gt; ，即含有未知数x的方程）。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="math" scheme="https://yantijin.github.io/categories/math/"/>
+    
+      <category term="ODE" scheme="https://yantijin.github.io/categories/math/ODE/"/>
+    
+    
+      <category term="math" scheme="https://yantijin.github.io/tags/math/"/>
+    
+      <category term="ODE" scheme="https://yantijin.github.io/tags/ODE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dynamic GNN PaperList</title>
+    <link href="https://yantijin.github.io/2020/09/18/Dynamic-GNN-PaperList/"/>
+    <id>https://yantijin.github.io/2020/09/18/Dynamic-GNN-PaperList/</id>
+    <published>2020-09-18T15:19:49.000Z</published>
+    <updated>2020-10-09T03:15:51.145Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;AAAI 2018:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dynamic Deep Neural Networks: Optimizing Accuracy-Efficiency Trade-offs by Selective Execution&lt;/li&gt;
+&lt;li&gt;Dynamic Network Embedding by Modeling Triadic Closure Process&lt;/li&gt;
+&lt;li&gt;DepthLGP: Learning Embeddings of Out-of-Sample Nodes in Dynamic Networks&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="PaperList" scheme="https://yantijin.github.io/categories/machine-learning/PaperList/"/>
+    
+    
+      <category term="Machine Learning" scheme="https://yantijin.github.io/tags/Machine-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TS Anomaly Detection</title>
+    <link href="https://yantijin.github.io/2020/09/12/TS-Anomaly-Detection/"/>
+    <id>https://yantijin.github.io/2020/09/12/TS-Anomaly-Detection/</id>
+    <published>2020-09-12T14:14:39.000Z</published>
+    <updated>2020-10-09T03:15:51.202Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;PaperList for TS anomaly detection&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="PaperList" scheme="https://yantijin.github.io/categories/machine-learning/PaperList/"/>
+    
+    
+      <category term="Applications" scheme="https://yantijin.github.io/tags/Applications/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dynamic Systems Paperlist</title>
+    <link href="https://yantijin.github.io/2020/09/12/Dynamic-Systems-Paperlist/"/>
+    <id>https://yantijin.github.io/2020/09/12/Dynamic-Systems-Paperlist/</id>
+    <published>2020-09-12T05:29:52.000Z</published>
+    <updated>2020-10-09T03:15:51.146Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;PaperList For Dynamic systems with DNN&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="PaperList" scheme="https://yantijin.github.io/categories/machine-learning/PaperList/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TS prediction</title>
+    <link href="https://yantijin.github.io/2020/09/06/TS-prediction/"/>
+    <id>https://yantijin.github.io/2020/09/06/TS-prediction/</id>
+    <published>2020-09-06T14:14:53.000Z</published>
+    <updated>2020-10-09T03:15:51.202Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;TS-Prediction&quot;&gt;&lt;a href=&quot;#TS-Prediction&quot; class=&quot;headerlink&quot; title=&quot;TS Prediction&quot;&gt;&lt;/a&gt;TS Prediction&lt;/h2&gt;&lt;h3 id=&quot;TS-prediction-with-code&quot;&gt;&lt;a href=&quot;#TS-prediction-with-code&quot; class=&quot;headerlink&quot; title=&quot;TS_prediction with code&quot;&gt;&lt;/a&gt;TS_prediction with code&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="PaperList" scheme="https://yantijin.github.io/categories/machine-learning/PaperList/"/>
+    
+    
+      <category term="Applications" scheme="https://yantijin.github.io/tags/Applications/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dynamic Systems for Deep Learning</title>
+    <link href="https://yantijin.github.io/2020/09/06/Dynamic-Systems-for-Deep-Learning/"/>
+    <id>https://yantijin.github.io/2020/09/06/Dynamic-Systems-for-Deep-Learning/</id>
+    <published>2020-09-06T13:30:30.000Z</published>
+    <updated>2020-10-09T03:15:51.146Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文将从动力学系统角度去理解深度神经网络。&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="Neural ODE" scheme="https://yantijin.github.io/categories/machine-learning/Neural-ODE/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Flow based Models</title>
+    <link href="https://yantijin.github.io/2020/09/06/Flow-based-Models/"/>
+    <id>https://yantijin.github.io/2020/09/06/Flow-based-Models/</id>
+    <published>2020-09-06T12:23:55.000Z</published>
+    <updated>2020-10-09T03:15:51.187Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本节将会介绍生成模型中非常典型的一类方法，流模型 。&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
     <title>win10安装ubuntu子系统并配置C++环境</title>
     <link href="https://yantijin.github.io/2019/02/19/win10%E5%AE%89%E8%A3%85ubuntu%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%B9%B6%E9%85%8D%E7%BD%AEC-%E7%8E%AF%E5%A2%83/"/>
     <id>https://yantijin.github.io/2019/02/19/win10安装ubuntu子系统并配置C-环境/</id>
@@ -25,13 +276,17 @@
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;win10安装Ubuntu&quot;&gt;&lt;a href=&quot;#win10安装Ubuntu&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h2 id=&quot;win10安装Ubuntu&quot;&gt;&lt;a href=&quot;#win10安装Ubuntu&quot; class=&quot;headerlink&quot; title=&quot;win10安装Ubuntu&quot;&gt;&lt;/a&gt;win10安装Ubuntu&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;设置-&amp;gt;更新和安全-&amp;gt;开发人员模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;控制面板-&amp;gt;程序和功能-&amp;gt;启动或关闭Windows功能中勾选 适用于linux的windows子系统，然后重启电脑&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;从微软商店安装Ubuntu18.04，然后在启动项中点击图标进行安装，过程中会要求输入名字以及设置密码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改软件源&lt;/p&gt;
+&lt;figure class=&quot;highlight powershell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak &lt;span class=&quot;comment&quot;&gt;#做备份&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo vim /etc/apt/sources.list &lt;span class=&quot;comment&quot;&gt;# 更换软件源 参考https://blog.csdn.net/zhangjiahao14/article/details/80554616&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -61,17 +316,11 @@
     <link href="https://yantijin.github.io/2018/12/27/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/"/>
     <id>https://yantijin.github.io/2018/12/27/概率图模型/</id>
     <published>2018-12-27T01:01:43.000Z</published>
-    <updated>2018-12-27T08:07:51.285Z</updated>
+    <updated>2020-11-15T03:09:18.654Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;贝叶斯网络&quot;&gt;&lt;a href=&quot;#贝叶斯网络&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯网络&quot;&gt;&lt;/a&gt;贝叶斯网络&lt;/h2&gt;&lt;h3 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h2 id=&quot;贝叶斯网络&quot;&gt;&lt;a href=&quot;#贝叶斯网络&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯网络&quot;&gt;&lt;/a&gt;贝叶斯网络&lt;/h2&gt;&lt;h3 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h3&gt;
     
     </summary>
     
@@ -89,17 +338,49 @@
     <link href="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/"/>
     <id>https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/</id>
     <published>2018-12-21T01:34:18.000Z</published>
-    <updated>2019-01-02T13:34:58.724Z</updated>
+    <updated>2020-11-15T03:09:18.620Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;包括三个步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(1)从数据集中采样;&lt;/li&gt;
+&lt;li&gt;(2)在采样的数据集上面进行聚类算法;&lt;/li&gt;
+&lt;li&gt;(3)将数据集中其他的数据根据采样数据集的类别进行分类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;现在的聚类算法可以大致分为两类：根据&lt;strong&gt;相似性度量&lt;/strong&gt;是否是直接用在输入的数据集上的还是用在从数据集中提取的特征上的&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一类： Golay et al 研究了三种时间序列的相似性度量，欧氏距离，两个基于互相关性的距离； Liao et all 采用DTW(Dynamic Time Warping)动态时间弯曲和遗传聚类来对时间序列进行分类&lt;/li&gt;
+&lt;li&gt;第二类：是基于时间序列是根据内在的模型和概率分布的假设来进行聚类的。比如ARMA(Auto-Aggressive Integrated Moving Average)算法,高斯混合算法，缺点是是模型的学习的计算复杂度很高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;相似性度量：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(1)Lp范数： 其中L1范数对于冲击噪声是鲁棒的；但是对于$p\geq 3$来说会遇到维数灾问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(2)Pearson’s correlation：取值范围是[-1,1],两个变量之间的&lt;strong&gt;皮尔逊相关系数&lt;/strong&gt;定义为两个变量之间的协方差和标准差的商：&lt;/p&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\rho_{X,Y} = \frac{cov(X,Y)}{\sigma_x,\sigma_y}&lt;/script&gt;&lt;p&gt;上式是&lt;strong&gt;总体&lt;/strong&gt;皮尔逊相关系数，下面是样本皮尔逊相关系数，一般用r表示：&lt;/p&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+r = \frac{\sum^{n}_{i=1}(X_i-\bar X)(Y_i-\bar Y)}{\sqrt{\sum^{n}_{i=1}(X_i-\bar X)^2}\sqrt{\sum^n_{i=1}(Y_i-\bar Y)^2}}=\frac{1}{n-1}\sum^n_{i=1}(\frac{X_i-\bar X}{\sigma_x})(\frac{Y_i-\bar Y}{\sigma_Y})&lt;/script&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(3)DTW(动态时间弯曲距离)：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/2.png&quot; alt=&quot;2&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Data Reduction:分为降维或者减少时间序列的数量(size)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;离散傅里叶变换(DFT)用于在频域中表示时间序列；离散小波变换用于提供额外的信息；奇异值分解(SVD)和分段聚合近似（PAA）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/1.jpg&quot; alt=&quot;1&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/3.jpg&quot; alt=&quot;1&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;采样可以减少时间序列数据集的大小：随机采样/有偏采样&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -121,13 +402,7 @@
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;h3 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;h3 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h3&gt;
     
     </summary>
     
@@ -147,13 +422,7 @@
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;大数据范畴&quot;&gt;&lt;a href=&quot;#大数据范畴&quot; class=&quot;headerlink&quot; title=&quot;大数据范畴&quot;&gt;&lt;/a&gt;大数据范畴&lt;/h1&gt;&lt;h2 id=&quot;Ubuntu16-04-安装Hadoop伪分布式&quot;&gt;&lt;a
-        
-      
+      &lt;h1 id=&quot;大数据范畴&quot;&gt;&lt;a href=&quot;#大数据范畴&quot; class=&quot;headerlink&quot; title=&quot;大数据范畴&quot;&gt;&lt;/a&gt;大数据范畴&lt;/h1&gt;&lt;h2 id=&quot;Ubuntu16-04-安装Hadoop伪分布式&quot;&gt;&lt;a href=&quot;#Ubuntu16-04-安装Hadoop伪分布式&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu16.04 安装Hadoop伪分布式&quot;&gt;&lt;/a&gt;Ubuntu16.04 安装Hadoop伪分布式&lt;/h2&gt;
     
     </summary>
     
@@ -173,14 +442,14 @@
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;VIM常用快捷键设置&quot;&gt;&lt;a href=&quot;#VIM常用快捷键设置&quot; class=&quot;headerlink&quot; title=&quot;VIM常用快捷键设置&quot;&gt;&lt;/a&gt;VIM常用快捷键设置&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;,nn:打开文件树&lt;br&gt;​   
-        
-      
+      &lt;h3 id=&quot;VIM常用快捷键设置&quot;&gt;&lt;a href=&quot;#VIM常用快捷键设置&quot; class=&quot;headerlink&quot; title=&quot;VIM常用快捷键设置&quot;&gt;&lt;/a&gt;VIM常用快捷键设置&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;,nn:打开文件树&lt;br&gt;​    打开文件树之后，在新的分栏打开光标文件按s，在新的tab打开用t&lt;/li&gt;
+&lt;li&gt;空格：查找&lt;/li&gt;
+&lt;li&gt;gt：切换tab&lt;/li&gt;
+&lt;li&gt;&lt;c-h j=&quot;&quot; k=&quot;&quot; l=&quot;&quot;&gt;切换分栏&lt;/c-h&gt;&lt;/li&gt;
+&lt;li&gt;shift+3: 查找当前光标位置的字符&lt;/li&gt;
+&lt;li&gt;调整分栏占比：&lt;br&gt;:vertical res 50  # 纵向分栏&lt;br&gt;:res 50  # 横向分栏&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -200,13 +469,7 @@
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;列表&quot;&gt;&lt;a href=&quot;#列表&quot; class=&quot;headerlink&quot; title=&quot;列表&quot;&gt;&lt;/a&gt;列表&lt;/h2&gt;&lt;h3 id=&quot;列表复制和删除&quot;&gt;&lt;a href=&quot;#列表复制和删除&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h2 id=&quot;列表&quot;&gt;&lt;a href=&quot;#列表&quot; class=&quot;headerlink&quot; title=&quot;列表&quot;&gt;&lt;/a&gt;列表&lt;/h2&gt;&lt;h3 id=&quot;列表复制和删除&quot;&gt;&lt;a href=&quot;#列表复制和删除&quot; class=&quot;headerlink&quot; title=&quot;列表复制和删除&quot;&gt;&lt;/a&gt;列表复制和删除&lt;/h3&gt;
     
     </summary>
     
@@ -228,319 +491,13 @@
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;高维度数据的聚类&quot;&gt;&lt;a href=&quot;#高维度数据的聚类&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h1 id=&quot;高维度数据的聚类&quot;&gt;&lt;a href=&quot;#高维度数据的聚类&quot; class=&quot;headerlink&quot; title=&quot;高维度数据的聚类&quot;&gt;&lt;/a&gt;高维度数据的聚类&lt;/h1&gt;&lt;p&gt;高维度数据的聚类算法就是想在原来特征空间的任意方向的子空间上找到聚类&lt;/p&gt;
     
     </summary>
     
       <category term="Algorithm Library" scheme="https://yantijin.github.io/categories/Algorithm-Library/"/>
     
       <category term="Clustering Algorithm" scheme="https://yantijin.github.io/categories/Algorithm-Library/Clustering-Algorithm/"/>
-    
-    
-      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>A Fast Algorithm for Projected Clustering</title>
-    <link href="https://yantijin.github.io/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/"/>
-    <id>https://yantijin.github.io/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/</id>
-    <published>2018-11-28T09:07:01.000Z</published>
-    <updated>2018-12-21T14:52:14.106Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;投影聚类法&quot;&gt;&lt;a href=&quot;#投影聚类法&quot; class=&quot;headerlink&quot; title=&quot;投影聚类法&quot;&gt;&lt;/a&gt;投影聚类法&lt;/h2&gt;&lt;h3 id=&quot;Basic-Conceprions&quot;&gt;&lt;a href=&quot;#Basic-Conceprions&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Algorithm Library" scheme="https://yantijin.github.io/categories/Algorithm-Library/"/>
-    
-      <category term="Clustering Algorithm" scheme="https://yantijin.github.io/categories/Algorithm-Library/Clustering-Algorithm/"/>
-    
-    
-      <category term="Clustering Algorithm" scheme="https://yantijin.github.io/tags/Clustering-Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DMOEA-epsilonC</title>
-    <link href="https://yantijin.github.io/2018/11/27/DMOEA-epsilonC/"/>
-    <id>https://yantijin.github.io/2018/11/27/DMOEA-epsilonC/</id>
-    <published>2018-11-27T10:06:47.000Z</published>
-    <updated>2018-12-21T14:52:14.119Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;主要贡献&quot;&gt;&lt;a href=&quot;#主要贡献&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
-    
-    
-      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/tags/Cloud-Workflow-Scheduling/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>algorithm-lib</title>
-    <link href="https://yantijin.github.io/2018/11/18/algorithm-lib/"/>
-    <id>https://yantijin.github.io/2018/11/18/algorithm-lib/</id>
-    <published>2018-11-18T15:31:57.000Z</published>
-    <updated>2018-12-21T14:52:14.136Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;聚类算法&quot;&gt;&lt;a href=&quot;#聚类算法&quot; class=&quot;headerlink&quot; title=&quot;聚类算法&quot;&gt;&lt;/a&gt;聚类算法&lt;/h1&gt;&lt;h2 id=&quot;Partitional-Clustering-Algorithm&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Algorithm Library" scheme="https://yantijin.github.io/categories/Algorithm-Library/"/>
-    
-    
-      <category term="algorithm" scheme="https://yantijin.github.io/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>进化算法库</title>
-    <link href="https://yantijin.github.io/2018/11/18/%E8%BF%9B%E5%8C%96%E7%AE%97%E6%B3%95%E5%BA%93/"/>
-    <id>https://yantijin.github.io/2018/11/18/进化算法库/</id>
-    <published>2018-11-18T02:26:13.000Z</published>
-    <updated>2018-12-21T14:52:14.154Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;NSGA族&quot;&gt;&lt;a href=&quot;#NSGA族&quot; class=&quot;headerlink&quot; title=&quot;NSGA族&quot;&gt;&lt;/a&gt;NSGA族&lt;/h2&gt;&lt;h3 id=&quot;NSGA的缺陷：&quot;&gt;&lt;a href=&quot;#NSGA的缺陷：&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
-    
-    
-      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/tags/Cloud-Workflow-Scheduling/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>决策树</title>
-    <link href="https://yantijin.github.io/2018/11/17/%E5%86%B3%E7%AD%96%E6%A0%91/"/>
-    <id>https://yantijin.github.io/2018/11/17/决策树/</id>
-    <published>2018-11-17T12:44:05.000Z</published>
-    <updated>2018-12-21T14:52:14.139Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;决策树&quot;&gt;&lt;a href=&quot;#决策树&quot; class=&quot;headerlink&quot; title=&quot;决策树&quot;&gt;&lt;/a&gt;决策树&lt;/h2&gt;&lt;h3 id=&quot;决策树建树的基本流程&quot;&gt;&lt;a href=&quot;#决策树建树的基本流程&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
-    
-      <category term="决策树" scheme="https://yantijin.github.io/categories/machine-learning/%E5%86%B3%E7%AD%96%E6%A0%91/"/>
-    
-    
-      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>线性模型</title>
-    <link href="https://yantijin.github.io/2018/11/17/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/"/>
-    <id>https://yantijin.github.io/2018/11/17/线性模型/</id>
-    <published>2018-11-17T11:05:18.000Z</published>
-    <updated>2018-12-22T04:00:10.573Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;线性回归&quot;&gt;&lt;a href=&quot;#线性回归&quot; class=&quot;headerlink&quot; title=&quot;线性回归&quot;&gt;&lt;/a&gt;线性回归&lt;/h2&gt;&lt;h3 id=&quot;基本形式&quot;&gt;&lt;a href=&quot;#基本形式&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
-    
-      <category term="线性模型" scheme="https://yantijin.github.io/categories/machine-learning/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/"/>
-    
-    
-      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Evolutionary Multi-Objective Workflow Scheduling in Cloud</title>
-    <link href="https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/"/>
-    <id>https://yantijin.github.io/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/</id>
-    <published>2018-11-16T10:57:43.000Z</published>
-    <updated>2018-12-21T14:52:14.124Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Main-idea&quot;&gt;&lt;a href=&quot;#Main-idea&quot; class=&quot;headerlink&quot; title=&quot;Main idea&quot;&gt;&lt;/a&gt;Main idea&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;:
-        
-      
-    
-    </summary>
-    
-      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
-    
-    
-      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/tags/Cloud-Workflow-Scheduling/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WorkflowSim Structure</title>
-    <link href="https://yantijin.github.io/2018/11/15/WorkflowSim-Structure/"/>
-    <id>https://yantijin.github.io/2018/11/15/WorkflowSim-Structure/</id>
-    <published>2018-11-15T02:39:41.000Z</published>
-    <updated>2018-12-21T14:52:14.134Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Characteristic&quot;&gt;&lt;a href=&quot;#Characteristic&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
-    
-    
-      <category term="WorkflowSim toolkit introduction" scheme="https://yantijin.github.io/tags/WorkflowSim-toolkit-introduction/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数理统计</title>
-    <link href="https://yantijin.github.io/2018/11/14/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
-    <id>https://yantijin.github.io/2018/11/14/数理统计/</id>
-    <published>2018-11-14T01:58:43.000Z</published>
-    <updated>2018-12-21T14:52:14.141Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;总体样本和抽样分布&quot;&gt;&lt;a href=&quot;#总体样本和抽样分布&quot; class=&quot;headerlink&quot; title=&quot;总体样本和抽样分布&quot;&gt;&lt;/a&gt;总体样本和抽样分布&lt;/h1&gt;&lt;h2 id=&quot;总体样本&quot;&gt;&lt;a href=&quot;#总体样本&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
-    
-      <category term="数理统计" scheme="https://yantijin.github.io/categories/machine-learning/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
-    
-    
-      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>模型评估与选择</title>
-    <link href="https://yantijin.github.io/2018/11/13/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%8E%E9%80%89%E6%8B%A9/"/>
-    <id>https://yantijin.github.io/2018/11/13/模型评估与选择/</id>
-    <published>2018-11-13T15:19:44.000Z</published>
-    <updated>2018-12-21T14:52:14.148Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;本章基本概念&quot;&gt;&lt;a href=&quot;#本章基本概念&quot; class=&quot;headerlink&quot; title=&quot;本章基本概念&quot;&gt;&lt;/a&gt;本章基本概念&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;错误率(error rate)&lt;/strong&gt;:
-        
-      
-    
-    </summary>
-    
-      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
-    
-      <category term="模型评估与选择" scheme="https://yantijin.github.io/categories/machine-learning/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%8E%E9%80%89%E6%8B%A9/"/>
-    
-    
-      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Basic Conceptions</title>
-    <link href="https://yantijin.github.io/2018/11/13/Basic-Conceptions/"/>
-    <id>https://yantijin.github.io/2018/11/13/Basic-Conceptions/</id>
-    <published>2018-11-13T14:15:59.000Z</published>
-    <updated>2018-12-21T14:52:14.112Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Basic-conception&quot;&gt;&lt;a href=&quot;#Basic-conception&quot; class=&quot;headerlink&quot; title=&quot;Basic conception&quot;&gt;&lt;/a&gt;Basic
-        
-      
-    
-    </summary>
-    
-      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
-    
-      <category term="basic conception" scheme="https://yantijin.github.io/categories/machine-learning/basic-conception/"/>
     
     
       <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
