@@ -13,90 +13,38 @@ categories:
 
 A collection of resources regarding the interplay between differential equations, dynamical systems, deep learning, control and scientific machine learning.
 
-**NOTE:** Feel free to suggest additional resources via `Issues` or `Pull Requests`.
-
-# Table of Contents
-
-* **Differential Equations in Deep Learning**
-
-	* [General Architectures](#general-architectures)
-	
-	* [Neural ODEs](#neural-odes)
-	* [Training of Neural ODEs](#training-of-neural-odes)
-		
-	* [Neural SDEs](#neural-sdes)
-	
-	* [Normalizing Flows](#normalizing-flows)
-	
-	* [Applications](#applications)
-	
-* **Deep Learning Methods for Differential Equations (Scientific ML)**
-
-	* [Solving Differential Equations](#solving-differential-equations)
-	
-	* [Learning PDEs](#learning-pdes)
-	
-	* [Model Discovery](#model-discovery)
-	
-* **Dynamical System View of Deep Learning**
-
-	* [Recurrent Neural Networks](#recurrent-neural-networks)
-	
-	* [Theory and Perspectives](#theory-and-perspectives)
-	
-	* [Optimization](#optimization)
-	
-* [Software and Libraries](#software-and-libraries)
-
-* [Websites and Blogs](#websites-and-blogs)
-
 ## Differential Equations in Deep Learning
 
 ### General Architectures
 
 * Recurrent Neural Networks for Multivariate Time Series with Missing Values: [Scientific Reports18](https://arxiv.org/abs/1606.01865)
 
-* Learning unknown ODE models with Gaussian processes: [arXiv18](https://arxiv.org/abs/1803.04303)
-
 * Deep Equilibrium Models: [NeurIPS19](https://arxiv.org/abs/1909.01377)
 
 * Fast and Deep Graph Neural Networks: [AAAI20](https://arxiv.org/pdf/1911.08941.pdf)
 
-* Hamiltonian Neural Networks: [NeurIPS19](https://arxiv.org/abs/1906.01563)
-
-* Deep Lagrangian Networks: Using Physics as Model Prior for Deep Learning: [ICLR19](https://arxiv.org/abs/1907.04490)
-
-* Lagrangian Neural Networks: [ICLR20 DeepDiffEq](https://arxiv.org/abs/2003.04630)
-
 ### Neural ODEs
 
 * Neural Ordinary Differential Equations: [NeurIPS18](https://arxiv.org/pdf/1806.07366.pdf)
-
-* Graph Neural Ordinary Differential Equations: [arXiv19](https://arxiv.org/abs/1911.07532)
-
 * Augmented Neural ODEs: [NeurIPS19](https://arxiv.org/abs/1904.01681)
-
-* Latent ODEs for Irregularly-Sampled Time Series: [arXiv19](https://arxiv.org/abs/1907.03907)
-
-* ODE2VAE: Deep generative second order ODEs with Bayesian neural networks: [NeurIPS19](https://arxiv.org/pdf/1905.10994.pdf)
-
-* Symplectic ODE-Net: Learning Hamiltonian Dynamics with Control: [arXiv19](https://arxiv.org/abs/1909.12077)
-
-* How to Train you Neural ODE: [arXiv20](https://arxiv.org/abs/2002.02798)
-
 * Dissecting Neural ODEs: [arXiv20](https://arxiv.org/abs/2002.08071)
-
+* Latent ODEs for Irregularly-Sampled Time Series: [arXiv19](https://arxiv.org/abs/1907.03907)
+* Learning unknown ODE models with Gaussian processes: [arXiv18](https://arxiv.org/abs/1803.04303)
+* ODE2VAE: Deep generative second order ODEs with Bayesian neural networks: [NeurIPS19](https://arxiv.org/pdf/1905.10994.pdf)
 * Stable Neural Flows: [arXiv20](https://arxiv.org/abs/2003.08063)
-
 * On Second Order Behaviour in Augmented Neural ODEs [arXiv20](https://arxiv.org/abs/2006.07220)
+* Snode: Spectral discretization of neural odes for system identification [arXiv19](https://arxiv.org/abs/1906.07038)
+* Learning Differential Equations that are Easy to Solve [NeurIPS20](https://arxiv.org/abs/2007.04504)    [code](https://github.com/jacobjinkelly/easy-neural-ode)
+* An Ode to an ODE [arXiv20](https://arxiv.org/abs/2006.11421)
+* ANODEV2: A Coupled Neural ODE Evolution Framework [arXiv19](https://arxiv.org/abs/1906.04596)
 
-*"Hey, that's not an ODE": Faster ODE Adjoints with 12 Lines of Code [arXiv20]()
-
-#### Training of Neural ODEs
+#### Speed up Training of Neural ODEs
 
 * Accelerating Neural ODEs with Spectral Elements: [arXiv19](https://arxiv.org/abs/1906.07038)
-
 * Adaptive Checkpoint Adjoint Method for Gradient Estimation in Neural ODE: [ICML20](https://arxiv.org/abs/2006.02493)
+* "Hey, that's not an ODE": Faster ODE Adjoints with 12 Lines of Code [arXiv20]()
+* How to Train you Neural ODE: [arXiv20](https://arxiv.org/abs/2002.02798)
+* Hypersolvers: Toward Fast Continuous-Depth Models [NeurIPS20](http://proceedings.neurips.cc/paper/2020/hash/f1686b4badcf28d33ed632036c7ab0b8-Abstract.html)
 
 ### Neural SDEs
 
@@ -125,6 +73,28 @@ A collection of resources regarding the interplay between differential equations
 *  Continuous graph neural networks [ICML2020](https://arxiv.org/abs/1912.00967)
 *  Neural Dynamics on Complex Networks [arXiv19](https://arxiv.org/pdf/1908.06491.pdf)
 
+## Energy based models
+
+### Hamilton
+
+* Hamiltonian Neural Networks: [NeurIPS19](https://arxiv.org/abs/1906.01563)  [code](https://github.com/greydanus/hamiltonian-nn)
+* Hamiltonian generative networks[ICLR2020](https://arxiv.org/abs/1909.13789)  [code](https://github.com/gaspardbb/HamiltonianGenerativeNetworks)
+* Sparse Symplectically Integrated Neural Networks [NeurIPS20](https://arxiv.org/abs/2006.12972)      [code](https://github.com/dandip/ssinn)
+* Nonseparable symplectic neural networks   [code](https://openreview.net/forum?id=B5VvQrI49Pa)
+* SympNets: Intrinsic structure-preserving symplectic networks for identifying Hamiltonian systems [arxiV20](https://arxiv.org/abs/2001.03750)
+* Symplectic ODE-Net: Learning Hamiltonian Dynamics with Control: [arXiv19](https://arxiv.org/abs/1909.12077)
+* Symplectic Recurrent Neural Network [arXiv19](https://arxiv.org/abs/1909.13334)
+
+#### Applications
+
+* Hamiltonian graph networks with ode integrators [arXiv19](https://arxiv.org/abs/1909.12790)
+
+### Lagrange
+
+* Deep Lagrangian Networks: Using Physics as Model Prior for Deep Learning: [ICLR19](https://arxiv.org/abs/1907.04490)
+* Unsupervised Learning of Lagrangian Dynamics from Images for Prediction and Control [NeurIPS20](https://proceedings.neurips.cc/paper/2020/file/79f56e5e3e0e999b3c139f225838d41f-Supplemental.pdf)
+* Lagrangian Neural Networks: [ICLR20 DeepDiffEq](https://arxiv.org/abs/2003.04630)
+
 ## Deep Learning Methods for Differential Equations
 
 ### Solving Differential Equations
@@ -144,6 +114,7 @@ A collection of resources regarding the interplay between differential equations
 ### Model-Predictive-Control
 
 * Differentiable MPC for End-to-end Planning and Control: [NeurIPS18](https://arxiv.org/abs/1810.13400)
+* Neural lyapunov model predictive control [arXiv20](https://arxiv.org/abs/2002.10451)
 
 ## Dynamical System View of Deep Learning
 
@@ -167,14 +138,13 @@ A collection of resources regarding the interplay between differential equations
 
 ### Theory and Perspectives
 
+* Deep information propagation [arXiv16] (https://arxiv.org/abs/1611.01232)
+* A mean field optimal control formulation of deep learning [Research in Mathematical Science](https://link.springer.com/article/10.1007/s40687-018-0172-y)
 * A Proposal on Machine Learning via Dynamical Systems: [Communications in Mathematics and Statistics 2017](https://link.springer.com/content/pdf/10.1007/s40304-017-0103-z.pdf)
-
+* Deep learning as optimal control problems:models and numerical methods [arXiv19](https://arxiv.org/abs/1904.05657)
 * Deep Learning Theory Review: An Optimal Control and Dynamical Systems Perspective: [arXiv19](https://arxiv.org/abs/1908.10920)
-
 * Stable Architectures for Deep Neural Networks: [IP17](https://arxiv.org/pdf/1705.03341.pdf)
-
 * Beyond Finite Layer Neural Network: Bridging Deep Architects and Numerical Differential Equations: [ICML18](https://arxiv.org/abs/1710.10121)
-
 * Review: Ordinary Differential Equations For Deep Learning: [arXiv19](https://arxiv.org/abs/1911.00502)
 
 ### Optimization
@@ -219,3 +189,9 @@ A collection of resources regarding the interplay between differential equations
 ## Websites and Blogs
 
 * Scientific ML Blog (Chris Rackauckas and SciML): [link](http://www.stochasticlifestyle.com/)
+
+## Slides
+
+* [NeurIPS20 Implicit Layers](https://implicit-layers-tutorial.org/implicit_tutorial.pdf)
+
+* [ODE Talk](https://web.stanford.edu/~yplu/ODETalk.pdf)
