@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yantijin.github.io/"/>
-  <updated>2020-11-15T03:45:59.018Z</updated>
+  <updated>2020-12-30T13:30:17.044Z</updated>
   <id>https://yantijin.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GPU透传</title>
+    <link href="https://yantijin.github.io/2020/12/29/GPU%E9%80%8F%E4%BC%A0%E6%95%99%E7%A8%8B/"/>
+    <id>https://yantijin.github.io/2020/12/29/GPU透传教程/</id>
+    <published>2020-12-29T13:05:01.000Z</published>
+    <updated>2020-12-30T13:30:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="安装教程" scheme="https://yantijin.github.io/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>NIPS 20 paperlist</title>
@@ -185,7 +211,7 @@
     <link href="https://yantijin.github.io/2020/09/12/Dynamic-Systems-Paperlist/"/>
     <id>https://yantijin.github.io/2020/09/12/Dynamic-Systems-Paperlist/</id>
     <published>2020-09-12T05:29:52.000Z</published>
-    <updated>2020-12-11T14:19:57.939Z</updated>
+    <updated>2020-12-11T14:49:45.975Z</updated>
     
     <summary type="html">
     
@@ -479,31 +505,6 @@ r = \frac{\sum^{n}_{i=1}(X_i-\bar X)(Y_i-\bar Y)}{\sqrt{\sum^{n}_{i=1}(X_i-\bar 
     
     
       <category term="Clustering Algorithm" scheme="https://yantijin.github.io/tags/Clustering-Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DMOEA-epsilonC</title>
-    <link href="https://yantijin.github.io/2018/11/27/DMOEA-epsilonC/"/>
-    <id>https://yantijin.github.io/2018/11/27/DMOEA-epsilonC/</id>
-    <published>2018-11-27T10:06:47.000Z</published>
-    <updated>2018-12-21T14:52:14.119Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;主要贡献&quot;&gt;&lt;a href=&quot;#主要贡献&quot; class=&quot;headerlink&quot; title=&quot;主要贡献&quot;&gt;&lt;/a&gt;主要贡献&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;首次将$\epsilon$约束法和分解的方法合并起来，&lt;/li&gt;
-&lt;li&gt;在优化的过程中，使用了主函数变化的策略，&lt;/li&gt;
-&lt;li&gt;由于不同问题的计算复杂度不同，则需要对计算资源进行动态分配&lt;/li&gt;
-&lt;li&gt;并且使用了解和子问题的匹配，子问题和解的匹配等方法来平衡解的多样性和收敛性之间的关系&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/categories/Cloud-Workflow-Scheduling/"/>
-    
-    
-      <category term="Cloud Workflow Scheduling" scheme="https://yantijin.github.io/tags/Cloud-Workflow-Scheduling/"/>
     
   </entry>
   
