@@ -106,6 +106,150 @@ XIST(v_k) = \begin{equation}
       </tags>
   </entry>
   <entry>
+    <title>AAAI 21 paperlist</title>
+    <url>/2021/01/03/AAAI%202021%20papers/</url>
+    <content><![CDATA[<h2 id="AAAI-2021-papers"><a href="#AAAI-2021-papers" class="headerlink" title="AAAI 2021 papers"></a>AAAI 2021 papers<a id="more"></a></h2><h3 id="Dynamic-systems"><a href="#Dynamic-systems" class="headerlink" title="Dynamic systems"></a>Dynamic systems</h3><ul>
+<li><a href="https://arxiv.org/abs/2012.08863" target="_blank" rel="noopener">On the Verification of Neural ODEs with Stochastic Guarantees</a></li>
+<li>Forecasting Reservoir Inflow via Recurrent Neural ODEs</li>
+<li>The LOB Recreation Model: Predicting the Limit Order Book from TAQ History Using an Ordinary Differential Equation Recurrent Neural Network</li>
+<li>ECG ODE-GAN: Learning Ordinary Differential Equations of ECG Dynamics via Generative Adversarial Learning</li>
+<li><p>Vid-ODE: Continuous-Time Video Generation with Neural Ordinary Differential Equation</p>
+</li>
+<li><p>A Hybrid Stochastic Gradient Hamiltonian Monte Carlo Method</p>
+</li>
+</ul>
+<h3 id="Generative-models"><a href="#Generative-models" class="headerlink" title="Generative models"></a>Generative models</h3><ul>
+<li>Flow-Based Generative Models for Learning Manifold to Manifold Mappings</li>
+<li>OT-Flow: Fast and Accurate Continuous Normalizing Flows via Optimal Transport</li>
+<li>MolGrow: A Graph Normalizing Flow for Hierarchical Molecular Generation</li>
+<li>Accelerating Continuous Normalizing Flow with Trajectory Polynomial Regularization</li>
+</ul>
+<h3 id="Time-Series"><a href="#Time-Series" class="headerlink" title="Time Series"></a>Time Series</h3><ul>
+<li>Deep Switching Auto-Regressive Factorization: Application to Time Series Forecasting</li>
+<li>Dynamic Gaussian Mixture Based Deep Generative Model for Robust Forecasting on Sparse Multivariate Time Series</li>
+<li>Second Order Techniques for Learning Time-Series with Structural Breaks</li>
+<li>Correlative Channel-Aware Fusion for Multi-View Time Series Classification</li>
+<li>Learnable Dynamic Temporal Pooling for Time Series Classification</li>
+<li>Learning Representations for Incomplete Time Series Clustering</li>
+<li>Temporal Latent Autoencoder: A Method for Probabilistic Multivariate Time Series Forecasting</li>
+<li>Continuous-Time Attention for Sequential Learning</li>
+<li>Graph Neural Network-Based Anomaly Detection in Multivariate Time Series</li>
+<li>ShapeNet: A Shapelet-Neural Network Approach for Multivariate Time Series Classification</li>
+<li>Time Series Anomaly Detection with Multiresolution Ensemble Decoding</li>
+<li>Joint-Label Learning by Dual Augmentation for Time Series Classification</li>
+<li>Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting</li>
+<li>Generative Semi-Supervised Learning for Multivariate Time Series Imputation</li>
+<li>Outlier Impact Characterization for Time Series Data</li>
+<li>Meta-Learning Framework with Applications to Zero-Shot Time-Series Forecasting</li>
+</ul>
+<h3 id="GNN"><a href="#GNN" class="headerlink" title="GNN"></a>GNN</h3><ul>
+<li>Contrastive and Generative Graph Convolutional Networks for Graph-Based SemiSupervised Learning</li>
+<li>Overcoming Catastrophic Forgetting in Graph Neural Networks</li>
+<li>Isolation Graph Kernel</li>
+<li>Semi-Supervised Node Classification on Graphs: Markov Random Fields vs. Graph Neural Networks</li>
+<li>Hyperbolic Variational Graph Neural Network for Modeling Dynamic Graphs</li>
+<li>MolGrow: A Graph Normalizing Flow for Hierarchical Molecular Generation</li>
+<li>Heterogeneous Graph Structure Learning for Graph Neural Networks</li>
+<li>Graph Neural Network-Based Anomaly Detection in Multivariate Time Series</li>
+<li>Deep Graph Spectral Evolution Networks for Graph Topological Evolution</li>
+<li>Scalable Graph Networks for Particle Simulations</li>
+<li>Synchronous Dynamical Systems on Directed Acyclic Graphs: Complexity and Algorithms</li>
+<li>Fitting the Search Space of Weight-Sharing NAS with Graph Convolutional Networks</li>
+<li>Contrastive Self-Supervised Learning for Graph Classification</li>
+<li>Computationally Tractable Riemannian Manifolds for Graph Embeddings\</li>
+<li>Graph Neural Networks with Heterophily</li>
+<li>Learning Graph Neural Networks with Approximate Gradient Descent</li>
+<li>Probabilistic Dependency Graphs</li>
+<li>Scalable and Explainable 1-Bit Matrix Completion via Graph Signal Learning</li>
+<li>GraphMix: Improved Training of GNNs for Semi-Supervised Learning</li>
+<li>Power up! Robust Graph Convolutional Network via Graph Powering</li>
+<li>Identity-Aware Graph Neural Networks</li>
+<li>Beyond Low-Frequency Information in Graph Convolutional Networks</li>
+<li>Rethinking Graph Regularization for Graph Neural Networks</li>
+</ul>
+<h3 id="Optimiser"><a href="#Optimiser" class="headerlink" title="Optimiser"></a>Optimiser</h3><p>ADAHESSIAN: An Adaptive Second Order Optimizer for Machine Learning</p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+        <category>PaperList</category>
+      </categories>
+      <tags>
+        <tag>machine learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>A Fast Algorithm for Projected Clustering</title>
+    <url>/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/</url>
+    <content><![CDATA[<h2 id="投影聚类法"><a href="#投影聚类法" class="headerlink" title="投影聚类法"></a>投影聚类法</h2><h3 id="Basic-Conceprions"><a href="#Basic-Conceprions" class="headerlink" title="Basic Conceprions"></a>Basic Conceprions</h3><ul>
+<li><strong>投影聚类</strong>:考虑一些多维空间中的一组数据点。 投影聚类是数据点的子集C以及维度的子集p，使得C中的点紧密地聚集在维度V的子空间中。</li>
+</ul>
+<h3 id="基本符号定义"><a href="#基本符号定义" class="headerlink" title="基本符号定义"></a>基本符号定义</h3><ul>
+<li>N:数据点的数量</li>
+<li>$C = \{x_1,x_2,…,x_t\}$是在一个类中数据点的集合</li>
+<li>cluster C的<strong>中心点</strong>定义为: $\bar{x}_c = \sum^t_{i=1} x_i/t$</li>
+<li>定义一个类的<strong>半径radius</strong>为 一个点到类中心点的平均距离 $\bar{x}_c = \sum^t_{i=1} d(\bar{x}_c,x_i)/t$</li>
+</ul>
+<h3 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h3><ul>
+<li><p>算法分为三个部分： 初始化阶段(initialization phase)；迭代阶段(iteration phase)；类别调整阶段(cluster refinement phase)</p>
+</li>
+<li><p><strong>初始化阶段</strong>：使用Greedy method</p>
+<p><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/1.png" alt="1"></p>
+<p>首先从数据集中随机确定一个中心点，加入M，然后计算其他每一个点到M中所有中心点中最近的距离，然后取距离最大的点作为下一个中心点加入M，重新计算剩余点到M中所有中心点中最近的距离，依次迭代下去，直到得到满足个数的集合M</p>
+</li>
+<li><p><strong>迭代阶段</strong>：</p>
+<p>(1)首先从集合M中选择k个作为初始的中心点，然后重复(2)-(6)</p>
+<p>(2)对于M中的每一个中心点$m_i$：</p>
+<p>​    $\delta_i$是$m_i$距离$m_i$最近的中心点的距离</p>
+<p>​    $L_i$是以$m_i$为圆心，$\delta_i$为半径中包含的点的集合</p>
+<p>$L = \{L_1,…,L_k\}$</p>
+<p>(3)为集合中每一个中心点找到与之相关的维度,l最少为2(D = FindDimensions(k,l,L))</p>
+<p>(4)通过找到的维度将所有点按照距离来进行分类，((C1,…,Ck) = AssignPoints(D1,…,Dk))</p>
+<p>(5)通过分类和维度来计算目标函数；如果比目前最好的目标函数还要好，就记录下中心点的分类和当前目标函数的值。</p>
+<p>(6)从当前中心点中找到最坏的一些中心点，然后去除掉之后，从M中重新加入一些点来构成新的集合</p>
+</li>
+<li><p><strong>聚类改进阶段(refinement phase)</strong><br><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/2.png" alt="2"><br><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/3.png" alt="3"><br><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/4.png" alt="4"></p>
+<h3 id="算法细节"><a href="#算法细节" class="headerlink" title="算法细节"></a>算法细节</h3></li>
+<li><p>FindDimensions(k,l,L):</p>
+<p><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/5.png" alt="5"></p>
+<ul>
+<li><p>其中 $X_{ij}$为$L_i$中的点到中心点$m_i$在维度j上的距离</p>
+</li>
+<li><p>$Y_i$为对第i个中心点来说，对应的$L_i$到中心点$m_i$上所有维度的平均距离</p>
+</li>
+<li><p>而后计算标准偏差$\sigma_i$,就可以得到一个为每一个维度进行一个归一化的评价</p>
+<p>为$Z_{ij} = (X_{ij}-Y_i)/\sigma_i$</p>
+</li>
+<li><p>对于每一个中心点$m_i$对应的$Z_{ij}$，选择最小的l个并将这l个记录在$D_i$中，最终返回$D = \{D_1,D_2,…,D_k\}$</p>
+</li>
+</ul>
+</li>
+<li><p>AssignPoints函数：<br><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/6.png" alt="6"></p>
+<p>注意计算的是曼哈顿距离(街区距离)</p>
+<p>选取距离最小的作为某分类(其规则是关于$D_i$的维度上)中的点</p>
+</li>
+<li><p>evaluateClusters函数：<br><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/7.png" alt="7"></p>
+<p>评估一组中心点的质量，从点到它们所属的cluster的质心的曼哈顿距离的平均值作为评价标准</p>
+</li>
+<li><p>丢弃：首先确定哪些是坏的中心点：</p>
+<ul>
+<li>(1)周围有最少点的中心点是坏的中心点</li>
+<li>(2)若中心点周围的点数比$\frac{N}{k}*minDeviation$少，那么他是坏的中心点，mindDeviation是一个小于1的常数(一般用0.1)</li>
+</ul>
+</li>
+<li><p><strong>聚类改进阶段</strong>：再进行(2)-(4)一次，唯一不同的是此次用C而不是用L</p>
+</li>
+</ul>
+<p><a href="https://github.com/cmmp/pyproclus" target="_blank" rel="noopener">此算法的Python代码</a>，写的很规范，完全是根据paper的流程写的，非常清晰。</p>
+]]></content>
+      <categories>
+        <category>Algorithm Library</category>
+        <category>Clustering Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Clustering Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>A Novel Task-Duplication Based Clustering Algorithm for Heterogeneous Computing Environments</title>
     <url>/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ul>
@@ -223,75 +367,132 @@ ect(j,p)\leq ect(j,fproc(j,1)) + C(j,i)</script></li>
       </tags>
   </entry>
   <entry>
-    <title>A Fast Algorithm for Projected Clustering</title>
-    <url>/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/</url>
-    <content><![CDATA[<h2 id="投影聚类法"><a href="#投影聚类法" class="headerlink" title="投影聚类法"></a>投影聚类法</h2><h3 id="Basic-Conceprions"><a href="#Basic-Conceprions" class="headerlink" title="Basic Conceprions"></a>Basic Conceprions</h3><ul>
-<li><strong>投影聚类</strong>:考虑一些多维空间中的一组数据点。 投影聚类是数据点的子集C以及维度的子集p，使得C中的点紧密地聚集在维度V的子空间中。</li>
-</ul>
-<h3 id="基本符号定义"><a href="#基本符号定义" class="headerlink" title="基本符号定义"></a>基本符号定义</h3><ul>
-<li>N:数据点的数量</li>
-<li>$C = \{x_1,x_2,…,x_t\}$是在一个类中数据点的集合</li>
-<li>cluster C的<strong>中心点</strong>定义为: $\bar{x}_c = \sum^t_{i=1} x_i/t$</li>
-<li>定义一个类的<strong>半径radius</strong>为 一个点到类中心点的平均距离 $\bar{x}_c = \sum^t_{i=1} d(\bar{x}_c,x_i)/t$</li>
-</ul>
-<h3 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h3><ul>
-<li><p>算法分为三个部分： 初始化阶段(initialization phase)；迭代阶段(iteration phase)；类别调整阶段(cluster refinement phase)</p>
+    <title>Basic Conceptions</title>
+    <url>/2018/11/13/Basic-Conceptions/</url>
+    <content><![CDATA[<h2 id="Basic-conception"><a href="#Basic-conception" class="headerlink" title="Basic conception"></a>Basic conception</h2><ul>
+<li><p><strong>特征向量(feature vector)</strong>: 每一个分量对应一种<strong>属性</strong>(attribute)/<strong>特征</strong>(feature)的值，构成的空间为<strong>属性空间</strong></p>
 </li>
-<li><p><strong>初始化阶段</strong>：使用Greedy method</p>
-<p><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/1.png" alt="1"></p>
-<p>首先从数据集中随机确定一个中心点，加入M，然后计算其他每一个点到M中所有中心点中最近的距离，然后取距离最大的点作为下一个中心点加入M，重新计算剩余点到M中所有中心点中最近的距离，依次迭代下去，直到得到满足个数的集合M</p>
+<li><p>一般地，令$D = \{x_1,x_2,…x_m\}$表示包含m个示例的<strong>数据集</strong>，每个示例由d个属性描述，则每个示例$x_i = (x_{i1};x_{i2};…;x_{id})$是d维样本空间$\chi$中的一个向量，$x_i\in \chi$,d为样本$x_i$的<strong>维数</strong></p>
 </li>
-<li><p><strong>迭代阶段</strong>：</p>
-<p>(1)首先从集合M中选择k个作为初始的中心点，然后重复(2)-(6)</p>
-<p>(2)对于M中的每一个中心点$m_i$：</p>
-<p>​    $\delta_i$是$m_i$距离$m_i$最近的中心点的距离</p>
-<p>​    $L_i$是以$m_i$为圆心，$\delta_i$为半径中包含的点的集合</p>
-<p>$L = \{L_1,…,L_k\}$</p>
-<p>(3)为集合中每一个中心点找到与之相关的维度,l最少为2(D = FindDimensions(k,l,L))</p>
-<p>(4)通过找到的维度将所有点按照距离来进行分类，((C1,…,Ck) = AssignPoints(D1,…,Dk))</p>
-<p>(5)通过分类和维度来计算目标函数；如果比目前最好的目标函数还要好，就记录下中心点的分类和当前目标函数的值。</p>
-<p>(6)从当前中心点中找到最坏的一些中心点，然后去除掉之后，从M中重新加入一些点来构成新的集合</p>
+<li><p>训练样本的结果称为<strong>标记(label)</strong>；拥有了标记信息的示例，称为<strong>样例(example)</strong>,一般用$(x_i,y_i)$表示</p>
 </li>
-<li><p><strong>聚类改进阶段(refinement phase)</strong><br><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/2.png" alt="2"><br><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/3.png" alt="3"><br><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/4.png" alt="4"></p>
-<h3 id="算法细节"><a href="#算法细节" class="headerlink" title="算法细节"></a>算法细节</h3></li>
-<li><p>FindDimensions(k,l,L):</p>
-<p><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/5.png" alt="5"></p>
-<ul>
-<li><p>其中 $X_{ij}$为$L_i$中的点到中心点$m_i$在维度j上的距离</p>
+<li><p>学习任务大致可分为两类：<strong>监督学习(supervised learning)</strong>和<strong>无监督学习(unsupervised learning)</strong>，分类(classification)和回归(regression)是前者的代表，而聚类则是后者的代表。</p>
 </li>
-<li><p>$Y_i$为对第i个中心点来说，对应的$L_i$到中心点$m_i$上所有维度的平均距离</p>
+<li><p><strong>泛化(generalization)能力</strong>:所学的模型适用于新样本的能力；</p>
 </li>
-<li><p>而后计算标准偏差$\sigma_i$,就可以得到一个为每一个维度进行一个归一化的评价</p>
-<p>为$Z_{ij} = (X_{ij}-Y_i)/\sigma_i$</p>
+<li><p>通常假设样本空间全体样本服从一个未知的<strong>分布(distribution)</strong>,获得的每个样本都是<strong>独立同分布的(independent and identically distributed),i.i.d</strong></p>
 </li>
-<li><p>对于每一个中心点$m_i$对应的$Z_{ij}$，选择最小的l个并将这l个记录在$D_i$中，最终返回$D = \{D_1,D_2,…,D_k\}$</p>
+<li><p><strong>归纳(induction)</strong>:从特殊到一般的泛化过程；<strong>演绎(deduction)</strong>:从一般到特化.</p>
+</li>
+<li><p><strong>演绎空间</strong>：样本x每一个属性的可能取值所构成的空间，其中有可能是*,代表此属性取什么都行，也有可能整个空间为空集。</p>
+<p><strong>版本空间(version space)</strong>:如果假设空间中有多个与训练集一致的假设，即存在一个与训练集一致的“假设集合”</p>
+</li>
+<li><p><strong>归纳偏好(inductive bias)</strong>:算法在学习过程中对某种类型假设的偏好</p>
+<p>“奥卡姆剃刀”原则：若有多个假设与观察一致，则选择最简单的那个。</p>
+</li>
+<li><p><strong>No Free Lunch Theorem</strong>: 所有算法的期望性能是相同的，<strong>前提</strong>是所有“问题”出现的机会相同、或者所有问题同等重要，但是实际情况不是这样</p>
 </li>
 </ul>
-</li>
-<li><p>AssignPoints函数：<br><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/6.png" alt="6"></p>
-<p>注意计算的是曼哈顿距离(街区距离)</p>
-<p>选取距离最小的作为某分类(其规则是关于$D_i$的维度上)中的点</p>
-</li>
-<li><p>evaluateClusters函数：<br><img src="/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/7.png" alt="7"></p>
-<p>评估一组中心点的质量，从点到它们所属的cluster的质心的曼哈顿距离的平均值作为评价标准</p>
-</li>
-<li><p>丢弃：首先确定哪些是坏的中心点：</p>
-<ul>
-<li>(1)周围有最少点的中心点是坏的中心点</li>
-<li>(2)若中心点周围的点数比$\frac{N}{k}*minDeviation$少，那么他是坏的中心点，mindDeviation是一个小于1的常数(一般用0.1)</li>
-</ul>
-</li>
-<li><p><strong>聚类改进阶段</strong>：再进行(2)-(4)一次，唯一不同的是此次用C而不是用L</p>
-</li>
-</ul>
-<p><a href="https://github.com/cmmp/pyproclus" target="_blank" rel="noopener">此算法的Python代码</a>，写的很规范，完全是根据paper的流程写的，非常清晰。</p>
 ]]></content>
       <categories>
-        <category>Algorithm Library</category>
-        <category>Clustering Algorithm</category>
+        <category>machine learning</category>
+        <category>basic conception</category>
       </categories>
       <tags>
-        <tag>Clustering Algorithm</tag>
+        <tag>machine learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DMOEA-epsilonC</title>
+    <url>/2018/11/27/DMOEA-epsilonC/</url>
+    <content><![CDATA[<h2 id="主要贡献"><a href="#主要贡献" class="headerlink" title="主要贡献"></a>主要贡献</h2><ul>
+<li>首次将$\epsilon$约束法和分解的方法合并起来，</li>
+<li>在优化的过程中，使用了主函数变化的策略，</li>
+<li>由于不同问题的计算复杂度不同，则需要对计算资源进行动态分配</li>
+<li>并且使用了解和子问题的匹配，子问题和解的匹配等方法来平衡解的多样性和收敛性之间的关系</li>
+</ul>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="多目标进化算法-MOEA"><a href="#多目标进化算法-MOEA" class="headerlink" title="多目标进化算法(MOEA)"></a>多目标进化算法(MOEA)</h3><ul>
+<li>分类:基于他们的选择策略，我们可以将他们分为三类:<ul>
+<li>(1)基于Parero支配</li>
+<li>(2)基于performance indicator</li>
+<li>(3)基于分解策略的</li>
+</ul>
+</li>
+<li>一般处理多目标问题的两个基本方法: 权重法和$\epsilon$约束法</li>
+<li><strong>$\epsilon$约束法</strong>：选择一个目标作为主函数，其他的目标作为约束来处理，并且为每一个约束来添加一个<strong>上界</strong></li>
+</ul>
+<h2 id="基本框架介绍"><a href="#基本框架介绍" class="headerlink" title="基本框架介绍"></a>基本框架介绍</h2><h3 id="Problem-Formulation-under-epsilon-constraint"><a href="#Problem-Formulation-under-epsilon-constraint" class="headerlink" title="Problem Formulation under $\epsilon$ constraint"></a>Problem Formulation under $\epsilon$ constraint</h3><p><img src="/2018/11/27/DMOEA-epsilonC/1.png" alt="1"></p>
+<p>那么Fig1中多目标优问题可以转化为:</p>
+<script type="math/tex; mode=display">
+minimize~~~f_{main} = f_s(x) +\rho \sum^{m}_{i=1}f_i(x)\\
+subject~~~to~~ 
+\begin{equation}
+\left\{
+\begin{array}{**rc1**}
+\frac{f_i(x)-z_i}{z^{nad}_{i}-z_{i}}\leq \epsilon_i, \forall i \in \{i,1,...,m\}/\{s\}\\
+x = (x_1,x_2,...,x_n)\in \Omega
+\end{array}
+\right.
+\end{equation}\\
+其中， 0\leq \epsilon = (\epsilon_1,...,\epsilon_{s-1},\epsilon_{s+1},...,\epsilon_{m})\leq 1\\
+s是从m中任意选的，\rho >0 是一个很小的正数\\
+z = (z_1,...,z_m)和z^{nad} = (z^{nad}_1,...,z^{nad}_m)分别是理想点和最低点</script><ul>
+<li><strong>理想点(ideal point $z\in R^m$)</strong>：是通过独立地最小化每一个目标函数得到的，即满足<script type="math/tex; mode=display">
+minimize~~f_i(x)\\
+subject~to~x\in \Omega~~~for~i=1,...,m.</script></li>
+</ul>
+<ul>
+<li><p><strong>最低点(nadir point $z^{nad}$)</strong>:最低点是PF(Pareto Front)的上界，$z^{nad}$的每个元素定义为</p>
+<script type="math/tex; mode=display">
+z^{nad}_{i} = max\{f_i|F = (f_1,f_2,...,f_m)\in PF\}\\
+where~ i=1,2,...,m</script><p><strong>算法框架</strong></p>
+<p><img src="/2018/11/27/DMOEA-epsilonC/2.png" alt="2"></p>
+</li>
+</ul>
+<ul>
+<li><p>对两个解进行比较的基本规则：</p>
+<ul>
+<li>(1)可行解优于不可行解</li>
+<li>(2)对于两个可行解，对应目标函数值更好的更优</li>
+<li>(3)对于两不可行解，选择对约束破坏更小的解</li>
+</ul>
+</li>
+<li><p>基本参数介绍：</p>
+<ul>
+<li><strong>N</strong>: 上界向量的个数，和种群大小相同</li>
+<li><strong>T</strong>: 邻居的个数<strong>neighborhood size</strong></li>
+<li><strong>$\delta$</strong>：选择 mate solutions的概率</li>
+<li><strong>$n_r$</strong>: 替换的最大数量(Maximum number of replacement)</li>
+<li><strong>$IN_m$</strong>: 在迭代中采用更换主函数策略的代数间隔</li>
+<li><strong>$DRA_interval$</strong>：在迭代中采用动态资源分配策略的代数间隔</li>
+<li><strong>S</strong>: 外部存档种群（EP）的最大规模</li>
+<li><strong>NFE</strong>: 函数评价值的最大值</li>
+</ul>
+</li>
+</ul>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p><img src="/2018/11/27/DMOEA-epsilonC/3.png" alt="3"></p>
+<ul>
+<li>After the main objective alternation strategy is utilized, a solution which is good for the current subproblem will no longer perform well since the objective function of this subproblem has been changed.  </li>
+</ul>
+<p><img src="/2018/11/27/DMOEA-epsilonC/4.png" alt="4"></p>
+<ul>
+<li>Different subproblems have different computational difficulties, therefore, it is reasonable to assign different amounts of computational effort to them based on their utility values which are defined in the line 3 of Algorithm 3 </li>
+</ul>
+<p><img src="/2018/11/27/DMOEA-epsilonC/5.png" alt="5"></p>
+<ul>
+<li>When a new solution is generated, it may perform badly for the current subproblem but perform well for another subproblem. </li>
+</ul>
+<p><img src="/2018/11/27/DMOEA-epsilonC/6.png" alt="6"></p>
+<ul>
+<li>An EP is maintained in addition to the evolving population. Thus when a new solution is generated, the EP should be updated. And if the number of individuals in EP exceeds S, EP is pruned until its size equals to S. </li>
+<li>首先选择bounded points(有最小或最大目标值的解)，然后从剩余解中迭代选择距离已选择点最远的点</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Cloud Workflow Scheduling</category>
+      </categories>
+      <tags>
+        <tag>Cloud Workflow Scheduling</tag>
       </tags>
   </entry>
   <entry>
@@ -462,6 +663,155 @@ ect(j,p)\leq ect(j,fproc(j,1)) + C(j,i)</script></li>
       </tags>
   </entry>
   <entry>
+    <title>CloudSim Structure</title>
+    <url>/2018/11/09/CloudSim-Structure/</url>
+    <content><![CDATA[<h2 id="Basic-Concepts-and-Terminologies"><a href="#Basic-Concepts-and-Terminologies" class="headerlink" title="Basic Concepts and Terminologies"></a>Basic Concepts and Terminologies</h2><h3 id="Layered-Design"><a href="#Layered-Design" class="headerlink" title="Layered Design"></a>Layered Design</h3><p><img src="/2018/11/09/CloudSim-Structure/StructureofCloudPlatform.png" alt="StructureofCloudPlatform"></p>
+<ul>
+<li><p><strong>User-Level Middleware</strong>: providing PaaS capabilities</p>
+<p>(1) Includes the software frameworks such as Web 2.0 Interfaces </p>
+<p>(2) provides the programming environments and composition tools that ease the creation, deployment, and execution of applications in Clouds </p>
+</li>
+<li><p><strong>Core Middleware</strong>:</p>
+<p>(1) Implements the platform level services that provide runtime environment enabling Cloud computing capabilities to application services built using User-Level Middlewares </p>
+<p>(2) Core services at this layer includes Dynamic SLA(Service Level-Agreement) Management, Accounting, Billing, Execution monitoring and management, and Pricing.  </p>
+</li>
+<li><p><strong>System Level</strong>:</p>
+<p>(1) Exist massive physical resources (storage servers and application servers) that power the data centers.</p>
+<p>(2) Servers are transparently managed by the higher level virtualization</p>
+<p>(3) VMs are isolated from each other.</p>
+</li>
+</ul>
+<h3 id="Federation-Inter-Networking-of-Clouds"><a href="#Federation-Inter-Networking-of-Clouds" class="headerlink" title="Federation (Inter-Networking) of Clouds"></a>Federation (Inter-Networking) of Clouds</h3><ul>
+<li><p>现有系统不支持用于动态协调不同数据中心之间的负载分解的机制和策略，以便确定用于托管应用服务的最佳位置以实现合理的服务满意度水平。</p>
+</li>
+<li><p>云服务提供商无法预测消费其服务的用户的地理分布，因此负载协调必须自动发生，并且服务的分配必须根据负载行为的变化而变化。</p>
+<p><img src="/2018/11/09/CloudSim-Structure/2.png" alt="StructureofCloudPlatform"></p>
+<ul>
+<li><strong>Cloud coordinator</strong>的作用<ul>
+<li>(1)提供云服务：包括基础设施和平台级别的</li>
+<li>(2)跟踪数据中心的负载，并且承担与其他云服务商在需求高峰期的时候进行服务的动态规划的协调</li>
+<li>(3)检测应用的执行和约定的SLAs(服务等级协议)被传送</li>
+</ul>
+</li>
+<li><strong>Cloud Exchange(CEx)</strong>的作用<ul>
+<li>bring together service providers and consumers</li>
+<li>汇总云代理的基础需求，并根据Cloud Coordinators发布的可用的资源进行评估</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="CloudSim-Architecture"><a href="#CloudSim-Architecture" class="headerlink" title="CloudSim Architecture"></a>CloudSim Architecture</h2><h3 id="Basic-architecture"><a href="#Basic-architecture" class="headerlink" title="Basic architecture"></a>Basic architecture</h3><p><img src="/2018/11/09/CloudSim-Structure/3.png" alt="3"></p>
+<ul>
+<li><strong>SimJava discrete event simulation engine</strong>: <ul>
+<li>Implements the core functionalities required for higher-level simulation frameworks, creation of system components.(services, host, data center, broker, virtual machines), communication between components and management of the simulation clock.</li>
+</ul>
+</li>
+<li><strong>GridSim</strong><ul>
+<li>用于建模多个网格基础设施的高级软件组件，包括网络和相关的流量配置文件;</li>
+<li>基础网格组件，比如 resources, data sets, workflow traces, and information services.</li>
+</ul>
+</li>
+<li><strong>CloudSim</strong><ul>
+<li>拓展了Gridsim的公开的核心函数</li>
+<li>赋予虚拟云端的数据中心环境的模型和仿真提供了很好的支持，比如，虚拟机，内存和带宽的专用管理界面</li>
+<li>可以实例化和透明管理数千个系统组成的云计算基础系统架构</li>
+<li>可以配置VMs，管理应用的运行，并且可以动态监视</li>
+<li>云服务商可以研究：不同分配hosts方法的效益等</li>
+</ul>
+</li>
+<li><strong>User Code</strong><ul>
+<li>exposes configuration related functionalities for <strong>hosts</strong>(number of machines, their specifications and so on), <strong>applications</strong>(number of tasks and their requirements), <strong>VMs</strong>, number of <strong>users</strong> and their <strong>application types</strong> and <strong>broker</strong> scheduling policies.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Modeling-the-clouds"><a href="#Modeling-the-clouds" class="headerlink" title="Modeling the clouds"></a>Modeling the clouds</h3><ul>
+<li>与云相关的核心硬件基础架构服务由<strong>数据中心组件</strong>在模拟器中建模，用于处理服务请求，请求是在VM中沙箱化的应用程序元素，需要在Datacenter的主机组件上分配一部分处理能力。 </li>
+<li><strong>NOTE</strong>:VM的处理包括VM整个生命周期的一些列操作：为VM配置一个主机，VM的创建，VM的销毁和VM的移植。</li>
+<li>Datacenter是由一系列的的主机(host)构成，主机可以管理VMs，主机在云中代表一个物理计算节点。 Host提供了支持单核和多核节点的建模与仿真的接口</li>
+<li>分配VMs到Hosts是<strong>虚拟机配置</strong>部分的功能： 这一部分有很多方法，从用户角度的，从系统角度的，默认的是FCFS(First Come First Service)  </li>
+<li>The allocation of cores to VMs is done based on a host allocation. Each host components instantiates a VM scheduler component that implements the space-shared or time shared policies for allocating cores to VMs. </li>
+</ul>
+<h3 id="Modeling-the-VM-allocation"><a href="#Modeling-the-VM-allocation" class="headerlink" title="Modeling the VM allocation"></a>Modeling the VM allocation</h3><ul>
+<li><p>云计算与网格计算最大的一个不同之处就是采用了大量的虚拟化技术和工具。</p>
+</li>
+<li><p>需要考虑的因素就是：避免创建需要比主机中可用处理能力更强的处理能力的VM</p>
+</li>
+<li><p>CloudSim支持VM调度两种层级的操作，一种是host level(主机层)，确定给每个VM分配多少计算能力；一种是VM level(虚拟机层)，给存储在他的execution engine的特定的task分配可用处理资源。每一个层级都包含time-shared and space-shared resource allocation policies.</p>
+<p><img src="/2018/11/09/CloudSim-Structure/4.png" alt="4"></p>
+<p><strong>note</strong>:</p>
+<ul>
+<li><p><strong>space-shared for VMs</strong>: only one VM can run at a given instance of time</p>
+<p><strong>time-shared for VMs</strong>: the core is shared, the amount of processing power available to the VM is lesser than space-shared</p>
+</li>
+<li><p><strong>space-shared for tasks</strong>: a VM has two cores, so it sun two at a time but the other two are queued until the completion of the earlier task units</p>
+<p><strong>time-shared for tasks</strong>: enable the task to be scheduled at an earlier time, but significantly affecting the completion time of task units that are ahead the queue</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Modeling-the-Cloud-Market"><a href="#Modeling-the-Cloud-Market" class="headerlink" title="Modeling the Cloud Market"></a>Modeling the Cloud Market</h3><ul>
+<li><strong>Modeling the cost and pricing policies</strong>,four market-related properties are associated to a data center: cost per processing,cost per unit of memory,cost per unit of storage,cost per unit of used bandwidth.</li>
+</ul>
+<h3 id="Design-and-implementation-of-CloudSim"><a href="#Design-and-implementation-of-CloudSim" class="headerlink" title="Design and implementation of CloudSim"></a>Design and implementation of CloudSim</h3><ul>
+<li><strong>DataCenter</strong>: <ul>
+<li>Core infrastructure level services(hardware, software) offered by resource providers in a Cloud Computing environment. </li>
+<li>Instantiates a generalized resource provisioning component that implements a set of policies for allocating bandwidth, memory and storage devices.</li>
+</ul>
+</li>
+<li><strong>DataCenterBroker</strong>:<ul>
+<li>Responsible for mediating between users and service providers depending on users’ QoS requirements and deploys service tasks across Clouds.</li>
+</ul>
+</li>
+<li><strong>SANStorage</strong><ul>
+<li>Models a storage area network that is commonly available to Cloud-based data centers for storing large chunks of data</li>
+<li>提供接口可在任何时间对根据网络带宽的可用性对任意大的数据量进行存储和检索，但是在运行访问SAN中的文件会导致任务单元执行的额外延迟。</li>
+</ul>
+</li>
+<li><strong>Virtual Machine</strong><ul>
+<li>Model an instance of Vm. Hosr部分负责VM的管理，可以同时实例化很多VMs，并且根据前述的政策(空间/时间分享)运行</li>
+<li>每个VM中有存储其基本特征的组成部分：memory, processor, storage, VM’s internal scheduling policy.</li>
+</ul>
+</li>
+<li><strong>Cloudlet</strong><ul>
+<li>Models the Cloud-based application services(content delivery（内容交付）, social networking, business workflow)</li>
+<li>每个应用程序组件都具有预先指定的指令长度（继承自GridSim的Gridlet组件）以及成功托管应用程序所需的数据传输量（提前和提取后）。</li>
+</ul>
+</li>
+<li><strong>CloudCoordinator</strong><ul>
+<li>provides federation capacity to a data center.</li>
+<li>(1)communicating with other peer CloudCoordinator services and Cloud Brokers</li>
+<li>(2)monitor the internal state of a data center that plays integral role in load-balancing/application scaling decision making.(触发负载迁移的事件是有CloudSim用户通过Sensor组件来设置的)</li>
+</ul>
+</li>
+<li><strong>BWProvisioner</strong><ul>
+<li>Models the provisioning policy of bandwidth to VMs.</li>
+</ul>
+</li>
+<li><strong>MemoryProvisioner</strong><ul>
+<li>Represents the provisioning policy for allocating memory to VMs.</li>
+</ul>
+</li>
+<li><strong>VMProvisioner</strong><ul>
+<li>Represents the provisioning policy that a VM Monitor utilizes for allocating VMs to Hosts.</li>
+</ul>
+</li>
+<li><strong>VMMAllocationPolicy</strong><ul>
+<li>Implemented by a Host component that models the policies (time-shared, space shared) required for allocating processing power to VMs.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2018/11/09/CloudSim-Structure/12.png" alt="12"></p>
+<h3 id="Communication-among-entities"><a href="#Communication-among-entities" class="headerlink" title="Communication among entities"></a>Communication among entities</h3><p><img src="/2018/11/09/CloudSim-Structure/11.png" alt="11"></p>
+]]></content>
+      <categories>
+        <category>Cloud Workflow Scheduling</category>
+      </categories>
+      <tags>
+        <tag>CloudSim toolkit introduction</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dynamic GNN PaperList</title>
     <url>/2020/09/18/Dynamic-GNN-PaperList/</url>
     <content><![CDATA[<p>AAAI 2018:</p>
@@ -558,6 +908,179 @@ ect(j,p)\leq ect(j,fproc(j,1)) + C(j,i)</script></li>
       </categories>
       <tags>
         <tag>Machine Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FirstTest</title>
+    <url>/2018/11/02/FirstTest/</url>
+    <content><![CDATA[<h1 id="This-is-a-test-on-hexo-plus-github"><a href="#This-is-a-test-on-hexo-plus-github" class="headerlink" title="This is a test on hexo plus github"></a>This is a test on hexo plus github</h1><h2 id="Head-2"><a href="#Head-2" class="headerlink" title="Head 2"></a>Head 2</h2><h3 id="head3"><a href="#head3" class="headerlink" title="head3"></a>head3</h3><ul>
+<li><p>Now we can test the support for formulas, $x^2 + 2x+ 1 =\frac{1}{2} g$,</p>
+<script type="math/tex; mode=display">
+Cov(x,y) = E(xy)-E(x)E(y)</script><script type="math/tex; mode=display">
+\begin{bmatrix}
+a&b&c\\
+d&e&f
+\end{bmatrix}</script></li>
+</ul>
+<ul>
+<li><p>Now for  <strong>Bold</strong>, <u>underline</u>, and <em>italic</em></p>
+</li>
+<li><p>Test on codes</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(<span class="string">"hello world"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test on images </p>
+<p><img src="/2018/11/02/FirstTest/FirstTest_1.jpg" alt="FirstTest_1"></p>
+</li>
+<li><p>Test on tables</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>1</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>Test on linux…</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Entertainment</category>
+      </categories>
+      <tags>
+        <tag>Try4New</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Evolutionary Multi-Objective Workflow Scheduling in Cloud</title>
+    <url>/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/</url>
+    <content><![CDATA[<h2 id="Main-idea"><a href="#Main-idea" class="headerlink" title="Main idea"></a>Main idea</h2><ul>
+<li><p><strong>Objective</strong>: optimize both makespan and cost</p>
+</li>
+<li><p><strong>Main Contributions</strong>:</p>
+<ul>
+<li><p>突出显示直接应用于云的现有调度算法的挑战，利用真实的云特性制定云工作流调度问题。</p>
+<p>使用基于实例的IaaS风格方案制定定价选项，但不指定特定的定价规则</p>
+</li>
+<li><p>present the EMO(Evolutionary Multi-Objective) algorithm for the modeled workflow scheduling problem.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Challenges-for-Scheduling-Workflows-in-Cloud"><a href="#Challenges-for-Scheduling-Workflows-in-Cloud" class="headerlink" title="Challenges for Scheduling Workflows in Cloud"></a>Challenges for Scheduling Workflows in Cloud</h2><h3 id="云计算和网格计算模型的差别"><a href="#云计算和网格计算模型的差别" class="headerlink" title="云计算和网格计算模型的差别"></a>云计算和网格计算模型的差别</h3><ul>
+<li><p>the complex pricing schemes:在云环境下一个任务的cost在调度之前很难精准地预算；</p>
+<p>大多数调度的启发式算法还要求知道每个任务的cost来进行优先级排序或者处理器的选择。</p>
+</li>
+<li><p>the large-size resource pools：在传统异构的环境中，资源池是有限的，所以有些算法是遍历资源池来进行处理器的选择，但是对于云环境不使用。</p>
+</li>
+<li><p>有一种是把所有种类的instance(VMs)做成一个列表，但是依然太大了。</p>
+</li>
+</ul>
+<h2 id="Workflow-Scheduling-Problem"><a href="#Workflow-Scheduling-Problem" class="headerlink" title="Workflow Scheduling Problem"></a>Workflow Scheduling Problem</h2><h3 id="基本概念定义"><a href="#基本概念定义" class="headerlink" title="基本概念定义"></a>基本概念定义</h3><ul>
+<li><strong>DAG</strong> W = (T,D), $T = \{T_0,T_1,…,T_n\}$ is the set of tasks, $D = \{(T_i,T_j)|T_i,T_j\in T\}$ is the set of data or control dependencies.</li>
+<li><strong>refertime($T_i$)</strong>: reference execution time of $T_i$</li>
+<li><strong>data($T_i,T_j$)</strong> data transfer size from $T_i$ to $T_j$</li>
+<li><strong>pred(T_i)</strong>=$\{T_j|(T_j ,T_i)\in D\}$</li>
+<li><strong>T_{entry}</strong>: the entry task;<strong>T_{exit}</strong>: exit task </li>
+</ul>
+<h3 id="云资源管理"><a href="#云资源管理" class="headerlink" title="云资源管理"></a>云资源管理</h3><ul>
+<li><p>认为云端的instances是无穷的，用$I=\{I_0,I_1,…\}$来形容所有可用的instances。$P =\{P_0,P_1,…,P_m\}$代表所有的instances的类型，共m种。</p>
+</li>
+<li><p>用$cu(P_i)$来代表instance type $P_i$的计算单元（compute unit），并且假设<strong>如果一个instacne的CU变为原来的两倍，执行时间会缩短为原来的一半</strong>,故而任务$T_i$的实际运行时间为</p>
+<script type="math/tex; mode=display">
+Time_{comp}(T_i)=\frac{refertime(T_i)}{cu(P_j)}</script></li>
+<li><p>带宽 $bw(P_i)$代表instance type $P_i$的带宽，那么$T_i$和$T_j$之间的communication time (忽略setup delays)为</p>
+<script type="math/tex; mode=display">
+Time_{comm}(T_i,T_j)=\begin{equation}
+\left\{
+    \begin{array}{**rc1**}
+    \frac{data(T_i,T_j)}{min\{bw(P_p),bw(P_q)\}},~~~p\neq q\\
+    0,~~~p=q
+    \end{array}
+\right.
+\end{equation}</script></li>
+<li><p><strong>定价模型</strong>：用$M=\{M_0,M_1,…,M_k\}$来表示IaaS提供的pricing options，并且定义了函数<strong>charge</strong>$(M_h,P_j,I_i)$计算用定价模型$M_h$来算type为$P_j$的instance $I_i$.</p>
+</li>
+</ul>
+<h3 id="工作流调度问题定义"><a href="#工作流调度问题定义" class="headerlink" title="工作流调度问题定义"></a>工作流调度问题定义</h3><ul>
+<li>已知$W=(T,D)$，并且有IaaS平台$S=(I,P,M)$,那么一个调度问题就是要产生一个或多个下列形式的解 $R = (Ins, Type, Order)$，其中<script type="math/tex; mode=display">
+Ins: T\rightarrow I, Ins(T_i) = I_j\\
+Type: I\rightarrow P, Type(I_s) = P_t</script><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/1.png" alt="1"></li>
+</ul>
+<h2 id="多目标进化算法优化"><a href="#多目标进化算法优化" class="headerlink" title="多目标进化算法优化"></a>多目标进化算法优化</h2><ul>
+<li>最主要的贡献就是：present a whole set of the exploration operations, including encoding, population initialization, crossover, and mutation. These operations can work with any exploitation operation (e.g., fitness assignment, selection) in the EMO area </li>
+</ul>
+<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/2.png" alt="2"></p>
+<p>其中$avail(Ins(T_i))$为instance $I_i$可用的时间，他是通过$FT(T_i)$来更新的</p>
+<h3 id="Encoding"><a href="#Encoding" class="headerlink" title="Encoding"></a>Encoding</h3><ul>
+<li><p>由于解的形式为$R = (Ins, Type, Order)$,所以染色体分为三段。</p>
+<p><strong>order</strong>是所有任务序列的排列，如果i在j前面，则$T_i$会比$T_j$先确定用hosting instance(VM),但是并不意味$T_i$比$T_j$先执行。</p>
+<p><strong>task2ins</strong>:是长度为n（假设有n中类型）的映射<em>Ins</em>的向量,其中index代表一个任务，他的值代表选择哪一个instance来执行此任务。例如tak2ins[i]=j就是让$T_i$被安排到一个index为j的instance($I_j$)上。</p>
+<p><strong>ins2type</strong>:一个从instance index映射到他们类型的映射，例如ins2type[j] = k表示instance $I_j$的类型为$P_k$</p>
+</li>
+</ul>
+<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/3.png" alt="3"></p>
+<h3 id="Crossover"><a href="#Crossover" class="headerlink" title="Crossover"></a>Crossover</h3><p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/4.png" alt="4"></p>
+<ul>
+<li><p>需要注意不能违反依赖关系；This operator will not cause any dependency conflict since the order of any two tasks should have already existed in at least one parent.  </p>
+</li>
+<li><p>对于task2ins和ins2type则同时进行crossover操作</p>
+<ul>
+<li><p>随机选择一个切断点，而后将两个父代的task2ins字符串的第一部分进行交换。</p>
+<p><strong>注意</strong>：一个任务所在运行的VM的种类也是十分重要的，所以，如果一个任务T，在type为$p_i$的instance I上运行，现在被重新安排到类型为$p_j$的$I^{<em>}$上，那么我们应将$I^{</em>}$的类型修改为$p_i$,但是这样有可能导致其他原本安排在此VM上的任务的所选类型改变，这种情况则将$I^{*}$的类型随机选为$p_i$或者$p_j$;如果没有发生冲突，则对VM的type引入一个小几率的变异操作</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/5.png" alt="5"></p>
+<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/8.png" alt="5"></p>
+<h3 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h3><ul>
+<li><p>Mutation of <em>order</em></p>
+<p>define all successors of task $T_i$ as</p>
+<script type="math/tex; mode=display">
+succ(T_i)=\{T_j|(T_i,T_j)\in D\}</script><p><strong>整体思想</strong>：从pos开始向前向后查找，找到可以交换的index的最大范围，然后在这个范围内随机产生一个整数，将pos移到此位置<br><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/6.png" alt="6"></p>
+</li>
+<li><p>Mutation of <em>task2ins</em> and <em>ins2type</em> :以一个小概率来对每一个位置产生一个新的有效的值</p>
+</li>
+</ul>
+<h3 id="Initial-Population"><a href="#Initial-Population" class="headerlink" title="Initial Population"></a>Initial Population</h3><ul>
+<li><strong>假定</strong>，种群大小为n，那么初始化时，<ul>
+<li>一个个体是通过HEFT(异构最早完成时间算法)计算，被认为是最快的调度</li>
+<li>一个个体是在执行HEFT时同时产生的，是要产生最便宜的调度</li>
+<li>其他n-2个个体是通过<strong>RandTypeOrIns</strong>来产生的。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/7.png" alt="7"></p>
+<p><strong>整体思想</strong>：order是按照递增来构造的，然后随机选择一种instance type,将所有的instance的类型设为此类型，对于task2ins，则是有两种方法：第一种是将所有的任务分配到同一个instance(0)上;另一种是对每一个任务产生一个0到n-1之间的随机数。</p>
+]]></content>
+      <categories>
+        <category>Cloud Workflow Scheduling</category>
+      </categories>
+      <tags>
+        <tag>Cloud Workflow Scheduling</tag>
       </tags>
   </entry>
   <entry>
@@ -830,281 +1353,26 @@ J_{\lambda}(f) = \frac{\lambda}{N}\sum^N_{i=1}\int^T_{0}||f(z, t)||^2dt -\frac{1
       </tags>
   </entry>
   <entry>
-    <title>Basic Conceptions</title>
-    <url>/2018/11/13/Basic-Conceptions/</url>
-    <content><![CDATA[<h2 id="Basic-conception"><a href="#Basic-conception" class="headerlink" title="Basic conception"></a>Basic conception</h2><ul>
-<li><p><strong>特征向量(feature vector)</strong>: 每一个分量对应一种<strong>属性</strong>(attribute)/<strong>特征</strong>(feature)的值，构成的空间为<strong>属性空间</strong></p>
+    <title>Interesting Things</title>
+    <url>/2018/11/04/Interesting-Things/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/dog250/article/details/38958637" target="_blank" rel="noopener">密码学的基本原理</a></p>
+<p><a href="https://yantijin.github.io/JavaEE">Java基本知识点</a></p>
+<h3 id="时间序列异常检测"><a href="#时间序列异常检测" class="headerlink" title="时间序列异常检测"></a>时间序列异常检测</h3><ul>
+<li><p>优秀的专栏：</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/zr9558" target="_blank" rel="noopener">数学人生</a></li>
+<li><a href="https://zhuanlan.zhihu.com/liutengfei" target="_blank" rel="noopener">机器学习和金融风控</a></li>
+</ul>
 </li>
-<li><p>一般地，令$D = \{x_1,x_2,…x_m\}$表示包含m个示例的<strong>数据集</strong>，每个示例由d个属性描述，则每个示例$x_i = (x_{i1};x_{i2};…;x_{id})$是d维样本空间$\chi$中的一个向量，$x_i\in \chi$,d为样本$x_i$的<strong>维数</strong></p>
-</li>
-<li><p>训练样本的结果称为<strong>标记(label)</strong>；拥有了标记信息的示例，称为<strong>样例(example)</strong>,一般用$(x_i,y_i)$表示</p>
-</li>
-<li><p>学习任务大致可分为两类：<strong>监督学习(supervised learning)</strong>和<strong>无监督学习(unsupervised learning)</strong>，分类(classification)和回归(regression)是前者的代表，而聚类则是后者的代表。</p>
-</li>
-<li><p><strong>泛化(generalization)能力</strong>:所学的模型适用于新样本的能力；</p>
-</li>
-<li><p>通常假设样本空间全体样本服从一个未知的<strong>分布(distribution)</strong>,获得的每个样本都是<strong>独立同分布的(independent and identically distributed),i.i.d</strong></p>
-</li>
-<li><p><strong>归纳(induction)</strong>:从特殊到一般的泛化过程；<strong>演绎(deduction)</strong>:从一般到特化.</p>
-</li>
-<li><p><strong>演绎空间</strong>：样本x每一个属性的可能取值所构成的空间，其中有可能是*,代表此属性取什么都行，也有可能整个空间为空集。</p>
-<p><strong>版本空间(version space)</strong>:如果假设空间中有多个与训练集一致的假设，即存在一个与训练集一致的“假设集合”</p>
-</li>
-<li><p><strong>归纳偏好(inductive bias)</strong>:算法在学习过程中对某种类型假设的偏好</p>
-<p>“奥卡姆剃刀”原则：若有多个假设与观察一致，则选择最简单的那个。</p>
-</li>
-<li><p><strong>No Free Lunch Theorem</strong>: 所有算法的期望性能是相同的，<strong>前提</strong>是所有“问题”出现的机会相同、或者所有问题同等重要，但是实际情况不是这样</p>
+<li><p><a href="https://zhuanlan.zhihu.com/p/51053142" target="_blank" rel="noopener">基于自编码器的时间序列异常检测</a></p>
 </li>
 </ul>
 ]]></content>
       <categories>
-        <category>machine learning</category>
-        <category>basic conception</category>
+        <category>Life</category>
       </categories>
       <tags>
-        <tag>machine learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CloudSim Structure</title>
-    <url>/2018/11/09/CloudSim-Structure/</url>
-    <content><![CDATA[<h2 id="Basic-Concepts-and-Terminologies"><a href="#Basic-Concepts-and-Terminologies" class="headerlink" title="Basic Concepts and Terminologies"></a>Basic Concepts and Terminologies</h2><h3 id="Layered-Design"><a href="#Layered-Design" class="headerlink" title="Layered Design"></a>Layered Design</h3><p><img src="/2018/11/09/CloudSim-Structure/StructureofCloudPlatform.png" alt="StructureofCloudPlatform"></p>
-<ul>
-<li><p><strong>User-Level Middleware</strong>: providing PaaS capabilities</p>
-<p>(1) Includes the software frameworks such as Web 2.0 Interfaces </p>
-<p>(2) provides the programming environments and composition tools that ease the creation, deployment, and execution of applications in Clouds </p>
-</li>
-<li><p><strong>Core Middleware</strong>:</p>
-<p>(1) Implements the platform level services that provide runtime environment enabling Cloud computing capabilities to application services built using User-Level Middlewares </p>
-<p>(2) Core services at this layer includes Dynamic SLA(Service Level-Agreement) Management, Accounting, Billing, Execution monitoring and management, and Pricing.  </p>
-</li>
-<li><p><strong>System Level</strong>:</p>
-<p>(1) Exist massive physical resources (storage servers and application servers) that power the data centers.</p>
-<p>(2) Servers are transparently managed by the higher level virtualization</p>
-<p>(3) VMs are isolated from each other.</p>
-</li>
-</ul>
-<h3 id="Federation-Inter-Networking-of-Clouds"><a href="#Federation-Inter-Networking-of-Clouds" class="headerlink" title="Federation (Inter-Networking) of Clouds"></a>Federation (Inter-Networking) of Clouds</h3><ul>
-<li><p>现有系统不支持用于动态协调不同数据中心之间的负载分解的机制和策略，以便确定用于托管应用服务的最佳位置以实现合理的服务满意度水平。</p>
-</li>
-<li><p>云服务提供商无法预测消费其服务的用户的地理分布，因此负载协调必须自动发生，并且服务的分配必须根据负载行为的变化而变化。</p>
-<p><img src="/2018/11/09/CloudSim-Structure/2.png" alt="StructureofCloudPlatform"></p>
-<ul>
-<li><strong>Cloud coordinator</strong>的作用<ul>
-<li>(1)提供云服务：包括基础设施和平台级别的</li>
-<li>(2)跟踪数据中心的负载，并且承担与其他云服务商在需求高峰期的时候进行服务的动态规划的协调</li>
-<li>(3)检测应用的执行和约定的SLAs(服务等级协议)被传送</li>
-</ul>
-</li>
-<li><strong>Cloud Exchange(CEx)</strong>的作用<ul>
-<li>bring together service providers and consumers</li>
-<li>汇总云代理的基础需求，并根据Cloud Coordinators发布的可用的资源进行评估</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="CloudSim-Architecture"><a href="#CloudSim-Architecture" class="headerlink" title="CloudSim Architecture"></a>CloudSim Architecture</h2><h3 id="Basic-architecture"><a href="#Basic-architecture" class="headerlink" title="Basic architecture"></a>Basic architecture</h3><p><img src="/2018/11/09/CloudSim-Structure/3.png" alt="3"></p>
-<ul>
-<li><strong>SimJava discrete event simulation engine</strong>: <ul>
-<li>Implements the core functionalities required for higher-level simulation frameworks, creation of system components.(services, host, data center, broker, virtual machines), communication between components and management of the simulation clock.</li>
-</ul>
-</li>
-<li><strong>GridSim</strong><ul>
-<li>用于建模多个网格基础设施的高级软件组件，包括网络和相关的流量配置文件;</li>
-<li>基础网格组件，比如 resources, data sets, workflow traces, and information services.</li>
-</ul>
-</li>
-<li><strong>CloudSim</strong><ul>
-<li>拓展了Gridsim的公开的核心函数</li>
-<li>赋予虚拟云端的数据中心环境的模型和仿真提供了很好的支持，比如，虚拟机，内存和带宽的专用管理界面</li>
-<li>可以实例化和透明管理数千个系统组成的云计算基础系统架构</li>
-<li>可以配置VMs，管理应用的运行，并且可以动态监视</li>
-<li>云服务商可以研究：不同分配hosts方法的效益等</li>
-</ul>
-</li>
-<li><strong>User Code</strong><ul>
-<li>exposes configuration related functionalities for <strong>hosts</strong>(number of machines, their specifications and so on), <strong>applications</strong>(number of tasks and their requirements), <strong>VMs</strong>, number of <strong>users</strong> and their <strong>application types</strong> and <strong>broker</strong> scheduling policies.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Modeling-the-clouds"><a href="#Modeling-the-clouds" class="headerlink" title="Modeling the clouds"></a>Modeling the clouds</h3><ul>
-<li>与云相关的核心硬件基础架构服务由<strong>数据中心组件</strong>在模拟器中建模，用于处理服务请求，请求是在VM中沙箱化的应用程序元素，需要在Datacenter的主机组件上分配一部分处理能力。 </li>
-<li><strong>NOTE</strong>:VM的处理包括VM整个生命周期的一些列操作：为VM配置一个主机，VM的创建，VM的销毁和VM的移植。</li>
-<li>Datacenter是由一系列的的主机(host)构成，主机可以管理VMs，主机在云中代表一个物理计算节点。 Host提供了支持单核和多核节点的建模与仿真的接口</li>
-<li>分配VMs到Hosts是<strong>虚拟机配置</strong>部分的功能： 这一部分有很多方法，从用户角度的，从系统角度的，默认的是FCFS(First Come First Service)  </li>
-<li>The allocation of cores to VMs is done based on a host allocation. Each host components instantiates a VM scheduler component that implements the space-shared or time shared policies for allocating cores to VMs. </li>
-</ul>
-<h3 id="Modeling-the-VM-allocation"><a href="#Modeling-the-VM-allocation" class="headerlink" title="Modeling the VM allocation"></a>Modeling the VM allocation</h3><ul>
-<li><p>云计算与网格计算最大的一个不同之处就是采用了大量的虚拟化技术和工具。</p>
-</li>
-<li><p>需要考虑的因素就是：避免创建需要比主机中可用处理能力更强的处理能力的VM</p>
-</li>
-<li><p>CloudSim支持VM调度两种层级的操作，一种是host level(主机层)，确定给每个VM分配多少计算能力；一种是VM level(虚拟机层)，给存储在他的execution engine的特定的task分配可用处理资源。每一个层级都包含time-shared and space-shared resource allocation policies.</p>
-<p><img src="/2018/11/09/CloudSim-Structure/4.png" alt="4"></p>
-<p><strong>note</strong>:</p>
-<ul>
-<li><p><strong>space-shared for VMs</strong>: only one VM can run at a given instance of time</p>
-<p><strong>time-shared for VMs</strong>: the core is shared, the amount of processing power available to the VM is lesser than space-shared</p>
-</li>
-<li><p><strong>space-shared for tasks</strong>: a VM has two cores, so it sun two at a time but the other two are queued until the completion of the earlier task units</p>
-<p><strong>time-shared for tasks</strong>: enable the task to be scheduled at an earlier time, but significantly affecting the completion time of task units that are ahead the queue</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Modeling-the-Cloud-Market"><a href="#Modeling-the-Cloud-Market" class="headerlink" title="Modeling the Cloud Market"></a>Modeling the Cloud Market</h3><ul>
-<li><strong>Modeling the cost and pricing policies</strong>,four market-related properties are associated to a data center: cost per processing,cost per unit of memory,cost per unit of storage,cost per unit of used bandwidth.</li>
-</ul>
-<h3 id="Design-and-implementation-of-CloudSim"><a href="#Design-and-implementation-of-CloudSim" class="headerlink" title="Design and implementation of CloudSim"></a>Design and implementation of CloudSim</h3><ul>
-<li><strong>DataCenter</strong>: <ul>
-<li>Core infrastructure level services(hardware, software) offered by resource providers in a Cloud Computing environment. </li>
-<li>Instantiates a generalized resource provisioning component that implements a set of policies for allocating bandwidth, memory and storage devices.</li>
-</ul>
-</li>
-<li><strong>DataCenterBroker</strong>:<ul>
-<li>Responsible for mediating between users and service providers depending on users’ QoS requirements and deploys service tasks across Clouds.</li>
-</ul>
-</li>
-<li><strong>SANStorage</strong><ul>
-<li>Models a storage area network that is commonly available to Cloud-based data centers for storing large chunks of data</li>
-<li>提供接口可在任何时间对根据网络带宽的可用性对任意大的数据量进行存储和检索，但是在运行访问SAN中的文件会导致任务单元执行的额外延迟。</li>
-</ul>
-</li>
-<li><strong>Virtual Machine</strong><ul>
-<li>Model an instance of Vm. Hosr部分负责VM的管理，可以同时实例化很多VMs，并且根据前述的政策(空间/时间分享)运行</li>
-<li>每个VM中有存储其基本特征的组成部分：memory, processor, storage, VM’s internal scheduling policy.</li>
-</ul>
-</li>
-<li><strong>Cloudlet</strong><ul>
-<li>Models the Cloud-based application services(content delivery（内容交付）, social networking, business workflow)</li>
-<li>每个应用程序组件都具有预先指定的指令长度（继承自GridSim的Gridlet组件）以及成功托管应用程序所需的数据传输量（提前和提取后）。</li>
-</ul>
-</li>
-<li><strong>CloudCoordinator</strong><ul>
-<li>provides federation capacity to a data center.</li>
-<li>(1)communicating with other peer CloudCoordinator services and Cloud Brokers</li>
-<li>(2)monitor the internal state of a data center that plays integral role in load-balancing/application scaling decision making.(触发负载迁移的事件是有CloudSim用户通过Sensor组件来设置的)</li>
-</ul>
-</li>
-<li><strong>BWProvisioner</strong><ul>
-<li>Models the provisioning policy of bandwidth to VMs.</li>
-</ul>
-</li>
-<li><strong>MemoryProvisioner</strong><ul>
-<li>Represents the provisioning policy for allocating memory to VMs.</li>
-</ul>
-</li>
-<li><strong>VMProvisioner</strong><ul>
-<li>Represents the provisioning policy that a VM Monitor utilizes for allocating VMs to Hosts.</li>
-</ul>
-</li>
-<li><strong>VMMAllocationPolicy</strong><ul>
-<li>Implemented by a Host component that models the policies (time-shared, space shared) required for allocating processing power to VMs.</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2018/11/09/CloudSim-Structure/12.png" alt="12"></p>
-<h3 id="Communication-among-entities"><a href="#Communication-among-entities" class="headerlink" title="Communication among entities"></a>Communication among entities</h3><p><img src="/2018/11/09/CloudSim-Structure/11.png" alt="11"></p>
-]]></content>
-      <categories>
-        <category>Cloud Workflow Scheduling</category>
-      </categories>
-      <tags>
-        <tag>CloudSim toolkit introduction</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DMOEA-epsilonC</title>
-    <url>/2018/11/27/DMOEA-epsilonC/</url>
-    <content><![CDATA[<h2 id="主要贡献"><a href="#主要贡献" class="headerlink" title="主要贡献"></a>主要贡献</h2><ul>
-<li>首次将$\epsilon$约束法和分解的方法合并起来，</li>
-<li>在优化的过程中，使用了主函数变化的策略，</li>
-<li>由于不同问题的计算复杂度不同，则需要对计算资源进行动态分配</li>
-<li>并且使用了解和子问题的匹配，子问题和解的匹配等方法来平衡解的多样性和收敛性之间的关系</li>
-</ul>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="多目标进化算法-MOEA"><a href="#多目标进化算法-MOEA" class="headerlink" title="多目标进化算法(MOEA)"></a>多目标进化算法(MOEA)</h3><ul>
-<li>分类:基于他们的选择策略，我们可以将他们分为三类:<ul>
-<li>(1)基于Parero支配</li>
-<li>(2)基于performance indicator</li>
-<li>(3)基于分解策略的</li>
-</ul>
-</li>
-<li>一般处理多目标问题的两个基本方法: 权重法和$\epsilon$约束法</li>
-<li><strong>$\epsilon$约束法</strong>：选择一个目标作为主函数，其他的目标作为约束来处理，并且为每一个约束来添加一个<strong>上界</strong></li>
-</ul>
-<h2 id="基本框架介绍"><a href="#基本框架介绍" class="headerlink" title="基本框架介绍"></a>基本框架介绍</h2><h3 id="Problem-Formulation-under-epsilon-constraint"><a href="#Problem-Formulation-under-epsilon-constraint" class="headerlink" title="Problem Formulation under $\epsilon$ constraint"></a>Problem Formulation under $\epsilon$ constraint</h3><p><img src="/2018/11/27/DMOEA-epsilonC/1.png" alt="1"></p>
-<p>那么Fig1中多目标优问题可以转化为:</p>
-<script type="math/tex; mode=display">
-minimize~~~f_{main} = f_s(x) +\rho \sum^{m}_{i=1}f_i(x)\\
-subject~~~to~~ 
-\begin{equation}
-\left\{
-\begin{array}{**rc1**}
-\frac{f_i(x)-z_i}{z^{nad}_{i}-z_{i}}\leq \epsilon_i, \forall i \in \{i,1,...,m\}/\{s\}\\
-x = (x_1,x_2,...,x_n)\in \Omega
-\end{array}
-\right.
-\end{equation}\\
-其中， 0\leq \epsilon = (\epsilon_1,...,\epsilon_{s-1},\epsilon_{s+1},...,\epsilon_{m})\leq 1\\
-s是从m中任意选的，\rho >0 是一个很小的正数\\
-z = (z_1,...,z_m)和z^{nad} = (z^{nad}_1,...,z^{nad}_m)分别是理想点和最低点</script><ul>
-<li><strong>理想点(ideal point $z\in R^m$)</strong>：是通过独立地最小化每一个目标函数得到的，即满足<script type="math/tex; mode=display">
-minimize~~f_i(x)\\
-subject~to~x\in \Omega~~~for~i=1,...,m.</script></li>
-</ul>
-<ul>
-<li><p><strong>最低点(nadir point $z^{nad}$)</strong>:最低点是PF(Pareto Front)的上界，$z^{nad}$的每个元素定义为</p>
-<script type="math/tex; mode=display">
-z^{nad}_{i} = max\{f_i|F = (f_1,f_2,...,f_m)\in PF\}\\
-where~ i=1,2,...,m</script><p><strong>算法框架</strong></p>
-<p><img src="/2018/11/27/DMOEA-epsilonC/2.png" alt="2"></p>
-</li>
-</ul>
-<ul>
-<li><p>对两个解进行比较的基本规则：</p>
-<ul>
-<li>(1)可行解优于不可行解</li>
-<li>(2)对于两个可行解，对应目标函数值更好的更优</li>
-<li>(3)对于两不可行解，选择对约束破坏更小的解</li>
-</ul>
-</li>
-<li><p>基本参数介绍：</p>
-<ul>
-<li><strong>N</strong>: 上界向量的个数，和种群大小相同</li>
-<li><strong>T</strong>: 邻居的个数<strong>neighborhood size</strong></li>
-<li><strong>$\delta$</strong>：选择 mate solutions的概率</li>
-<li><strong>$n_r$</strong>: 替换的最大数量(Maximum number of replacement)</li>
-<li><strong>$IN_m$</strong>: 在迭代中采用更换主函数策略的代数间隔</li>
-<li><strong>$DRA_interval$</strong>：在迭代中采用动态资源分配策略的代数间隔</li>
-<li><strong>S</strong>: 外部存档种群（EP）的最大规模</li>
-<li><strong>NFE</strong>: 函数评价值的最大值</li>
-</ul>
-</li>
-</ul>
-<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p><img src="/2018/11/27/DMOEA-epsilonC/3.png" alt="3"></p>
-<ul>
-<li>After the main objective alternation strategy is utilized, a solution which is good for the current subproblem will no longer perform well since the objective function of this subproblem has been changed.  </li>
-</ul>
-<p><img src="/2018/11/27/DMOEA-epsilonC/4.png" alt="4"></p>
-<ul>
-<li>Different subproblems have different computational difficulties, therefore, it is reasonable to assign different amounts of computational effort to them based on their utility values which are defined in the line 3 of Algorithm 3 </li>
-</ul>
-<p><img src="/2018/11/27/DMOEA-epsilonC/5.png" alt="5"></p>
-<ul>
-<li>When a new solution is generated, it may perform badly for the current subproblem but perform well for another subproblem. </li>
-</ul>
-<p><img src="/2018/11/27/DMOEA-epsilonC/6.png" alt="6"></p>
-<ul>
-<li>An EP is maintained in addition to the evolving population. Thus when a new solution is generated, the EP should be updated. And if the number of individuals in EP exceeds S, EP is pruned until its size equals to S. </li>
-<li>首先选择bounded points(有最小或最大目标值的解)，然后从剩余解中迭代选择距离已选择点最远的点</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Cloud Workflow Scheduling</category>
-      </categories>
-      <tags>
-        <tag>Cloud Workflow Scheduling</tag>
+        <tag>Interesting Things</tag>
       </tags>
   </entry>
   <entry>
@@ -1234,199 +1502,179 @@ where~ i=1,2,...,m</script><p><strong>算法框架</strong></p>
       </tags>
   </entry>
   <entry>
-    <title>FirstTest</title>
-    <url>/2018/11/02/FirstTest/</url>
-    <content><![CDATA[<h1 id="This-is-a-test-on-hexo-plus-github"><a href="#This-is-a-test-on-hexo-plus-github" class="headerlink" title="This is a test on hexo plus github"></a>This is a test on hexo plus github</h1><h2 id="Head-2"><a href="#Head-2" class="headerlink" title="Head 2"></a>Head 2</h2><h3 id="head3"><a href="#head3" class="headerlink" title="head3"></a>head3</h3><ul>
-<li><p>Now we can test the support for formulas, $x^2 + 2x+ 1 =\frac{1}{2} g$,</p>
-<script type="math/tex; mode=display">
-Cov(x,y) = E(xy)-E(x)E(y)</script><script type="math/tex; mode=display">
-\begin{bmatrix}
-a&b&c\\
-d&e&f
-\end{bmatrix}</script></li>
+    <title>NIPS 20 paperlist</title>
+    <url>/2020/11/15/NIPS20-paperlist/</url>
+    <content><![CDATA[<h2 id="NeuraIPS’20"><a href="#NeuraIPS’20" class="headerlink" title="NeuraIPS’20"></a>NeuraIPS’20<a id="more"></a></h2><h3 id="Time-Series"><a href="#Time-Series" class="headerlink" title="Time Series"></a>Time Series</h3><ul>
+<li><strong>Probabilistic Time Series Forecasting with Shape and Temporal Diversity</strong></li>
+<li><strong>Deep reconstruction of strange attractors from time series</strong></li>
+<li><strong>Neural Controlled Differential Equations for Irregular Time Series</strong></li>
+<li><strong>Adversarial Sparse Transformer for Time Series Forecasting</strong></li>
+<li><strong>Learning Long-Term Dependencies in Irregularly-Sampled Time Series</strong></li>
+<li><strong>Benchmarking Deep Learning Interpretability in Time Series Predictions</strong></li>
+<li><strong>High-recall causal discovery for autocorrelated time series with latent confounders</strong></li>
+<li><strong>Deep Rao-Blackwellised Particle Filters for Time Series Forecasting</strong></li>
+<li><strong>Normalizing Kalman Filters for Multivariate Time Series Analysis</strong></li>
+<li><strong>Spectral Temporal Graph Neural Network for Multivariate Time-series Forecasting</strong></li>
+<li><strong>Learning Continuous System Dynamics from Irregularly-Sampled Partial Observations</strong></li>
+<li><strong>Gamma-Models: Generative Temporal Difference Learning for Infinite-Horizon Prediction</strong></li>
 </ul>
-<ul>
-<li><p>Now for  <strong>Bold</strong>, <u>underline</u>, and <em>italic</em></p>
+<h3 id="GNN"><a href="#GNN" class="headerlink" title="GNN"></a>GNN</h3><ul>
+<li><strong>Open Graph Benchmark: Datasets for Machine Learning on Graphs</strong></li>
+<li><strong>Path Integral Based Convolution and Pooling for Graph Neural Networks</strong></li>
+<li><strong>Stochastic Deep Gaussian Processes over Graphs</strong></li>
+<li><strong>Scalable Graph Neural Networks via Bidirectional Propagation</strong></li>
+<li><strong>Set2Graph: Learning Graphs From Sets</strong></li>
+<li><strong>Multipole Graph Neural Operator for Parametric Partial Differential Equations</strong></li>
+<li><strong>Parameterized Explainer for Graph Neural Network</strong></li>
+<li><strong>Random Walk Graph Neural Networks</strong></li>
+<li><strong>Dirichlet Graph Variational Autoencoder</strong></li>
+<li><strong>Natural Graph Networks</strong></li>
+<li><strong>Optimization and Generalization Analysis of Transduction through Gradient Boosting and Application to Multi-scale Graph Neural Networks</strong></li>
+<li><strong>Weisfeiler and Leman go sparse: Towards scalable higher-order graph embeddings</strong></li>
+<li><strong>Unsupervised Joint k-node Graph Representations with Compositional Energy-Based Models</strong></li>
+<li><strong>PGM-Explainer: Probabilistic Graphical Model Explanations for Graph Neural Networks</strong></li>
+<li><strong>Implicit Graph Neural Networks</strong></li>
+<li><p><strong>Towards Deeper Graph Neural Networks with Differentiable Group Normalization</strong></p>
 </li>
-<li><p>Test on codes</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(<span class="string">"hello world"</span>)</span><br></pre></td></tr></table></figure>
+<li><p><strong>COPT: Coordinated Optimal Transport on Graphs</strong></p>
 </li>
-<li><p>Test on images </p>
-<p><img src="/2018/11/02/FirstTest/FirstTest_1.jpg" alt="FirstTest_1"></p>
+<li><strong>Less is More: A Deep Graph Metric Learning Perspective Using Few Proxies</strong></li>
+<li><strong>Probabilistic Circuits for Variational Inference in Discrete Graphical Models</strong></li>
+<li><strong>Deep Relational Topic Modeling via Graph Poisson Gamma Belief Network</strong></li>
+<li><strong>Graph Stochastic Neural Networks for Semi-supervised Learning</strong></li>
+<li><strong>Community detection in sparse time-evolving graphs with a dynamical Bethe-Hessian</strong></li>
+<li><strong>Graph Random Neural Networks for Semi-Supervised Learning on Graphs</strong></li>
+<li><strong>Learning of Discrete Graphical Models with Neural Networks</strong></li>
+<li><strong>Building powerful and equivariant graph neural networks with message-passing</strong></li>
+<li><strong>Manifold structure in graph embeddings</strong></li>
+<li><p><strong>Attribution for Graph Neural Networks</strong></p>
 </li>
-<li><p>Test on tables</p>
+<li><p><strong>Factorizable Graph Convolutional Networks</strong></p>
 </li>
+<li><strong>Handling Missing Data with Graph Representation Learning</strong></li>
+<li><p><strong>EvolveGraph: Multi-Agent Trajectory Prediction with Dynamic Relational Reasoning</strong></p>
+</li>
+<li><p><strong>Design Space for Graph Neural Networks</strong></p>
+</li>
+<li><strong>Pointer Graph Networks</strong></li>
+<li><strong>Reward Propagation Using Graph Convolutional Networks</strong></li>
+<li><strong>Subgraph Neural Networks</strong></li>
+<li><p><strong>Beyond Homophily in Graph Neural Networks: Current Limitations and Effective Designs</strong></p>
+</li>
+<li><p><strong>Efficient Learning of Discrete Graphical Models</strong></p>
+</li>
+<li><strong>Adaptive Graph Convolutional Recurrent Network for Traffic Forecasting</strong></li>
+<li><strong>Learning to Execute Programs with Instruction Pointer Attention Graph Neural Networks</strong></li>
+<li><strong>Scattering GCN: Overcoming Oversmoothness in Graph Convolutional Networks</strong></li>
+<li><strong>Pre-Training Graph Neural Networks: A Contrastive Learning Framework with Augmentations</strong></li>
+<li><strong>Variational Inference for Graph Convolutional Networks in the Absence of Graph Data and Adversarial Settings</strong></li>
+<li><strong>A Novel Approach for Constrained Optimization in Graphical Models</strong></li>
+<li><strong>Adversarially-learned Inference via an Ensemble of Discrete Undirected Graphical Models</strong></li>
+<li><strong>Nonconvex Sparse Graph Learning under Laplacian-structured Graphical Model</strong></li>
+<li><strong>Graph Geometry Interaction Learning</strong></li>
+<li><strong>Bandit Samplers for Training Graph Neural Networks</strong></li>
+<li><strong>Factor Graph Neural Networks</strong></li>
+<li><strong>DiffGCN: Graph Convolutional Networks via Differential Operators and Algebraic Multigrid Pooling</strong></li>
+<li><strong>Spectral Temporal Graph Neural Network for Multivariate Time-series Forecasting</strong></li>
+<li><strong>Curvature Regularization to Prevent Distortion in Graph Embedding</strong></li>
+<li><strong>Generalized Independent Noise Condition for Estimating Linear Non-Gaussian Latent Variable Graphs</strong></li>
+<li><strong>Higher-Order Spectral Clustering of Directed Graphs</strong></li>
+<li><strong>Iterative Deep Graph Learning for Graph NeuralNetworks: Better and Robust Node Embeddings</strong></li>
+<li><strong>Graph Information Bottleneck</strong></li>
+<li><strong>Rethinking pooling in graph neural networks</strong></li>
 </ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>1</th>
-<th>1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ul>
-<li>Test on linux…</li>
+<h2 id="连续-Flow"><a href="#连续-Flow" class="headerlink" title="连续+Flow"></a>连续+Flow</h2><ul>
+<li><strong>Modeling Continuous Stochastic Processes with Dynamic Normalizing Flows</strong></li>
+<li><strong>Inverse Rational Control with Partially Observable Continuous Nonlinear Dynamics</strong></li>
+<li><strong>Riemannian Continuous Normalizing Flows</strong></li>
+<li><strong>Continual Deep Learning by Functional Regularisation of Memorable Past</strong></li>
+<li><strong>Scalable and Consistent Estimation in Continuous-time Networks of Relational Events</strong></li>
+<li><strong>DAGs with No Fears: A Closer Look at Continuous Optimization for Learning Bayesian Networks</strong></li>
+<li><strong>Hypersolvers: Toward Fast Continuous-Depth Models</strong></li>
+<li><strong>Learning Continuous System Dynamics from Irregularly-Sampled Partial Observations</strong></li>
+<li><strong>A mathematical model for automatic differentiation in machine learning</strong></li>
+<li><strong>Neural Manifold Ordinary Differential Equations</strong></li>
+<li><strong>Multipole Graph Neural Operator for Parametric Partial Differential Equations</strong></li>
+<li><strong>Learning Differential Equations that are Fast to Solve</strong></li>
+<li><strong>Interpolation technique to speed up gradients propagation in Neural Ordinary Differential Equations</strong></li>
+<li><strong>JAX MD: A Framework for Differentiable Physics</strong></li>
+<li><strong>Training Generative Adversarial Networks by Solving Ordinary Differential Equations</strong></li>
+<li><strong>Numerically Solving Parametric Families of High-Dimensional Kolmogorov Partial Differential Equations via Deep Learning</strong></li>
+<li><strong>Improved Variational Bayesian Phylogenetic Inference with Normalizing Flows</strong></li>
+<li><strong>Flows for simultaneous manifold learning and density estimation</strong></li>
+<li><strong>Wavelet Flow: Fast Training of High Resolution Normalizing Flows</strong></li>
+<li><strong>Advances in Black-Box VI: Normalizing Flows, Importance Weighting, and Optimization</strong></li>
+<li><strong>Woodbury Transformations for Deep Generative Flows</strong></li>
+<li><strong>SoftFlow: Probabilistic Framework for Normalizing Flow on Manifolds</strong></li>
+<li><p><strong>Glow-TTS: A Generative Flow for Text-to-Speech via Monotonic Alignment Search</strong></p>
+</li>
+<li><p><strong>The Convolution Exponential and Generalized Sylvester Flows</strong></p>
+</li>
+<li><strong>NanoFlow: scalable normalizing flows with sublinear parameter complexity</strong></li>
+<li><strong>Training Normalizing Flows with the Information Bottleneck for Competitive Generative Classification</strong></li>
+<li><strong>Log-Likelihood Ratio Minimizing Flows: Towards Robust and Quantifiable Neural Distribution Alignment</strong></li>
+<li><strong>Why Normalizing Flows Fail to Detect Out-of-Distribution Data</strong></li>
+<li><strong>Stochastic Normalizing Flows</strong></li>
+<li><strong>SurVAE Flows: Surjections to Bridge the Gap between VAEs and Flows</strong></li>
+<li><strong>Closing the Dequantization Gap: PixelCNN as a Single-Layer Flow</strong></li>
+<li><strong>SVGD as a kernelized gradient flow of the chi-squared divergence</strong></li>
+<li><strong>Gradient Boosted Normalizing Flows</strong></li>
 </ul>
-]]></content>
-      <categories>
-        <category>Entertainment</category>
-      </categories>
-      <tags>
-        <tag>Try4New</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Evolutionary Multi-Objective Workflow Scheduling in Cloud</title>
-    <url>/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/</url>
-    <content><![CDATA[<h2 id="Main-idea"><a href="#Main-idea" class="headerlink" title="Main idea"></a>Main idea</h2><ul>
-<li><p><strong>Objective</strong>: optimize both makespan and cost</p>
+<h2 id="ICLR2021投稿"><a href="#ICLR2021投稿" class="headerlink" title="ICLR2021投稿"></a>ICLR2021投稿</h2><h3 id="ODE-Flow-Dyna"><a href="#ODE-Flow-Dyna" class="headerlink" title="ODE + Flow + Dyna"></a>ODE + Flow + Dyna</h3><ul>
+<li><p><a href="https://openreview.net/forum?id=DlPnp5_1JMI" target="_blank" rel="noopener">Neural Partial Differential Equations </a></p>
 </li>
-<li><p><strong>Main Contributions</strong>:</p>
-<ul>
-<li><p>突出显示直接应用于云的现有调度算法的挑战，利用真实的云特性制定云工作流调度问题。</p>
-<p>使用基于实例的IaaS风格方案制定定价选项，但不指定特定的定价规则</p>
+<li><p><a href="https://openreview.net/forum?id=Q1jmmQz72M2" target="_blank" rel="noopener">Neural Delay Differential Equations </a></p>
 </li>
-<li><p>present the EMO(Evolutionary Multi-Objective) algorithm for the modeled workflow scheduling problem.</p>
+<li><p><a href="https://openreview.net/forum?id=c_YKhwEdUcq" target="_blank" rel="noopener">A neural method for symbolically solving partial differential equations</a></p>
 </li>
+<li><p><a href="https://openreview.net/forum?id=JFKR3WqwyXR" target="_blank" rel="noopener">Neural Jump Ordinary Differential Equation </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=bzVsk7bnGdh" target="_blank" rel="noopener">“Hey, that’s not an ODE’”: Faster ODE Adjoints with 12 Lines of Code</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=dcktlmtcM7" target="_blank" rel="noopener">Neural Time-Dependent Partial Differential Equation</a></p>
+</li>
+<li><h4 id="Score-Based-Generative-Modeling-through-Stochastic-Differential-Equations"><a href="#Score-Based-Generative-Modeling-through-Stochastic-Differential-Equations" class="headerlink" title="Score-Based Generative Modeling through Stochastic Differential Equations "></a><a href="https://openreview.net/forum?id=PxTIG12RRHS" target="_blank" rel="noopener">Score-Based Generative Modeling through Stochastic Differential Equations </a></h4></li>
+<li><h4 id="Neural-Partial-Differential-Equations-with-Functional-Convolution"><a href="#Neural-Partial-Differential-Equations-with-Functional-Convolution" class="headerlink" title="Neural Partial Differential Equations with Functional Convolution"></a><a href="https://openreview.net/forum?id=D4A-v0kltaX" target="_blank" rel="noopener">Neural Partial Differential Equations with Functional Convolution</a></h4></li>
+<li><h4 id="Learning-Neural-Event-Functions-for-Ordinary-Differential-Equations"><a href="#Learning-Neural-Event-Functions-for-Ordinary-Differential-Equations" class="headerlink" title="Learning Neural Event Functions for Ordinary Differential Equations"></a><a href="https://openreview.net/forum?id=kW_zpEmMLdP" target="_blank" rel="noopener">Learning Neural Event Functions for Ordinary Differential Equations</a></h4></li>
+<li><h4 id="Fourier-Neural-Operator-for-Parametric-Partial-Differential-Equations"><a href="#Fourier-Neural-Operator-for-Parametric-Partial-Differential-Equations" class="headerlink" title="Fourier Neural Operator for Parametric Partial Differential Equations "></a><a href="https://openreview.net/forum?id=c8P9NQVtmnO" target="_blank" rel="noopener">Fourier Neural Operator for Parametric Partial Differential Equations </a></h4></li>
+<li><h4 id="Learning-continuous-time-PDEs-from-sparse-data-with-graph-neural-networks"><a href="#Learning-continuous-time-PDEs-from-sparse-data-with-graph-neural-networks" class="headerlink" title="Learning continuous-time PDEs from sparse data with graph neural networks"></a><a href="https://openreview.net/forum?id=aUX5Plaq7Oy" target="_blank" rel="noopener">Learning continuous-time PDEs from sparse data with graph neural networks</a></h4></li>
+<li><h4 id="Parameterized-Pseudo-Differential-Operators-for-Graph-Convolutional-Neural-Networks"><a href="#Parameterized-Pseudo-Differential-Operators-for-Graph-Convolutional-Neural-Networks" class="headerlink" title="Parameterized Pseudo-Differential Operators for Graph Convolutional Neural Networks "></a><a href="https://openreview.net/forum?id=Y45i-hDynr" target="_blank" rel="noopener">Parameterized Pseudo-Differential Operators for Graph Convolutional Neural Networks </a></h4></li>
+<li><h4 id="Neural-CDEs-for-Long-Time-Series-via-the-Log-ODE-Method"><a href="#Neural-CDEs-for-Long-Time-Series-via-the-Log-ODE-Method" class="headerlink" title="Neural CDEs for Long Time Series via the Log-ODE Method "></a><a href="https://openreview.net/forum?id=65MxtdJwEnl" target="_blank" rel="noopener">Neural CDEs for Long Time Series via the Log-ODE Method </a></h4></li>
+<li><h4 id="Neural-ODE-Processes"><a href="#Neural-ODE-Processes" class="headerlink" title="Neural ODE Processes"></a><a href="https://openreview.net/forum?id=27acGyyI1BY" target="_blank" rel="noopener">Neural ODE Processes</a></h4></li>
+<li><h4 id="Neural-SDEs-Made-Easy-SDEs-are-Infinite-Dimensional-GANs"><a href="#Neural-SDEs-Made-Easy-SDEs-are-Infinite-Dimensional-GANs" class="headerlink" title="Neural SDEs Made Easy: SDEs are Infinite-Dimensional GANs"></a><a href="https://openreview.net/forum?id=padYzanQNbg" target="_blank" rel="noopener">Neural SDEs Made Easy: SDEs are Infinite-Dimensional GANs</a></h4></li>
+<li><h4 id="Multiplicative-Filter-Networks"><a href="#Multiplicative-Filter-Networks" class="headerlink" title="Multiplicative Filter Networks"></a><a href="https://openreview.net/forum?id=OmtmcPkkhT" target="_blank" rel="noopener">Multiplicative Filter Networks</a></h4></li>
+<li><h4 id="ResNet-After-All-Neural-ODEs-and-Their-Numerical-Solution"><a href="#ResNet-After-All-Neural-ODEs-and-Their-Numerical-Solution" class="headerlink" title="ResNet After All: Neural ODEs and Their Numerical Solution "></a><a href="https://openreview.net/forum?id=HxzSxSxLOJZ" target="_blank" rel="noopener">ResNet After All: Neural ODEs and Their Numerical Solution </a></h4></li>
+<li><h4 id="Go-with-the-flow-Adaptive-control-for-Neural-ODEs"><a href="#Go-with-the-flow-Adaptive-control-for-Neural-ODEs" class="headerlink" title="Go with the flow: Adaptive control for Neural ODEs "></a><a href="https://openreview.net/forum?id=giit4HdDNa" target="_blank" rel="noopener">Go with the flow: Adaptive control for Neural ODEs </a></h4></li>
+<li><h4 id="MALI-A-memory-efficient-and-reverse-accurate-integrator-for-Neural-ODEs"><a href="#MALI-A-memory-efficient-and-reverse-accurate-integrator-for-Neural-ODEs" class="headerlink" title="MALI: A memory efficient and reverse accurate integrator for Neural ODEs "></a><a href="https://openreview.net/forum?id=blfSjHeFM_e" target="_blank" rel="noopener">MALI: A memory efficient and reverse accurate integrator for Neural ODEs </a></h4></li>
+<li><h4 id="Deep-Continuous-Networks"><a href="#Deep-Continuous-Networks" class="headerlink" title="Deep Continuous Networks "></a><a href="https://openreview.net/forum?id=L5b6jUonKFB" target="_blank" rel="noopener">Deep Continuous Networks </a></h4></li>
+<li><h4 id="Learning-Continuous-Time-Dynamics-by-Stochastic-Differential-Networks"><a href="#Learning-Continuous-Time-Dynamics-by-Stochastic-Differential-Networks" class="headerlink" title="Learning Continuous-Time Dynamics by Stochastic Differential Networks "></a><a href="https://openreview.net/forum?id=U850oxFSKmN" target="_blank" rel="noopener">Learning Continuous-Time Dynamics by Stochastic Differential Networks </a></h4></li>
+<li><h4 id="Implicit-Normalizing-Flows"><a href="#Implicit-Normalizing-Flows" class="headerlink" title="Implicit Normalizing Flows "></a><a href="https://openreview.net/forum?id=8PS8m9oYtNy" target="_blank" rel="noopener">Implicit Normalizing Flows </a></h4></li>
+<li><h4 id="Directional-graph-networks"><a href="#Directional-graph-networks" class="headerlink" title="Directional graph networks"></a><a href="https://openreview.net/forum?id=FUdBF49WRV1" target="_blank" rel="noopener">Directional graph networks</a></h4></li>
 </ul>
+<h3 id="TS"><a href="#TS" class="headerlink" title="TS"></a>TS</h3><ul>
+<li><p><a href="https://openreview.net/forum?id=JVs1OrQgR3A" target="_blank" rel="noopener">Time Series Counterfactual Inference with Hidden Confounders </a></p>
 </li>
+<li><p><a href="https://openreview.net/forum?id=vLaHRtHvfFp" target="_blank" rel="noopener">PDE-Driven Spatiotemporal Disentanglement </a></p>
+</li>
+<li><h4 id="Neural-Spatio-Temporal-Point-Processes"><a href="#Neural-Spatio-Temporal-Point-Processes" class="headerlink" title="Neural Spatio-Temporal Point Processes"></a><a href="https://openreview.net/forum?id=XQQA6-So14" target="_blank" rel="noopener">Neural Spatio-Temporal Point Processes</a></h4></li>
+<li><h4 id="Anomaly-detection-in-dynamical-systems-from-measured-time-series"><a href="#Anomaly-detection-in-dynamical-systems-from-measured-time-series" class="headerlink" title="Anomaly detection in dynamical systems from measured time series"></a><a href="https://openreview.net/forum?id=Whq-nTgCbNR" target="_blank" rel="noopener">Anomaly detection in dynamical systems from measured time series</a></h4></li>
+<li><h4 id="Cubic-Spline-Smoothing-Compensation-for-Irregularly-Sampled-Sequences"><a href="#Cubic-Spline-Smoothing-Compensation-for-Irregularly-Sampled-Sequences" class="headerlink" title="Cubic Spline Smoothing Compensation for Irregularly Sampled Sequences "></a><a href="https://openreview.net/forum?id=muu0gF6BW-" target="_blank" rel="noopener">Cubic Spline Smoothing Compensation for Irregularly Sampled Sequences </a></h4></li>
+<li><h4 id="Generative-Time-series-Modeling-with-Fourier-Flows"><a href="#Generative-Time-series-Modeling-with-Fourier-Flows" class="headerlink" title="Generative Time-series Modeling with Fourier Flows "></a><a href="https://openreview.net/forum?id=PpshD0AXfA" target="_blank" rel="noopener">Generative Time-series Modeling with Fourier Flows </a></h4></li>
 </ul>
-<h2 id="Challenges-for-Scheduling-Workflows-in-Cloud"><a href="#Challenges-for-Scheduling-Workflows-in-Cloud" class="headerlink" title="Challenges for Scheduling Workflows in Cloud"></a>Challenges for Scheduling Workflows in Cloud</h2><h3 id="云计算和网格计算模型的差别"><a href="#云计算和网格计算模型的差别" class="headerlink" title="云计算和网格计算模型的差别"></a>云计算和网格计算模型的差别</h3><ul>
-<li><p>the complex pricing schemes:在云环境下一个任务的cost在调度之前很难精准地预算；</p>
-<p>大多数调度的启发式算法还要求知道每个任务的cost来进行优先级排序或者处理器的选择。</p>
-</li>
-<li><p>the large-size resource pools：在传统异构的环境中，资源池是有限的，所以有些算法是遍历资源池来进行处理器的选择，但是对于云环境不使用。</p>
-</li>
-<li><p>有一种是把所有种类的instance(VMs)做成一个列表，但是依然太大了。</p>
-</li>
+<h3 id="GNN-1"><a href="#GNN-1" class="headerlink" title="GNN"></a>GNN</h3><ul>
+<li><h4 id="Generalizing-Graph-Convolutional-Networks"><a href="#Generalizing-Graph-Convolutional-Networks" class="headerlink" title="Generalizing Graph Convolutional Networks "></a><a href="https://openreview.net/forum?id=yBJihVXahXc" target="_blank" rel="noopener">Generalizing Graph Convolutional Networks </a></h4></li>
+<li><h4 id="Polynomial-Graph-Convolutional-Networks"><a href="#Polynomial-Graph-Convolutional-Networks" class="headerlink" title="Polynomial Graph Convolutional Networks "></a><a href="https://openreview.net/forum?id=uqD-un_Mzd-" target="_blank" rel="noopener">Polynomial Graph Convolutional Networks </a></h4></li>
 </ul>
-<h2 id="Workflow-Scheduling-Problem"><a href="#Workflow-Scheduling-Problem" class="headerlink" title="Workflow Scheduling Problem"></a>Workflow Scheduling Problem</h2><h3 id="基本概念定义"><a href="#基本概念定义" class="headerlink" title="基本概念定义"></a>基本概念定义</h3><ul>
-<li><strong>DAG</strong> W = (T,D), $T = \{T_0,T_1,…,T_n\}$ is the set of tasks, $D = \{(T_i,T_j)|T_i,T_j\in T\}$ is the set of data or control dependencies.</li>
-<li><strong>refertime($T_i$)</strong>: reference execution time of $T_i$</li>
-<li><strong>data($T_i,T_j$)</strong> data transfer size from $T_i$ to $T_j$</li>
-<li><strong>pred(T_i)</strong>=$\{T_j|(T_j ,T_i)\in D\}$</li>
-<li><strong>T_{entry}</strong>: the entry task;<strong>T_{exit}</strong>: exit task </li>
-</ul>
-<h3 id="云资源管理"><a href="#云资源管理" class="headerlink" title="云资源管理"></a>云资源管理</h3><ul>
-<li><p>认为云端的instances是无穷的，用$I=\{I_0,I_1,…\}$来形容所有可用的instances。$P =\{P_0,P_1,…,P_m\}$代表所有的instances的类型，共m种。</p>
-</li>
-<li><p>用$cu(P_i)$来代表instance type $P_i$的计算单元（compute unit），并且假设<strong>如果一个instacne的CU变为原来的两倍，执行时间会缩短为原来的一半</strong>,故而任务$T_i$的实际运行时间为</p>
-<script type="math/tex; mode=display">
-Time_{comp}(T_i)=\frac{refertime(T_i)}{cu(P_j)}</script></li>
-<li><p>带宽 $bw(P_i)$代表instance type $P_i$的带宽，那么$T_i$和$T_j$之间的communication time (忽略setup delays)为</p>
-<script type="math/tex; mode=display">
-Time_{comm}(T_i,T_j)=\begin{equation}
-\left\{
-    \begin{array}{**rc1**}
-    \frac{data(T_i,T_j)}{min\{bw(P_p),bw(P_q)\}},~~~p\neq q\\
-    0,~~~p=q
-    \end{array}
-\right.
-\end{equation}</script></li>
-<li><p><strong>定价模型</strong>：用$M=\{M_0,M_1,…,M_k\}$来表示IaaS提供的pricing options，并且定义了函数<strong>charge</strong>$(M_h,P_j,I_i)$计算用定价模型$M_h$来算type为$P_j$的instance $I_i$.</p>
-</li>
-</ul>
-<h3 id="工作流调度问题定义"><a href="#工作流调度问题定义" class="headerlink" title="工作流调度问题定义"></a>工作流调度问题定义</h3><ul>
-<li>已知$W=(T,D)$，并且有IaaS平台$S=(I,P,M)$,那么一个调度问题就是要产生一个或多个下列形式的解 $R = (Ins, Type, Order)$，其中<script type="math/tex; mode=display">
-Ins: T\rightarrow I, Ins(T_i) = I_j\\
-Type: I\rightarrow P, Type(I_s) = P_t</script><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/1.png" alt="1"></li>
-</ul>
-<h2 id="多目标进化算法优化"><a href="#多目标进化算法优化" class="headerlink" title="多目标进化算法优化"></a>多目标进化算法优化</h2><ul>
-<li>最主要的贡献就是：present a whole set of the exploration operations, including encoding, population initialization, crossover, and mutation. These operations can work with any exploitation operation (e.g., fitness assignment, selection) in the EMO area </li>
-</ul>
-<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/2.png" alt="2"></p>
-<p>其中$avail(Ins(T_i))$为instance $I_i$可用的时间，他是通过$FT(T_i)$来更新的</p>
-<h3 id="Encoding"><a href="#Encoding" class="headerlink" title="Encoding"></a>Encoding</h3><ul>
-<li><p>由于解的形式为$R = (Ins, Type, Order)$,所以染色体分为三段。</p>
-<p><strong>order</strong>是所有任务序列的排列，如果i在j前面，则$T_i$会比$T_j$先确定用hosting instance(VM),但是并不意味$T_i$比$T_j$先执行。</p>
-<p><strong>task2ins</strong>:是长度为n（假设有n中类型）的映射<em>Ins</em>的向量,其中index代表一个任务，他的值代表选择哪一个instance来执行此任务。例如tak2ins[i]=j就是让$T_i$被安排到一个index为j的instance($I_j$)上。</p>
-<p><strong>ins2type</strong>:一个从instance index映射到他们类型的映射，例如ins2type[j] = k表示instance $I_j$的类型为$P_k$</p>
-</li>
-</ul>
-<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/3.png" alt="3"></p>
-<h3 id="Crossover"><a href="#Crossover" class="headerlink" title="Crossover"></a>Crossover</h3><p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/4.png" alt="4"></p>
-<ul>
-<li><p>需要注意不能违反依赖关系；This operator will not cause any dependency conflict since the order of any two tasks should have already existed in at least one parent.  </p>
-</li>
-<li><p>对于task2ins和ins2type则同时进行crossover操作</p>
-<ul>
-<li><p>随机选择一个切断点，而后将两个父代的task2ins字符串的第一部分进行交换。</p>
-<p><strong>注意</strong>：一个任务所在运行的VM的种类也是十分重要的，所以，如果一个任务T，在type为$p_i$的instance I上运行，现在被重新安排到类型为$p_j$的$I^{<em>}$上，那么我们应将$I^{</em>}$的类型修改为$p_i$,但是这样有可能导致其他原本安排在此VM上的任务的所选类型改变，这种情况则将$I^{*}$的类型随机选为$p_i$或者$p_j$;如果没有发生冲突，则对VM的type引入一个小几率的变异操作</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/5.png" alt="5"></p>
-<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/8.png" alt="5"></p>
-<h3 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h3><ul>
-<li><p>Mutation of <em>order</em></p>
-<p>define all successors of task $T_i$ as</p>
-<script type="math/tex; mode=display">
-succ(T_i)=\{T_j|(T_i,T_j)\in D\}</script><p><strong>整体思想</strong>：从pos开始向前向后查找，找到可以交换的index的最大范围，然后在这个范围内随机产生一个整数，将pos移到此位置<br><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/6.png" alt="6"></p>
-</li>
-<li><p>Mutation of <em>task2ins</em> and <em>ins2type</em> :以一个小概率来对每一个位置产生一个新的有效的值</p>
-</li>
-</ul>
-<h3 id="Initial-Population"><a href="#Initial-Population" class="headerlink" title="Initial Population"></a>Initial Population</h3><ul>
-<li><strong>假定</strong>，种群大小为n，那么初始化时，<ul>
-<li>一个个体是通过HEFT(异构最早完成时间算法)计算，被认为是最快的调度</li>
-<li>一个个体是在执行HEFT时同时产生的，是要产生最便宜的调度</li>
-<li>其他n-2个个体是通过<strong>RandTypeOrIns</strong>来产生的。</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2018/11/16/Evolutionary-Multi-Objective-Workflow-Scheduling-in-Cloud/7.png" alt="7"></p>
-<p><strong>整体思想</strong>：order是按照递增来构造的，然后随机选择一种instance type,将所有的instance的类型设为此类型，对于task2ins，则是有两种方法：第一种是将所有的任务分配到同一个instance(0)上;另一种是对每一个任务产生一个0到n-1之间的随机数。</p>
-]]></content>
-      <categories>
-        <category>Cloud Workflow Scheduling</category>
-      </categories>
-      <tags>
-        <tag>Cloud Workflow Scheduling</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Interesting Things</title>
-    <url>/2018/11/04/Interesting-Things/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/dog250/article/details/38958637" target="_blank" rel="noopener">密码学的基本原理</a></p>
-<p><a href="https://yantijin.github.io/JavaEE">Java基本知识点</a></p>
-<h3 id="时间序列异常检测"><a href="#时间序列异常检测" class="headerlink" title="时间序列异常检测"></a>时间序列异常检测</h3><ul>
-<li><p>优秀的专栏：</p>
-<ul>
-<li><a href="https://zhuanlan.zhihu.com/zr9558" target="_blank" rel="noopener">数学人生</a></li>
-<li><a href="https://zhuanlan.zhihu.com/liutengfei" target="_blank" rel="noopener">机器学习和金融风控</a></li>
-</ul>
-</li>
-<li><p><a href="https://zhuanlan.zhihu.com/p/51053142" target="_blank" rel="noopener">基于自编码器的时间序列异常检测</a></p>
-</li>
+<h3 id="MPC"><a href="#MPC" class="headerlink" title="MPC"></a>MPC</h3><ul>
+<li><h4 id="Neural-Lyapunov-Model-Predictive-Control"><a href="#Neural-Lyapunov-Model-Predictive-Control" class="headerlink" title="Neural Lyapunov Model Predictive Control"></a><a href="https://openreview.net/forum?id=N5Zacze7uru" target="_blank" rel="noopener">Neural Lyapunov Model Predictive Control</a></h4></li>
 </ul>
 ]]></content>
       <categories>
-        <category>Life</category>
+        <category>machine learning</category>
+        <category>PaperList</category>
       </categories>
       <tags>
-        <tag>Interesting Things</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -1673,114 +1921,65 @@ E[u_iu_j] = \left\{
       </tags>
   </entry>
   <entry>
-    <title>Process Mining based on the Markov Transition Matrix</title>
-    <url>/2018/11/03/Process-Mining-based-on-the-Markov-Transition-Matrix/</url>
-    <content><![CDATA[<h3 id="Main-Thoughts"><a href="#Main-Thoughts" class="headerlink" title="Main Thoughts"></a>Main Thoughts</h3><ul>
-<li>First analyses the workflow log transition probabilities between activities to build the Markov transition matrix;</li>
-<li>Then mines the process logic relationship by defining a set of rules of logical relational</li>
-<li>At last design the process mining algorithm to establish the actual structure relationship between the activities in order to reconstruct the workflow.  </li>
-</ul>
-<h3 id="Methods-to-find-incomplete-logs"><a href="#Methods-to-find-incomplete-logs" class="headerlink" title="Methods to find incomplete logs"></a>Methods to find incomplete logs</h3><ul>
-<li>List the set of the end events of the log, if an instance’s log end event does not belong to the set</li>
-<li>If a task only has the start event without a corresponding end event</li>
-</ul>
-<h3 id="Symbol-Description"><a href="#Symbol-Description" class="headerlink" title="Symbol Description"></a>Symbol Description</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>symbol</th>
-<th>meaning</th>
-<th>symbol</th>
-<th>meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>n</td>
-<td>execution times of workflow</td>
-<td>$X = \{x_0,x_1…x_k\}$</td>
-<td>set of activities</td>
-</tr>
-<tr>
-<td>P</td>
-<td>workflow transition matrix</td>
-<td>$X_s$</td>
-<td>start process</td>
-</tr>
-<tr>
-<td>$X_E$</td>
-<td>end process</td>
-<td>&gt;</td>
-<td>sequence relationship</td>
-</tr>
-<tr>
-<td>$\rightarrow$</td>
-<td>casual relationship</td>
-<td>#</td>
-<td>selection relationship</td>
-</tr>
-<tr>
-<td>//</td>
-<td>synchronous relationship</td>
-<td>$\diamond$</td>
-<td>circle relationship</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="Build-Markov-Transition-Matrix"><a href="#Build-Markov-Transition-Matrix" class="headerlink" title="Build Markov Transition Matrix"></a>Build Markov Transition Matrix</h3><ul>
-<li>$p_{ij} = m_{ij}/n$, $m_{ij}$ means the one step transition times from activity $x_i$ to $x_j$ in the n workflow instances</li>
-</ul>
-<h3 id="Logic-Relationship-Mining-Rules"><a href="#Logic-Relationship-Mining-Rules" class="headerlink" title="Logic Relationship Mining Rules"></a>Logic Relationship Mining Rules</h3><ul>
-<li><p>(1) <strong>Start of the process</strong>:  $\exists x_j \in X$, and $\forall x_i~\in~X$, if $p_{ij} = 0$, then $X_s = x_j$</p>
-</li>
-<li><p>(2) <strong>End of the process</strong>: $\exists x_i \in X$, and $\forall x_j \in X$, if $p_{ij} = 0$, then $X_E = xi$</p>
-</li>
-<li><p>(3) <strong>Sequence relationship</strong>: $\forall x_i,~x_j \in X$, if $p_{ij} \neq 0$, then $x_i &gt;x_j$</p>
-</li>
-<li><p>(4) <strong>Casual relationship</strong>: $\forall x_i,~x_j \in X$, if $p_{ij} = 1$, then$x_i \rightarrow x_j$</p>
-</li>
-<li><p>(5) <strong>Synchronous relationship</strong>:</p>
+    <title>Irregular Time Series Papers</title>
+    <url>/2020/11/15/Irregular-Time-Series-Papers/</url>
+    <content><![CDATA[<p>本文将对于非周期采样时序数据的预测问题做一个初步的总结<a id="more"></a><br>&gt;</p>
+<blockquote>
+<p>RNN对于周期采样的数据是比较合适的，但是对于非周期采样的时序数据是很难处理的。</p>
 <ul>
-<li><strong>And-Split</strong>: if $p_{i \eta_1} = p_{i\eta_2} = … = p_{i\eta_k}= \frac{1}{k}\neq 0$, and $x_i \neq x_{\eta_k}$, then $\{x_{\eta_1}//x_{\eta_2}//..//x_{\eta_k},x_i &gt; x_{\eta_k}\}$, $x_i$ is the <em>And-Split</em> activity node</li>
-<li><strong>And-Join</strong>: if $p_{\eta_1 i} = p_{\eta_2 i}= …=p_{\eta_k} = \frac{1}{k} \neq 0$, and $x_i \neq x_{\eta_k}$, then  $\{x_{\eta_1}//x_{\eta_2}//..//x_{\eta_k}, x_{\eta_k}&gt;x_i \}$, $x_i$ is the <em>And-Join</em> activity node</li>
+<li>常见trick是将此问题在预处理层面进行解决，即做聚合/插补—-缺点是会损失一部分信息</li>
+<li>类似于ODE-RNN的形式，在观测点对于状态进行调整</li>
 </ul>
-</li>
-<li><p>(6) <strong>Selection relationship</strong>:</p>
+</blockquote>
+<h2 id="latent-odes-for-irregular-sampled-time-series"><a href="#latent-odes-for-irregular-sampled-time-series" class="headerlink" title="latent odes for irregular sampled time series"></a>latent odes for irregular sampled time series</h2><blockquote>
+<p>本文提出了两种形式的ODE-RNN</p>
+</blockquote>
+<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_RNN1.jpg" alt=""></p>
 <ul>
-<li><strong>OR-Split</strong>: $\exists x_i, x_{\eta_k} \in X, p_{i\eta_k} &gt;0$, if $\sum_k p_{ij} = 1$, then $\{x_{\eta_1}$# $x_{\eta_2}$# ..# $x_{\eta_k},x_i &gt; x_{\eta_k}\}$, $x_i$ is the <em>OR-Split</em> activity node</li>
-<li><strong>OR-Join</strong>:  $\exists x_i, x_{\eta_k} \in X, p_{i\eta_k} &gt;0$, if $\sum_k p_{\eta_ki} = 1$, then $\{x_{\eta_1}$#$x_{\eta_2}$#..#$x_{\eta_k},x_{\eta_k} &gt; x_i\}$, $x_i$ is the <em>OR-Join</em> activity node</li>
+<li>第一种与标准RNN的区别仅在于蓝色高亮的部分，即在观测之间采用ODE来模拟数据的变化，而不是像RNN中观测之间的状态是不变的。</li>
 </ul>
-</li>
-<li><p>(7) <strong>Self-circulation relationship</strong>: $\exists x_i \in X, x_{\eta_k} \ in X - \{x_i\}$, if $p_{ii} = p(p \neq 1)$, then $\{\diamond x_i; x_i &gt; x_{\eta_k}\}$</p>
-</li>
-<li><p>(8) <strong>Multi-step cycle relationship</strong>: </p>
+<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_RNN2.jpg" alt=""></p>
 <ul>
-<li>$\forall x_i, x_{\eta_k} \in X, x_i \neq X_S, x_i \neq X_E, X_{re} \neq \emptyset$, if  $p_{ij} = 0, p_{ji} &gt; 0~and~\exists k(k\leq n-1)$, which makes $p_{ij}^{(k)} &gt; 0 (p_{ij}^{(k)}\in p^k)$, then there is a <em>multi cycle</em> between $x_i$ and $x_j$, and $x_j &gt; x_i$; $X_{re}$ = $X_{re} +\{x_i,x_j\}$; and do <strong>Refunction()</strong>.</li>
-</ul>
-<p><img src="/2018/11/03/Process-Mining-based-on-the-Markov-Transition-Matrix/processMining_1.png" alt="processMining_1"></p>
-<p>​    While ($k \geq 2$) the activities in $X_{re}$ has cycle relationship, i.e. $x_j \diamond x_i \diamond x_{\eta_1} \diamond …\diamond x_{\eta_{k-3}}$</p>
+<li><p>第二种整体是一个seq2seq模型。首先通过编码器得到初始隐变量$z_0$，此时采用neural ode来模拟隐藏状态的变化，得到$z_0, z_1, …,z_N$；最后通过解码器对每一个时刻的隐变量进行解码重构。<strong>需要注意的是，为估计初始的$z_0$, ODE-RNN的编码器是时间反序来求解的</strong></p>
 <ul>
-<li><p><strong>The start $X_{rS}$ and end $X_{rE}$ of the multi-step cycle</strong>:</p>
-<p>If $\exists x_{\eta_k}\in X_{re}, x_i \in X-X_{re}$, and $p_{i\eta_k} &gt; 0 $, then $\{X_{rS} = X_{\eta_k};x_i &gt; X_{rS}\}$</p>
-<p>If $\exists x_{\eta_k}\in X_{re}, x_i \in X-X_{re}$, and $p_{\eta_k i} &gt; 0 $, then $\{X_{rE} = X_{\eta_k};X_{rE}&gt;x_i \}$</p>
+<li><p>编码器采用的是$ODE-RNN$模型，并假设初始状态$z_0$分布为</p>
+<script type="math/tex; mode=display">
+q(z_0|\{x_i, t_i\}_{i=0}^N)=\mathcal{N}(\mu_{z_0}, \sigma_{z_0})</script><p>其中， $\mu_{z_0}, \sigma_{z_0}=g(ODE-RNN(\{x_i,t_i\}_{i=0}^N))$, g为神经网络。</p>
+</li>
+<li><p>对应此种形式的损失函数为：</p>
+<script type="math/tex; mode=display">
+\text{ELBO}(\theta, \phi) = \mathbb{E}_{z_0\sim q_{\phi(z_0|\{x_i, t_i\}_{i=0}^N)}}[\log p_{\theta}(x_0, ...,x_N)] - \text{KL}[q_{\phi}(z_0|\{x_i,t_i\}_{i=0}^N)||p(z_0)]</script></li>
+</ul>
+<blockquote>
+<p>上述通过隐变量来重构的框架有以下几个优点：</p>
+<ul>
+<li>显式得将ODE系统的动态特性，观测似然值以及辨识模型分别开来，因此可以有效区分每一部分的作用</li>
+<li>采用VAE的框架，能够自然的建模不确定性</li>
+<li>对于非周期采样的时序数据建模提供了便捷性</li>
+</ul>
+</blockquote>
+</li>
+<li><p>更多的观测意味着更多的信息，也就是说采样的频率在一定程度上能够反映数据的重要性。这是一个典型的counting process，假设他是一个非齐次的泊松过程，对应的强度函数为 $\lambda(z(t))$(即这里假设$\lambda$是z(t)的函数)，则可以推导出</p>
+<script type="math/tex; mode=display">
+\log p(t_1, t_2, ...,t_N|t_{starrt}, t_{end}) = \sum^N_{i=1}\text{log}\lambda(z(t_i)) - \int^{t_{end}}_{t_{start}}\lambda(z(t))dt</script><blockquote>
+<p>推导过程请参考<a href="https://math.stackexchange.com/questions/344487/log-likelihood-of-a-realization-of-a-poisson-process" target="_blank" rel="noopener">refer</a></p>
+</blockquote>
 </li>
 </ul>
-<h3 id="Design-of-Process-Mining-Algorithm-Based-on-the-Rules"><a href="#Design-of-Process-Mining-Algorithm-Based-on-the-Rules" class="headerlink" title="Design of Process Mining Algorithm Based on the  Rules"></a>Design of Process Mining Algorithm Based on the  Rules</h3><ul>
-<li><strong>INPUT</strong>: Markov matrix P, activities set X</li>
-<li><strong>OUTPUT</strong>: $W_{and} = \{(x_{\eta_i},x_{\eta_2},…)|x_{\eta_1}//x_{\eta_2}//…\}$, $W = \{(x_i,x_j)|x_i\rightarrow x_j~or~x_i &gt;x_j~or~ x_i \diamond x_j\}$,$W_{select} = \{(x_{\eta_i},x_{\eta_2},…)|$$x_{\eta_1}$#$x_{\eta_2}$#$ …\}$</li>
-</ul>
-<p>​</p>
-</li>
-</ul>
+<h2 id="Learning-Long-Term-Dependencies-in-Irregularly-Sampled-Time-Series"><a href="#Learning-Long-Term-Dependencies-in-Irregularly-Sampled-Time-Series" class="headerlink" title="Learning Long Term Dependencies in Irregularly Sampled Time Series"></a>Learning Long Term Dependencies in Irregularly Sampled Time Series</h2><blockquote>
+<p>ODE_RNN无法解决长时依赖问题，根本原因是ODE得到的隐藏状态会产生梯度消失会爆炸现象，而后提出ODE-LSTM的基本框架，讲记忆单元和对应的连续时间态进行显式分离，并实验真证明了有效性。</p>
+</blockquote>
+<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_LSTM.jpg" alt=""></p>
+<h2 id="GRU-ODE-Bayes-Continuous-Modeling-of-Sporadically-Observed-Time-Series"><a href="#GRU-ODE-Bayes-Continuous-Modeling-of-Sporadically-Observed-Time-Series" class="headerlink" title="GRU-ODE-Bayes: Continuous Modeling of Sporadically-Observed Time Series"></a>GRU-ODE-Bayes: Continuous Modeling of Sporadically-Observed Time Series</h2><blockquote>
+<p>见 Dynamic systems for Deep Learning <a href="./Dynamic-Systems-for-Deep-Learning.md"></a></p>
+</blockquote>
 ]]></content>
       <categories>
-        <category>Process Mining</category>
-        <category>Markov Transition Matrix</category>
+        <category>machine learning</category>
+        <category>Irregular Sampled TS</category>
       </categories>
       <tags>
-        <tag>Process Mining</tag>
-        <tag>Markov Transition Matrix</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -1947,25 +2146,6 @@ E[u_iu_j] = \left\{
       </tags>
   </entry>
   <entry>
-    <title>VIM快捷键配置</title>
-    <url>/2018/12/04/VIM%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="VIM常用快捷键设置"><a href="#VIM常用快捷键设置" class="headerlink" title="VIM常用快捷键设置"></a>VIM常用快捷键设置</h3><ul>
-<li>,nn:打开文件树<br>​    打开文件树之后，在新的分栏打开光标文件按s，在新的tab打开用t</li>
-<li>空格：查找</li>
-<li>gt：切换tab</li>
-<li><c-h j="" k="" l="">切换分栏</c-h></li>
-<li>shift+3: 查找当前光标位置的字符</li>
-<li>调整分栏占比：<br>:vertical res 50  # 纵向分栏<br>:res 50  # 横向分栏</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Life</category>
-      </categories>
-      <tags>
-        <tag>Interesting Things</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ODE数值解</title>
     <url>/2020/09/24/ODE%E6%95%B0%E5%80%BC%E8%A7%A3/</url>
     <content><![CDATA[<blockquote>
@@ -2104,6 +2284,136 @@ E[u_iu_j] = \left\{
       </tags>
   </entry>
   <entry>
+    <title>Process Mining based on the Markov Transition Matrix</title>
+    <url>/2018/11/03/Process-Mining-based-on-the-Markov-Transition-Matrix/</url>
+    <content><![CDATA[<h3 id="Main-Thoughts"><a href="#Main-Thoughts" class="headerlink" title="Main Thoughts"></a>Main Thoughts</h3><ul>
+<li>First analyses the workflow log transition probabilities between activities to build the Markov transition matrix;</li>
+<li>Then mines the process logic relationship by defining a set of rules of logical relational</li>
+<li>At last design the process mining algorithm to establish the actual structure relationship between the activities in order to reconstruct the workflow.  </li>
+</ul>
+<h3 id="Methods-to-find-incomplete-logs"><a href="#Methods-to-find-incomplete-logs" class="headerlink" title="Methods to find incomplete logs"></a>Methods to find incomplete logs</h3><ul>
+<li>List the set of the end events of the log, if an instance’s log end event does not belong to the set</li>
+<li>If a task only has the start event without a corresponding end event</li>
+</ul>
+<h3 id="Symbol-Description"><a href="#Symbol-Description" class="headerlink" title="Symbol Description"></a>Symbol Description</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>symbol</th>
+<th>meaning</th>
+<th>symbol</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n</td>
+<td>execution times of workflow</td>
+<td>$X = \{x_0,x_1…x_k\}$</td>
+<td>set of activities</td>
+</tr>
+<tr>
+<td>P</td>
+<td>workflow transition matrix</td>
+<td>$X_s$</td>
+<td>start process</td>
+</tr>
+<tr>
+<td>$X_E$</td>
+<td>end process</td>
+<td>&gt;</td>
+<td>sequence relationship</td>
+</tr>
+<tr>
+<td>$\rightarrow$</td>
+<td>casual relationship</td>
+<td>#</td>
+<td>selection relationship</td>
+</tr>
+<tr>
+<td>//</td>
+<td>synchronous relationship</td>
+<td>$\diamond$</td>
+<td>circle relationship</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Build-Markov-Transition-Matrix"><a href="#Build-Markov-Transition-Matrix" class="headerlink" title="Build Markov Transition Matrix"></a>Build Markov Transition Matrix</h3><ul>
+<li>$p_{ij} = m_{ij}/n$, $m_{ij}$ means the one step transition times from activity $x_i$ to $x_j$ in the n workflow instances</li>
+</ul>
+<h3 id="Logic-Relationship-Mining-Rules"><a href="#Logic-Relationship-Mining-Rules" class="headerlink" title="Logic Relationship Mining Rules"></a>Logic Relationship Mining Rules</h3><ul>
+<li><p>(1) <strong>Start of the process</strong>:  $\exists x_j \in X$, and $\forall x_i~\in~X$, if $p_{ij} = 0$, then $X_s = x_j$</p>
+</li>
+<li><p>(2) <strong>End of the process</strong>: $\exists x_i \in X$, and $\forall x_j \in X$, if $p_{ij} = 0$, then $X_E = xi$</p>
+</li>
+<li><p>(3) <strong>Sequence relationship</strong>: $\forall x_i,~x_j \in X$, if $p_{ij} \neq 0$, then $x_i &gt;x_j$</p>
+</li>
+<li><p>(4) <strong>Casual relationship</strong>: $\forall x_i,~x_j \in X$, if $p_{ij} = 1$, then$x_i \rightarrow x_j$</p>
+</li>
+<li><p>(5) <strong>Synchronous relationship</strong>:</p>
+<ul>
+<li><strong>And-Split</strong>: if $p_{i \eta_1} = p_{i\eta_2} = … = p_{i\eta_k}= \frac{1}{k}\neq 0$, and $x_i \neq x_{\eta_k}$, then $\{x_{\eta_1}//x_{\eta_2}//..//x_{\eta_k},x_i &gt; x_{\eta_k}\}$, $x_i$ is the <em>And-Split</em> activity node</li>
+<li><strong>And-Join</strong>: if $p_{\eta_1 i} = p_{\eta_2 i}= …=p_{\eta_k} = \frac{1}{k} \neq 0$, and $x_i \neq x_{\eta_k}$, then  $\{x_{\eta_1}//x_{\eta_2}//..//x_{\eta_k}, x_{\eta_k}&gt;x_i \}$, $x_i$ is the <em>And-Join</em> activity node</li>
+</ul>
+</li>
+<li><p>(6) <strong>Selection relationship</strong>:</p>
+<ul>
+<li><strong>OR-Split</strong>: $\exists x_i, x_{\eta_k} \in X, p_{i\eta_k} &gt;0$, if $\sum_k p_{ij} = 1$, then $\{x_{\eta_1}$# $x_{\eta_2}$# ..# $x_{\eta_k},x_i &gt; x_{\eta_k}\}$, $x_i$ is the <em>OR-Split</em> activity node</li>
+<li><strong>OR-Join</strong>:  $\exists x_i, x_{\eta_k} \in X, p_{i\eta_k} &gt;0$, if $\sum_k p_{\eta_ki} = 1$, then $\{x_{\eta_1}$#$x_{\eta_2}$#..#$x_{\eta_k},x_{\eta_k} &gt; x_i\}$, $x_i$ is the <em>OR-Join</em> activity node</li>
+</ul>
+</li>
+<li><p>(7) <strong>Self-circulation relationship</strong>: $\exists x_i \in X, x_{\eta_k} \ in X - \{x_i\}$, if $p_{ii} = p(p \neq 1)$, then $\{\diamond x_i; x_i &gt; x_{\eta_k}\}$</p>
+</li>
+<li><p>(8) <strong>Multi-step cycle relationship</strong>: </p>
+<ul>
+<li>$\forall x_i, x_{\eta_k} \in X, x_i \neq X_S, x_i \neq X_E, X_{re} \neq \emptyset$, if  $p_{ij} = 0, p_{ji} &gt; 0~and~\exists k(k\leq n-1)$, which makes $p_{ij}^{(k)} &gt; 0 (p_{ij}^{(k)}\in p^k)$, then there is a <em>multi cycle</em> between $x_i$ and $x_j$, and $x_j &gt; x_i$; $X_{re}$ = $X_{re} +\{x_i,x_j\}$; and do <strong>Refunction()</strong>.</li>
+</ul>
+<p><img src="/2018/11/03/Process-Mining-based-on-the-Markov-Transition-Matrix/processMining_1.png" alt="processMining_1"></p>
+<p>​    While ($k \geq 2$) the activities in $X_{re}$ has cycle relationship, i.e. $x_j \diamond x_i \diamond x_{\eta_1} \diamond …\diamond x_{\eta_{k-3}}$</p>
+<ul>
+<li><p><strong>The start $X_{rS}$ and end $X_{rE}$ of the multi-step cycle</strong>:</p>
+<p>If $\exists x_{\eta_k}\in X_{re}, x_i \in X-X_{re}$, and $p_{i\eta_k} &gt; 0 $, then $\{X_{rS} = X_{\eta_k};x_i &gt; X_{rS}\}$</p>
+<p>If $\exists x_{\eta_k}\in X_{re}, x_i \in X-X_{re}$, and $p_{\eta_k i} &gt; 0 $, then $\{X_{rE} = X_{\eta_k};X_{rE}&gt;x_i \}$</p>
+</li>
+</ul>
+<h3 id="Design-of-Process-Mining-Algorithm-Based-on-the-Rules"><a href="#Design-of-Process-Mining-Algorithm-Based-on-the-Rules" class="headerlink" title="Design of Process Mining Algorithm Based on the  Rules"></a>Design of Process Mining Algorithm Based on the  Rules</h3><ul>
+<li><strong>INPUT</strong>: Markov matrix P, activities set X</li>
+<li><strong>OUTPUT</strong>: $W_{and} = \{(x_{\eta_i},x_{\eta_2},…)|x_{\eta_1}//x_{\eta_2}//…\}$, $W = \{(x_i,x_j)|x_i\rightarrow x_j~or~x_i &gt;x_j~or~ x_i \diamond x_j\}$,$W_{select} = \{(x_{\eta_i},x_{\eta_2},…)|$$x_{\eta_1}$#$x_{\eta_2}$#$ …\}$</li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Process Mining</category>
+        <category>Markov Transition Matrix</category>
+      </categories>
+      <tags>
+        <tag>Process Mining</tag>
+        <tag>Markov Transition Matrix</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VIM快捷键配置</title>
+    <url>/2018/12/04/VIM%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h3 id="VIM常用快捷键设置"><a href="#VIM常用快捷键设置" class="headerlink" title="VIM常用快捷键设置"></a>VIM常用快捷键设置</h3><ul>
+<li>,nn:打开文件树<br>​    打开文件树之后，在新的分栏打开光标文件按s，在新的tab打开用t</li>
+<li>空格：查找</li>
+<li>gt：切换tab</li>
+<li><c-h j="" k="" l="">切换分栏</c-h></li>
+<li>shift+3: 查找当前光标位置的字符</li>
+<li>调整分栏占比：<br>:vertical res 50  # 纵向分栏<br>:res 50  # 横向分栏</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Life</category>
+      </categories>
+      <tags>
+        <tag>Interesting Things</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TS Anomaly Detection</title>
     <url>/2020/09/12/TS-Anomaly-Detection/</url>
     <content><![CDATA[<blockquote>
@@ -2147,6 +2457,113 @@ E[u_iu_j] = \left\{
       </categories>
       <tags>
         <tag>Applications</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TS prediction</title>
+    <url>/2020/09/06/TS-prediction/</url>
+    <content><![CDATA[<h2 id="TS-Prediction"><a href="#TS-Prediction" class="headerlink" title="TS Prediction"></a>TS Prediction</h2><h3 id="TS-prediction-with-code"><a href="#TS-prediction-with-code" class="headerlink" title="TS_prediction with code"></a>TS_prediction with code</h3><ul>
+<li>GRU-ODE-Bayes: Continuous modeling of sporadically-observed time series <a href="https://github.com/edebrouwer/gru_ode_bayes" target="_blank" rel="noopener">code</a></li>
+<li>N-BEATS: Neural basis expansion analysis for interpretable time series forecasting <a href="https://github.com/forecasts-and-nn/n-beats" target="_blank" rel="noopener">code</a></li>
+<li>Latent ODEs for Irregularly-Sampled Time Series <a href="https://github.com/Ldhlwh/Latent-ODE" target="_blank" rel="noopener">code</a></li>
+<li>Learning Interpretable Deep State Space Model for Probabilistic Time Series Forecasting <a href="">code</a></li>
+<li>Tensorized LSTM with Adaptive Shared Memory for Learning Trends in Multivariate Time Series <a href="https://github.com/DerronXu/DeepTrends/tree/master" target="_blank" rel="noopener">code</a></li>
+<li>System Identification with Time-Aware Neural Sequence Models <a href="https://github.com/tdmeeste/TimeAwareRNN" target="_blank" rel="noopener">code</a></li>
+<li>Joint Modeling of Local and Global Temporal Dynamics for Multivariate time series forecasting with missing values</li>
+<li>Shape and Time Distortion Loss for Training Deep Time Series Forecasting Models <a href="https://github.com/vincent-leguen/DILATE" target="_blank" rel="noopener">code</a></li>
+</ul>
+<h3 id="Ts-prediction-without-code"><a href="#Ts-prediction-without-code" class="headerlink" title="Ts_prediction without code"></a>Ts_prediction without code</h3><ul>
+<li>DeepAR: Probabilistic forecasting with autoregressive recurrent networks</li>
+<li>Unsupervised Scalable Representation Learning for Multivariate Time Series</li>
+<li>A dual-stage attention-based recurrent neural network for time series prediction</li>
+<li>Shape and Time Distortion Loss for Training Deep Time Series Forecasting Models <a href="https://github.com/vincent-leguen/DILATE" target="_blank" rel="noopener">code</a></li>
+<li>A Memory-Network Based Solution for Multivariate Time-Series Forecasting</li>
+<li>Enhancing the Locality and Breaking the Memory Bottleneck of Transformer on Time Series Forecasting</li>
+<li>A Multi-Horizon Quantile Recurrent Forecaster</li>
+<li>Time-series Generative Adversarial Networks</li>
+<li>Enhancing the Locality and Breaking the Memory Bottleneck of Transformer on Time Series Forecasting</li>
+<li>Deep state space models for time series forecasting</li>
+<li>Deep factors for forecasting</li>
+<li>You May Not Need Order in Time Series Forecasting</li>
+</ul>
+<h3 id="dataset"><a href="#dataset" class="headerlink" title="dataset"></a>dataset</h3><ul>
+<li>Electronic Health Records: Mimic-iii, a freely accessible critical care database.   <a href="https://mimic.physionet.org/gettingstarted/access/" target="_blank" rel="noopener">url</a>  GRU-ODE_Bayes</li>
+<li>Climate change: <a href="https://cdiac.ess-dive.lbl.gov/epubs/ndp/ushcn/daily_doc.html" target="_blank" rel="noopener">url</a> GRU-ODE-Bayes</li>
+<li><a href="https://www.cs.ucr.edu/~eamonn/time_series_data/" target="_blank" rel="noopener">Time Series Classification</a></li>
+<li><a href="https://www.kaggle.com/c/web-traffic-time-series-forecasting/data" target="_blank" rel="noopener">Web Traffic Time Series Forecasting</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+        <category>PaperList</category>
+      </categories>
+      <tags>
+        <tag>Applications</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WorkflowSim Structure</title>
+    <url>/2018/11/15/WorkflowSim-Structure/</url>
+    <content><![CDATA[<h2 id="Characteristic"><a href="#Characteristic" class="headerlink" title="Characteristic"></a>Characteristic</h2><ul>
+<li>支持容错机制的研究</li>
+<li>可以计算系统的总花费</li>
+<li>支持目前广泛接受的工作流的基本特征及其调度算法</li>
+<li>不仅支持调度算法的评估，而且考虑了不同任务调度/执行的费用和失败情况</li>
+<li>聚类的策略是静态的，并且没有考虑动态资源的特点</li>
+<li>不考虑来自不同网格中间件服务的中间件开销</li>
+</ul>
+<h2 id="Models-and-Features"><a href="#Models-and-Features" class="headerlink" title="Models and Features"></a>Models and Features</h2><h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><ul>
+<li><p><strong>Workflow Mapper</strong>: Model workflows as DAGs.</p>
+<p>用于导入以XML格式化的DAG文件和其他元数据信息，如文件大小等等，并且在mapping之后，创建一系列tasks并将这些安排到执行环节</p>
+</li>
+<li><p><strong>Clustering Engine</strong>:Merge tasks into jobs so as to reduce the scheduling overheads</p>
+</li>
+<li><p><strong>Workflow Engine</strong>: Manages jobs based on their dependencies to assure that a job may only be released when all of its parent jobs have completed successfully</p>
+</li>
+<li><p><strong>Workflow Scheduler and Job Execution</strong>: </p>
+<ul>
+<li><p><strong>Workflow Scheduler</strong> is used to match jobs to worker nodes based on the criteria selected by user.</p>
+<p><strong>Support dynamic workflow algorithms</strong>:dynamic algorithms, jobs are matched to a worker node in the remote scheduler whenever a worker node becomes idle </p>
+<p><img src="/2018/11/15/WorkflowSim-Structure/1.png" alt="1"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Layered-Overhead"><a href="#Layered-Overhead" class="headerlink" title="Layered Overhead"></a>Layered Overhead</h3><p>Classify workflow overheads into five categories.</p>
+<ul>
+<li><p><strong>Workflow Engine Delay</strong>: 度量作业的最后一个父作业完成时间与作业提交到本地队列的时间之间的时间。</p>
+</li>
+<li><p><strong>Queue Delay</strong>:工作流引擎向本地队列提交作业与本地调度程序看到作业运行的时间之间的时间</p>
+</li>
+<li><p><strong>Postscript Delay and Prescript Delay</strong>:在执行作业之前和之后在某些执行系统下执行轻量级脚本所花费的时间。</p>
+</li>
+<li><p><strong>Data Transfer Delay</strong>: 数据在结点之间传输所需要的时间，包含三种过程： staging data in, cleaning up, staging data out.</p>
+</li>
+<li><p><strong>Clustering Delay</strong>:实际任务运行时总和与工作流计划程序看到的作业运行时之间的差异。</p>
+<p><img src="/2018/11/15/WorkflowSim-Structure/4.png" alt="4"></p>
+</li>
+</ul>
+<h3 id="Layered-Failures-and-Job-Retry"><a href="#Layered-Failures-and-Job-Retry" class="headerlink" title="Layered Failures and Job Retry"></a>Layered Failures and Job Retry</h3><ul>
+<li><p>Divide transient failures into two categories: <strong>task failure</strong> and <strong>job failure</strong></p>
+</li>
+<li><p>Two components to simulate: </p>
+<ul>
+<li><p><strong>Failure Generator</strong>: inject task/job failures at each execution site.</p>
+<p>故障生成器根据用户指定的分布和平均故障率随机生成任务/作业故障。</p>
+</li>
+<li><p><strong>Failure Monitor</strong>: 收集失败记录（例如，资源ID，作业ID，任务ID）并将它们返回到工作流管理系统，以便它可以动态调整调度策略</p>
+<p>Functionality is added to the Workflow Scheduler, which <strong>checks the status of a job</strong> and takes action based on the strategies that a user selects. </p>
+<p><strong>Reclustering</strong> is a technique that we have proposed that attempts to adjust the task clustering strategy based on the detected failure rate </p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Cloud Workflow Scheduling</category>
+      </categories>
+      <tags>
+        <tag>WorkflowSim toolkit introduction</tag>
       </tags>
   </entry>
   <entry>
@@ -2293,110 +2710,44 @@ EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}</script><p><strong> Lemm
       </tags>
   </entry>
   <entry>
-    <title>WorkflowSim Structure</title>
-    <url>/2018/11/15/WorkflowSim-Structure/</url>
-    <content><![CDATA[<h2 id="Characteristic"><a href="#Characteristic" class="headerlink" title="Characteristic"></a>Characteristic</h2><ul>
-<li>支持容错机制的研究</li>
-<li>可以计算系统的总花费</li>
-<li>支持目前广泛接受的工作流的基本特征及其调度算法</li>
-<li>不仅支持调度算法的评估，而且考虑了不同任务调度/执行的费用和失败情况</li>
-<li>聚类的策略是静态的，并且没有考虑动态资源的特点</li>
-<li>不考虑来自不同网格中间件服务的中间件开销</li>
-</ul>
-<h2 id="Models-and-Features"><a href="#Models-and-Features" class="headerlink" title="Models and Features"></a>Models and Features</h2><h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><ul>
-<li><p><strong>Workflow Mapper</strong>: Model workflows as DAGs.</p>
-<p>用于导入以XML格式化的DAG文件和其他元数据信息，如文件大小等等，并且在mapping之后，创建一系列tasks并将这些安排到执行环节</p>
+    <title>hexo configuration on multiple computers</title>
+    <url>/2018/11/04/hexo-configuration-on-multiple-computers/</url>
+    <content><![CDATA[<h3 id="Todo-for-myself"><a href="#Todo-for-myself" class="headerlink" title="Todo for myself"></a>Todo for myself</h3><ul>
+<li><p>Install <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a></p>
 </li>
-<li><p><strong>Clustering Engine</strong>:Merge tasks into jobs so as to reduce the scheduling overheads</p>
+<li><p>Install hexo</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm  install -g hexo</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Workflow Engine</strong>: Manages jobs based on their dependencies to assure that a job may only be released when all of its parent jobs have completed successfully</p>
+<li><p>Download latest version in my Gituhb</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/yantijin/yantijin.github.io.git</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Workflow Scheduler and Job Execution</strong>: </p>
+<li><p>Download latest themes configuration in another foler</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/yantijin/Theme_Next.git</span><br></pre></td></tr></table></figure>
+<p>Then copy the theme into <strong>github.yantijin.io/themes</strong></p>
+</li>
+<li><p>Install  dependencies for your blog</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Something needs to modifiy</p>
 <ul>
-<li><p><strong>Workflow Scheduler</strong> is used to match jobs to worker nodes based on the criteria selected by user.</p>
-<p><strong>Support dynamic workflow algorithms</strong>:dynamic algorithms, jobs are matched to a worker node in the remote scheduler whenever a worker node becomes idle </p>
-<p><img src="/2018/11/15/WorkflowSim-Structure/1.png" alt="1"></p>
+<li><p>About <strong>MATHJAX</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-readerer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+<p> Next step is to modify the files in <strong>node_modules/kramed/lib/rules/inlime.js</strong>.</p>
+<p>Change line 10 and line 20:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"><span class="built_in">escape</span>: <span class="regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</span><br><span class="line"><span class="comment">// em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line"> em: <span class="regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br></pre></td></tr></table></figure>
+<p>​</p>
 </li>
 </ul>
 </li>
-</ul>
-<h3 id="Layered-Overhead"><a href="#Layered-Overhead" class="headerlink" title="Layered Overhead"></a>Layered Overhead</h3><p>Classify workflow overheads into five categories.</p>
-<ul>
-<li><p><strong>Workflow Engine Delay</strong>: 度量作业的最后一个父作业完成时间与作业提交到本地队列的时间之间的时间。</p>
-</li>
-<li><p><strong>Queue Delay</strong>:工作流引擎向本地队列提交作业与本地调度程序看到作业运行的时间之间的时间</p>
-</li>
-<li><p><strong>Postscript Delay and Prescript Delay</strong>:在执行作业之前和之后在某些执行系统下执行轻量级脚本所花费的时间。</p>
-</li>
-<li><p><strong>Data Transfer Delay</strong>: 数据在结点之间传输所需要的时间，包含三种过程： staging data in, cleaning up, staging data out.</p>
-</li>
-<li><p><strong>Clustering Delay</strong>:实际任务运行时总和与工作流计划程序看到的作业运行时之间的差异。</p>
-<p><img src="/2018/11/15/WorkflowSim-Structure/4.png" alt="4"></p>
-</li>
-</ul>
-<h3 id="Layered-Failures-and-Job-Retry"><a href="#Layered-Failures-and-Job-Retry" class="headerlink" title="Layered Failures and Job Retry"></a>Layered Failures and Job Retry</h3><ul>
-<li><p>Divide transient failures into two categories: <strong>task failure</strong> and <strong>job failure</strong></p>
-</li>
-<li><p>Two components to simulate: </p>
-<ul>
-<li><p><strong>Failure Generator</strong>: inject task/job failures at each execution site.</p>
-<p>故障生成器根据用户指定的分布和平均故障率随机生成任务/作业故障。</p>
-</li>
-<li><p><strong>Failure Monitor</strong>: 收集失败记录（例如，资源ID，作业ID，任务ID）并将它们返回到工作流管理系统，以便它可以动态调整调度策略</p>
-<p>Functionality is added to the Workflow Scheduler, which <strong>checks the status of a job</strong> and takes action based on the strategies that a user selects. </p>
-<p><strong>Reclustering</strong> is a technique that we have proposed that attempts to adjust the task clustering strategy based on the detected failure rate </p>
-</li>
-</ul>
+<li><p><a href="https://juejin.im/post/5acf22e6f265da23994eeac9" target="_blank" rel="noopener">REF for Detail</a></p>
 </li>
 </ul>
 ]]></content>
       <categories>
-        <category>Cloud Workflow Scheduling</category>
+        <category>Entertainment</category>
       </categories>
       <tags>
-        <tag>WorkflowSim toolkit introduction</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TS prediction</title>
-    <url>/2020/09/06/TS-prediction/</url>
-    <content><![CDATA[<h2 id="TS-Prediction"><a href="#TS-Prediction" class="headerlink" title="TS Prediction"></a>TS Prediction</h2><h3 id="TS-prediction-with-code"><a href="#TS-prediction-with-code" class="headerlink" title="TS_prediction with code"></a>TS_prediction with code</h3><ul>
-<li>GRU-ODE-Bayes: Continuous modeling of sporadically-observed time series <a href="https://github.com/edebrouwer/gru_ode_bayes" target="_blank" rel="noopener">code</a></li>
-<li>N-BEATS: Neural basis expansion analysis for interpretable time series forecasting <a href="https://github.com/forecasts-and-nn/n-beats" target="_blank" rel="noopener">code</a></li>
-<li>Latent ODEs for Irregularly-Sampled Time Series <a href="https://github.com/Ldhlwh/Latent-ODE" target="_blank" rel="noopener">code</a></li>
-<li>Learning Interpretable Deep State Space Model for Probabilistic Time Series Forecasting <a href="">code</a></li>
-<li>Tensorized LSTM with Adaptive Shared Memory for Learning Trends in Multivariate Time Series <a href="https://github.com/DerronXu/DeepTrends/tree/master" target="_blank" rel="noopener">code</a></li>
-<li>System Identification with Time-Aware Neural Sequence Models <a href="https://github.com/tdmeeste/TimeAwareRNN" target="_blank" rel="noopener">code</a></li>
-<li>Joint Modeling of Local and Global Temporal Dynamics for Multivariate time series forecasting with missing values</li>
-<li>Shape and Time Distortion Loss for Training Deep Time Series Forecasting Models <a href="https://github.com/vincent-leguen/DILATE" target="_blank" rel="noopener">code</a></li>
-</ul>
-<h3 id="Ts-prediction-without-code"><a href="#Ts-prediction-without-code" class="headerlink" title="Ts_prediction without code"></a>Ts_prediction without code</h3><ul>
-<li>DeepAR: Probabilistic forecasting with autoregressive recurrent networks</li>
-<li>Unsupervised Scalable Representation Learning for Multivariate Time Series</li>
-<li>A dual-stage attention-based recurrent neural network for time series prediction</li>
-<li>Shape and Time Distortion Loss for Training Deep Time Series Forecasting Models <a href="https://github.com/vincent-leguen/DILATE" target="_blank" rel="noopener">code</a></li>
-<li>A Memory-Network Based Solution for Multivariate Time-Series Forecasting</li>
-<li>Enhancing the Locality and Breaking the Memory Bottleneck of Transformer on Time Series Forecasting</li>
-<li>A Multi-Horizon Quantile Recurrent Forecaster</li>
-<li>Time-series Generative Adversarial Networks</li>
-<li>Enhancing the Locality and Breaking the Memory Bottleneck of Transformer on Time Series Forecasting</li>
-<li>Deep state space models for time series forecasting</li>
-<li>Deep factors for forecasting</li>
-<li>You May Not Need Order in Time Series Forecasting</li>
-</ul>
-<h3 id="dataset"><a href="#dataset" class="headerlink" title="dataset"></a>dataset</h3><ul>
-<li>Electronic Health Records: Mimic-iii, a freely accessible critical care database.   <a href="https://mimic.physionet.org/gettingstarted/access/" target="_blank" rel="noopener">url</a>  GRU-ODE_Bayes</li>
-<li>Climate change: <a href="https://cdiac.ess-dive.lbl.gov/epubs/ndp/ushcn/daily_doc.html" target="_blank" rel="noopener">url</a> GRU-ODE-Bayes</li>
-<li><a href="https://www.cs.ucr.edu/~eamonn/time_series_data/" target="_blank" rel="noopener">Time Series Classification</a></li>
-<li><a href="https://www.kaggle.com/c/web-traffic-time-series-forecasting/data" target="_blank" rel="noopener">Web Traffic Time Series Forecasting</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-        <category>PaperList</category>
-      </categories>
-      <tags>
-        <tag>Applications</tag>
+        <tag>Try4New</tag>
       </tags>
   </entry>
   <entry>
@@ -2454,47 +2805,6 @@ EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}</script><p><strong> Lemm
       </categories>
       <tags>
         <tag>algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo configuration on multiple computers</title>
-    <url>/2018/11/04/hexo-configuration-on-multiple-computers/</url>
-    <content><![CDATA[<h3 id="Todo-for-myself"><a href="#Todo-for-myself" class="headerlink" title="Todo for myself"></a>Todo for myself</h3><ul>
-<li><p>Install <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a></p>
-</li>
-<li><p>Install hexo</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm  install -g hexo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Download latest version in my Gituhb</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/yantijin/yantijin.github.io.git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Download latest themes configuration in another foler</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/yantijin/Theme_Next.git</span><br></pre></td></tr></table></figure>
-<p>Then copy the theme into <strong>github.yantijin.io/themes</strong></p>
-</li>
-<li><p>Install  dependencies for your blog</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Something needs to modifiy</p>
-<ul>
-<li><p>About <strong>MATHJAX</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-readerer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
-<p> Next step is to modify the files in <strong>node_modules/kramed/lib/rules/inlime.js</strong>.</p>
-<p>Change line 10 and line 20:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"><span class="built_in">escape</span>: <span class="regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</span><br><span class="line"><span class="comment">// em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line"> em: <span class="regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ul>
-</li>
-<li><p><a href="https://juejin.im/post/5acf22e6f265da23994eeac9" target="_blank" rel="noopener">REF for Detail</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Entertainment</category>
-      </categories>
-      <tags>
-        <tag>Try4New</tag>
       </tags>
   </entry>
   <entry>
@@ -2616,43 +2926,6 @@ EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}</script><p><strong> Lemm
       </tags>
   </entry>
   <entry>
-    <title>安装教程</title>
-    <url>/2018/12/11/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="大数据范畴"><a href="#大数据范畴" class="headerlink" title="大数据范畴"></a>大数据范畴</h1><h2 id="Ubuntu16-04-安装Hadoop伪分布式"><a href="#Ubuntu16-04-安装Hadoop伪分布式" class="headerlink" title="Ubuntu16.04 安装Hadoop伪分布式"></a>Ubuntu16.04 安装Hadoop伪分布式</h2><ul>
-<li><a href="https://blog.csdn.net/m0_37138008/article/details/71078740" target="_blank" rel="noopener">参考文章</a></li>
-<li>主要步骤：添加新用户，配置ssh免密码登录，安装jdk，安装hadoop，修改配置文件形成伪分布式，启动后用jps测试看是否启动</li>
-</ul>
-<h2 id="Ubuntu中Spark安装教程"><a href="#Ubuntu中Spark安装教程" class="headerlink" title="Ubuntu中Spark安装教程"></a>Ubuntu中Spark安装教程</h2><ul>
-<li><a href="https://www.cnblogs.com/qingyunzong/p/8903714.html" target="_blank" rel="noopener">参考文章</a></li>
-<li>主要步骤：在hadoop安装基础上进行安装，Scala安装可选，然后进行解压对配置文件进行配置即可</li>
-</ul>
-<h1 id="安装IDE"><a href="#安装IDE" class="headerlink" title="安装IDE"></a>安装IDE</h1><h2 id="Ubuntu下安装sublime"><a href="#Ubuntu下安装sublime" class="headerlink" title="Ubuntu下安装sublime"></a>Ubuntu下安装sublime</h2><ul>
-<li><a href="https://imcn.me/html/y2017/30349.html" target="_blank" rel="noopener">参考文章</a></li>
-</ul>
-<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><ul>
-<li>安装package control:<a href="https://blog.csdn.net/wxl1555/article/details/69941451" target="_blank" rel="noopener">参考博客</a></li>
-<li>常用插件：<ul>
-<li>汉化版本： localization</li>
-<li>侧边栏： sidebarEnhancemnet</li>
-<li>Markdown 语法： Markdown Editing</li>
-<li>Anaconda+sublimelinter+sublimeRepl</li>
-<li>编码： convert2UTF8</li>
-</ul>
-</li>
-</ul>
-<h3 id="配置中文输入"><a href="#配置中文输入" class="headerlink" title="配置中文输入"></a>配置中文输入</h3><ul>
-<li><a href="https://www.jianshu.com/p/bf05fb3a4709" target="_blank" rel="noopener">参考文章</a></li>
-<li>博客讲的很好，可以直接下载sublime-text-imfix来进行安装，然后注意，此种方法是需要在命令行中启动才能对其输入中文</li>
-</ul>
-]]></content>
-      <categories>
-        <category>安装教程</category>
-      </categories>
-      <tags>
-        <tag>安装教程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>决策树</title>
     <url>/2018/11/17/%E5%86%B3%E7%AD%96%E6%A0%91/</url>
     <content><![CDATA[<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><h3 id="决策树建树的基本流程"><a href="#决策树建树的基本流程" class="headerlink" title="决策树建树的基本流程"></a>决策树建树的基本流程</h3><p><img src="/2018/11/17/决策树/1.png" alt="1"></p>
@@ -2708,6 +2981,43 @@ Gini\_index(D,a)=\sum^V_{v=1}\frac{|D^v|}{|D|}Gini(D^v)</script></li>
       </categories>
       <tags>
         <tag>machine learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装教程</title>
+    <url>/2018/12/11/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="大数据范畴"><a href="#大数据范畴" class="headerlink" title="大数据范畴"></a>大数据范畴</h1><h2 id="Ubuntu16-04-安装Hadoop伪分布式"><a href="#Ubuntu16-04-安装Hadoop伪分布式" class="headerlink" title="Ubuntu16.04 安装Hadoop伪分布式"></a>Ubuntu16.04 安装Hadoop伪分布式</h2><ul>
+<li><a href="https://blog.csdn.net/m0_37138008/article/details/71078740" target="_blank" rel="noopener">参考文章</a></li>
+<li>主要步骤：添加新用户，配置ssh免密码登录，安装jdk，安装hadoop，修改配置文件形成伪分布式，启动后用jps测试看是否启动</li>
+</ul>
+<h2 id="Ubuntu中Spark安装教程"><a href="#Ubuntu中Spark安装教程" class="headerlink" title="Ubuntu中Spark安装教程"></a>Ubuntu中Spark安装教程</h2><ul>
+<li><a href="https://www.cnblogs.com/qingyunzong/p/8903714.html" target="_blank" rel="noopener">参考文章</a></li>
+<li>主要步骤：在hadoop安装基础上进行安装，Scala安装可选，然后进行解压对配置文件进行配置即可</li>
+</ul>
+<h1 id="安装IDE"><a href="#安装IDE" class="headerlink" title="安装IDE"></a>安装IDE</h1><h2 id="Ubuntu下安装sublime"><a href="#Ubuntu下安装sublime" class="headerlink" title="Ubuntu下安装sublime"></a>Ubuntu下安装sublime</h2><ul>
+<li><a href="https://imcn.me/html/y2017/30349.html" target="_blank" rel="noopener">参考文章</a></li>
+</ul>
+<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><ul>
+<li>安装package control:<a href="https://blog.csdn.net/wxl1555/article/details/69941451" target="_blank" rel="noopener">参考博客</a></li>
+<li>常用插件：<ul>
+<li>汉化版本： localization</li>
+<li>侧边栏： sidebarEnhancemnet</li>
+<li>Markdown 语法： Markdown Editing</li>
+<li>Anaconda+sublimelinter+sublimeRepl</li>
+<li>编码： convert2UTF8</li>
+</ul>
+</li>
+</ul>
+<h3 id="配置中文输入"><a href="#配置中文输入" class="headerlink" title="配置中文输入"></a>配置中文输入</h3><ul>
+<li><a href="https://www.jianshu.com/p/bf05fb3a4709" target="_blank" rel="noopener">参考文章</a></li>
+<li>博客讲的很好，可以直接下载sublime-text-imfix来进行安装，然后注意，此种方法是需要在命令行中启动才能对其输入中文</li>
+</ul>
+]]></content>
+      <categories>
+        <category>安装教程</category>
+      </categories>
+      <tags>
+        <tag>安装教程</tag>
       </tags>
   </entry>
   <entry>
@@ -2971,66 +3281,47 @@ Gini\_index(D,a)=\sum^V_{v=1}\frac{|D^v|}{|D|}Gini(D^v)</script></li>
       </tags>
   </entry>
   <entry>
-    <title>看见_柴静</title>
-    <url>/2018/11/07/%E7%9C%8B%E8%A7%81-%E6%9F%B4%E9%9D%99/</url>
-    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;《看见》是柴静讲述央视十年历程的自传性作品，既是柴静个人的成长告白书，在某种程度上亦可视作中国社会十年变迁的备忘录</p>
-<h2 id="MARKS"><a href="#MARKS" class="headerlink" title="MARKS"></a>MARKS</h2><ul>
-<li><p>白岩松有天安慰我：“人们声称的最美好的岁月其实都是最痛苦的，只是事后回忆起来的时候才那么幸福。</p>
+    <title>神经了的ODE: Neural CDE</title>
+    <url>/2020/09/23/%E7%A5%9E%E7%BB%8F%E4%BA%86%E7%9A%84ODE-Neural-CDE/</url>
+    <content><![CDATA[<h3 id="Neural-Controlled-Differential-Equations-for-Irregular-Time-Series"><a href="#Neural-Controlled-Differential-Equations-for-Irregular-Time-Series" class="headerlink" title="Neural Controlled Differential Equations for Irregular Time Series"></a>Neural Controlled Differential Equations for Irregular Time Series</h3><blockquote>
+<p>Neural ODE的缺点是一旦初值确定，轨迹便确定，中间无法对轨迹进行修正，本文引入受控微分方程概念，使得后续拿到的数据得到进一步利用。<a href="http://arxiv.org/abs/2005.08926" target="_blank" rel="noopener">ArXiv</a>, <a href="https://github.com/patrick-kidger/NeuralCDE" target="_blank" rel="noopener">code</a>. <a id="more"></a></p>
+</blockquote>
+<ul>
+<li><p>假设$\tau, T\in R$, 且$\tau &lt;T$, $v,\omega$为正整数， $X:[\tau, T]\rightarrow R^v$为一个有界连续函数(即X是满足Lipschitz性质的)。$f:R^\omega \rightarrow R^{\omega\times v}$是连续映射函数，$\zeta\in R^\omega$, 且有连续映射 $z:[\tau, T]\rightarrow R^{\omega\times v}$, 并定义</p>
+<script type="math/tex; mode=display">
+z_t = z_\tau + \int^t_{\tau} f(z_s)dX_s~~~\text{for}~~t\in (\tau, T]</script><p>其中 $X_s\in R^v, f(Z_s)\in R^{\omega \times v}$, 上式被称作 $\text{Controlled differential equation}$.</p>
 </li>
-<li><p>旁边站着一个戴赭黄头巾的维族老人，我还没来得及张口问什么，她忽然回身把我抱住，在我肩头哭了起来。我下意识地搂着她一耸一耸的肩膀，脸贴着她的脸，她的皱纹冻得冰凉。</p>
+<li><p>与一般基于ODE的时序预测方法不同，本文在考虑后续状态的同时，可以保证隐藏状态z是连续变化的。</p>
 </li>
-<li><p>您用什么挖的？”“当时找不到任何工具，就用自己的手挖。一开始看到一个手腕时也不能确定是我媳妇还是儿媳妇，等看到衣袖的时候我才确定是我孩子他妈。然后我就停下来了，其他人把她挖了出来。”他脸上全是灰，被泪水冲刷得深一道浅一道，翻译说到“然后我就停下来了”，我心里抽动，一时间不出下一句来。</p>
-</li>
-<li><p>离开的时候，我看到另一张病床上的小伙子，脖子上绑着一个痰巾，上面有一些秽迹，小腿露在被子外面，全是曲张的静脉。我们走过的时候，他连看都不看一眼。我停下来看他。他没有昏迷，眼睛是睁着的，只是什么表情也没有。日后，我在很多绝望的人脸上看过</p>
-</li>
-<li><p>晚上回到酒店，大家都不作声。编导天贺抽了一会儿他的大烟斗，说：“觉得么，像是《卡桑德拉大桥》里头的感觉，火车正往危险的地方开，车里的人耳边咣咣响——外面有人正把窗户钉死。”</p>
-</li>
-<li><p>她嗓子喑哑，听起来像是呓语，不断重复某些句子。采访差不多凌晨四点才结束，司机听得睡过去了。我不想打断她，这一年多的生活，她一直没机会说，说出来也没人信。她说：“我可以这样厚颜无耻！我都觉得自己厚颜无耻……现在想起来也还是。你可以到那条街上站在那里跟别人讨价还价。不是说卖别人，卖什么，是卖自己呀！那是跟别人讨价还价卖自己！”</p>
-<p>她说在噩梦里，还会一次次回到那个地方——穿着从戒毒所被卖出来时的那条睡裙，天马上就要黑了，她就要开始站在那条街上，等着出卖自己。“你戒毒所是挽救人，还是毁灭人？</p>
-</li>
-<li><p>海子有句诗，深得我心：“天空一无所有，为何给我安慰。”</p>
-</li>
-<li><p>阿甘是看见了什么，就走过去。别的人，是看见一个目标，先订一个作战计划，然后匍匐前进，往左闪，往右躲，再弄个掩体……一辈子就看他闪转腾挪活得那叫一个花哨，最后哪儿也没到达。”</p>
-</li>
-<li><p>我采访陈丹青时，这位知名的画家从清华辞去了美术学院教授和博导的职务，因为现行的政治和英语考试，让他招不到他想要的学生。他说：“政治本来是一门学问，但我们的政治考试是反政治的，没有人尊敬这个学科。”</p>
-</li>
-<li><p>《我只是讨厌屈服》。”我说。他带点惊奇地看了我一眼，说哎对，过了一会儿，说：“在那篇文章里，那个律师说了一句话，他说权利不用来伸张的话，就只是一张纸。”这个人相信了这些写在纸上的话，然后穿着蓝白相间竖条纹的狱服，满脸胡须，坐这里看着我。他进监狱后，厂子倒了，离了婚，监狱离他的家两千里，没人给他送生活费，村里的人去看他，拾破烂的老人给了他五十块钱，老汉戴着塌得稀软的蓝布帽子，对我说：“把他换出来，把我关进去吧，我老了。”</p>
-</li>
-<li><p>说话，真不容易呢，我们绝大部分人都是普通人。却希望其他人都能做个公民，这样才会有人帮我们争取更多的利益、权利……”</p>
-</li>
-<li><p>痛苦是财富，这话是扯淡。姑娘，痛苦就是痛苦，”他说，“对痛苦的思考才是财富。”</p>
-</li>
-<li><p>老范坐边上，后来她写道：“说实话，他的坦率让我绝望。一个过于主动甚至积极坦白自己内心阴暗面的人，往往会让原本想去挖掘他内心弱点的人感到尴尬和一丝不安。</p>
-</li>
-<li><p>心理医生说有的人为什么要拼命吃东西，因为要抑制自己表达不出来的欲望。她拧过脸看着我，很专心地听。</p>
-</li>
-<li><p>希望和失望也绝不能是善。因为恐惧是一种痛苦，希望不能脱离恐惧而存在，所以希望和失望都表示知识的缺乏，和心灵的软弱无力。</p>
-</li>
-<li><p>老王没有推特写，只是伴随，她隔着栏杆，向场地中嗒然若失的埃蒙斯伸出手去，埃蒙斯将头抵在栏杆上，她俯身下去隔着栅栏揽住他，一只手护持着丈夫的脖颈，另一只手摩挲他的眉毛，像在安抚委屈孩子时的温存。音乐与现场的人声交替出现：“When you try your best but you don’t succeed，When you get what you want but not whatyou need， When you feel so tried but you can’t sleep……”老范跟我说过她为什么用这歌，她说生活到了真的艰难处才能体会，“只有最亲的人才能了解和陪伴你的伤痛”。</p>
-</li>
-<li><p>我说：“那个刷头皮的小男孩的细节之所以让人记了很多年，那个医生对他的情感之所以显得那么真实，是因为小男孩承受了极大的痛苦，是因为他的坚忍。西藏人有句话说，幸福是刀口舔蜜。唐山首先是个刀口，如果刀口本身的锋利和痛感感觉不到，后来的蜜汁你吮吸起来也会觉得少了滋味。”</p>
-</li>
-<li><p>他写了句奇怪的话——“这个世界上有很多极端认真的蠢人。”红灯又闪一下，补了一句：“当然不是指你。”我说指什么。他说：“比如一个母亲，孩子生病，她天天祈祷，但是还是去世了，这不是愚昧么？”我说：“这是爱。”他说：“爱和善是能力，而不是情感。</p>
-</li>
-<li><p>我俩到处找人打听求助，碰到肯帮忙的人，明白为什么有个成语叫“感激涕零”。我那阵子什么也干不了，问一个明友：“你出事的时候是什么感觉？”“一块石头落了地。”他指内心的恐惧终于到了。“如果是你亲近的人出了事呢？”“那是一块石头砸在心里。”</p>
-</li>
-<li><p>你对现实完全没有愤怒？”“没有。”“你知道还会有一种危险是，当我们彻底地理解了现实的合理性，很多人就放弃了。”这是我的困惑。“那可能还是因为想到自己要改变，所以没办法了，碰到障碍了，就放弃了。我也改变不了，但也不用改变，它还是会变。”“那我们做什么呢？”“把自己的事情做好。”</p>
-</li>
-<li><p>我最害怕的是崇拜者，因为崇拜基于的往往是幻想上崇拜，最终的结果也只能是失望。</p>
-</li>
-<li><p>“不光是简单，不光是家长，不管任何人，你去告诉别人应该怎么样，这就是错的方式。我就错了这么多年。”</p>
-</li>
-<li><p>我当法官时，常认真地履行我的职责，实际上我也是如此做的。但在我内心深处，潜伏着这么一种意识：我只是在人生的舞台上扮演着一个法官的角色。每当我判一个人死刑，都秘密地向他的灵魂祈求，要他原谅我这么做，我判他的刑只因为这是我的角色，而非因为这是我的意愿。我觉得像彼拉多一样，并且希望洗干净我的手，免得沾上人的血，尽管他也许有罪。唯有完人才够资格向罪人扔石头，但是，完人是没有的。”在这段话边上，学生时代的何帆给的批注是：“伪善。”如今，他拿出笔，划去那两个字，在旁边写上：“人性。”</p>
-</li>
-<li><p>“一个人得被自己的弱点绑架多少次啊，悲催的是这些弱点怎么也改不掉。但这几年来，身边的人待我，就像陈升歌里唱的，‘因为你对我的温柔，所以我懂得对别人好’，能起码认识到什么不好，最重要的，是能以‘别人可能是对的’为前提来思考一些问题。”年底开会的时候，我向组里道歉：“不好意思啊平常太暴躁啦。”大家笑，好好，原谅你。我又不干了：“哟，我就这么一说，你们真敢接受啊，谁敢说我暴躁我看看。</p>
-</li>
+<li><p>对(1)式进行扩展，可以得到$\text{Neural Controlled Differenrial Equations}$的定义为：</p>
+<script type="math/tex; mode=display">
+z_t = z_{t_0} + \int^t_{t_0} f_{\theta}(z_s)dX_s~~~\text{for}~~t\in (t_0, t_n]</script><p>其中$z_{t_0} = \zeta_{\theta}(x_0, t_0)$</p>
+<ul>
+<li><strong>本文中$X:[\tau, T]\rightarrow R^v$是通过自然边界下三次样条插值法来确定的</strong></li>
+<li><strong>$f_{\theta}:R^\omega \rightarrow R^{\omega\times (v+1)}$表示任意神经网络</strong>，<strong>$w$是超参数，表示隐藏状态的维度</strong></li>
+<li><strong>$\zeta_{\theta}: R^{v+1}\rightarrow R^{\omega}$表示任意依赖于参数$\theta$的神经网络</strong></li>
 </ul>
+</li>
+<li><p>本文将 $\text{Controlled differential equation}$转化为普通的ODE方程，从而能够通过$\text{Neural ODE}$中的方法进行求解，假设</p>
+<script type="math/tex; mode=display">
+g_{\theta, X}(z,s) = f_{\theta}\frac{dX}{ds}(s)</script><p>则很容易得到</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+z_t &= z_{t_0} + \int^t_{t_0} f_{\theta}(z_s)dX_s \\
+&= z_{t_0} + \int^t_{t_0}f_{\theta}(z_s)\frac{dX}{ds}(s)ds\\
+&= z_{t_0} + \int^t_{t_0} g_{\theta,X}(z_s, s)ds.
+\end{aligned}
+\end{equation}</script></li>
+</ul>
+<p><img src="/2020/09/23/神经了的ODE-Neural-CDE/1.png" alt=""></p>
 ]]></content>
       <categories>
-        <category>Life</category>
+        <category>machine learning</category>
+        <category>Neural ODE</category>
       </categories>
       <tags>
-        <tag>read</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -3095,103 +3386,6 @@ P(x)=\frac{1}{Z^*}\Pi_{Q\in C^*}\psi_Q(x_Q)</script><p>其中$Z^<em> =\sum_x\Pi_
       </categories>
       <tags>
         <tag>machine learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>神经了的ODE: Neural CDE</title>
-    <url>/2020/09/23/%E7%A5%9E%E7%BB%8F%E4%BA%86%E7%9A%84ODE-Neural-CDE/</url>
-    <content><![CDATA[<h3 id="Neural-Controlled-Differential-Equations-for-Irregular-Time-Series"><a href="#Neural-Controlled-Differential-Equations-for-Irregular-Time-Series" class="headerlink" title="Neural Controlled Differential Equations for Irregular Time Series"></a>Neural Controlled Differential Equations for Irregular Time Series</h3><blockquote>
-<p>Neural ODE的缺点是一旦初值确定，轨迹便确定，中间无法对轨迹进行修正，本文引入受控微分方程概念，使得后续拿到的数据得到进一步利用。<a href="http://arxiv.org/abs/2005.08926" target="_blank" rel="noopener">ArXiv</a>, <a href="https://github.com/patrick-kidger/NeuralCDE" target="_blank" rel="noopener">code</a>. <a id="more"></a></p>
-</blockquote>
-<ul>
-<li><p>假设$\tau, T\in R$, 且$\tau &lt;T$, $v,\omega$为正整数， $X:[\tau, T]\rightarrow R^v$为一个有界连续函数(即X是满足Lipschitz性质的)。$f:R^\omega \rightarrow R^{\omega\times v}$是连续映射函数，$\zeta\in R^\omega$, 且有连续映射 $z:[\tau, T]\rightarrow R^{\omega\times v}$, 并定义</p>
-<script type="math/tex; mode=display">
-z_t = z_\tau + \int^t_{\tau} f(z_s)dX_s~~~\text{for}~~t\in (\tau, T]</script><p>其中 $X_s\in R^v, f(Z_s)\in R^{\omega \times v}$, 上式被称作 $\text{Controlled differential equation}$.</p>
-</li>
-<li><p>与一般基于ODE的时序预测方法不同，本文在考虑后续状态的同时，可以保证隐藏状态z是连续变化的。</p>
-</li>
-<li><p>对(1)式进行扩展，可以得到$\text{Neural Controlled Differenrial Equations}$的定义为：</p>
-<script type="math/tex; mode=display">
-z_t = z_{t_0} + \int^t_{t_0} f_{\theta}(z_s)dX_s~~~\text{for}~~t\in (t_0, t_n]</script><p>其中$z_{t_0} = \zeta_{\theta}(x_0, t_0)$</p>
-<ul>
-<li><strong>本文中$X:[\tau, T]\rightarrow R^v$是通过自然边界下三次样条插值法来确定的</strong></li>
-<li><strong>$f_{\theta}:R^\omega \rightarrow R^{\omega\times (v+1)}$表示任意神经网络</strong>，<strong>$w$是超参数，表示隐藏状态的维度</strong></li>
-<li><strong>$\zeta_{\theta}: R^{v+1}\rightarrow R^{\omega}$表示任意依赖于参数$\theta$的神经网络</strong></li>
-</ul>
-</li>
-<li><p>本文将 $\text{Controlled differential equation}$转化为普通的ODE方程，从而能够通过$\text{Neural ODE}$中的方法进行求解，假设</p>
-<script type="math/tex; mode=display">
-g_{\theta, X}(z,s) = f_{\theta}\frac{dX}{ds}(s)</script><p>则很容易得到</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\begin{aligned}
-z_t &= z_{t_0} + \int^t_{t_0} f_{\theta}(z_s)dX_s \\
-&= z_{t_0} + \int^t_{t_0}f_{\theta}(z_s)\frac{dX}{ds}(s)ds\\
-&= z_{t_0} + \int^t_{t_0} g_{\theta,X}(z_s, s)ds.
-\end{aligned}
-\end{equation}</script></li>
-</ul>
-<p><img src="/2020/09/23/神经了的ODE-Neural-CDE/1.png" alt=""></p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-        <category>Neural ODE</category>
-      </categories>
-      <tags>
-        <tag>machine learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>进化算法库</title>
-    <url>/2018/11/18/%E8%BF%9B%E5%8C%96%E7%AE%97%E6%B3%95%E5%BA%93/</url>
-    <content><![CDATA[<h2 id="NSGA族"><a href="#NSGA族" class="headerlink" title="NSGA族"></a>NSGA族</h2><h3 id="NSGA的缺陷："><a href="#NSGA的缺陷：" class="headerlink" title="NSGA的缺陷："></a>NSGA的缺陷：</h3><p>(1)非支配排序的时间复杂度很大，为$O(MN^3)$,其中M为目标函数的数量，N为种群规模。</p>
-<p>(2)不支持精英策略。精英策略在保持好的个体及加速向Pareto前沿收敛方面有很好的表现</p>
-<p>(3)需要自己指定共享参数，该参数对种群的多样性产生很大的影响</p>
-<h3 id="NSGA-II"><a href="#NSGA-II" class="headerlink" title="NSGA-II"></a>NSGA-II</h3><ul>
-<li><p>NSGA一II算法的基本思想为:首先,随机产生规模为N的初始种群,非支配排序后通过遗传算法的选择、交叉、变异三个基本操作得到第一代子代种群;其次,从第二代开始,将父代种群与子代种群合并,进行快速非支配排序,同时对每个非支配层中的个体进行拥挤度计算,根据非支配关系以及个体的拥挤度选取合适的个体组成新的父代种群;最后,通过遗传算法的基本操作产生新的子代种群:依此类推,直到满足程序结束的条件。</p>
-</li>
-<li><p>主要贡献</p>
-<ul>
-<li><p>(1)快速非支配排序：</p>
-<p><img src="/2018/11/18/进化算法库/1.png" alt="1"></p>
-</li>
-<li><p>(2)保留多样性：提出<strong>拥挤比较法</strong>替换<strong>共享函数法</strong>，$I[i].m$为I集合中第i个个体第m个目标函数的值。</p>
-<p><img src="/2018/11/18/进化算法库/2.png" alt="2"></p>
-<p><img src="/2018/11/18/进化算法库/3.png" alt="3"></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="主程序"><a href="#主程序" class="headerlink" title="#### 主程序"></a>#### 主程序</h3><p><img src="/2018/11/18/进化算法库/4.png" alt="4"></p>
-<h2 id="SPEA算法族"><a href="#SPEA算法族" class="headerlink" title="SPEA算法族"></a>SPEA算法族</h2><h3 id="SPEA-O-N-3"><a href="#SPEA-O-N-3" class="headerlink" title="SPEA (O($N^3$))"></a>SPEA (O($N^3$))</h3><p><a href="https://blog.csdn.net/u014119694/article/details/77412740" target="_blank" rel="noopener">SPEA参考自博客</a></p>
-<p><img src="/2018/11/18/进化算法库/5.png" alt="5"></p>
-<p>其中适应度的分配方式以及聚类算法等请看参考博客</p>
-<h3 id="SPEA-II"><a href="#SPEA-II" class="headerlink" title="SPEA-II"></a>SPEA-II</h3><ul>
-<li>SPEA的缺点<ul>
-<li>(1)Fitness Assignment:当P’成员只有一个时，P中所有成员的适应度是相同的。此时SPEA会退化为随机搜索算法</li>
-<li>(2)Density Estimation: 群落分布太稀疏，以至于许多成员之间不存在相互支配关系。若能添加密度信息，那么就能更有效的搜索非支配成员。Clustering仅对P’有效，而对P没有影响。</li>
-<li>(3)Archive Truncation:clustering算法会删减P’中的成员，这其中也有可能包含了外部支配解，造成了信息截断，不利于非支配解的扩散。</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2018/11/18/进化算法库/6.png" alt="6"></p>
-<p><img src="/2018/11/18/进化算法库/7.png" alt="7"></p>
-<p><img src="/2018/11/18/进化算法库/8.png" alt="8"></p>
-<h2 id="DMOEA-epsilon-C"><a href="#DMOEA-epsilon-C" class="headerlink" title="DMOEA-$\epsilon C$"></a>DMOEA-$\epsilon C$</h2><ul>
-<li>主要创新点：<ul>
-<li>(1)explicitly decomposes an MOP into a series of scalar constrained optimization subproblems by selecting one of the objectives as the main objective function and associating each subproblem with an upper bound vector.  </li>
-<li>(2)a main objective alternation strategy is proposed  </li>
-<li>(3)a solution-to-subproblem matching procedure is designed to place the nearest solution to each subproblem and is utilized after the main objective alternation strategy </li>
-<li>(4)subproblem-to-solution matching procedure is proposed to find a subproblem with the minimum constraint violation value for a new generated solution. </li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Cloud Workflow Scheduling</category>
-      </categories>
-      <tags>
-        <tag>Cloud Workflow Scheduling</tag>
       </tags>
   </entry>
   <entry>
@@ -3312,6 +3506,122 @@ cost_{norm} = \frac{FNR\times p\times cost_{01}+FPR\times(1-p)\times cost_{10}}{
       </categories>
       <tags>
         <tag>machine learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>看见_柴静</title>
+    <url>/2018/11/07/%E7%9C%8B%E8%A7%81-%E6%9F%B4%E9%9D%99/</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;《看见》是柴静讲述央视十年历程的自传性作品，既是柴静个人的成长告白书，在某种程度上亦可视作中国社会十年变迁的备忘录</p>
+<h2 id="MARKS"><a href="#MARKS" class="headerlink" title="MARKS"></a>MARKS</h2><ul>
+<li><p>白岩松有天安慰我：“人们声称的最美好的岁月其实都是最痛苦的，只是事后回忆起来的时候才那么幸福。</p>
+</li>
+<li><p>旁边站着一个戴赭黄头巾的维族老人，我还没来得及张口问什么，她忽然回身把我抱住，在我肩头哭了起来。我下意识地搂着她一耸一耸的肩膀，脸贴着她的脸，她的皱纹冻得冰凉。</p>
+</li>
+<li><p>您用什么挖的？”“当时找不到任何工具，就用自己的手挖。一开始看到一个手腕时也不能确定是我媳妇还是儿媳妇，等看到衣袖的时候我才确定是我孩子他妈。然后我就停下来了，其他人把她挖了出来。”他脸上全是灰，被泪水冲刷得深一道浅一道，翻译说到“然后我就停下来了”，我心里抽动，一时间不出下一句来。</p>
+</li>
+<li><p>离开的时候，我看到另一张病床上的小伙子，脖子上绑着一个痰巾，上面有一些秽迹，小腿露在被子外面，全是曲张的静脉。我们走过的时候，他连看都不看一眼。我停下来看他。他没有昏迷，眼睛是睁着的，只是什么表情也没有。日后，我在很多绝望的人脸上看过</p>
+</li>
+<li><p>晚上回到酒店，大家都不作声。编导天贺抽了一会儿他的大烟斗，说：“觉得么，像是《卡桑德拉大桥》里头的感觉，火车正往危险的地方开，车里的人耳边咣咣响——外面有人正把窗户钉死。”</p>
+</li>
+<li><p>她嗓子喑哑，听起来像是呓语，不断重复某些句子。采访差不多凌晨四点才结束，司机听得睡过去了。我不想打断她，这一年多的生活，她一直没机会说，说出来也没人信。她说：“我可以这样厚颜无耻！我都觉得自己厚颜无耻……现在想起来也还是。你可以到那条街上站在那里跟别人讨价还价。不是说卖别人，卖什么，是卖自己呀！那是跟别人讨价还价卖自己！”</p>
+<p>她说在噩梦里，还会一次次回到那个地方——穿着从戒毒所被卖出来时的那条睡裙，天马上就要黑了，她就要开始站在那条街上，等着出卖自己。“你戒毒所是挽救人，还是毁灭人？</p>
+</li>
+<li><p>海子有句诗，深得我心：“天空一无所有，为何给我安慰。”</p>
+</li>
+<li><p>阿甘是看见了什么，就走过去。别的人，是看见一个目标，先订一个作战计划，然后匍匐前进，往左闪，往右躲，再弄个掩体……一辈子就看他闪转腾挪活得那叫一个花哨，最后哪儿也没到达。”</p>
+</li>
+<li><p>我采访陈丹青时，这位知名的画家从清华辞去了美术学院教授和博导的职务，因为现行的政治和英语考试，让他招不到他想要的学生。他说：“政治本来是一门学问，但我们的政治考试是反政治的，没有人尊敬这个学科。”</p>
+</li>
+<li><p>《我只是讨厌屈服》。”我说。他带点惊奇地看了我一眼，说哎对，过了一会儿，说：“在那篇文章里，那个律师说了一句话，他说权利不用来伸张的话，就只是一张纸。”这个人相信了这些写在纸上的话，然后穿着蓝白相间竖条纹的狱服，满脸胡须，坐这里看着我。他进监狱后，厂子倒了，离了婚，监狱离他的家两千里，没人给他送生活费，村里的人去看他，拾破烂的老人给了他五十块钱，老汉戴着塌得稀软的蓝布帽子，对我说：“把他换出来，把我关进去吧，我老了。”</p>
+</li>
+<li><p>说话，真不容易呢，我们绝大部分人都是普通人。却希望其他人都能做个公民，这样才会有人帮我们争取更多的利益、权利……”</p>
+</li>
+<li><p>痛苦是财富，这话是扯淡。姑娘，痛苦就是痛苦，”他说，“对痛苦的思考才是财富。”</p>
+</li>
+<li><p>老范坐边上，后来她写道：“说实话，他的坦率让我绝望。一个过于主动甚至积极坦白自己内心阴暗面的人，往往会让原本想去挖掘他内心弱点的人感到尴尬和一丝不安。</p>
+</li>
+<li><p>心理医生说有的人为什么要拼命吃东西，因为要抑制自己表达不出来的欲望。她拧过脸看着我，很专心地听。</p>
+</li>
+<li><p>希望和失望也绝不能是善。因为恐惧是一种痛苦，希望不能脱离恐惧而存在，所以希望和失望都表示知识的缺乏，和心灵的软弱无力。</p>
+</li>
+<li><p>老王没有推特写，只是伴随，她隔着栏杆，向场地中嗒然若失的埃蒙斯伸出手去，埃蒙斯将头抵在栏杆上，她俯身下去隔着栅栏揽住他，一只手护持着丈夫的脖颈，另一只手摩挲他的眉毛，像在安抚委屈孩子时的温存。音乐与现场的人声交替出现：“When you try your best but you don’t succeed，When you get what you want but not whatyou need， When you feel so tried but you can’t sleep……”老范跟我说过她为什么用这歌，她说生活到了真的艰难处才能体会，“只有最亲的人才能了解和陪伴你的伤痛”。</p>
+</li>
+<li><p>我说：“那个刷头皮的小男孩的细节之所以让人记了很多年，那个医生对他的情感之所以显得那么真实，是因为小男孩承受了极大的痛苦，是因为他的坚忍。西藏人有句话说，幸福是刀口舔蜜。唐山首先是个刀口，如果刀口本身的锋利和痛感感觉不到，后来的蜜汁你吮吸起来也会觉得少了滋味。”</p>
+</li>
+<li><p>他写了句奇怪的话——“这个世界上有很多极端认真的蠢人。”红灯又闪一下，补了一句：“当然不是指你。”我说指什么。他说：“比如一个母亲，孩子生病，她天天祈祷，但是还是去世了，这不是愚昧么？”我说：“这是爱。”他说：“爱和善是能力，而不是情感。</p>
+</li>
+<li><p>我俩到处找人打听求助，碰到肯帮忙的人，明白为什么有个成语叫“感激涕零”。我那阵子什么也干不了，问一个明友：“你出事的时候是什么感觉？”“一块石头落了地。”他指内心的恐惧终于到了。“如果是你亲近的人出了事呢？”“那是一块石头砸在心里。”</p>
+</li>
+<li><p>你对现实完全没有愤怒？”“没有。”“你知道还会有一种危险是，当我们彻底地理解了现实的合理性，很多人就放弃了。”这是我的困惑。“那可能还是因为想到自己要改变，所以没办法了，碰到障碍了，就放弃了。我也改变不了，但也不用改变，它还是会变。”“那我们做什么呢？”“把自己的事情做好。”</p>
+</li>
+<li><p>我最害怕的是崇拜者，因为崇拜基于的往往是幻想上崇拜，最终的结果也只能是失望。</p>
+</li>
+<li><p>“不光是简单，不光是家长，不管任何人，你去告诉别人应该怎么样，这就是错的方式。我就错了这么多年。”</p>
+</li>
+<li><p>我当法官时，常认真地履行我的职责，实际上我也是如此做的。但在我内心深处，潜伏着这么一种意识：我只是在人生的舞台上扮演着一个法官的角色。每当我判一个人死刑，都秘密地向他的灵魂祈求，要他原谅我这么做，我判他的刑只因为这是我的角色，而非因为这是我的意愿。我觉得像彼拉多一样，并且希望洗干净我的手，免得沾上人的血，尽管他也许有罪。唯有完人才够资格向罪人扔石头，但是，完人是没有的。”在这段话边上，学生时代的何帆给的批注是：“伪善。”如今，他拿出笔，划去那两个字，在旁边写上：“人性。”</p>
+</li>
+<li><p>“一个人得被自己的弱点绑架多少次啊，悲催的是这些弱点怎么也改不掉。但这几年来，身边的人待我，就像陈升歌里唱的，‘因为你对我的温柔，所以我懂得对别人好’，能起码认识到什么不好，最重要的，是能以‘别人可能是对的’为前提来思考一些问题。”年底开会的时候，我向组里道歉：“不好意思啊平常太暴躁啦。”大家笑，好好，原谅你。我又不干了：“哟，我就这么一说，你们真敢接受啊，谁敢说我暴躁我看看。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Life</category>
+      </categories>
+      <tags>
+        <tag>read</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>进化算法库</title>
+    <url>/2018/11/18/%E8%BF%9B%E5%8C%96%E7%AE%97%E6%B3%95%E5%BA%93/</url>
+    <content><![CDATA[<h2 id="NSGA族"><a href="#NSGA族" class="headerlink" title="NSGA族"></a>NSGA族</h2><h3 id="NSGA的缺陷："><a href="#NSGA的缺陷：" class="headerlink" title="NSGA的缺陷："></a>NSGA的缺陷：</h3><p>(1)非支配排序的时间复杂度很大，为$O(MN^3)$,其中M为目标函数的数量，N为种群规模。</p>
+<p>(2)不支持精英策略。精英策略在保持好的个体及加速向Pareto前沿收敛方面有很好的表现</p>
+<p>(3)需要自己指定共享参数，该参数对种群的多样性产生很大的影响</p>
+<h3 id="NSGA-II"><a href="#NSGA-II" class="headerlink" title="NSGA-II"></a>NSGA-II</h3><ul>
+<li><p>NSGA一II算法的基本思想为:首先,随机产生规模为N的初始种群,非支配排序后通过遗传算法的选择、交叉、变异三个基本操作得到第一代子代种群;其次,从第二代开始,将父代种群与子代种群合并,进行快速非支配排序,同时对每个非支配层中的个体进行拥挤度计算,根据非支配关系以及个体的拥挤度选取合适的个体组成新的父代种群;最后,通过遗传算法的基本操作产生新的子代种群:依此类推,直到满足程序结束的条件。</p>
+</li>
+<li><p>主要贡献</p>
+<ul>
+<li><p>(1)快速非支配排序：</p>
+<p><img src="/2018/11/18/进化算法库/1.png" alt="1"></p>
+</li>
+<li><p>(2)保留多样性：提出<strong>拥挤比较法</strong>替换<strong>共享函数法</strong>，$I[i].m$为I集合中第i个个体第m个目标函数的值。</p>
+<p><img src="/2018/11/18/进化算法库/2.png" alt="2"></p>
+<p><img src="/2018/11/18/进化算法库/3.png" alt="3"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="主程序"><a href="#主程序" class="headerlink" title="#### 主程序"></a>#### 主程序</h3><p><img src="/2018/11/18/进化算法库/4.png" alt="4"></p>
+<h2 id="SPEA算法族"><a href="#SPEA算法族" class="headerlink" title="SPEA算法族"></a>SPEA算法族</h2><h3 id="SPEA-O-N-3"><a href="#SPEA-O-N-3" class="headerlink" title="SPEA (O($N^3$))"></a>SPEA (O($N^3$))</h3><p><a href="https://blog.csdn.net/u014119694/article/details/77412740" target="_blank" rel="noopener">SPEA参考自博客</a></p>
+<p><img src="/2018/11/18/进化算法库/5.png" alt="5"></p>
+<p>其中适应度的分配方式以及聚类算法等请看参考博客</p>
+<h3 id="SPEA-II"><a href="#SPEA-II" class="headerlink" title="SPEA-II"></a>SPEA-II</h3><ul>
+<li>SPEA的缺点<ul>
+<li>(1)Fitness Assignment:当P’成员只有一个时，P中所有成员的适应度是相同的。此时SPEA会退化为随机搜索算法</li>
+<li>(2)Density Estimation: 群落分布太稀疏，以至于许多成员之间不存在相互支配关系。若能添加密度信息，那么就能更有效的搜索非支配成员。Clustering仅对P’有效，而对P没有影响。</li>
+<li>(3)Archive Truncation:clustering算法会删减P’中的成员，这其中也有可能包含了外部支配解，造成了信息截断，不利于非支配解的扩散。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2018/11/18/进化算法库/6.png" alt="6"></p>
+<p><img src="/2018/11/18/进化算法库/7.png" alt="7"></p>
+<p><img src="/2018/11/18/进化算法库/8.png" alt="8"></p>
+<h2 id="DMOEA-epsilon-C"><a href="#DMOEA-epsilon-C" class="headerlink" title="DMOEA-$\epsilon C$"></a>DMOEA-$\epsilon C$</h2><ul>
+<li>主要创新点：<ul>
+<li>(1)explicitly decomposes an MOP into a series of scalar constrained optimization subproblems by selecting one of the objectives as the main objective function and associating each subproblem with an upper bound vector.  </li>
+<li>(2)a main objective alternation strategy is proposed  </li>
+<li>(3)a solution-to-subproblem matching procedure is designed to place the nearest solution to each subproblem and is utilized after the main objective alternation strategy </li>
+<li>(4)subproblem-to-solution matching procedure is proposed to find a subproblem with the minimum constraint violation value for a new generated solution. </li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Cloud Workflow Scheduling</category>
+      </categories>
+      <tags>
+        <tag>Cloud Workflow Scheduling</tag>
       </tags>
   </entry>
   <entry>
@@ -3533,244 +3843,6 @@ S_b\omega=\lambda(\mu_0-\mu_1)</script><p>故而，有</p>
       <categories>
         <category>Algorithm Library</category>
         <category>Clustering Algorithm</category>
-      </categories>
-      <tags>
-        <tag>machine learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NIPS 20 paperlist</title>
-    <url>/2020/11/15/NIPS20-paperlist/</url>
-    <content><![CDATA[<h2 id="NeuraIPS’20"><a href="#NeuraIPS’20" class="headerlink" title="NeuraIPS’20"></a>NeuraIPS’20<a id="more"></a></h2><h3 id="Time-Series"><a href="#Time-Series" class="headerlink" title="Time Series"></a>Time Series</h3><ul>
-<li><strong>Probabilistic Time Series Forecasting with Shape and Temporal Diversity</strong></li>
-<li><strong>Deep reconstruction of strange attractors from time series</strong></li>
-<li><strong>Neural Controlled Differential Equations for Irregular Time Series</strong></li>
-<li><strong>Adversarial Sparse Transformer for Time Series Forecasting</strong></li>
-<li><strong>Learning Long-Term Dependencies in Irregularly-Sampled Time Series</strong></li>
-<li><strong>Benchmarking Deep Learning Interpretability in Time Series Predictions</strong></li>
-<li><strong>High-recall causal discovery for autocorrelated time series with latent confounders</strong></li>
-<li><strong>Deep Rao-Blackwellised Particle Filters for Time Series Forecasting</strong></li>
-<li><strong>Normalizing Kalman Filters for Multivariate Time Series Analysis</strong></li>
-<li><strong>Spectral Temporal Graph Neural Network for Multivariate Time-series Forecasting</strong></li>
-<li><strong>Learning Continuous System Dynamics from Irregularly-Sampled Partial Observations</strong></li>
-<li><strong>Gamma-Models: Generative Temporal Difference Learning for Infinite-Horizon Prediction</strong></li>
-</ul>
-<h3 id="GNN"><a href="#GNN" class="headerlink" title="GNN"></a>GNN</h3><ul>
-<li><strong>Open Graph Benchmark: Datasets for Machine Learning on Graphs</strong></li>
-<li><strong>Path Integral Based Convolution and Pooling for Graph Neural Networks</strong></li>
-<li><strong>Stochastic Deep Gaussian Processes over Graphs</strong></li>
-<li><strong>Scalable Graph Neural Networks via Bidirectional Propagation</strong></li>
-<li><strong>Set2Graph: Learning Graphs From Sets</strong></li>
-<li><strong>Multipole Graph Neural Operator for Parametric Partial Differential Equations</strong></li>
-<li><strong>Parameterized Explainer for Graph Neural Network</strong></li>
-<li><strong>Random Walk Graph Neural Networks</strong></li>
-<li><strong>Dirichlet Graph Variational Autoencoder</strong></li>
-<li><strong>Natural Graph Networks</strong></li>
-<li><strong>Optimization and Generalization Analysis of Transduction through Gradient Boosting and Application to Multi-scale Graph Neural Networks</strong></li>
-<li><strong>Weisfeiler and Leman go sparse: Towards scalable higher-order graph embeddings</strong></li>
-<li><strong>Unsupervised Joint k-node Graph Representations with Compositional Energy-Based Models</strong></li>
-<li><strong>PGM-Explainer: Probabilistic Graphical Model Explanations for Graph Neural Networks</strong></li>
-<li><strong>Implicit Graph Neural Networks</strong></li>
-<li><p><strong>Towards Deeper Graph Neural Networks with Differentiable Group Normalization</strong></p>
-</li>
-<li><p><strong>COPT: Coordinated Optimal Transport on Graphs</strong></p>
-</li>
-<li><strong>Less is More: A Deep Graph Metric Learning Perspective Using Few Proxies</strong></li>
-<li><strong>Probabilistic Circuits for Variational Inference in Discrete Graphical Models</strong></li>
-<li><strong>Deep Relational Topic Modeling via Graph Poisson Gamma Belief Network</strong></li>
-<li><strong>Graph Stochastic Neural Networks for Semi-supervised Learning</strong></li>
-<li><strong>Community detection in sparse time-evolving graphs with a dynamical Bethe-Hessian</strong></li>
-<li><strong>Graph Random Neural Networks for Semi-Supervised Learning on Graphs</strong></li>
-<li><strong>Learning of Discrete Graphical Models with Neural Networks</strong></li>
-<li><strong>Building powerful and equivariant graph neural networks with message-passing</strong></li>
-<li><strong>Manifold structure in graph embeddings</strong></li>
-<li><p><strong>Attribution for Graph Neural Networks</strong></p>
-</li>
-<li><p><strong>Factorizable Graph Convolutional Networks</strong></p>
-</li>
-<li><strong>Handling Missing Data with Graph Representation Learning</strong></li>
-<li><p><strong>EvolveGraph: Multi-Agent Trajectory Prediction with Dynamic Relational Reasoning</strong></p>
-</li>
-<li><p><strong>Design Space for Graph Neural Networks</strong></p>
-</li>
-<li><strong>Pointer Graph Networks</strong></li>
-<li><strong>Reward Propagation Using Graph Convolutional Networks</strong></li>
-<li><strong>Subgraph Neural Networks</strong></li>
-<li><p><strong>Beyond Homophily in Graph Neural Networks: Current Limitations and Effective Designs</strong></p>
-</li>
-<li><p><strong>Efficient Learning of Discrete Graphical Models</strong></p>
-</li>
-<li><strong>Adaptive Graph Convolutional Recurrent Network for Traffic Forecasting</strong></li>
-<li><strong>Learning to Execute Programs with Instruction Pointer Attention Graph Neural Networks</strong></li>
-<li><strong>Scattering GCN: Overcoming Oversmoothness in Graph Convolutional Networks</strong></li>
-<li><strong>Pre-Training Graph Neural Networks: A Contrastive Learning Framework with Augmentations</strong></li>
-<li><strong>Variational Inference for Graph Convolutional Networks in the Absence of Graph Data and Adversarial Settings</strong></li>
-<li><strong>A Novel Approach for Constrained Optimization in Graphical Models</strong></li>
-<li><strong>Adversarially-learned Inference via an Ensemble of Discrete Undirected Graphical Models</strong></li>
-<li><strong>Nonconvex Sparse Graph Learning under Laplacian-structured Graphical Model</strong></li>
-<li><strong>Graph Geometry Interaction Learning</strong></li>
-<li><strong>Bandit Samplers for Training Graph Neural Networks</strong></li>
-<li><strong>Factor Graph Neural Networks</strong></li>
-<li><strong>DiffGCN: Graph Convolutional Networks via Differential Operators and Algebraic Multigrid Pooling</strong></li>
-<li><strong>Spectral Temporal Graph Neural Network for Multivariate Time-series Forecasting</strong></li>
-<li><strong>Curvature Regularization to Prevent Distortion in Graph Embedding</strong></li>
-<li><strong>Generalized Independent Noise Condition for Estimating Linear Non-Gaussian Latent Variable Graphs</strong></li>
-<li><strong>Higher-Order Spectral Clustering of Directed Graphs</strong></li>
-<li><strong>Iterative Deep Graph Learning for Graph NeuralNetworks: Better and Robust Node Embeddings</strong></li>
-<li><strong>Graph Information Bottleneck</strong></li>
-<li><strong>Rethinking pooling in graph neural networks</strong></li>
-</ul>
-<h2 id="连续-Flow"><a href="#连续-Flow" class="headerlink" title="连续+Flow"></a>连续+Flow</h2><ul>
-<li><strong>Modeling Continuous Stochastic Processes with Dynamic Normalizing Flows</strong></li>
-<li><strong>Inverse Rational Control with Partially Observable Continuous Nonlinear Dynamics</strong></li>
-<li><strong>Riemannian Continuous Normalizing Flows</strong></li>
-<li><strong>Continual Deep Learning by Functional Regularisation of Memorable Past</strong></li>
-<li><strong>Scalable and Consistent Estimation in Continuous-time Networks of Relational Events</strong></li>
-<li><strong>DAGs with No Fears: A Closer Look at Continuous Optimization for Learning Bayesian Networks</strong></li>
-<li><strong>Hypersolvers: Toward Fast Continuous-Depth Models</strong></li>
-<li><strong>Learning Continuous System Dynamics from Irregularly-Sampled Partial Observations</strong></li>
-<li><strong>A mathematical model for automatic differentiation in machine learning</strong></li>
-<li><strong>Neural Manifold Ordinary Differential Equations</strong></li>
-<li><strong>Multipole Graph Neural Operator for Parametric Partial Differential Equations</strong></li>
-<li><strong>Learning Differential Equations that are Fast to Solve</strong></li>
-<li><strong>Interpolation technique to speed up gradients propagation in Neural Ordinary Differential Equations</strong></li>
-<li><strong>JAX MD: A Framework for Differentiable Physics</strong></li>
-<li><strong>Training Generative Adversarial Networks by Solving Ordinary Differential Equations</strong></li>
-<li><strong>Numerically Solving Parametric Families of High-Dimensional Kolmogorov Partial Differential Equations via Deep Learning</strong></li>
-<li><strong>Improved Variational Bayesian Phylogenetic Inference with Normalizing Flows</strong></li>
-<li><strong>Flows for simultaneous manifold learning and density estimation</strong></li>
-<li><strong>Wavelet Flow: Fast Training of High Resolution Normalizing Flows</strong></li>
-<li><strong>Advances in Black-Box VI: Normalizing Flows, Importance Weighting, and Optimization</strong></li>
-<li><strong>Woodbury Transformations for Deep Generative Flows</strong></li>
-<li><strong>SoftFlow: Probabilistic Framework for Normalizing Flow on Manifolds</strong></li>
-<li><p><strong>Glow-TTS: A Generative Flow for Text-to-Speech via Monotonic Alignment Search</strong></p>
-</li>
-<li><p><strong>The Convolution Exponential and Generalized Sylvester Flows</strong></p>
-</li>
-<li><strong>NanoFlow: scalable normalizing flows with sublinear parameter complexity</strong></li>
-<li><strong>Training Normalizing Flows with the Information Bottleneck for Competitive Generative Classification</strong></li>
-<li><strong>Log-Likelihood Ratio Minimizing Flows: Towards Robust and Quantifiable Neural Distribution Alignment</strong></li>
-<li><strong>Why Normalizing Flows Fail to Detect Out-of-Distribution Data</strong></li>
-<li><strong>Stochastic Normalizing Flows</strong></li>
-<li><strong>SurVAE Flows: Surjections to Bridge the Gap between VAEs and Flows</strong></li>
-<li><strong>Closing the Dequantization Gap: PixelCNN as a Single-Layer Flow</strong></li>
-<li><strong>SVGD as a kernelized gradient flow of the chi-squared divergence</strong></li>
-<li><strong>Gradient Boosted Normalizing Flows</strong></li>
-</ul>
-<h2 id="ICLR2021投稿"><a href="#ICLR2021投稿" class="headerlink" title="ICLR2021投稿"></a>ICLR2021投稿</h2><h3 id="ODE-Flow-Dyna"><a href="#ODE-Flow-Dyna" class="headerlink" title="ODE + Flow + Dyna"></a>ODE + Flow + Dyna</h3><ul>
-<li><p><a href="https://openreview.net/forum?id=DlPnp5_1JMI" target="_blank" rel="noopener">Neural Partial Differential Equations </a></p>
-</li>
-<li><p><a href="https://openreview.net/forum?id=Q1jmmQz72M2" target="_blank" rel="noopener">Neural Delay Differential Equations </a></p>
-</li>
-<li><p><a href="https://openreview.net/forum?id=c_YKhwEdUcq" target="_blank" rel="noopener">A neural method for symbolically solving partial differential equations</a></p>
-</li>
-<li><p><a href="https://openreview.net/forum?id=JFKR3WqwyXR" target="_blank" rel="noopener">Neural Jump Ordinary Differential Equation </a></p>
-</li>
-<li><p><a href="https://openreview.net/forum?id=bzVsk7bnGdh" target="_blank" rel="noopener">“Hey, that’s not an ODE’”: Faster ODE Adjoints with 12 Lines of Code</a></p>
-</li>
-<li><p><a href="https://openreview.net/forum?id=dcktlmtcM7" target="_blank" rel="noopener">Neural Time-Dependent Partial Differential Equation</a></p>
-</li>
-<li><h4 id="Score-Based-Generative-Modeling-through-Stochastic-Differential-Equations"><a href="#Score-Based-Generative-Modeling-through-Stochastic-Differential-Equations" class="headerlink" title="Score-Based Generative Modeling through Stochastic Differential Equations "></a><a href="https://openreview.net/forum?id=PxTIG12RRHS" target="_blank" rel="noopener">Score-Based Generative Modeling through Stochastic Differential Equations </a></h4></li>
-<li><h4 id="Neural-Partial-Differential-Equations-with-Functional-Convolution"><a href="#Neural-Partial-Differential-Equations-with-Functional-Convolution" class="headerlink" title="Neural Partial Differential Equations with Functional Convolution"></a><a href="https://openreview.net/forum?id=D4A-v0kltaX" target="_blank" rel="noopener">Neural Partial Differential Equations with Functional Convolution</a></h4></li>
-<li><h4 id="Learning-Neural-Event-Functions-for-Ordinary-Differential-Equations"><a href="#Learning-Neural-Event-Functions-for-Ordinary-Differential-Equations" class="headerlink" title="Learning Neural Event Functions for Ordinary Differential Equations"></a><a href="https://openreview.net/forum?id=kW_zpEmMLdP" target="_blank" rel="noopener">Learning Neural Event Functions for Ordinary Differential Equations</a></h4></li>
-<li><h4 id="Fourier-Neural-Operator-for-Parametric-Partial-Differential-Equations"><a href="#Fourier-Neural-Operator-for-Parametric-Partial-Differential-Equations" class="headerlink" title="Fourier Neural Operator for Parametric Partial Differential Equations "></a><a href="https://openreview.net/forum?id=c8P9NQVtmnO" target="_blank" rel="noopener">Fourier Neural Operator for Parametric Partial Differential Equations </a></h4></li>
-<li><h4 id="Learning-continuous-time-PDEs-from-sparse-data-with-graph-neural-networks"><a href="#Learning-continuous-time-PDEs-from-sparse-data-with-graph-neural-networks" class="headerlink" title="Learning continuous-time PDEs from sparse data with graph neural networks"></a><a href="https://openreview.net/forum?id=aUX5Plaq7Oy" target="_blank" rel="noopener">Learning continuous-time PDEs from sparse data with graph neural networks</a></h4></li>
-<li><h4 id="Parameterized-Pseudo-Differential-Operators-for-Graph-Convolutional-Neural-Networks"><a href="#Parameterized-Pseudo-Differential-Operators-for-Graph-Convolutional-Neural-Networks" class="headerlink" title="Parameterized Pseudo-Differential Operators for Graph Convolutional Neural Networks "></a><a href="https://openreview.net/forum?id=Y45i-hDynr" target="_blank" rel="noopener">Parameterized Pseudo-Differential Operators for Graph Convolutional Neural Networks </a></h4></li>
-<li><h4 id="Neural-CDEs-for-Long-Time-Series-via-the-Log-ODE-Method"><a href="#Neural-CDEs-for-Long-Time-Series-via-the-Log-ODE-Method" class="headerlink" title="Neural CDEs for Long Time Series via the Log-ODE Method "></a><a href="https://openreview.net/forum?id=65MxtdJwEnl" target="_blank" rel="noopener">Neural CDEs for Long Time Series via the Log-ODE Method </a></h4></li>
-<li><h4 id="Neural-ODE-Processes"><a href="#Neural-ODE-Processes" class="headerlink" title="Neural ODE Processes"></a><a href="https://openreview.net/forum?id=27acGyyI1BY" target="_blank" rel="noopener">Neural ODE Processes</a></h4></li>
-<li><h4 id="Neural-SDEs-Made-Easy-SDEs-are-Infinite-Dimensional-GANs"><a href="#Neural-SDEs-Made-Easy-SDEs-are-Infinite-Dimensional-GANs" class="headerlink" title="Neural SDEs Made Easy: SDEs are Infinite-Dimensional GANs"></a><a href="https://openreview.net/forum?id=padYzanQNbg" target="_blank" rel="noopener">Neural SDEs Made Easy: SDEs are Infinite-Dimensional GANs</a></h4></li>
-<li><h4 id="Multiplicative-Filter-Networks"><a href="#Multiplicative-Filter-Networks" class="headerlink" title="Multiplicative Filter Networks"></a><a href="https://openreview.net/forum?id=OmtmcPkkhT" target="_blank" rel="noopener">Multiplicative Filter Networks</a></h4></li>
-<li><h4 id="ResNet-After-All-Neural-ODEs-and-Their-Numerical-Solution"><a href="#ResNet-After-All-Neural-ODEs-and-Their-Numerical-Solution" class="headerlink" title="ResNet After All: Neural ODEs and Their Numerical Solution "></a><a href="https://openreview.net/forum?id=HxzSxSxLOJZ" target="_blank" rel="noopener">ResNet After All: Neural ODEs and Their Numerical Solution </a></h4></li>
-<li><h4 id="Go-with-the-flow-Adaptive-control-for-Neural-ODEs"><a href="#Go-with-the-flow-Adaptive-control-for-Neural-ODEs" class="headerlink" title="Go with the flow: Adaptive control for Neural ODEs "></a><a href="https://openreview.net/forum?id=giit4HdDNa" target="_blank" rel="noopener">Go with the flow: Adaptive control for Neural ODEs </a></h4></li>
-<li><h4 id="MALI-A-memory-efficient-and-reverse-accurate-integrator-for-Neural-ODEs"><a href="#MALI-A-memory-efficient-and-reverse-accurate-integrator-for-Neural-ODEs" class="headerlink" title="MALI: A memory efficient and reverse accurate integrator for Neural ODEs "></a><a href="https://openreview.net/forum?id=blfSjHeFM_e" target="_blank" rel="noopener">MALI: A memory efficient and reverse accurate integrator for Neural ODEs </a></h4></li>
-<li><h4 id="Deep-Continuous-Networks"><a href="#Deep-Continuous-Networks" class="headerlink" title="Deep Continuous Networks "></a><a href="https://openreview.net/forum?id=L5b6jUonKFB" target="_blank" rel="noopener">Deep Continuous Networks </a></h4></li>
-<li><h4 id="Learning-Continuous-Time-Dynamics-by-Stochastic-Differential-Networks"><a href="#Learning-Continuous-Time-Dynamics-by-Stochastic-Differential-Networks" class="headerlink" title="Learning Continuous-Time Dynamics by Stochastic Differential Networks "></a><a href="https://openreview.net/forum?id=U850oxFSKmN" target="_blank" rel="noopener">Learning Continuous-Time Dynamics by Stochastic Differential Networks </a></h4></li>
-<li><h4 id="Implicit-Normalizing-Flows"><a href="#Implicit-Normalizing-Flows" class="headerlink" title="Implicit Normalizing Flows "></a><a href="https://openreview.net/forum?id=8PS8m9oYtNy" target="_blank" rel="noopener">Implicit Normalizing Flows </a></h4></li>
-<li><h4 id="Directional-graph-networks"><a href="#Directional-graph-networks" class="headerlink" title="Directional graph networks"></a><a href="https://openreview.net/forum?id=FUdBF49WRV1" target="_blank" rel="noopener">Directional graph networks</a></h4></li>
-</ul>
-<h3 id="TS"><a href="#TS" class="headerlink" title="TS"></a>TS</h3><ul>
-<li><p><a href="https://openreview.net/forum?id=JVs1OrQgR3A" target="_blank" rel="noopener">Time Series Counterfactual Inference with Hidden Confounders </a></p>
-</li>
-<li><p><a href="https://openreview.net/forum?id=vLaHRtHvfFp" target="_blank" rel="noopener">PDE-Driven Spatiotemporal Disentanglement </a></p>
-</li>
-<li><h4 id="Neural-Spatio-Temporal-Point-Processes"><a href="#Neural-Spatio-Temporal-Point-Processes" class="headerlink" title="Neural Spatio-Temporal Point Processes"></a><a href="https://openreview.net/forum?id=XQQA6-So14" target="_blank" rel="noopener">Neural Spatio-Temporal Point Processes</a></h4></li>
-<li><h4 id="Anomaly-detection-in-dynamical-systems-from-measured-time-series"><a href="#Anomaly-detection-in-dynamical-systems-from-measured-time-series" class="headerlink" title="Anomaly detection in dynamical systems from measured time series"></a><a href="https://openreview.net/forum?id=Whq-nTgCbNR" target="_blank" rel="noopener">Anomaly detection in dynamical systems from measured time series</a></h4></li>
-<li><h4 id="Cubic-Spline-Smoothing-Compensation-for-Irregularly-Sampled-Sequences"><a href="#Cubic-Spline-Smoothing-Compensation-for-Irregularly-Sampled-Sequences" class="headerlink" title="Cubic Spline Smoothing Compensation for Irregularly Sampled Sequences "></a><a href="https://openreview.net/forum?id=muu0gF6BW-" target="_blank" rel="noopener">Cubic Spline Smoothing Compensation for Irregularly Sampled Sequences </a></h4></li>
-<li><h4 id="Generative-Time-series-Modeling-with-Fourier-Flows"><a href="#Generative-Time-series-Modeling-with-Fourier-Flows" class="headerlink" title="Generative Time-series Modeling with Fourier Flows "></a><a href="https://openreview.net/forum?id=PpshD0AXfA" target="_blank" rel="noopener">Generative Time-series Modeling with Fourier Flows </a></h4></li>
-</ul>
-<h3 id="GNN-1"><a href="#GNN-1" class="headerlink" title="GNN"></a>GNN</h3><ul>
-<li><h4 id="Generalizing-Graph-Convolutional-Networks"><a href="#Generalizing-Graph-Convolutional-Networks" class="headerlink" title="Generalizing Graph Convolutional Networks "></a><a href="https://openreview.net/forum?id=yBJihVXahXc" target="_blank" rel="noopener">Generalizing Graph Convolutional Networks </a></h4></li>
-<li><h4 id="Polynomial-Graph-Convolutional-Networks"><a href="#Polynomial-Graph-Convolutional-Networks" class="headerlink" title="Polynomial Graph Convolutional Networks "></a><a href="https://openreview.net/forum?id=uqD-un_Mzd-" target="_blank" rel="noopener">Polynomial Graph Convolutional Networks </a></h4></li>
-</ul>
-<h3 id="MPC"><a href="#MPC" class="headerlink" title="MPC"></a>MPC</h3><ul>
-<li><h4 id="Neural-Lyapunov-Model-Predictive-Control"><a href="#Neural-Lyapunov-Model-Predictive-Control" class="headerlink" title="Neural Lyapunov Model Predictive Control"></a><a href="https://openreview.net/forum?id=N5Zacze7uru" target="_blank" rel="noopener">Neural Lyapunov Model Predictive Control</a></h4></li>
-</ul>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-        <category>Irregular Sampled TS</category>
-      </categories>
-      <tags>
-        <tag>machine learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Irregular Time Series Papers</title>
-    <url>/2020/11/15/Irregular-Time-Series-Papers/</url>
-    <content><![CDATA[<p>本文将对于非周期采样时序数据的预测问题做一个初步的总结<a id="more"></a><br>&gt;</p>
-<blockquote>
-<p>RNN对于周期采样的数据是比较合适的，但是对于非周期采样的时序数据是很难处理的。</p>
-<ul>
-<li>常见trick是将此问题在预处理层面进行解决，即做聚合/插补—-缺点是会损失一部分信息</li>
-<li>类似于ODE-RNN的形式，在观测点对于状态进行调整</li>
-</ul>
-</blockquote>
-<h2 id="latent-odes-for-irregular-sampled-time-series"><a href="#latent-odes-for-irregular-sampled-time-series" class="headerlink" title="latent odes for irregular sampled time series"></a>latent odes for irregular sampled time series</h2><blockquote>
-<p>本文提出了两种形式的ODE-RNN</p>
-</blockquote>
-<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_RNN1.jpg" alt=""></p>
-<ul>
-<li>第一种与标准RNN的区别仅在于蓝色高亮的部分，即在观测之间采用ODE来模拟数据的变化，而不是像RNN中观测之间的状态是不变的。</li>
-</ul>
-<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_RNN2.jpg" alt=""></p>
-<ul>
-<li><p>第二种整体是一个seq2seq模型。首先通过编码器得到初始隐变量$z_0$，此时采用neural ode来模拟隐藏状态的变化，得到$z_0, z_1, …,z_N$；最后通过解码器对每一个时刻的隐变量进行解码重构。<strong>需要注意的是，为估计初始的$z_0$, ODE-RNN的编码器是时间反序来求解的</strong></p>
-<ul>
-<li><p>编码器采用的是$ODE-RNN$模型，并假设初始状态$z_0$分布为</p>
-<script type="math/tex; mode=display">
-q(z_0|\{x_i, t_i\}_{i=0}^N)=\mathcal{N}(\mu_{z_0}, \sigma_{z_0})</script><p>其中， $\mu_{z_0}, \sigma_{z_0}=g(ODE-RNN(\{x_i,t_i\}_{i=0}^N))$, g为神经网络。</p>
-</li>
-<li><p>对应此种形式的损失函数为：</p>
-<script type="math/tex; mode=display">
-\text{ELBO}(\theta, \phi) = \mathbb{E}_{z_0\sim q_{\phi(z_0|\{x_i, t_i\}_{i=0}^N)}}[\log p_{\theta}(x_0, ...,x_N)] - \text{KL}[q_{\phi}(z_0|\{x_i,t_i\}_{i=0}^N)||p(z_0)]</script></li>
-</ul>
-<blockquote>
-<p>上述通过隐变量来重构的框架有以下几个优点：</p>
-<ul>
-<li>显式得将ODE系统的动态特性，观测似然值以及辨识模型分别开来，因此可以有效区分每一部分的作用</li>
-<li>采用VAE的框架，能够自然的建模不确定性</li>
-<li>对于非周期采样的时序数据建模提供了便捷性</li>
-</ul>
-</blockquote>
-</li>
-<li><p>更多的观测意味着更多的信息，也就是说采样的频率在一定程度上能够反映数据的重要性。这是一个典型的counting process，假设他是一个非齐次的泊松过程，对应的强度函数为 $\lambda(z(t))$(即这里假设$\lambda$是z(t)的函数)，则可以推导出</p>
-<script type="math/tex; mode=display">
-\log p(t_1, t_2, ...,t_N|t_{starrt}, t_{end}) = \sum^N_{i=1}\text{log}\lambda(z(t_i)) - \int^{t_{end}}_{t_{start}}\lambda(z(t))dt</script><blockquote>
-<p>推导过程请参考<a href="https://math.stackexchange.com/questions/344487/log-likelihood-of-a-realization-of-a-poisson-process" target="_blank" rel="noopener">refer</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Learning-Long-Term-Dependencies-in-Irregularly-Sampled-Time-Series"><a href="#Learning-Long-Term-Dependencies-in-Irregularly-Sampled-Time-Series" class="headerlink" title="Learning Long Term Dependencies in Irregularly Sampled Time Series"></a>Learning Long Term Dependencies in Irregularly Sampled Time Series</h2><blockquote>
-<p>ODE_RNN无法解决长时依赖问题，根本原因是ODE得到的隐藏状态会产生梯度消失会爆炸现象，而后提出ODE-LSTM的基本框架，讲记忆单元和对应的连续时间态进行显式分离，并实验真证明了有效性。</p>
-</blockquote>
-<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_LSTM.jpg" alt=""></p>
-<h2 id="GRU-ODE-Bayes-Continuous-Modeling-of-Sporadically-Observed-Time-Series"><a href="#GRU-ODE-Bayes-Continuous-Modeling-of-Sporadically-Observed-Time-Series" class="headerlink" title="GRU-ODE-Bayes: Continuous Modeling of Sporadically-Observed Time Series"></a>GRU-ODE-Bayes: Continuous Modeling of Sporadically-Observed Time Series</h2><blockquote>
-<p>见 Dynamic systems for Deep Learning <a href="./Dynamic-Systems-for-Deep-Learning.md"></a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-        <category>Irregular Sampled TS</category>
       </categories>
       <tags>
         <tag>machine learning</tag>

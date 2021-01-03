@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yantijin.github.io/"/>
-  <updated>2020-12-30T13:30:17.044Z</updated>
+  <updated>2021-01-03T11:12:15.292Z</updated>
   <id>https://yantijin.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AAAI 21 paperlist</title>
+    <link href="https://yantijin.github.io/2021/01/03/AAAI%202021%20papers/"/>
+    <id>https://yantijin.github.io/2021/01/03/AAAI 2021 papers/</id>
+    <published>2021-01-03T11:11:08.000Z</published>
+    <updated>2021-01-03T11:12:15.292Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;AAAI-2021-papers&quot;&gt;&lt;a href=&quot;#AAAI-2021-papers&quot; class=&quot;headerlink&quot; title=&quot;AAAI 2021 papers&quot;&gt;&lt;/a&gt;AAAI 2021 papers&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="PaperList" scheme="https://yantijin.github.io/categories/machine-learning/PaperList/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>GPU透传</title>
@@ -47,7 +69,7 @@
     <link href="https://yantijin.github.io/2020/11/15/NIPS20-paperlist/"/>
     <id>https://yantijin.github.io/2020/11/15/NIPS20-paperlist/</id>
     <published>2020-11-15T03:45:08.000Z</published>
-    <updated>2020-11-15T03:45:59.018Z</updated>
+    <updated>2021-01-03T11:12:17.126Z</updated>
     
     <summary type="html">
     
@@ -57,7 +79,7 @@
     
       <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
     
-      <category term="Irregular Sampled TS" scheme="https://yantijin.github.io/categories/machine-learning/Irregular-Sampled-TS/"/>
+      <category term="PaperList" scheme="https://yantijin.github.io/categories/machine-learning/PaperList/"/>
     
     
       <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
@@ -483,28 +505,6 @@ r = \frac{\sum^{n}_{i=1}(X_i-\bar X)(Y_i-\bar Y)}{\sqrt{\sum^{n}_{i=1}(X_i-\bar 
     
     
       <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>A Fast Algorithm for Projected Clustering</title>
-    <link href="https://yantijin.github.io/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/"/>
-    <id>https://yantijin.github.io/2018/11/28/A-Fast-Algorithm-for-Projected-Clustering/</id>
-    <published>2018-11-28T09:07:01.000Z</published>
-    <updated>2018-12-21T14:52:14.106Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;投影聚类法&quot;&gt;&lt;a href=&quot;#投影聚类法&quot; class=&quot;headerlink&quot; title=&quot;投影聚类法&quot;&gt;&lt;/a&gt;投影聚类法&lt;/h2&gt;&lt;h3 id=&quot;Basic-Conceprions&quot;&gt;&lt;a href=&quot;#Basic-Conceprions&quot; class=&quot;headerlink&quot; title=&quot;Basic Conceprions&quot;&gt;&lt;/a&gt;Basic Conceprions&lt;/h3&gt;
-    
-    </summary>
-    
-      <category term="Algorithm Library" scheme="https://yantijin.github.io/categories/Algorithm-Library/"/>
-    
-      <category term="Clustering Algorithm" scheme="https://yantijin.github.io/categories/Algorithm-Library/Clustering-Algorithm/"/>
-    
-    
-      <category term="Clustering Algorithm" scheme="https://yantijin.github.io/tags/Clustering-Algorithm/"/>
     
   </entry>
   
