@@ -4,7 +4,7 @@ date: 2020-11-15 11:45:08
 tags: machine learning
 categories:
 - machine learning
-- Irregular Sampled TS
+- PaperList
 ---
 
 ## NeuraIPS'20<!--more-->
