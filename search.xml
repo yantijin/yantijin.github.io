@@ -403,6 +403,155 @@ ect(j,p)\leq ect(j,fproc(j,1)) + C(j,i)</script></li>
       </tags>
   </entry>
   <entry>
+    <title>CloudSim Structure</title>
+    <url>/2018/11/09/CloudSim-Structure/</url>
+    <content><![CDATA[<h2 id="Basic-Concepts-and-Terminologies"><a href="#Basic-Concepts-and-Terminologies" class="headerlink" title="Basic Concepts and Terminologies"></a>Basic Concepts and Terminologies</h2><h3 id="Layered-Design"><a href="#Layered-Design" class="headerlink" title="Layered Design"></a>Layered Design</h3><p><img src="/2018/11/09/CloudSim-Structure/StructureofCloudPlatform.png" alt="StructureofCloudPlatform"></p>
+<ul>
+<li><p><strong>User-Level Middleware</strong>: providing PaaS capabilities</p>
+<p>(1) Includes the software frameworks such as Web 2.0 Interfaces </p>
+<p>(2) provides the programming environments and composition tools that ease the creation, deployment, and execution of applications in Clouds </p>
+</li>
+<li><p><strong>Core Middleware</strong>:</p>
+<p>(1) Implements the platform level services that provide runtime environment enabling Cloud computing capabilities to application services built using User-Level Middlewares </p>
+<p>(2) Core services at this layer includes Dynamic SLA(Service Level-Agreement) Management, Accounting, Billing, Execution monitoring and management, and Pricing.  </p>
+</li>
+<li><p><strong>System Level</strong>:</p>
+<p>(1) Exist massive physical resources (storage servers and application servers) that power the data centers.</p>
+<p>(2) Servers are transparently managed by the higher level virtualization</p>
+<p>(3) VMs are isolated from each other.</p>
+</li>
+</ul>
+<h3 id="Federation-Inter-Networking-of-Clouds"><a href="#Federation-Inter-Networking-of-Clouds" class="headerlink" title="Federation (Inter-Networking) of Clouds"></a>Federation (Inter-Networking) of Clouds</h3><ul>
+<li><p>现有系统不支持用于动态协调不同数据中心之间的负载分解的机制和策略，以便确定用于托管应用服务的最佳位置以实现合理的服务满意度水平。</p>
+</li>
+<li><p>云服务提供商无法预测消费其服务的用户的地理分布，因此负载协调必须自动发生，并且服务的分配必须根据负载行为的变化而变化。</p>
+<p><img src="/2018/11/09/CloudSim-Structure/2.png" alt="StructureofCloudPlatform"></p>
+<ul>
+<li><strong>Cloud coordinator</strong>的作用<ul>
+<li>(1)提供云服务：包括基础设施和平台级别的</li>
+<li>(2)跟踪数据中心的负载，并且承担与其他云服务商在需求高峰期的时候进行服务的动态规划的协调</li>
+<li>(3)检测应用的执行和约定的SLAs(服务等级协议)被传送</li>
+</ul>
+</li>
+<li><strong>Cloud Exchange(CEx)</strong>的作用<ul>
+<li>bring together service providers and consumers</li>
+<li>汇总云代理的基础需求，并根据Cloud Coordinators发布的可用的资源进行评估</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="CloudSim-Architecture"><a href="#CloudSim-Architecture" class="headerlink" title="CloudSim Architecture"></a>CloudSim Architecture</h2><h3 id="Basic-architecture"><a href="#Basic-architecture" class="headerlink" title="Basic architecture"></a>Basic architecture</h3><p><img src="/2018/11/09/CloudSim-Structure/3.png" alt="3"></p>
+<ul>
+<li><strong>SimJava discrete event simulation engine</strong>: <ul>
+<li>Implements the core functionalities required for higher-level simulation frameworks, creation of system components.(services, host, data center, broker, virtual machines), communication between components and management of the simulation clock.</li>
+</ul>
+</li>
+<li><strong>GridSim</strong><ul>
+<li>用于建模多个网格基础设施的高级软件组件，包括网络和相关的流量配置文件;</li>
+<li>基础网格组件，比如 resources, data sets, workflow traces, and information services.</li>
+</ul>
+</li>
+<li><strong>CloudSim</strong><ul>
+<li>拓展了Gridsim的公开的核心函数</li>
+<li>赋予虚拟云端的数据中心环境的模型和仿真提供了很好的支持，比如，虚拟机，内存和带宽的专用管理界面</li>
+<li>可以实例化和透明管理数千个系统组成的云计算基础系统架构</li>
+<li>可以配置VMs，管理应用的运行，并且可以动态监视</li>
+<li>云服务商可以研究：不同分配hosts方法的效益等</li>
+</ul>
+</li>
+<li><strong>User Code</strong><ul>
+<li>exposes configuration related functionalities for <strong>hosts</strong>(number of machines, their specifications and so on), <strong>applications</strong>(number of tasks and their requirements), <strong>VMs</strong>, number of <strong>users</strong> and their <strong>application types</strong> and <strong>broker</strong> scheduling policies.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Modeling-the-clouds"><a href="#Modeling-the-clouds" class="headerlink" title="Modeling the clouds"></a>Modeling the clouds</h3><ul>
+<li>与云相关的核心硬件基础架构服务由<strong>数据中心组件</strong>在模拟器中建模，用于处理服务请求，请求是在VM中沙箱化的应用程序元素，需要在Datacenter的主机组件上分配一部分处理能力。 </li>
+<li><strong>NOTE</strong>:VM的处理包括VM整个生命周期的一些列操作：为VM配置一个主机，VM的创建，VM的销毁和VM的移植。</li>
+<li>Datacenter是由一系列的的主机(host)构成，主机可以管理VMs，主机在云中代表一个物理计算节点。 Host提供了支持单核和多核节点的建模与仿真的接口</li>
+<li>分配VMs到Hosts是<strong>虚拟机配置</strong>部分的功能： 这一部分有很多方法，从用户角度的，从系统角度的，默认的是FCFS(First Come First Service)  </li>
+<li>The allocation of cores to VMs is done based on a host allocation. Each host components instantiates a VM scheduler component that implements the space-shared or time shared policies for allocating cores to VMs. </li>
+</ul>
+<h3 id="Modeling-the-VM-allocation"><a href="#Modeling-the-VM-allocation" class="headerlink" title="Modeling the VM allocation"></a>Modeling the VM allocation</h3><ul>
+<li><p>云计算与网格计算最大的一个不同之处就是采用了大量的虚拟化技术和工具。</p>
+</li>
+<li><p>需要考虑的因素就是：避免创建需要比主机中可用处理能力更强的处理能力的VM</p>
+</li>
+<li><p>CloudSim支持VM调度两种层级的操作，一种是host level(主机层)，确定给每个VM分配多少计算能力；一种是VM level(虚拟机层)，给存储在他的execution engine的特定的task分配可用处理资源。每一个层级都包含time-shared and space-shared resource allocation policies.</p>
+<p><img src="/2018/11/09/CloudSim-Structure/4.png" alt="4"></p>
+<p><strong>note</strong>:</p>
+<ul>
+<li><p><strong>space-shared for VMs</strong>: only one VM can run at a given instance of time</p>
+<p><strong>time-shared for VMs</strong>: the core is shared, the amount of processing power available to the VM is lesser than space-shared</p>
+</li>
+<li><p><strong>space-shared for tasks</strong>: a VM has two cores, so it sun two at a time but the other two are queued until the completion of the earlier task units</p>
+<p><strong>time-shared for tasks</strong>: enable the task to be scheduled at an earlier time, but significantly affecting the completion time of task units that are ahead the queue</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Modeling-the-Cloud-Market"><a href="#Modeling-the-Cloud-Market" class="headerlink" title="Modeling the Cloud Market"></a>Modeling the Cloud Market</h3><ul>
+<li><strong>Modeling the cost and pricing policies</strong>,four market-related properties are associated to a data center: cost per processing,cost per unit of memory,cost per unit of storage,cost per unit of used bandwidth.</li>
+</ul>
+<h3 id="Design-and-implementation-of-CloudSim"><a href="#Design-and-implementation-of-CloudSim" class="headerlink" title="Design and implementation of CloudSim"></a>Design and implementation of CloudSim</h3><ul>
+<li><strong>DataCenter</strong>: <ul>
+<li>Core infrastructure level services(hardware, software) offered by resource providers in a Cloud Computing environment. </li>
+<li>Instantiates a generalized resource provisioning component that implements a set of policies for allocating bandwidth, memory and storage devices.</li>
+</ul>
+</li>
+<li><strong>DataCenterBroker</strong>:<ul>
+<li>Responsible for mediating between users and service providers depending on users’ QoS requirements and deploys service tasks across Clouds.</li>
+</ul>
+</li>
+<li><strong>SANStorage</strong><ul>
+<li>Models a storage area network that is commonly available to Cloud-based data centers for storing large chunks of data</li>
+<li>提供接口可在任何时间对根据网络带宽的可用性对任意大的数据量进行存储和检索，但是在运行访问SAN中的文件会导致任务单元执行的额外延迟。</li>
+</ul>
+</li>
+<li><strong>Virtual Machine</strong><ul>
+<li>Model an instance of Vm. Hosr部分负责VM的管理，可以同时实例化很多VMs，并且根据前述的政策(空间/时间分享)运行</li>
+<li>每个VM中有存储其基本特征的组成部分：memory, processor, storage, VM’s internal scheduling policy.</li>
+</ul>
+</li>
+<li><strong>Cloudlet</strong><ul>
+<li>Models the Cloud-based application services(content delivery（内容交付）, social networking, business workflow)</li>
+<li>每个应用程序组件都具有预先指定的指令长度（继承自GridSim的Gridlet组件）以及成功托管应用程序所需的数据传输量（提前和提取后）。</li>
+</ul>
+</li>
+<li><strong>CloudCoordinator</strong><ul>
+<li>provides federation capacity to a data center.</li>
+<li>(1)communicating with other peer CloudCoordinator services and Cloud Brokers</li>
+<li>(2)monitor the internal state of a data center that plays integral role in load-balancing/application scaling decision making.(触发负载迁移的事件是有CloudSim用户通过Sensor组件来设置的)</li>
+</ul>
+</li>
+<li><strong>BWProvisioner</strong><ul>
+<li>Models the provisioning policy of bandwidth to VMs.</li>
+</ul>
+</li>
+<li><strong>MemoryProvisioner</strong><ul>
+<li>Represents the provisioning policy for allocating memory to VMs.</li>
+</ul>
+</li>
+<li><strong>VMProvisioner</strong><ul>
+<li>Represents the provisioning policy that a VM Monitor utilizes for allocating VMs to Hosts.</li>
+</ul>
+</li>
+<li><strong>VMMAllocationPolicy</strong><ul>
+<li>Implemented by a Host component that models the policies (time-shared, space shared) required for allocating processing power to VMs.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2018/11/09/CloudSim-Structure/12.png" alt="12"></p>
+<h3 id="Communication-among-entities"><a href="#Communication-among-entities" class="headerlink" title="Communication among entities"></a>Communication among entities</h3><p><img src="/2018/11/09/CloudSim-Structure/11.png" alt="11"></p>
+]]></content>
+      <categories>
+        <category>Cloud Workflow Scheduling</category>
+      </categories>
+      <tags>
+        <tag>CloudSim toolkit introduction</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>DMOEA-epsilonC</title>
     <url>/2018/11/27/DMOEA-epsilonC/</url>
     <content><![CDATA[<h2 id="主要贡献"><a href="#主要贡献" class="headerlink" title="主要贡献"></a>主要贡献</h2><ul>
@@ -493,6 +642,105 @@ where~ i=1,2,...,m</script><p><strong>算法框架</strong></p>
       </categories>
       <tags>
         <tag>Cloud Workflow Scheduling</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dynamic GNN PaperList</title>
+    <url>/2020/09/18/Dynamic-GNN-PaperList/</url>
+    <content><![CDATA[<p>AAAI 2018:</p>
+<ul>
+<li>Dynamic Deep Neural Networks: Optimizing Accuracy-Efficiency Trade-offs by Selective Execution</li>
+<li>Dynamic Network Embedding by Modeling Triadic Closure Process</li>
+<li>DepthLGP: Learning Embeddings of Out-of-Sample Nodes in Dynamic Networks</li>
+</ul>
+<p>AAAI2019：</p>
+<ul>
+<li>A Generative Model for Dynamic Networks with Applications</li>
+<li>Communication-optimal distributed dynamic graph clustering</li>
+</ul>
+<p>AAAI2020：</p>
+<ul>
+<li>EvolveGCN: Evolving Graph Convolutional Networks for Dynamic Graphs</li>
+<li>Dynamic Network Pruning with Interpretable Layerwise Channel Selection</li>
+</ul>
+<p>ICLR2019：</p>
+<ul>
+<li>DyRep: Learning Representations over Dynamic Graphs </li>
+<li>Dynamic Graph Representation Learning via Self-Attention Networks</li>
+</ul>
+<p>ICLR2020：</p>
+<ul>
+<li>The Logical Expressiveness of Graph Neural Networks  </li>
+</ul>
+<p>WWW2018：</p>
+<ul>
+<li>Fast and Accurate Random Walk with Restart on Dynamic Graphs with Guarantees</li>
+</ul>
+<p>IJCAI2018:</p>
+<ul>
+<li>Dynamic Network Embedding : An Extended Approach for Skip-gram based Network Embedding</li>
+<li>14 Deep into Hypersphere: Robust and Unsupervised Anomaly Discovery in Dynamic Networks</li>
+</ul>
+<p>IJCAI2019：</p>
+<ul>
+<li>AddGraph: Anomaly Detection in Dynamic Graph using Attention-based Temporal GCN</li>
+</ul>
+<p>SIGIR2019：</p>
+<ul>
+<li>Network Embedding and Change Modeling in Dynamic Heterogeneous Networks</li>
+</ul>
+<p>SIGIR2020:</p>
+<ul>
+<li>Learning Dynamic Node Representations with Graph Neural Networks</li>
+<li>Dynamic Link Prediction by Integrating Node Vector Evolution and Local Neighborhood Representation</li>
+</ul>
+<p>KDD2018:</p>
+<ul>
+<li>NetWalk: A Flexible Deep Embedding Approach for Anomaly Detection in Dynamic Networks</li>
+</ul>
+<p>KDD2019:</p>
+<ul>
+<li>Fast and Accurate Anomaly Detection in Dynamic Graphs with a Two-Pronged Approach</li>
+<li>Predicting Dynamic Embedding Trajectory in Temporal Interaction Networks</li>
+</ul>
+<p>KDD2020:</p>
+<ul>
+<li>Laplacian Change Point Detection for Dynamic Graphs</li>
+<li>Dynamic Heterogeneous Graph Neural Network for Real-time Event Prediction</li>
+<li>Neural Dynamics on Complex Networks</li>
+</ul>
+<p>ICML2018：</p>
+<ul>
+<li>Fast Approximate Spectral Clustering for Dynamic Networks</li>
+</ul>
+<p>ICML2019：</p>
+<ul>
+<li>Improved Dynamic Graph Learning through Fault-Tolerant Sparsification</li>
+</ul>
+<p>NeurIPS 2019:</p>
+<ul>
+<li>Variational Graph Recurrent Neural Network</li>
+</ul>
+<p>ICDE2018：</p>
+<ul>
+<li>Efficient SimRank Tracking in Dynamic Graphs.</li>
+<li>On Efficiently Detecting Overlapping Communities over Distributed Dynamic Graphs</li>
+</ul>
+<p>ICDE2019：</p>
+<ul>
+<li>Computing a Near-Maximum Independent Set in Dynamic Graphs</li>
+<li>Finding Densest Lasting Subgraphs in Dynamic Graphs: A Stochastic Approach</li>
+<li>Tracking Influential Nodes in Time-Decaying Dynamic Interaction Networks</li>
+<li>Adaptive Dynamic Bipartite Graph Matching: A Reinforcement Learning Approach</li>
+<li>A Fast Sketch Method for Mining User Similarities Over Fully Dynamic Graph Streams</li>
+</ul>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+        <category>PaperList</category>
+      </categories>
+      <tags>
+        <tag>Machine Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -660,254 +908,6 @@ where~ i=1,2,...,m</script><p><strong>算法框架</strong></p>
       </categories>
       <tags>
         <tag>machine learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CloudSim Structure</title>
-    <url>/2018/11/09/CloudSim-Structure/</url>
-    <content><![CDATA[<h2 id="Basic-Concepts-and-Terminologies"><a href="#Basic-Concepts-and-Terminologies" class="headerlink" title="Basic Concepts and Terminologies"></a>Basic Concepts and Terminologies</h2><h3 id="Layered-Design"><a href="#Layered-Design" class="headerlink" title="Layered Design"></a>Layered Design</h3><p><img src="/2018/11/09/CloudSim-Structure/StructureofCloudPlatform.png" alt="StructureofCloudPlatform"></p>
-<ul>
-<li><p><strong>User-Level Middleware</strong>: providing PaaS capabilities</p>
-<p>(1) Includes the software frameworks such as Web 2.0 Interfaces </p>
-<p>(2) provides the programming environments and composition tools that ease the creation, deployment, and execution of applications in Clouds </p>
-</li>
-<li><p><strong>Core Middleware</strong>:</p>
-<p>(1) Implements the platform level services that provide runtime environment enabling Cloud computing capabilities to application services built using User-Level Middlewares </p>
-<p>(2) Core services at this layer includes Dynamic SLA(Service Level-Agreement) Management, Accounting, Billing, Execution monitoring and management, and Pricing.  </p>
-</li>
-<li><p><strong>System Level</strong>:</p>
-<p>(1) Exist massive physical resources (storage servers and application servers) that power the data centers.</p>
-<p>(2) Servers are transparently managed by the higher level virtualization</p>
-<p>(3) VMs are isolated from each other.</p>
-</li>
-</ul>
-<h3 id="Federation-Inter-Networking-of-Clouds"><a href="#Federation-Inter-Networking-of-Clouds" class="headerlink" title="Federation (Inter-Networking) of Clouds"></a>Federation (Inter-Networking) of Clouds</h3><ul>
-<li><p>现有系统不支持用于动态协调不同数据中心之间的负载分解的机制和策略，以便确定用于托管应用服务的最佳位置以实现合理的服务满意度水平。</p>
-</li>
-<li><p>云服务提供商无法预测消费其服务的用户的地理分布，因此负载协调必须自动发生，并且服务的分配必须根据负载行为的变化而变化。</p>
-<p><img src="/2018/11/09/CloudSim-Structure/2.png" alt="StructureofCloudPlatform"></p>
-<ul>
-<li><strong>Cloud coordinator</strong>的作用<ul>
-<li>(1)提供云服务：包括基础设施和平台级别的</li>
-<li>(2)跟踪数据中心的负载，并且承担与其他云服务商在需求高峰期的时候进行服务的动态规划的协调</li>
-<li>(3)检测应用的执行和约定的SLAs(服务等级协议)被传送</li>
-</ul>
-</li>
-<li><strong>Cloud Exchange(CEx)</strong>的作用<ul>
-<li>bring together service providers and consumers</li>
-<li>汇总云代理的基础需求，并根据Cloud Coordinators发布的可用的资源进行评估</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="CloudSim-Architecture"><a href="#CloudSim-Architecture" class="headerlink" title="CloudSim Architecture"></a>CloudSim Architecture</h2><h3 id="Basic-architecture"><a href="#Basic-architecture" class="headerlink" title="Basic architecture"></a>Basic architecture</h3><p><img src="/2018/11/09/CloudSim-Structure/3.png" alt="3"></p>
-<ul>
-<li><strong>SimJava discrete event simulation engine</strong>: <ul>
-<li>Implements the core functionalities required for higher-level simulation frameworks, creation of system components.(services, host, data center, broker, virtual machines), communication between components and management of the simulation clock.</li>
-</ul>
-</li>
-<li><strong>GridSim</strong><ul>
-<li>用于建模多个网格基础设施的高级软件组件，包括网络和相关的流量配置文件;</li>
-<li>基础网格组件，比如 resources, data sets, workflow traces, and information services.</li>
-</ul>
-</li>
-<li><strong>CloudSim</strong><ul>
-<li>拓展了Gridsim的公开的核心函数</li>
-<li>赋予虚拟云端的数据中心环境的模型和仿真提供了很好的支持，比如，虚拟机，内存和带宽的专用管理界面</li>
-<li>可以实例化和透明管理数千个系统组成的云计算基础系统架构</li>
-<li>可以配置VMs，管理应用的运行，并且可以动态监视</li>
-<li>云服务商可以研究：不同分配hosts方法的效益等</li>
-</ul>
-</li>
-<li><strong>User Code</strong><ul>
-<li>exposes configuration related functionalities for <strong>hosts</strong>(number of machines, their specifications and so on), <strong>applications</strong>(number of tasks and their requirements), <strong>VMs</strong>, number of <strong>users</strong> and their <strong>application types</strong> and <strong>broker</strong> scheduling policies.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Modeling-the-clouds"><a href="#Modeling-the-clouds" class="headerlink" title="Modeling the clouds"></a>Modeling the clouds</h3><ul>
-<li>与云相关的核心硬件基础架构服务由<strong>数据中心组件</strong>在模拟器中建模，用于处理服务请求，请求是在VM中沙箱化的应用程序元素，需要在Datacenter的主机组件上分配一部分处理能力。 </li>
-<li><strong>NOTE</strong>:VM的处理包括VM整个生命周期的一些列操作：为VM配置一个主机，VM的创建，VM的销毁和VM的移植。</li>
-<li>Datacenter是由一系列的的主机(host)构成，主机可以管理VMs，主机在云中代表一个物理计算节点。 Host提供了支持单核和多核节点的建模与仿真的接口</li>
-<li>分配VMs到Hosts是<strong>虚拟机配置</strong>部分的功能： 这一部分有很多方法，从用户角度的，从系统角度的，默认的是FCFS(First Come First Service)  </li>
-<li>The allocation of cores to VMs is done based on a host allocation. Each host components instantiates a VM scheduler component that implements the space-shared or time shared policies for allocating cores to VMs. </li>
-</ul>
-<h3 id="Modeling-the-VM-allocation"><a href="#Modeling-the-VM-allocation" class="headerlink" title="Modeling the VM allocation"></a>Modeling the VM allocation</h3><ul>
-<li><p>云计算与网格计算最大的一个不同之处就是采用了大量的虚拟化技术和工具。</p>
-</li>
-<li><p>需要考虑的因素就是：避免创建需要比主机中可用处理能力更强的处理能力的VM</p>
-</li>
-<li><p>CloudSim支持VM调度两种层级的操作，一种是host level(主机层)，确定给每个VM分配多少计算能力；一种是VM level(虚拟机层)，给存储在他的execution engine的特定的task分配可用处理资源。每一个层级都包含time-shared and space-shared resource allocation policies.</p>
-<p><img src="/2018/11/09/CloudSim-Structure/4.png" alt="4"></p>
-<p><strong>note</strong>:</p>
-<ul>
-<li><p><strong>space-shared for VMs</strong>: only one VM can run at a given instance of time</p>
-<p><strong>time-shared for VMs</strong>: the core is shared, the amount of processing power available to the VM is lesser than space-shared</p>
-</li>
-<li><p><strong>space-shared for tasks</strong>: a VM has two cores, so it sun two at a time but the other two are queued until the completion of the earlier task units</p>
-<p><strong>time-shared for tasks</strong>: enable the task to be scheduled at an earlier time, but significantly affecting the completion time of task units that are ahead the queue</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Modeling-the-Cloud-Market"><a href="#Modeling-the-Cloud-Market" class="headerlink" title="Modeling the Cloud Market"></a>Modeling the Cloud Market</h3><ul>
-<li><strong>Modeling the cost and pricing policies</strong>,four market-related properties are associated to a data center: cost per processing,cost per unit of memory,cost per unit of storage,cost per unit of used bandwidth.</li>
-</ul>
-<h3 id="Design-and-implementation-of-CloudSim"><a href="#Design-and-implementation-of-CloudSim" class="headerlink" title="Design and implementation of CloudSim"></a>Design and implementation of CloudSim</h3><ul>
-<li><strong>DataCenter</strong>: <ul>
-<li>Core infrastructure level services(hardware, software) offered by resource providers in a Cloud Computing environment. </li>
-<li>Instantiates a generalized resource provisioning component that implements a set of policies for allocating bandwidth, memory and storage devices.</li>
-</ul>
-</li>
-<li><strong>DataCenterBroker</strong>:<ul>
-<li>Responsible for mediating between users and service providers depending on users’ QoS requirements and deploys service tasks across Clouds.</li>
-</ul>
-</li>
-<li><strong>SANStorage</strong><ul>
-<li>Models a storage area network that is commonly available to Cloud-based data centers for storing large chunks of data</li>
-<li>提供接口可在任何时间对根据网络带宽的可用性对任意大的数据量进行存储和检索，但是在运行访问SAN中的文件会导致任务单元执行的额外延迟。</li>
-</ul>
-</li>
-<li><strong>Virtual Machine</strong><ul>
-<li>Model an instance of Vm. Hosr部分负责VM的管理，可以同时实例化很多VMs，并且根据前述的政策(空间/时间分享)运行</li>
-<li>每个VM中有存储其基本特征的组成部分：memory, processor, storage, VM’s internal scheduling policy.</li>
-</ul>
-</li>
-<li><strong>Cloudlet</strong><ul>
-<li>Models the Cloud-based application services(content delivery（内容交付）, social networking, business workflow)</li>
-<li>每个应用程序组件都具有预先指定的指令长度（继承自GridSim的Gridlet组件）以及成功托管应用程序所需的数据传输量（提前和提取后）。</li>
-</ul>
-</li>
-<li><strong>CloudCoordinator</strong><ul>
-<li>provides federation capacity to a data center.</li>
-<li>(1)communicating with other peer CloudCoordinator services and Cloud Brokers</li>
-<li>(2)monitor the internal state of a data center that plays integral role in load-balancing/application scaling decision making.(触发负载迁移的事件是有CloudSim用户通过Sensor组件来设置的)</li>
-</ul>
-</li>
-<li><strong>BWProvisioner</strong><ul>
-<li>Models the provisioning policy of bandwidth to VMs.</li>
-</ul>
-</li>
-<li><strong>MemoryProvisioner</strong><ul>
-<li>Represents the provisioning policy for allocating memory to VMs.</li>
-</ul>
-</li>
-<li><strong>VMProvisioner</strong><ul>
-<li>Represents the provisioning policy that a VM Monitor utilizes for allocating VMs to Hosts.</li>
-</ul>
-</li>
-<li><strong>VMMAllocationPolicy</strong><ul>
-<li>Implemented by a Host component that models the policies (time-shared, space shared) required for allocating processing power to VMs.</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2018/11/09/CloudSim-Structure/12.png" alt="12"></p>
-<h3 id="Communication-among-entities"><a href="#Communication-among-entities" class="headerlink" title="Communication among entities"></a>Communication among entities</h3><p><img src="/2018/11/09/CloudSim-Structure/11.png" alt="11"></p>
-]]></content>
-      <categories>
-        <category>Cloud Workflow Scheduling</category>
-      </categories>
-      <tags>
-        <tag>CloudSim toolkit introduction</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Dynamic GNN PaperList</title>
-    <url>/2020/09/18/Dynamic-GNN-PaperList/</url>
-    <content><![CDATA[<p>AAAI 2018:</p>
-<ul>
-<li>Dynamic Deep Neural Networks: Optimizing Accuracy-Efficiency Trade-offs by Selective Execution</li>
-<li>Dynamic Network Embedding by Modeling Triadic Closure Process</li>
-<li>DepthLGP: Learning Embeddings of Out-of-Sample Nodes in Dynamic Networks</li>
-</ul>
-<p>AAAI2019：</p>
-<ul>
-<li>A Generative Model for Dynamic Networks with Applications</li>
-<li>Communication-optimal distributed dynamic graph clustering</li>
-</ul>
-<p>AAAI2020：</p>
-<ul>
-<li>EvolveGCN: Evolving Graph Convolutional Networks for Dynamic Graphs</li>
-<li>Dynamic Network Pruning with Interpretable Layerwise Channel Selection</li>
-</ul>
-<p>ICLR2019：</p>
-<ul>
-<li>DyRep: Learning Representations over Dynamic Graphs </li>
-<li>Dynamic Graph Representation Learning via Self-Attention Networks</li>
-</ul>
-<p>ICLR2020：</p>
-<ul>
-<li>The Logical Expressiveness of Graph Neural Networks  </li>
-</ul>
-<p>WWW2018：</p>
-<ul>
-<li>Fast and Accurate Random Walk with Restart on Dynamic Graphs with Guarantees</li>
-</ul>
-<p>IJCAI2018:</p>
-<ul>
-<li>Dynamic Network Embedding : An Extended Approach for Skip-gram based Network Embedding</li>
-<li>14 Deep into Hypersphere: Robust and Unsupervised Anomaly Discovery in Dynamic Networks</li>
-</ul>
-<p>IJCAI2019：</p>
-<ul>
-<li>AddGraph: Anomaly Detection in Dynamic Graph using Attention-based Temporal GCN</li>
-</ul>
-<p>SIGIR2019：</p>
-<ul>
-<li>Network Embedding and Change Modeling in Dynamic Heterogeneous Networks</li>
-</ul>
-<p>SIGIR2020:</p>
-<ul>
-<li>Learning Dynamic Node Representations with Graph Neural Networks</li>
-<li>Dynamic Link Prediction by Integrating Node Vector Evolution and Local Neighborhood Representation</li>
-</ul>
-<p>KDD2018:</p>
-<ul>
-<li>NetWalk: A Flexible Deep Embedding Approach for Anomaly Detection in Dynamic Networks</li>
-</ul>
-<p>KDD2019:</p>
-<ul>
-<li>Fast and Accurate Anomaly Detection in Dynamic Graphs with a Two-Pronged Approach</li>
-<li>Predicting Dynamic Embedding Trajectory in Temporal Interaction Networks</li>
-</ul>
-<p>KDD2020:</p>
-<ul>
-<li>Laplacian Change Point Detection for Dynamic Graphs</li>
-<li>Dynamic Heterogeneous Graph Neural Network for Real-time Event Prediction</li>
-<li>Neural Dynamics on Complex Networks</li>
-</ul>
-<p>ICML2018：</p>
-<ul>
-<li>Fast Approximate Spectral Clustering for Dynamic Networks</li>
-</ul>
-<p>ICML2019：</p>
-<ul>
-<li>Improved Dynamic Graph Learning through Fault-Tolerant Sparsification</li>
-</ul>
-<p>NeurIPS 2019:</p>
-<ul>
-<li>Variational Graph Recurrent Neural Network</li>
-</ul>
-<p>ICDE2018：</p>
-<ul>
-<li>Efficient SimRank Tracking in Dynamic Graphs.</li>
-<li>On Efficiently Detecting Overlapping Communities over Distributed Dynamic Graphs</li>
-</ul>
-<p>ICDE2019：</p>
-<ul>
-<li>Computing a Near-Maximum Independent Set in Dynamic Graphs</li>
-<li>Finding Densest Lasting Subgraphs in Dynamic Graphs: A Stochastic Approach</li>
-<li>Tracking Influential Nodes in Time-Decaying Dynamic Interaction Networks</li>
-<li>Adaptive Dynamic Bipartite Graph Matching: A Reinforcement Learning Approach</li>
-<li>A Fast Sketch Method for Mining User Similarities Over Fully Dynamic Graph Streams</li>
-</ul>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-        <category>PaperList</category>
-      </categories>
-      <tags>
-        <tag>Machine Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -1353,6 +1353,87 @@ J_{\lambda}(f) = \frac{\lambda}{N}\sum^N_{i=1}\int^T_{0}||f(z, t)||^2dt -\frac{1
       </tags>
   </entry>
   <entry>
+    <title>ICLR 21 paperlist</title>
+    <url>/2021/01/15/ICLR2021/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="Time-Series"><a href="#Time-Series" class="headerlink" title="Time Series"></a>Time Series</h3><ul>
+<li><p><a href="https://openreview.net/forum?id=4c0J6lwQ4_" target="_blank" rel="noopener">Multi-Time Attention Networks for Irregularly Sampled Time Series</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=WEHSlH5mOk" target="_blank" rel="noopener">Discrete Graph Structure Learning for Forecasting Multiple Time Series</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=8qDwejCuCN" target="_blank" rel="noopener">Unsupervised Representation Learning for Time Series with Temporal Neighborhood Coding</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=6t_dLShIUyZ" target="_blank" rel="noopener">Greedy-GQ with Variance Reduction: Finite-time Analysis and Improved Complexity </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=F3s69XzWOia" target="_blank" rel="noopener">Coupled Oscillatory Recurrent Neural Network (coRNN): An accurate and (gradient) stable architecture for learning long time dependencies </a></p>
+</li>
+</ul>
+<h3 id="Dynamic-systems"><a href="#Dynamic-systems" class="headerlink" title="Dynamic systems"></a>Dynamic systems</h3><ul>
+<li><p><a href="https://openreview.net/forum?id=HxzSxSxLOJZ" target="_blank" rel="noopener">ResNet After All: Neural ODEs and Their Numerical Solution </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=blfSjHeFM_e" target="_blank" rel="noopener">MALI: A memory efficient and reverse accurate integrator for Neural ODEs </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=giit4HdDNa" target="_blank" rel="noopener">Go with the flow: Adaptive control for Neural ODEs </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=q-cnWaaoUTH" target="_blank" rel="noopener">Conformation-Guided Molecular Representation with Hamiltonian Neural Networks </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=45NZvF1UHam" target="_blank" rel="noopener">Identifying Physical Law of Hamiltonian Systems via Meta-Learning </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=aUX5Plaq7Oy" target="_blank" rel="noopener">Learning continuous-time PDEs from sparse data with graph neural networks </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=vLaHRtHvfFp" target="_blank" rel="noopener">PDE-Driven Spatiotemporal Disentanglement </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=-IXhmY16R3M" target="_blank" rel="noopener">Universal approximation power of deep residual neural networks via nonlinear control theory </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=P0p33rgyoE" target="_blank" rel="noopener">Variational Intrinsic Control Revisited</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=vyY0jnWG-tK" target="_blank" rel="noopener">Physics-aware, probabilistic model order reduction with guaranteed stability </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=Iw4ZGwenbXf" target="_blank" rel="noopener">NOVAS: Non-convex Optimization via Adaptive Stochastic Search for End-to-end Learning and Control</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=PxTIG12RRHS" target="_blank" rel="noopener">Score-Based Generative Modeling through Stochastic Differential Equations</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=xpx9zj7CUlY" target="_blank" rel="noopener">Randomized Automatic Differentiation</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=p-NZIuwqhI4" target="_blank" rel="noopener">Dynamics of Deep Equilibrium Linear Models</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=_XYzwxPIQu6" target="_blank" rel="noopener">Identifying nonlinear dynamical systems with multiple time scales and long-range dependencies </a></p>
+</li>
+</ul>
+<h3 id="Generative-Models"><a href="#Generative-Models" class="headerlink" title="Generative Models"></a>Generative Models</h3><ul>
+<li><p><a href="https://openreview.net/forum?id=MBpHUFrcG2x" target="_blank" rel="noopener">Projected Latent Markov Chain Monte Carlo: Conditional Sampling of Normalizing Flows </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=-GLNZeVDuik" target="_blank" rel="noopener">Categorical Normalizing Flows via Continuous Transformations </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=PpshD0AXfA" target="_blank" rel="noopener">Generative Time-series Modeling with Fourier Flows </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=MBOyiNnYthd" target="_blank" rel="noopener">IDF++: Analyzing and Improving Integer Discrete Flows for Lossless Compression </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=Zbc-ue9p_rE" target="_blank" rel="noopener">Refining Deep Generative Models via Wasserstein Gradient Flows</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=te7PVH1sPxJ" target="_blank" rel="noopener">Convex Potential Flows: Universal Probability Distributions with Optimal Transport and Convex Optimization</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=Ig53hpHxS4" target="_blank" rel="noopener">Flowtron: an Autoregressive Flow-based Generative Network for Text-to-Speech Synthesis</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=iWLByfvUhN" target="_blank" rel="noopener">Decoupling Global and Local Representations via Invertible Generative Flows </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=l0V53bErniB" target="_blank" rel="noopener">Combining Physics and Machine Learning for Network Flow Estimation</a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=HOFxeCutxZR" target="_blank" rel="noopener">Enjoy Your Editing: Controllable GANs for Image Editing via Latent Space Navigation </a></p>
+</li>
+<li><p><a href="https://openreview.net/forum?id=tYxG_OMs9WE" target="_blank" rel="noopener">Property Controllable Variational Autoencoder via Invertible Mutual Dependence </a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+        <category>PaperList</category>
+      </categories>
+      <tags>
+        <tag>machine learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Interesting Things</title>
     <url>/2018/11/04/Interesting-Things/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/dog250/article/details/38958637" target="_blank" rel="noopener">密码学的基本原理</a></p>
@@ -1373,6 +1454,249 @@ J_{\lambda}(f) = \frac{\lambda}{N}\sum^N_{i=1}\int^T_{0}||f(z, t)||^2dt -\frac{1
       </categories>
       <tags>
         <tag>Interesting Things</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flow based Models</title>
+    <url>/2020/09/06/Flow-based-Models/</url>
+    <content><![CDATA[<blockquote>
+<p>本节将会介绍生成模型中非常典型的一类方法，流模型 。<a id="more"></a></p>
+</blockquote>
+<h3 id="NICE-Non-linear-Independent-Components-Estimation"><a href="#NICE-Non-linear-Independent-Components-Estimation" class="headerlink" title="NICE: Non-linear Independent Components Estimation"></a>NICE: Non-linear Independent Components Estimation</h3><ul>
+<li>对于一个数据分布 x，通过一个可逆映射 f(x), 可以变成另外一个分布y，则两者之间概率密度分布之间的关系为</li>
+</ul>
+<script type="math/tex; mode=display">
+p(x) = p(y)|\det \frac{\partial f(x)}{\partial x}|\\</script><ul>
+<li><p>对于函数f有两个要求：</p>
+<ul>
+<li>可逆，且容易求其逆函数</li>
+<li>对应的雅可比行列式容易计算</li>
+</ul>
+</li>
+<li><p>NICE采用加性耦合层</p>
+<script type="math/tex; mode=display">
+h_1= x_1\\h_2= x_2+m(x_1)</script><p>可以算出，对应的雅可比矩阵是下三角阵，且对角元素为1，故而行列式为1，采用多个耦合层相连，可以增加表达能力。</p>
+<p>但是上述存在一定问题，即使多次连接，第一部分仍然是<strong>恒等变换</strong>，故而作者提出交换顺序来进行耦合。</p>
+<p><img src="/2020/09/06/Flow-based-Models/NICE.png" alt="NICE"></p>
+</li>
+<li><p>然而，正是由于模型是可逆的，因此最终z和x的维度是一致的，然而实际上，往往数据具有高维空间的低维流形，因此，引入尺度变换层，对于编码出来的每个维度的特征做尺度变换即</p>
+<script type="math/tex; mode=display">
+z = s\otimes h^{(n)}</script><p>其中s也是要训练优化的参数，可以识别出该维度的重要性，可以起到压缩流形的作用。</p>
+<p>此时行列式变为了 $\Pi_i s_i$</p>
+<p>实际上<strong>尺度变换层等价于将先验分布的方差（标准差）也作为训练参数，如果方差足够小，我们就可以认为该维度所表示的流形坍缩为一个点，从而总体流形的维度减1，暗含了降维的可能</strong>。</p>
+</li>
+<li><p>实验结果：</p>
+<p><img src="/2020/09/06/Flow-based-Models/test.png" alt="test"></p>
+</li>
+</ul>
+<h3 id="REALNVP"><a href="#REALNVP" class="headerlink" title="REALNVP"></a>REALNVP</h3><ul>
+<li><p>REAL NVP是在NICE基础上进行改进的结果</p>
+</li>
+<li><p>仿射耦合层</p>
+<script type="math/tex; mode=display">
+h_1 = x_1\\
+h_2 = s(x_1)\otimes x_2 +t(x_1)</script><p>此时，对应的雅可比行列式的值为$\Pi_i s(x_1)_i$, 注意，为了保持可逆性，一般将s各个元素约束为大于0.</p>
+</li>
+<li><p>在NICE中，是交替进行混合信息流，REALNVP则是采用shuffle的方式，将信息充分耦合</p>
+<p><img src="/2020/09/06/Flow-based-Models/REALNVP.png" alt="REALNVP"></p>
+</li>
+<li><p>引入卷积层，对于图像来说，随意shuffle会打乱空间之间的相关性，因此作者引入以下几种方式来进行分割</p>
+<p><img src="/2020/09/06/Flow-based-Models/squeeze.png" alt=""></p>
+</li>
+<li><p>多尺度结构： 启发于VGG网络，有点分形的味道</p>
+<p><img src="/2020/09/06/Flow-based-Models/scaleMulti.png" alt="scaleMulti" style="zoom:50%;"><img src="/2020/09/06/Flow-based-Models/radial flow.png" alt=""></p>
+</li>
+</ul>
+<p>可以得到</p>
+<script type="math/tex; mode=display">
+p(z_1, z_3, z_5)=p(z_1|z_2)p(z_3|z_4)p(z_5)\\</script><p>并假设$\hat z_1, \hat z_3, \hat z_5$服从标准正态分布，相较于直接输出，条件概率输出具有更大的灵活性。</p>
+<script type="math/tex; mode=display">
+\hat z_1 = \frac{z_1-\mu(z_2)}{\sigma(z_2)}\\
+\hat z_3 = \frac{z_3-\mu(z_4)}{\sigma (z_4)}\\
+\hat z_5 = \frac{z_5-\mu}{\sigma_z}\</script><h3 id="GLOW"><a href="#GLOW" class="headerlink" title="GLOW"></a>GLOW</h3><ul>
+<li><p>GLOW模型是在NICE及REALNVP基础上改的，NICE和REALNVP中采用不同的方式打乱顺序，而注意到<strong>向量的置换操作，可以看作是向量乘一个置换矩阵得到的</strong>，GLOW中<strong>将置换矩阵作为一个可训练的参数矩阵</strong>，并因此引入了<strong>可逆$1\times1$卷积</strong></p>
+</li>
+<li><p>另一点是引入<strong>ActNorm</strong>， 也就是对于z进行缩放平移变换</p>
+<script type="math/tex; mode=display">
+\hat z = \frac{z-\mu}{\sigma}</script><p>其中$\mu$和$\sigma$都是训练参数，在<strong>初始化的时候是数据的均值和方差</strong></p>
+</li>
+</ul>
+<h3 id="Variational-inference-with-normalizing-flows"><a href="#Variational-inference-with-normalizing-flows" class="headerlink" title="Variational inference with normalizing flows"></a>Variational inference with normalizing flows</h3><ul>
+<li><p>Invertible Linear-Time Transformations（可逆线性变换层）<strong>planar flows</strong></p>
+<script type="math/tex; mode=display">
+f(z)=z+uh(w^Tz+b)</script><p>其中h为线性变换， 则可知</p>
+<script type="math/tex; mode=display">
+\psi(z)=h'(w^Tz+b)w\\
+\det |\frac{\partial f}{\partial z}| = |\det(I +u\psi(z)^T)|=|1+u^T\psi(z)|</script><p>其中$u^T\psi(z)$是一个数。</p>
+<script type="math/tex; mode=display">
+z_k= f_k\circ f_{k-1}\circ\cdots\circ f_1(z)\\
+\ln q_k(z_k)=\ln q_0(z) -\sum^K_{k=1}\ln |1+u_k^T\psi_k(z_k)|</script></li>
+<li><p>改变变换形式，将变换改为将$q_0$绕某一个参考点去变化，</p>
+<script type="math/tex; mode=display">
+f(z)=z+\beta h(\alpha,r)(z-z_0)\\
+\det |\frac{\partial f}{\partial z}|=(1+\beta h +\beta h' r)(1+\beta)^{d-1}</script></li>
+<li></li>
+</ul>
+<p><img src="/2020/09/06/Flow-based-Models/radial flow.png" style="zoom:50%;"></p>
+<h3 id="MADE-Masked-Autoencoder-for-Distribution-Estimation"><a href="#MADE-Masked-Autoencoder-for-Distribution-Estimation" class="headerlink" title="MADE: Masked Autoencoder for Distribution Estimation"></a>MADE: Masked Autoencoder for Distribution Estimation</h3><p><img src="/2020/09/06/Flow-based-Models/mad.png" style="zoom:80%;"></p>
+<p>参考<a href="https://github.com/karpathy/pytorch-made" target="_blank" rel="noopener">https://github.com/karpathy/pytorch-made</a></p>
+<h3 id="wavenet-a-generative-model-for-raw-audio"><a href="#wavenet-a-generative-model-for-raw-audio" class="headerlink" title="wavenet: a generative model for raw audio"></a>wavenet: a generative model for raw audio</h3><p><img src="/2020/09/06/Flow-based-Models/wavenet.png" alt=""></p>
+<p>可参考<a href="https://github.com/ibab/tensorflow-wavenet，其中causal" target="_blank" rel="noopener">https://github.com/ibab/tensorflow-wavenet，其中causal</a> conv可以表示为</p>
+<p><img src="/2020/09/06/Flow-based-Models/wavenet_conv.gif" alt=""></p>
+<h3 id="Improved-Variational-Inference-with-Inverse-Autoregressive-Flow"><a href="#Improved-Variational-Inference-with-Inverse-Autoregressive-Flow" class="headerlink" title="Improved Variational Inference with Inverse Autoregressive Flow"></a>Improved Variational Inference with Inverse Autoregressive Flow</h3><p><img src="/2020/09/06/Flow-based-Models/IAF.png" alt=""></p>
+<ul>
+<li><p>相比于normalizing flow中常见的planar nf采用mlp的形式，表达能力欠缺，且在更高维度下需要更长的链转换概率密度，因此不适应于高维空间。</p>
+</li>
+<li><p>算法结构如下</p>
+<p><img src="/2020/09/06/Flow-based-Models/IAF_alg.png" alt=""></p>
+<ul>
+<li>其中AutogressiveNN可以选择很多种，<strong>对于MLP类型的，可以选择MADE的形式</strong>；<strong>对于卷积类型的，可采用pixel cnn中的形式</strong>，参考<a href="https://github.com/pclucas14/iaf-vae" target="_blank" rel="noopener">https://github.com/pclucas14/iaf-vae</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Sylvestrer-Normalizing-flows-for-Variance-Inference"><a href="#Sylvestrer-Normalizing-flows-for-Variance-Inference" class="headerlink" title="Sylvestrer Normalizing flows for Variance Inference"></a>Sylvestrer Normalizing flows for Variance Inference</h3><ul>
+<li><p>首先提出<strong>Sylvester determinant identity</strong>，对于$A\in R^{D\times M}, B\in R^{M\times D}$, 有</p>
+<script type="math/tex; mode=display">
+\det (I_D+AB) = \det (I_M+BA)</script></li>
+<li><p>对于形如（13）的形式，其中$A\in R^{D\times M}, B\in R^{M\times D}, b\in R^{M}, M&lt;D$根据（1）式可以得到(14)，从而降低计算量。</p>
+<script type="math/tex; mode=display">
+z'= z + Ah(Bz+b)</script><script type="math/tex; mode=display">
+\det (\frac{\partial z'}{\partial z}) = \det (I_M + diag (h'(Bz+b)BA))</script></li>
+<li><p>需要解决的问题是，(12)式一般是不可逆的，且行列式不好计算，因此引入QR分解，考虑如下特殊形式</p>
+<script type="math/tex; mode=display">
+z' = z + QR^Ah(R^BQ^Tz=b)\\
+\det (\frac{\partial z'}{\partial z}) = \det (I_M + diag(h')R^BR^A)</script><p>下面<strong>证明可逆</strong>：如果$R^A, R^B$是上三角阵，且h是光滑有界的函数，且导数为正，则如果$R^A, R^B$对角元素满足$R^A_{ii}R^B_{ii}&gt;-1/||h’||_{\infty}$，则(15)式可以保证是可逆的</p>
+</li>
+</ul>
+<h3 id="Continuous-Normalizing-Flow"><a href="#Continuous-Normalizing-Flow" class="headerlink" title="Continuous  Normalizing Flow"></a>Continuous  Normalizing Flow</h3><ul>
+<li>Neural ODE中提出CNF的概念<script type="math/tex; mode=display">
+\frac{d\vec z}{dt}=\vec f(\vec z(t), t)\\
+\vec z(0)\sim p_o(\vec z(0))\\
+\vec z(T) = \vec z(0) + \int _0^T\vec f(\vec z(t), t)dt\\
+\frac{d\log p(\vec z(t))}{dt} = -tr(\frac{df}{dz(t)})</script></li>
+</ul>
+<h4 id="FFJORD-free-form-continuous-dynamics-for-scalable-reversible-generative-models"><a href="#FFJORD-free-form-continuous-dynamics-for-scalable-reversible-generative-models" class="headerlink" title="FFJORD: free form continuous dynamics for scalable reversible generative models"></a>FFJORD: free form continuous dynamics for scalable reversible generative models</h4><p>对于CNF，根据neural ode 中有</p>
+<script type="math/tex; mode=display">
+\frac{d\log p(\vec z(t))}{dt} = -tr(\frac{df}{dz(t)})</script><p>因此，对于增广状态有，</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+z_0\\
+\log p(x) - \log p_{z_0}(z_0) 
+\end{bmatrix} = \int_{t_1}^{t_0}
+\begin{bmatrix}
+f(z(t),t;\theta)\\
+-Tr(\frac{\partial f}{\partial z(t)})
+\end{bmatrix}dt\\
+\begin{bmatrix}
+z(t_1)\\
+\log p(x)-\log p(z(t_1))
+\end{bmatrix} = \begin{bmatrix}
+x\\0
+\end{bmatrix}</script><p>根据下述重要推论中的第二条，可知</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\log p(z(t_1)) &= \log p(z(t_0)) - \int_{t_0}^{t_1}Tr(\frac{\partial f}{\partial z(t)})dt\\
+&= \log p(z(t_0)) - \mathbb{E}_{p(\epsilon)}\big[ \int_{t_0}^{t_1}\epsilon^T \frac{\partial f}{\partial z(t)}\epsilon dt \big]
+\end{aligned}
+\end{equation}</script><ul>
+<li>上述对$Tr(A)$估计中的variance渐进趋向于 $||A||_F^2$,为了减少Hutchinson估计器的variance,作者提出用降低维度的方式，设 $f=g\circ h(z)$,则有<script type="math/tex; mode=display">
+Tr(\frac{\partial f}{\partial z}) = Tr(\frac{\partial g}{\partial h}\frac{\partial h}{\partial z}) = Tr(\frac{\partial h}{\partial z}\frac{\partial g}{\partial h}) = \mathbb{E}_{p(\epsilon)}[\epsilon^T\frac{\partial h}{\partial z}\frac{\partial g}{\partial h}\epsilon]</script>第二项是$D\times D$维的，第三项则是 $H\times H$维的，如果H是很小的，那么我们就可以减少估计器的方差。</li>
+</ul>
+<h3 id="GRU-ODE-Bayes"><a href="#GRU-ODE-Bayes" class="headerlink" title="GRU-ODE_Bayes"></a>GRU-ODE_Bayes</h3><ul>
+<li>特点：<ul>
+<li>快速推断潜在随机过程的位置参数</li>
+<li>学习变量中的相关性</li>
+</ul>
+</li>
+<li>GRU-ODE包括两部分：<ul>
+<li>GRU-ODE：基于GRU的ODE模型，使得隐状态h能够沿时间传播</li>
+<li>GRU-Bayes：通过观测数据来更新当前的因状态</li>
+</ul>
+</li>
+</ul>
+<h4 id="GRU-ODE-推导"><a href="#GRU-ODE-推导" class="headerlink" title="GRU-ODE 推导"></a>GRU-ODE 推导</h4><ul>
+<li><p>对于基本GRU单元，其结构如图所示：</p>
+<p><img src="/2020/09/06/Flow-based-Models/GRU.jpg" style="zoom:50%;"></p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+r_t &= \sigma(W_rx_t + U_rh_{t-1}+b_r)\\
+z_t &= \sigma(W_zx_t + U_zh_{t-1}+b_z)\\
+g_t &= tanh(W_h x_t + U_h(r_t\odot h_{t-1})+b_h)\\
+h_t &= z_t\odot h_{t-1} + (1-z_t)\odot g_t\\
+\end{aligned}
+\end{equation}</script><p>因此，可得隐状态变化为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\Delta h_t &= h_t - h_{t-1} = z_t\odot h_{t-1} + (1-z_t)\odot g_t -h_{t-1}\\
+&=(1-z_t)\odot (g_t-h_{t-1})
+\end{aligned}</script><p>可将隐状态微分方程变为</p>
+<script type="math/tex; mode=display">
+\frac{dh(t)}{dt} =(1-z(t))\odot (g(t)-h(t))</script></li>
+<li><p>GRU-ODE 特性：</p>
+<ul>
+<li>有界性： 如果初始状态 $h(0)_j\in [-1, 1]$, 则$h(t)_j$则一直在此界内</li>
+<li>连续性： GRU-ODE是李普希兹连续的，且K=2</li>
+<li>支持各种数值求解器：例如欧拉解法，中值法等</li>
+</ul>
+</li>
+</ul>
+<h4 id="GRU-bayes"><a href="#GRU-bayes" class="headerlink" title="GRU-bayes"></a>GRU-bayes</h4><ul>
+<li><p>为了用观测值对隐状态进行更新， 并估计$Y(t)$的概率密度函数； 采用标准GRU模块并在[-1,1]内进行变换</p>
+</li>
+<li><p>定义$f_{prep}$函数对于观测数据进行预处理：（通过隐状态h计算观测值概率密度函数的参数，假设是高斯函数）</p>
+<script type="math/tex; mode=display">
+\theta = [mean, logvar] = f_{obs}(h(t))\\
+error = (y[k]_d - mean)/e^{0.5*logvar}\\
+q_d = [y[k]_d, mean, logvar, error]\\
+f_{prep} = ReLU(W_dq_d + bias) * m_d\\
+h(t_+) = GRU(h(t_-), f_{prep}(y[k], m[k], h(t_-))\\</script><p>其中$h(t_-)$和 $h(t_+)$为GRU-Bayes前后的状态，因此，状态在此时会有一个跳跃。m是mask‘函数，结果中没有观测值的位置直接置0</p>
+<p><img src="/2020/09/06/Flow-based-Models/GRU_hidden.png" alt=""></p>
+</li>
+<li><p>目标函数： $Loss_{pre} + \lambda Loss_{post}$</p>
+<script type="math/tex; mode=display">
+Loss_{pre} = -\sum^D_{j=1}m_j\log p(y_j|\theta=f_{obs}(h_-)_j)\\
+Loss_{post} = \sum^D_{j=1}m_jD_{KL}(p_{Bayes,j}||p_{post,j})</script><p>其中第一项假设的是高斯分布；第二项损失中$p_{Bayes,j} \propto p_{pre,j}p_{obs,j}$, $p_{pre}$为GRU-Bayes之前的预测分布， $p_{post,j}$表示GRU-Bayes之后的预测分布。</p>
+</li>
+</ul>
+<p><img src="/2020/09/06/Flow-based-Models/GRU_ODE_Bayes.png" alt=""></p>
+<ul>
+<li>$p_{Bayes,j} $计算：对于二项式和高斯分布，可以解析表示：<script type="math/tex; mode=display">
+\mu_{bayes} = \frac{\sigma_{obs}^2}{\sigma^2_{pre} +  \sigma_{obs}^2}\mu_{pre} + \frac{\sigma_{pre}^2}{\sigma^2_{pre} +  \sigma_{obs}^2}\mu_{obs}\\
+\sigma_{bayes}^2 = \frac{\sigma^2_{pre} \sigma^2_{obs}}{\sigma^2_{pre} + \sigma^2_{obs}}</script>实际上，往往观测值的方差$\sigma^2_{obs}&lt;&lt;\sigma^2_{pre}$,此时 $\mu_{bayes}=\mu_{obs}, \sigma_{bayes}^2 = \sigma^2_{obs}$</li>
+</ul>
+<h3 id="重要推论："><a href="#重要推论：" class="headerlink" title="重要推论："></a>重要推论：</h3><ul>
+<li><p>CNF中的结论</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\frac{d\vec z}{dt}=&\vec f(\vec z(t), t)\\
+\vec z(0)\sim p_o(\vec z(0))&~~~\vec z(T) = \vec z(0) + \int _0^T\vec f(\vec z(t), t)dt\\
+\frac{d\log p(\vec z(t))}{dt} =& -tr(\frac{df}{dz(t)})
+\end{aligned}
+\end{equation}</script></li>
+<li><p>假设p(u)是多元概率分布，均值为0，协方差为单位阵，则对于任意矩阵A，有</p>
+<script type="math/tex; mode=display">
+Tr(A)=E_{u\sim p(u)}[u^TAu]</script><p>证明如下</p>
+<script type="math/tex; mode=display">
+u^TAu = \sum_{j=1}^N\sum_{i=1}^Nu_{i}u_{j}A_{ij}</script><script type="math/tex; mode=display">
+\begin{equation}
+E[u_iu_j] = \left\{
+\begin{aligned}
+1,i=j\\
+0, i\neq j
+\end{aligned}
+\right.
+\end{equation}</script></li>
+<li><p>证明恒等式</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\det (exp(A)) = exp(Tr(A))\\
+  ln (\det B) = Tr(\ln B)</script>]]></content>
+      <tags>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -1678,311 +2002,6 @@ J_{\lambda}(f) = \frac{\lambda}{N}\sum^N_{i=1}\int^T_{0}||f(z, t)||^2dt -\frac{1
       </tags>
   </entry>
   <entry>
-    <title>Flow based Models</title>
-    <url>/2020/09/06/Flow-based-Models/</url>
-    <content><![CDATA[<blockquote>
-<p>本节将会介绍生成模型中非常典型的一类方法，流模型 。<a id="more"></a></p>
-</blockquote>
-<h3 id="NICE-Non-linear-Independent-Components-Estimation"><a href="#NICE-Non-linear-Independent-Components-Estimation" class="headerlink" title="NICE: Non-linear Independent Components Estimation"></a>NICE: Non-linear Independent Components Estimation</h3><ul>
-<li>对于一个数据分布 x，通过一个可逆映射 f(x), 可以变成另外一个分布y，则两者之间概率密度分布之间的关系为</li>
-</ul>
-<script type="math/tex; mode=display">
-p(x) = p(y)|\det \frac{\partial f(x)}{\partial x}|\\</script><ul>
-<li><p>对于函数f有两个要求：</p>
-<ul>
-<li>可逆，且容易求其逆函数</li>
-<li>对应的雅可比行列式容易计算</li>
-</ul>
-</li>
-<li><p>NICE采用加性耦合层</p>
-<script type="math/tex; mode=display">
-h_1= x_1\\h_2= x_2+m(x_1)</script><p>可以算出，对应的雅可比矩阵是下三角阵，且对角元素为1，故而行列式为1，采用多个耦合层相连，可以增加表达能力。</p>
-<p>但是上述存在一定问题，即使多次连接，第一部分仍然是<strong>恒等变换</strong>，故而作者提出交换顺序来进行耦合。</p>
-<p><img src="/2020/09/06/Flow-based-Models/NICE.png" alt="NICE"></p>
-</li>
-<li><p>然而，正是由于模型是可逆的，因此最终z和x的维度是一致的，然而实际上，往往数据具有高维空间的低维流形，因此，引入尺度变换层，对于编码出来的每个维度的特征做尺度变换即</p>
-<script type="math/tex; mode=display">
-z = s\otimes h^{(n)}</script><p>其中s也是要训练优化的参数，可以识别出该维度的重要性，可以起到压缩流形的作用。</p>
-<p>此时行列式变为了 $\Pi_i s_i$</p>
-<p>实际上<strong>尺度变换层等价于将先验分布的方差（标准差）也作为训练参数，如果方差足够小，我们就可以认为该维度所表示的流形坍缩为一个点，从而总体流形的维度减1，暗含了降维的可能</strong>。</p>
-</li>
-<li><p>实验结果：</p>
-<p><img src="/2020/09/06/Flow-based-Models/test.png" alt="test"></p>
-</li>
-</ul>
-<h3 id="REALNVP"><a href="#REALNVP" class="headerlink" title="REALNVP"></a>REALNVP</h3><ul>
-<li><p>REAL NVP是在NICE基础上进行改进的结果</p>
-</li>
-<li><p>仿射耦合层</p>
-<script type="math/tex; mode=display">
-h_1 = x_1\\
-h_2 = s(x_1)\otimes x_2 +t(x_1)</script><p>此时，对应的雅可比行列式的值为$\Pi_i s(x_1)_i$, 注意，为了保持可逆性，一般将s各个元素约束为大于0.</p>
-</li>
-<li><p>在NICE中，是交替进行混合信息流，REALNVP则是采用shuffle的方式，将信息充分耦合</p>
-<p><img src="/2020/09/06/Flow-based-Models/REALNVP.png" alt="REALNVP"></p>
-</li>
-<li><p>引入卷积层，对于图像来说，随意shuffle会打乱空间之间的相关性，因此作者引入以下几种方式来进行分割</p>
-<p><img src="/2020/09/06/Flow-based-Models/squeeze.png" alt=""></p>
-</li>
-<li><p>多尺度结构： 启发于VGG网络，有点分形的味道</p>
-<p><img src="/2020/09/06/Flow-based-Models/scaleMulti.png" alt="scaleMulti" style="zoom:50%;"><img src="/2020/09/06/Flow-based-Models/radial flow.png" alt=""></p>
-</li>
-</ul>
-<p>可以得到</p>
-<script type="math/tex; mode=display">
-p(z_1, z_3, z_5)=p(z_1|z_2)p(z_3|z_4)p(z_5)\\</script><p>并假设$\hat z_1, \hat z_3, \hat z_5$服从标准正态分布，相较于直接输出，条件概率输出具有更大的灵活性。</p>
-<script type="math/tex; mode=display">
-\hat z_1 = \frac{z_1-\mu(z_2)}{\sigma(z_2)}\\
-\hat z_3 = \frac{z_3-\mu(z_4)}{\sigma (z_4)}\\
-\hat z_5 = \frac{z_5-\mu}{\sigma_z}\</script><h3 id="GLOW"><a href="#GLOW" class="headerlink" title="GLOW"></a>GLOW</h3><ul>
-<li><p>GLOW模型是在NICE及REALNVP基础上改的，NICE和REALNVP中采用不同的方式打乱顺序，而注意到<strong>向量的置换操作，可以看作是向量乘一个置换矩阵得到的</strong>，GLOW中<strong>将置换矩阵作为一个可训练的参数矩阵</strong>，并因此引入了<strong>可逆$1\times1$卷积</strong></p>
-</li>
-<li><p>另一点是引入<strong>ActNorm</strong>， 也就是对于z进行缩放平移变换</p>
-<script type="math/tex; mode=display">
-\hat z = \frac{z-\mu}{\sigma}</script><p>其中$\mu$和$\sigma$都是训练参数，在<strong>初始化的时候是数据的均值和方差</strong></p>
-</li>
-</ul>
-<h3 id="Variational-inference-with-normalizing-flows"><a href="#Variational-inference-with-normalizing-flows" class="headerlink" title="Variational inference with normalizing flows"></a>Variational inference with normalizing flows</h3><ul>
-<li><p>Invertible Linear-Time Transformations（可逆线性变换层）<strong>planar flows</strong></p>
-<script type="math/tex; mode=display">
-f(z)=z+uh(w^Tz+b)</script><p>其中h为线性变换， 则可知</p>
-<script type="math/tex; mode=display">
-\psi(z)=h'(w^Tz+b)w\\
-\det |\frac{\partial f}{\partial z}| = |\det(I +u\psi(z)^T)|=|1+u^T\psi(z)|</script><p>其中$u^T\psi(z)$是一个数。</p>
-<script type="math/tex; mode=display">
-z_k= f_k\circ f_{k-1}\circ\cdots\circ f_1(z)\\
-\ln q_k(z_k)=\ln q_0(z) -\sum^K_{k=1}\ln |1+u_k^T\psi_k(z_k)|</script></li>
-<li><p>改变变换形式，将变换改为将$q_0$绕某一个参考点去变化，</p>
-<script type="math/tex; mode=display">
-f(z)=z+\beta h(\alpha,r)(z-z_0)\\
-\det |\frac{\partial f}{\partial z}|=(1+\beta h +\beta h' r)(1+\beta)^{d-1}</script></li>
-<li></li>
-</ul>
-<p><img src="/2020/09/06/Flow-based-Models/radial flow.png" style="zoom:50%;"></p>
-<h3 id="MADE-Masked-Autoencoder-for-Distribution-Estimation"><a href="#MADE-Masked-Autoencoder-for-Distribution-Estimation" class="headerlink" title="MADE: Masked Autoencoder for Distribution Estimation"></a>MADE: Masked Autoencoder for Distribution Estimation</h3><p><img src="/2020/09/06/Flow-based-Models/mad.png" style="zoom:80%;"></p>
-<p>参考<a href="https://github.com/karpathy/pytorch-made" target="_blank" rel="noopener">https://github.com/karpathy/pytorch-made</a></p>
-<h3 id="wavenet-a-generative-model-for-raw-audio"><a href="#wavenet-a-generative-model-for-raw-audio" class="headerlink" title="wavenet: a generative model for raw audio"></a>wavenet: a generative model for raw audio</h3><p><img src="/2020/09/06/Flow-based-Models/wavenet.png" alt=""></p>
-<p>可参考<a href="https://github.com/ibab/tensorflow-wavenet，其中causal" target="_blank" rel="noopener">https://github.com/ibab/tensorflow-wavenet，其中causal</a> conv可以表示为</p>
-<p><img src="/2020/09/06/Flow-based-Models/wavenet_conv.gif" alt=""></p>
-<h3 id="Improved-Variational-Inference-with-Inverse-Autoregressive-Flow"><a href="#Improved-Variational-Inference-with-Inverse-Autoregressive-Flow" class="headerlink" title="Improved Variational Inference with Inverse Autoregressive Flow"></a>Improved Variational Inference with Inverse Autoregressive Flow</h3><p><img src="/2020/09/06/Flow-based-Models/IAF.png" alt=""></p>
-<ul>
-<li><p>相比于normalizing flow中常见的planar nf采用mlp的形式，表达能力欠缺，且在更高维度下需要更长的链转换概率密度，因此不适应于高维空间。</p>
-</li>
-<li><p>算法结构如下</p>
-<p><img src="/2020/09/06/Flow-based-Models/IAF_alg.png" alt=""></p>
-<ul>
-<li>其中AutogressiveNN可以选择很多种，<strong>对于MLP类型的，可以选择MADE的形式</strong>；<strong>对于卷积类型的，可采用pixel cnn中的形式</strong>，参考<a href="https://github.com/pclucas14/iaf-vae" target="_blank" rel="noopener">https://github.com/pclucas14/iaf-vae</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="Sylvestrer-Normalizing-flows-for-Variance-Inference"><a href="#Sylvestrer-Normalizing-flows-for-Variance-Inference" class="headerlink" title="Sylvestrer Normalizing flows for Variance Inference"></a>Sylvestrer Normalizing flows for Variance Inference</h3><ul>
-<li><p>首先提出<strong>Sylvester determinant identity</strong>，对于$A\in R^{D\times M}, B\in R^{M\times D}$, 有</p>
-<script type="math/tex; mode=display">
-\det (I_D+AB) = \det (I_M+BA)</script></li>
-<li><p>对于形如（13）的形式，其中$A\in R^{D\times M}, B\in R^{M\times D}, b\in R^{M}, M&lt;D$根据（1）式可以得到(14)，从而降低计算量。</p>
-<script type="math/tex; mode=display">
-z'= z + Ah(Bz+b)</script><script type="math/tex; mode=display">
-\det (\frac{\partial z'}{\partial z}) = \det (I_M + diag (h'(Bz+b)BA))</script></li>
-<li><p>需要解决的问题是，(12)式一般是不可逆的，且行列式不好计算，因此引入QR分解，考虑如下特殊形式</p>
-<script type="math/tex; mode=display">
-z' = z + QR^Ah(R^BQ^Tz=b)\\
-\det (\frac{\partial z'}{\partial z}) = \det (I_M + diag(h')R^BR^A)</script><p>下面<strong>证明可逆</strong>：如果$R^A, R^B$是上三角阵，且h是光滑有界的函数，且导数为正，则如果$R^A, R^B$对角元素满足$R^A_{ii}R^B_{ii}&gt;-1/||h’||_{\infty}$，则(15)式可以保证是可逆的</p>
-</li>
-</ul>
-<h3 id="Continuous-Normalizing-Flow"><a href="#Continuous-Normalizing-Flow" class="headerlink" title="Continuous  Normalizing Flow"></a>Continuous  Normalizing Flow</h3><ul>
-<li>Neural ODE中提出CNF的概念<script type="math/tex; mode=display">
-\frac{d\vec z}{dt}=\vec f(\vec z(t), t)\\
-\vec z(0)\sim p_o(\vec z(0))\\
-\vec z(T) = \vec z(0) + \int _0^T\vec f(\vec z(t), t)dt\\
-\frac{d\log p(\vec z(t))}{dt} = -tr(\frac{df}{dz(t)})</script></li>
-</ul>
-<h4 id="FFJORD-free-form-continuous-dynamics-for-scalable-reversible-generative-models"><a href="#FFJORD-free-form-continuous-dynamics-for-scalable-reversible-generative-models" class="headerlink" title="FFJORD: free form continuous dynamics for scalable reversible generative models"></a>FFJORD: free form continuous dynamics for scalable reversible generative models</h4><p>对于CNF，根据neural ode 中有</p>
-<script type="math/tex; mode=display">
-\frac{d\log p(\vec z(t))}{dt} = -tr(\frac{df}{dz(t)})</script><p>因此，对于增广状态有，</p>
-<script type="math/tex; mode=display">
-\begin{bmatrix}
-z_0\\
-\log p(x) - \log p_{z_0}(z_0) 
-\end{bmatrix} = \int_{t_1}^{t_0}
-\begin{bmatrix}
-f(z(t),t;\theta)\\
--Tr(\frac{\partial f}{\partial z(t)})
-\end{bmatrix}dt\\
-\begin{bmatrix}
-z(t_1)\\
-\log p(x)-\log p(z(t_1))
-\end{bmatrix} = \begin{bmatrix}
-x\\0
-\end{bmatrix}</script><p>根据下述重要推论中的第二条，可知</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\begin{aligned}
-\log p(z(t_1)) &= \log p(z(t_0)) - \int_{t_0}^{t_1}Tr(\frac{\partial f}{\partial z(t)})dt\\
-&= \log p(z(t_0)) - \mathbb{E}_{p(\epsilon)}\big[ \int_{t_0}^{t_1}\epsilon^T \frac{\partial f}{\partial z(t)}\epsilon dt \big]
-\end{aligned}
-\end{equation}</script><ul>
-<li>上述对$Tr(A)$估计中的variance渐进趋向于 $||A||_F^2$,为了减少Hutchinson估计器的variance,作者提出用降低维度的方式，设 $f=g\circ h(z)$,则有<script type="math/tex; mode=display">
-Tr(\frac{\partial f}{\partial z}) = Tr(\frac{\partial g}{\partial h}\frac{\partial h}{\partial z}) = Tr(\frac{\partial h}{\partial z}\frac{\partial g}{\partial h}) = \mathbb{E}_{p(\epsilon)}[\epsilon^T\frac{\partial h}{\partial z}\frac{\partial g}{\partial h}\epsilon]</script>第二项是$D\times D$维的，第三项则是 $H\times H$维的，如果H是很小的，那么我们就可以减少估计器的方差。</li>
-</ul>
-<h3 id="GRU-ODE-Bayes"><a href="#GRU-ODE-Bayes" class="headerlink" title="GRU-ODE_Bayes"></a>GRU-ODE_Bayes</h3><ul>
-<li>特点：<ul>
-<li>快速推断潜在随机过程的位置参数</li>
-<li>学习变量中的相关性</li>
-</ul>
-</li>
-<li>GRU-ODE包括两部分：<ul>
-<li>GRU-ODE：基于GRU的ODE模型，使得隐状态h能够沿时间传播</li>
-<li>GRU-Bayes：通过观测数据来更新当前的因状态</li>
-</ul>
-</li>
-</ul>
-<h4 id="GRU-ODE-推导"><a href="#GRU-ODE-推导" class="headerlink" title="GRU-ODE 推导"></a>GRU-ODE 推导</h4><ul>
-<li><p>对于基本GRU单元，其结构如图所示：</p>
-<p><img src="/2020/09/06/Flow-based-Models/GRU.jpg" style="zoom:50%;"></p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\begin{aligned}
-r_t &= \sigma(W_rx_t + U_rh_{t-1}+b_r)\\
-z_t &= \sigma(W_zx_t + U_zh_{t-1}+b_z)\\
-g_t &= tanh(W_h x_t + U_h(r_t\odot h_{t-1})+b_h)\\
-h_t &= z_t\odot h_{t-1} + (1-z_t)\odot g_t\\
-\end{aligned}
-\end{equation}</script><p>因此，可得隐状态变化为</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\Delta h_t &= h_t - h_{t-1} = z_t\odot h_{t-1} + (1-z_t)\odot g_t -h_{t-1}\\
-&=(1-z_t)\odot (g_t-h_{t-1})
-\end{aligned}</script><p>可将隐状态微分方程变为</p>
-<script type="math/tex; mode=display">
-\frac{dh(t)}{dt} =(1-z(t))\odot (g(t)-h(t))</script></li>
-<li><p>GRU-ODE 特性：</p>
-<ul>
-<li>有界性： 如果初始状态 $h(0)_j\in [-1, 1]$, 则$h(t)_j$则一直在此界内</li>
-<li>连续性： GRU-ODE是李普希兹连续的，且K=2</li>
-<li>支持各种数值求解器：例如欧拉解法，中值法等</li>
-</ul>
-</li>
-</ul>
-<h4 id="GRU-bayes"><a href="#GRU-bayes" class="headerlink" title="GRU-bayes"></a>GRU-bayes</h4><ul>
-<li><p>为了用观测值对隐状态进行更新， 并估计$Y(t)$的概率密度函数； 采用标准GRU模块并在[-1,1]内进行变换</p>
-</li>
-<li><p>定义$f_{prep}$函数对于观测数据进行预处理：（通过隐状态h计算观测值概率密度函数的参数，假设是高斯函数）</p>
-<script type="math/tex; mode=display">
-\theta = [mean, logvar] = f_{obs}(h(t))\\
-error = (y[k]_d - mean)/e^{0.5*logvar}\\
-q_d = [y[k]_d, mean, logvar, error]\\
-f_{prep} = ReLU(W_dq_d + bias) * m_d\\
-h(t_+) = GRU(h(t_-), f_{prep}(y[k], m[k], h(t_-))\\</script><p>其中$h(t_-)$和 $h(t_+)$为GRU-Bayes前后的状态，因此，状态在此时会有一个跳跃。m是mask‘函数，结果中没有观测值的位置直接置0</p>
-<p><img src="/2020/09/06/Flow-based-Models/GRU_hidden.png" alt=""></p>
-</li>
-<li><p>目标函数： $Loss_{pre} + \lambda Loss_{post}$</p>
-<script type="math/tex; mode=display">
-Loss_{pre} = -\sum^D_{j=1}m_j\log p(y_j|\theta=f_{obs}(h_-)_j)\\
-Loss_{post} = \sum^D_{j=1}m_jD_{KL}(p_{Bayes,j}||p_{post,j})</script><p>其中第一项假设的是高斯分布；第二项损失中$p_{Bayes,j} \propto p_{pre,j}p_{obs,j}$, $p_{pre}$为GRU-Bayes之前的预测分布， $p_{post,j}$表示GRU-Bayes之后的预测分布。</p>
-</li>
-</ul>
-<p><img src="/2020/09/06/Flow-based-Models/GRU_ODE_Bayes.png" alt=""></p>
-<ul>
-<li>$p_{Bayes,j} $计算：对于二项式和高斯分布，可以解析表示：<script type="math/tex; mode=display">
-\mu_{bayes} = \frac{\sigma_{obs}^2}{\sigma^2_{pre} +  \sigma_{obs}^2}\mu_{pre} + \frac{\sigma_{pre}^2}{\sigma^2_{pre} +  \sigma_{obs}^2}\mu_{obs}\\
-\sigma_{bayes}^2 = \frac{\sigma^2_{pre} \sigma^2_{obs}}{\sigma^2_{pre} + \sigma^2_{obs}}</script>实际上，往往观测值的方差$\sigma^2_{obs}&lt;&lt;\sigma^2_{pre}$,此时 $\mu_{bayes}=\mu_{obs}, \sigma_{bayes}^2 = \sigma^2_{obs}$</li>
-</ul>
-<h3 id="重要推论："><a href="#重要推论：" class="headerlink" title="重要推论："></a>重要推论：</h3><ul>
-<li><p>CNF中的结论</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\begin{aligned}
-\frac{d\vec z}{dt}=&\vec f(\vec z(t), t)\\
-\vec z(0)\sim p_o(\vec z(0))&~~~\vec z(T) = \vec z(0) + \int _0^T\vec f(\vec z(t), t)dt\\
-\frac{d\log p(\vec z(t))}{dt} =& -tr(\frac{df}{dz(t)})
-\end{aligned}
-\end{equation}</script></li>
-<li><p>假设p(u)是多元概率分布，均值为0，协方差为单位阵，则对于任意矩阵A，有</p>
-<script type="math/tex; mode=display">
-Tr(A)=E_{u\sim p(u)}[u^TAu]</script><p>证明如下</p>
-<script type="math/tex; mode=display">
-u^TAu = \sum_{j=1}^N\sum_{i=1}^Nu_{i}u_{j}A_{ij}</script><script type="math/tex; mode=display">
-\begin{equation}
-E[u_iu_j] = \left\{
-\begin{aligned}
-1,i=j\\
-0, i\neq j
-\end{aligned}
-\right.
-\end{equation}</script></li>
-<li><p>证明恒等式</p>
-</li>
-</ul>
-<script type="math/tex; mode=display">
-\det (exp(A)) = exp(Tr(A))\\
-  ln (\det B) = Tr(\ln B)</script>]]></content>
-      <tags>
-        <tag>machine learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Irregular Time Series Papers</title>
-    <url>/2020/11/15/Irregular-Time-Series-Papers/</url>
-    <content><![CDATA[<p>本文将对于非周期采样时序数据的预测问题做一个初步的总结<a id="more"></a><br>&gt;</p>
-<blockquote>
-<p>RNN对于周期采样的数据是比较合适的，但是对于非周期采样的时序数据是很难处理的。</p>
-<ul>
-<li>常见trick是将此问题在预处理层面进行解决，即做聚合/插补—-缺点是会损失一部分信息</li>
-<li>类似于ODE-RNN的形式，在观测点对于状态进行调整</li>
-</ul>
-</blockquote>
-<h2 id="latent-odes-for-irregular-sampled-time-series"><a href="#latent-odes-for-irregular-sampled-time-series" class="headerlink" title="latent odes for irregular sampled time series"></a>latent odes for irregular sampled time series</h2><blockquote>
-<p>本文提出了两种形式的ODE-RNN</p>
-</blockquote>
-<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_RNN1.jpg" alt=""></p>
-<ul>
-<li>第一种与标准RNN的区别仅在于蓝色高亮的部分，即在观测之间采用ODE来模拟数据的变化，而不是像RNN中观测之间的状态是不变的。</li>
-</ul>
-<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_RNN2.jpg" alt=""></p>
-<ul>
-<li><p>第二种整体是一个seq2seq模型。首先通过编码器得到初始隐变量$z_0$，此时采用neural ode来模拟隐藏状态的变化，得到$z_0, z_1, …,z_N$；最后通过解码器对每一个时刻的隐变量进行解码重构。<strong>需要注意的是，为估计初始的$z_0$, ODE-RNN的编码器是时间反序来求解的</strong></p>
-<ul>
-<li><p>编码器采用的是$ODE-RNN$模型，并假设初始状态$z_0$分布为</p>
-<script type="math/tex; mode=display">
-q(z_0|\{x_i, t_i\}_{i=0}^N)=\mathcal{N}(\mu_{z_0}, \sigma_{z_0})</script><p>其中， $\mu_{z_0}, \sigma_{z_0}=g(ODE-RNN(\{x_i,t_i\}_{i=0}^N))$, g为神经网络。</p>
-</li>
-<li><p>对应此种形式的损失函数为：</p>
-<script type="math/tex; mode=display">
-\text{ELBO}(\theta, \phi) = \mathbb{E}_{z_0\sim q_{\phi(z_0|\{x_i, t_i\}_{i=0}^N)}}[\log p_{\theta}(x_0, ...,x_N)] - \text{KL}[q_{\phi}(z_0|\{x_i,t_i\}_{i=0}^N)||p(z_0)]</script></li>
-</ul>
-<blockquote>
-<p>上述通过隐变量来重构的框架有以下几个优点：</p>
-<ul>
-<li>显式得将ODE系统的动态特性，观测似然值以及辨识模型分别开来，因此可以有效区分每一部分的作用</li>
-<li>采用VAE的框架，能够自然的建模不确定性</li>
-<li>对于非周期采样的时序数据建模提供了便捷性</li>
-</ul>
-</blockquote>
-</li>
-<li><p>更多的观测意味着更多的信息，也就是说采样的频率在一定程度上能够反映数据的重要性。这是一个典型的counting process，假设他是一个非齐次的泊松过程，对应的强度函数为 $\lambda(z(t))$(即这里假设$\lambda$是z(t)的函数)，则可以推导出</p>
-<script type="math/tex; mode=display">
-\log p(t_1, t_2, ...,t_N|t_{starrt}, t_{end}) = \sum^N_{i=1}\text{log}\lambda(z(t_i)) - \int^{t_{end}}_{t_{start}}\lambda(z(t))dt</script><blockquote>
-<p>推导过程请参考<a href="https://math.stackexchange.com/questions/344487/log-likelihood-of-a-realization-of-a-poisson-process" target="_blank" rel="noopener">refer</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Learning-Long-Term-Dependencies-in-Irregularly-Sampled-Time-Series"><a href="#Learning-Long-Term-Dependencies-in-Irregularly-Sampled-Time-Series" class="headerlink" title="Learning Long Term Dependencies in Irregularly Sampled Time Series"></a>Learning Long Term Dependencies in Irregularly Sampled Time Series</h2><blockquote>
-<p>ODE_RNN无法解决长时依赖问题，根本原因是ODE得到的隐藏状态会产生梯度消失会爆炸现象，而后提出ODE-LSTM的基本框架，讲记忆单元和对应的连续时间态进行显式分离，并实验真证明了有效性。</p>
-</blockquote>
-<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_LSTM.jpg" alt=""></p>
-<h2 id="GRU-ODE-Bayes-Continuous-Modeling-of-Sporadically-Observed-Time-Series"><a href="#GRU-ODE-Bayes-Continuous-Modeling-of-Sporadically-Observed-Time-Series" class="headerlink" title="GRU-ODE-Bayes: Continuous Modeling of Sporadically-Observed Time Series"></a>GRU-ODE-Bayes: Continuous Modeling of Sporadically-Observed Time Series</h2><blockquote>
-<p>见 Dynamic systems for Deep Learning <a href="./Dynamic-Systems-for-Deep-Learning.md"></a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-        <category>Irregular Sampled TS</category>
-      </categories>
-      <tags>
-        <tag>machine learning</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ODE基础</title>
     <url>/2020/09/23/ODE%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h2 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h2><p>在学习常微分方程之前，我们先了解一些基本的概念；我们在中学的时候都学过解方程（如： <img src="https://www.zhihu.com/equation?tex=x%5E2%2B5%3D0" alt="[公式]"> ），不过那都是函数方程（ <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D0" alt="[公式]"> ，即含有未知数x的方程）。</p>
@@ -2143,6 +2162,68 @@ q(z_0|\{x_i, t_i\}_{i=0}^N)=\mathcal{N}(\mu_{z_0}, \sigma_{z_0})</script><p>其�
       <tags>
         <tag>math</tag>
         <tag>ODE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Irregular Time Series Papers</title>
+    <url>/2020/11/15/Irregular-Time-Series-Papers/</url>
+    <content><![CDATA[<p>本文将对于非周期采样时序数据的预测问题做一个初步的总结<a id="more"></a><br>&gt;</p>
+<blockquote>
+<p>RNN对于周期采样的数据是比较合适的，但是对于非周期采样的时序数据是很难处理的。</p>
+<ul>
+<li>常见trick是将此问题在预处理层面进行解决，即做聚合/插补—-缺点是会损失一部分信息</li>
+<li>类似于ODE-RNN的形式，在观测点对于状态进行调整</li>
+</ul>
+</blockquote>
+<h2 id="latent-odes-for-irregular-sampled-time-series"><a href="#latent-odes-for-irregular-sampled-time-series" class="headerlink" title="latent odes for irregular sampled time series"></a>latent odes for irregular sampled time series</h2><blockquote>
+<p>本文提出了两种形式的ODE-RNN</p>
+</blockquote>
+<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_RNN1.jpg" alt=""></p>
+<ul>
+<li>第一种与标准RNN的区别仅在于蓝色高亮的部分，即在观测之间采用ODE来模拟数据的变化，而不是像RNN中观测之间的状态是不变的。</li>
+</ul>
+<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_RNN2.jpg" alt=""></p>
+<ul>
+<li><p>第二种整体是一个seq2seq模型。首先通过编码器得到初始隐变量$z_0$，此时采用neural ode来模拟隐藏状态的变化，得到$z_0, z_1, …,z_N$；最后通过解码器对每一个时刻的隐变量进行解码重构。<strong>需要注意的是，为估计初始的$z_0$, ODE-RNN的编码器是时间反序来求解的</strong></p>
+<ul>
+<li><p>编码器采用的是$ODE-RNN$模型，并假设初始状态$z_0$分布为</p>
+<script type="math/tex; mode=display">
+q(z_0|\{x_i, t_i\}_{i=0}^N)=\mathcal{N}(\mu_{z_0}, \sigma_{z_0})</script><p>其中， $\mu_{z_0}, \sigma_{z_0}=g(ODE-RNN(\{x_i,t_i\}_{i=0}^N))$, g为神经网络。</p>
+</li>
+<li><p>对应此种形式的损失函数为：</p>
+<script type="math/tex; mode=display">
+\text{ELBO}(\theta, \phi) = \mathbb{E}_{z_0\sim q_{\phi(z_0|\{x_i, t_i\}_{i=0}^N)}}[\log p_{\theta}(x_0, ...,x_N)] - \text{KL}[q_{\phi}(z_0|\{x_i,t_i\}_{i=0}^N)||p(z_0)]</script></li>
+</ul>
+<blockquote>
+<p>上述通过隐变量来重构的框架有以下几个优点：</p>
+<ul>
+<li>显式得将ODE系统的动态特性，观测似然值以及辨识模型分别开来，因此可以有效区分每一部分的作用</li>
+<li>采用VAE的框架，能够自然的建模不确定性</li>
+<li>对于非周期采样的时序数据建模提供了便捷性</li>
+</ul>
+</blockquote>
+</li>
+<li><p>更多的观测意味着更多的信息，也就是说采样的频率在一定程度上能够反映数据的重要性。这是一个典型的counting process，假设他是一个非齐次的泊松过程，对应的强度函数为 $\lambda(z(t))$(即这里假设$\lambda$是z(t)的函数)，则可以推导出</p>
+<script type="math/tex; mode=display">
+\log p(t_1, t_2, ...,t_N|t_{starrt}, t_{end}) = \sum^N_{i=1}\text{log}\lambda(z(t_i)) - \int^{t_{end}}_{t_{start}}\lambda(z(t))dt</script><blockquote>
+<p>推导过程请参考<a href="https://math.stackexchange.com/questions/344487/log-likelihood-of-a-realization-of-a-poisson-process" target="_blank" rel="noopener">refer</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Learning-Long-Term-Dependencies-in-Irregularly-Sampled-Time-Series"><a href="#Learning-Long-Term-Dependencies-in-Irregularly-Sampled-Time-Series" class="headerlink" title="Learning Long Term Dependencies in Irregularly Sampled Time Series"></a>Learning Long Term Dependencies in Irregularly Sampled Time Series</h2><blockquote>
+<p>ODE_RNN无法解决长时依赖问题，根本原因是ODE得到的隐藏状态会产生梯度消失会爆炸现象，而后提出ODE-LSTM的基本框架，讲记忆单元和对应的连续时间态进行显式分离，并实验真证明了有效性。</p>
+</blockquote>
+<p><img src="/2020/11/15/Irregular-Time-Series-Papers/ODE_LSTM.jpg" alt=""></p>
+<h2 id="GRU-ODE-Bayes-Continuous-Modeling-of-Sporadically-Observed-Time-Series"><a href="#GRU-ODE-Bayes-Continuous-Modeling-of-Sporadically-Observed-Time-Series" class="headerlink" title="GRU-ODE-Bayes: Continuous Modeling of Sporadically-Observed Time Series"></a>GRU-ODE-Bayes: Continuous Modeling of Sporadically-Observed Time Series</h2><blockquote>
+<p>见 Dynamic systems for Deep Learning <a href="./Dynamic-Systems-for-Deep-Learning.md"></a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+        <category>Irregular Sampled TS</category>
+      </categories>
+      <tags>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -2567,6 +2648,63 @@ q(z_0|\{x_i, t_i\}_{i=0}^N)=\mathcal{N}(\mu_{z_0}, \sigma_{z_0})</script><p>其�
       </tags>
   </entry>
   <entry>
+    <title>algorithm-lib</title>
+    <url>/2018/11/18/algorithm-lib/</url>
+    <content><![CDATA[<h1 id="聚类算法"><a href="#聚类算法" class="headerlink" title="聚类算法"></a>聚类算法</h1><h2 id="Partitional-Clustering-Algorithm"><a href="#Partitional-Clustering-Algorithm" class="headerlink" title="Partitional Clustering Algorithm"></a>Partitional Clustering Algorithm</h2><h3 id="k均值聚类"><a href="#k均值聚类" class="headerlink" title="k均值聚类"></a>k均值聚类</h3><h3 id="PAM-Partitioning-Around-Medoids"><a href="#PAM-Partitioning-Around-Medoids" class="headerlink" title="PAM(Partitioning Around Medoids)"></a>PAM(Partitioning Around Medoids)</h3><h3 id="CLARA-Clustering-Large-Applications"><a href="#CLARA-Clustering-Large-Applications" class="headerlink" title="CLARA(Clustering Large Applications)"></a>CLARA(Clustering Large Applications)</h3><h3 id="CLARANS-Clustering-Large-Applications-based-on-Randomlized-Search"><a href="#CLARANS-Clustering-Large-Applications-based-on-Randomlized-Search" class="headerlink" title="CLARANS(Clustering Large Applications based on Randomlized Search)"></a>CLARANS(Clustering Large Applications based on Randomlized Search)</h3><h2 id="Hierarchical-Clustering-Algorithm"><a href="#Hierarchical-Clustering-Algorithm" class="headerlink" title="Hierarchical Clustering Algorithm"></a>Hierarchical Clustering Algorithm</h2><h3 id="BIRCH-balanced-iterative-reducing-and-clustering-using-hierachies"><a href="#BIRCH-balanced-iterative-reducing-and-clustering-using-hierachies" class="headerlink" title="BIRCH(balanced iterative reducing and clustering using hierachies)"></a>BIRCH(balanced iterative reducing and clustering using hierachies)</h3><h3 id="CURE-Clustering-Using-Representatives"><a href="#CURE-Clustering-Using-Representatives" class="headerlink" title="CURE(Clustering Using Representatives)"></a>CURE(Clustering Using Representatives)</h3><h3 id="ROCKS-A-Robust-Clustering-Algorithm-for-Categorial-Attributes"><a href="#ROCKS-A-Robust-Clustering-Algorithm-for-Categorial-Attributes" class="headerlink" title="ROCKS(A Robust Clustering Algorithm for Categorial Attributes)"></a>ROCKS(A Robust Clustering Algorithm for Categorial Attributes)</h3><h2 id="Grid-based-Clustering-Algorithm"><a href="#Grid-based-Clustering-Algorithm" class="headerlink" title="Grid-based Clustering Algorithm"></a>Grid-based Clustering Algorithm</h2><h3 id="STING"><a href="#STING" class="headerlink" title="STING"></a>STING</h3><h3 id="WaveCluster"><a href="#WaveCluster" class="headerlink" title="WaveCluster"></a>WaveCluster</h3><h2 id="Model-based-Clustering-Algorithm"><a href="#Model-based-Clustering-Algorithm" class="headerlink" title="Model-based Clustering Algorithm"></a>Model-based Clustering Algorithm</h2><h3 id="Gaussian-model"><a href="#Gaussian-model" class="headerlink" title="Gaussian model"></a>Gaussian model</h3><h3 id="Latent-Dirichlet-Allocation"><a href="#Latent-Dirichlet-Allocation" class="headerlink" title="Latent Dirichlet Allocation"></a>Latent Dirichlet Allocation</h3><h2 id="Density-based-Clustering-Algorithm"><a href="#Density-based-Clustering-Algorithm" class="headerlink" title="Density-based Clustering Algorithm"></a>Density-based Clustering Algorithm</h2><h3 id="DBSCAN聚类"><a href="#DBSCAN聚类" class="headerlink" title="DBSCAN聚类"></a>DBSCAN聚类</h3><ul>
+<li><a href="https://www.cnblogs.com/pinard/p/6208966.html" target="_blank" rel="noopener">参考博客</a></li>
+<li>关键概念：核心对象，密度直达，密度可达，密度相连</li>
+<li>缺点：需要自己确定eps，Minpts</li>
+</ul>
+<h4 id="AE-DBSCAN-可以自己决定radius，Eps-parameters"><a href="#AE-DBSCAN-可以自己决定radius，Eps-parameters" class="headerlink" title="AE-DBSCAN(可以自己决定radius，Eps,parameters)"></a>AE-DBSCAN(可以自己决定radius，Eps,parameters)</h4><ul>
+<li><strong>k-dist list</strong>:对于给定数据集D，k-dist list是数据集中对于每个点来说距离最近的k个点</li>
+<li><strong>slope of a point with respect to another point</strong>:对于一个给定的$k-list=(k_1,k_2,…,k_n)$,$k_i$到$k_{i+1}$的斜率就是$k_ik_{i+1}$的斜率</li>
+</ul>
+<p><img src="/2018/11/18/algorithm-lib/1.png" alt="1"></p>
+<h3 id="OPTICS"><a href="#OPTICS" class="headerlink" title="OPTICS"></a>OPTICS</h3><ul>
+<li><a href="https://www.cnblogs.com/zhangruilin/p/5817784.html" target="_blank" rel="noopener">参考博客</a></li>
+<li>关键概念：核心距离，可达距离</li>
+</ul>
+<h3 id="DENCLUE"><a href="#DENCLUE" class="headerlink" title="DENCLUE"></a>DENCLUE</h3><h3 id="CLIQUE"><a href="#CLIQUE" class="headerlink" title="CLIQUE"></a>CLIQUE</h3><h1 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a>关联规则</h1><h3 id="APriori算法"><a href="#APriori算法" class="headerlink" title="APriori算法"></a>APriori算法</h3><ul>
+<li><a href="https://blog.csdn.net/qq_36219266/article/details/82707708" target="_blank" rel="noopener">参考博客</a></li>
+<li><a href="https://github.com/yantijin/Lean_DataMining" target="_blank" rel="noopener">代码</a></li>
+</ul>
+<h3 id="FP-Tree算法"><a href="#FP-Tree算法" class="headerlink" title="FP_Tree算法"></a>FP_Tree算法</h3><ul>
+<li><a href="https://blog.csdn.net/qq_36219266/article/details/82784299" target="_blank" rel="noopener">参考博客</a></li>
+<li><a href="https://github.com/yantijin/Lean_DataMining" target="_blank" rel="noopener">代码</a></li>
+</ul>
+<h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h3 id="ID3-C4-5"><a href="#ID3-C4-5" class="headerlink" title="ID3+C4.5"></a>ID3+C4.5</h3><ul>
+<li><p><a href="https://yantijin.github.io/2018/11/17/决策树/">参考博客</a></p>
+</li>
+<li><p><a href="https://github.com/yantijin/Lean_DataMining" target="_blank" rel="noopener">代码</a></p>
+</li>
+</ul>
+<h3 id="CART算法"><a href="#CART算法" class="headerlink" title="CART算法"></a>CART算法</h3><ul>
+<li><a href="https://blog.csdn.net/xiaqunfeng123/article/details/34820095" target="_blank" rel="noopener">参考博客</a></li>
+<li><p><a href="https://github.com/yantijin/Lean_DataMining" target="_blank" rel="noopener">代码</a></p>
+<h1 id="启发式算法"><a href="#启发式算法" class="headerlink" title="启发式算法"></a>启发式算法</h1><h3 id="GA"><a href="#GA" class="headerlink" title="GA"></a>GA</h3></li>
+<li><p>基本构成：编码，种群初始化，选择，交叉，变异，局部搜索等</p>
+</li>
+</ul>
+<h3 id="多目标进化算法"><a href="#多目标进化算法" class="headerlink" title="多目标进化算法"></a>多目标进化算法</h3><ul>
+<li>NSGA，NSGA-II，SPEA，SPEA-II，MOEA/D,DMOEA-$\epsilon C$</li>
+</ul>
+<h3 id="差分进化算法"><a href="#差分进化算法" class="headerlink" title="差分进化算法"></a>差分进化算法</h3><h3 id="粒子群算法"><a href="#粒子群算法" class="headerlink" title="粒子群算法"></a>粒子群算法</h3><h3 id="分布估计算法"><a href="#分布估计算法" class="headerlink" title="分布估计算法"></a>分布估计算法</h3><h3 id="local-search"><a href="#local-search" class="headerlink" title="local search"></a>local search</h3><ul>
+<li>tabu search</li>
+<li>爬山法</li>
+</ul>
+<h3 id="蚁群算法"><a href="#蚁群算法" class="headerlink" title="蚁群算法"></a>蚁群算法</h3><h3 id="小生境"><a href="#小生境" class="headerlink" title="小生境"></a>小生境</h3><h1 id="分类算法"><a href="#分类算法" class="headerlink" title="分类算法"></a>分类算法</h1><h3 id="BP神经网络"><a href="#BP神经网络" class="headerlink" title="BP神经网络"></a>BP神经网络</h3><h3 id="决策树-见上"><a href="#决策树-见上" class="headerlink" title="决策树(见上)"></a>决策树(见上)</h3><h3 id="KNN"><a href="#KNN" class="headerlink" title="KNN"></a>KNN</h3><h3 id="贝叶斯分类器"><a href="#贝叶斯分类器" class="headerlink" title="贝叶斯分类器"></a>贝叶斯分类器</h3><h3 id="AdaBoost提升装袋算法"><a href="#AdaBoost提升装袋算法" class="headerlink" title="AdaBoost提升装袋算法"></a>AdaBoost提升装袋算法</h3><ul>
+<li><a href="https://blog.csdn.net/qq_36219266/article/details/82799071" target="_blank" rel="noopener">参考博客</a></li>
+<li><a href="https://github.com/yantijin/Lean_DataMining" target="_blank" rel="noopener">代码</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Algorithm Library</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Yading: fast clustering of large-scale time series data</title>
     <url>/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
@@ -2710,104 +2848,6 @@ EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}</script><p><strong> Lemm
       </tags>
   </entry>
   <entry>
-    <title>hexo configuration on multiple computers</title>
-    <url>/2018/11/04/hexo-configuration-on-multiple-computers/</url>
-    <content><![CDATA[<h3 id="Todo-for-myself"><a href="#Todo-for-myself" class="headerlink" title="Todo for myself"></a>Todo for myself</h3><ul>
-<li><p>Install <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a></p>
-</li>
-<li><p>Install hexo</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm  install -g hexo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Download latest version in my Gituhb</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/yantijin/yantijin.github.io.git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Download latest themes configuration in another foler</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/yantijin/Theme_Next.git</span><br></pre></td></tr></table></figure>
-<p>Then copy the theme into <strong>github.yantijin.io/themes</strong></p>
-</li>
-<li><p>Install  dependencies for your blog</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Something needs to modifiy</p>
-<ul>
-<li><p>About <strong>MATHJAX</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-readerer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
-<p> Next step is to modify the files in <strong>node_modules/kramed/lib/rules/inlime.js</strong>.</p>
-<p>Change line 10 and line 20:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"><span class="built_in">escape</span>: <span class="regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</span><br><span class="line"><span class="comment">// em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line"> em: <span class="regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ul>
-</li>
-<li><p><a href="https://juejin.im/post/5acf22e6f265da23994eeac9" target="_blank" rel="noopener">REF for Detail</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Entertainment</category>
-      </categories>
-      <tags>
-        <tag>Try4New</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>algorithm-lib</title>
-    <url>/2018/11/18/algorithm-lib/</url>
-    <content><![CDATA[<h1 id="聚类算法"><a href="#聚类算法" class="headerlink" title="聚类算法"></a>聚类算法</h1><h2 id="Partitional-Clustering-Algorithm"><a href="#Partitional-Clustering-Algorithm" class="headerlink" title="Partitional Clustering Algorithm"></a>Partitional Clustering Algorithm</h2><h3 id="k均值聚类"><a href="#k均值聚类" class="headerlink" title="k均值聚类"></a>k均值聚类</h3><h3 id="PAM-Partitioning-Around-Medoids"><a href="#PAM-Partitioning-Around-Medoids" class="headerlink" title="PAM(Partitioning Around Medoids)"></a>PAM(Partitioning Around Medoids)</h3><h3 id="CLARA-Clustering-Large-Applications"><a href="#CLARA-Clustering-Large-Applications" class="headerlink" title="CLARA(Clustering Large Applications)"></a>CLARA(Clustering Large Applications)</h3><h3 id="CLARANS-Clustering-Large-Applications-based-on-Randomlized-Search"><a href="#CLARANS-Clustering-Large-Applications-based-on-Randomlized-Search" class="headerlink" title="CLARANS(Clustering Large Applications based on Randomlized Search)"></a>CLARANS(Clustering Large Applications based on Randomlized Search)</h3><h2 id="Hierarchical-Clustering-Algorithm"><a href="#Hierarchical-Clustering-Algorithm" class="headerlink" title="Hierarchical Clustering Algorithm"></a>Hierarchical Clustering Algorithm</h2><h3 id="BIRCH-balanced-iterative-reducing-and-clustering-using-hierachies"><a href="#BIRCH-balanced-iterative-reducing-and-clustering-using-hierachies" class="headerlink" title="BIRCH(balanced iterative reducing and clustering using hierachies)"></a>BIRCH(balanced iterative reducing and clustering using hierachies)</h3><h3 id="CURE-Clustering-Using-Representatives"><a href="#CURE-Clustering-Using-Representatives" class="headerlink" title="CURE(Clustering Using Representatives)"></a>CURE(Clustering Using Representatives)</h3><h3 id="ROCKS-A-Robust-Clustering-Algorithm-for-Categorial-Attributes"><a href="#ROCKS-A-Robust-Clustering-Algorithm-for-Categorial-Attributes" class="headerlink" title="ROCKS(A Robust Clustering Algorithm for Categorial Attributes)"></a>ROCKS(A Robust Clustering Algorithm for Categorial Attributes)</h3><h2 id="Grid-based-Clustering-Algorithm"><a href="#Grid-based-Clustering-Algorithm" class="headerlink" title="Grid-based Clustering Algorithm"></a>Grid-based Clustering Algorithm</h2><h3 id="STING"><a href="#STING" class="headerlink" title="STING"></a>STING</h3><h3 id="WaveCluster"><a href="#WaveCluster" class="headerlink" title="WaveCluster"></a>WaveCluster</h3><h2 id="Model-based-Clustering-Algorithm"><a href="#Model-based-Clustering-Algorithm" class="headerlink" title="Model-based Clustering Algorithm"></a>Model-based Clustering Algorithm</h2><h3 id="Gaussian-model"><a href="#Gaussian-model" class="headerlink" title="Gaussian model"></a>Gaussian model</h3><h3 id="Latent-Dirichlet-Allocation"><a href="#Latent-Dirichlet-Allocation" class="headerlink" title="Latent Dirichlet Allocation"></a>Latent Dirichlet Allocation</h3><h2 id="Density-based-Clustering-Algorithm"><a href="#Density-based-Clustering-Algorithm" class="headerlink" title="Density-based Clustering Algorithm"></a>Density-based Clustering Algorithm</h2><h3 id="DBSCAN聚类"><a href="#DBSCAN聚类" class="headerlink" title="DBSCAN聚类"></a>DBSCAN聚类</h3><ul>
-<li><a href="https://www.cnblogs.com/pinard/p/6208966.html" target="_blank" rel="noopener">参考博客</a></li>
-<li>关键概念：核心对象，密度直达，密度可达，密度相连</li>
-<li>缺点：需要自己确定eps，Minpts</li>
-</ul>
-<h4 id="AE-DBSCAN-可以自己决定radius，Eps-parameters"><a href="#AE-DBSCAN-可以自己决定radius，Eps-parameters" class="headerlink" title="AE-DBSCAN(可以自己决定radius，Eps,parameters)"></a>AE-DBSCAN(可以自己决定radius，Eps,parameters)</h4><ul>
-<li><strong>k-dist list</strong>:对于给定数据集D，k-dist list是数据集中对于每个点来说距离最近的k个点</li>
-<li><strong>slope of a point with respect to another point</strong>:对于一个给定的$k-list=(k_1,k_2,…,k_n)$,$k_i$到$k_{i+1}$的斜率就是$k_ik_{i+1}$的斜率</li>
-</ul>
-<p><img src="/2018/11/18/algorithm-lib/1.png" alt="1"></p>
-<h3 id="OPTICS"><a href="#OPTICS" class="headerlink" title="OPTICS"></a>OPTICS</h3><ul>
-<li><a href="https://www.cnblogs.com/zhangruilin/p/5817784.html" target="_blank" rel="noopener">参考博客</a></li>
-<li>关键概念：核心距离，可达距离</li>
-</ul>
-<h3 id="DENCLUE"><a href="#DENCLUE" class="headerlink" title="DENCLUE"></a>DENCLUE</h3><h3 id="CLIQUE"><a href="#CLIQUE" class="headerlink" title="CLIQUE"></a>CLIQUE</h3><h1 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a>关联规则</h1><h3 id="APriori算法"><a href="#APriori算法" class="headerlink" title="APriori算法"></a>APriori算法</h3><ul>
-<li><a href="https://blog.csdn.net/qq_36219266/article/details/82707708" target="_blank" rel="noopener">参考博客</a></li>
-<li><a href="https://github.com/yantijin/Lean_DataMining" target="_blank" rel="noopener">代码</a></li>
-</ul>
-<h3 id="FP-Tree算法"><a href="#FP-Tree算法" class="headerlink" title="FP_Tree算法"></a>FP_Tree算法</h3><ul>
-<li><a href="https://blog.csdn.net/qq_36219266/article/details/82784299" target="_blank" rel="noopener">参考博客</a></li>
-<li><a href="https://github.com/yantijin/Lean_DataMining" target="_blank" rel="noopener">代码</a></li>
-</ul>
-<h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h3 id="ID3-C4-5"><a href="#ID3-C4-5" class="headerlink" title="ID3+C4.5"></a>ID3+C4.5</h3><ul>
-<li><p><a href="https://yantijin.github.io/2018/11/17/决策树/">参考博客</a></p>
-</li>
-<li><p><a href="https://github.com/yantijin/Lean_DataMining" target="_blank" rel="noopener">代码</a></p>
-</li>
-</ul>
-<h3 id="CART算法"><a href="#CART算法" class="headerlink" title="CART算法"></a>CART算法</h3><ul>
-<li><a href="https://blog.csdn.net/xiaqunfeng123/article/details/34820095" target="_blank" rel="noopener">参考博客</a></li>
-<li><p><a href="https://github.com/yantijin/Lean_DataMining" target="_blank" rel="noopener">代码</a></p>
-<h1 id="启发式算法"><a href="#启发式算法" class="headerlink" title="启发式算法"></a>启发式算法</h1><h3 id="GA"><a href="#GA" class="headerlink" title="GA"></a>GA</h3></li>
-<li><p>基本构成：编码，种群初始化，选择，交叉，变异，局部搜索等</p>
-</li>
-</ul>
-<h3 id="多目标进化算法"><a href="#多目标进化算法" class="headerlink" title="多目标进化算法"></a>多目标进化算法</h3><ul>
-<li>NSGA，NSGA-II，SPEA，SPEA-II，MOEA/D,DMOEA-$\epsilon C$</li>
-</ul>
-<h3 id="差分进化算法"><a href="#差分进化算法" class="headerlink" title="差分进化算法"></a>差分进化算法</h3><h3 id="粒子群算法"><a href="#粒子群算法" class="headerlink" title="粒子群算法"></a>粒子群算法</h3><h3 id="分布估计算法"><a href="#分布估计算法" class="headerlink" title="分布估计算法"></a>分布估计算法</h3><h3 id="local-search"><a href="#local-search" class="headerlink" title="local search"></a>local search</h3><ul>
-<li>tabu search</li>
-<li>爬山法</li>
-</ul>
-<h3 id="蚁群算法"><a href="#蚁群算法" class="headerlink" title="蚁群算法"></a>蚁群算法</h3><h3 id="小生境"><a href="#小生境" class="headerlink" title="小生境"></a>小生境</h3><h1 id="分类算法"><a href="#分类算法" class="headerlink" title="分类算法"></a>分类算法</h1><h3 id="BP神经网络"><a href="#BP神经网络" class="headerlink" title="BP神经网络"></a>BP神经网络</h3><h3 id="决策树-见上"><a href="#决策树-见上" class="headerlink" title="决策树(见上)"></a>决策树(见上)</h3><h3 id="KNN"><a href="#KNN" class="headerlink" title="KNN"></a>KNN</h3><h3 id="贝叶斯分类器"><a href="#贝叶斯分类器" class="headerlink" title="贝叶斯分类器"></a>贝叶斯分类器</h3><h3 id="AdaBoost提升装袋算法"><a href="#AdaBoost提升装袋算法" class="headerlink" title="AdaBoost提升装袋算法"></a>AdaBoost提升装袋算法</h3><ul>
-<li><a href="https://blog.csdn.net/qq_36219266/article/details/82799071" target="_blank" rel="noopener">参考博客</a></li>
-<li><a href="https://github.com/yantijin/Lean_DataMining" target="_blank" rel="noopener">代码</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Algorithm Library</category>
-      </categories>
-      <tags>
-        <tag>algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python numpy练习</title>
     <url>/2018/11/11/python-numpy%E7%BB%83%E4%B9%A0/</url>
     <content><![CDATA[<p><strong>以下为转载内容</strong></p>
@@ -2926,61 +2966,44 @@ EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}</script><p><strong> Lemm
       </tags>
   </entry>
   <entry>
-    <title>决策树</title>
-    <url>/2018/11/17/%E5%86%B3%E7%AD%96%E6%A0%91/</url>
-    <content><![CDATA[<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><h3 id="决策树建树的基本流程"><a href="#决策树建树的基本流程" class="headerlink" title="决策树建树的基本流程"></a>决策树建树的基本流程</h3><p><img src="/2018/11/17/决策树/1.png" alt="1"></p>
-<h3 id="划分选择（为使”纯度”越来越高）"><a href="#划分选择（为使”纯度”越来越高）" class="headerlink" title="划分选择（为使”纯度”越来越高）"></a>划分选择（为使”纯度”越来越高）</h3><ul>
-<li><p><strong>信息增益</strong></p>
-<p>信息熵为(越小则纯度越高)</p>
-<script type="math/tex; mode=display">
-Ent(D)=-\sum^{|y|}_{k=1}p_klog_2p_k</script><p>信息增益为</p>
-<script type="math/tex; mode=display">
-Gain(D)=Ent(D)-\sum^V_{v=1}\frac{|D^v|}{|D|}Ent(D^v)</script><p><strong>缺点</strong>：对于可以取值数目较多的属性有所偏好。</p>
+    <title>hexo configuration on multiple computers</title>
+    <url>/2018/11/04/hexo-configuration-on-multiple-computers/</url>
+    <content><![CDATA[<h3 id="Todo-for-myself"><a href="#Todo-for-myself" class="headerlink" title="Todo for myself"></a>Todo for myself</h3><ul>
+<li><p>Install <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a></p>
 </li>
-<li><p><strong>信息增益率</strong>（克服上述所述缺点）</p>
-<script type="math/tex; mode=display">
-Gain\_ratio(D,a)=\frac{Gain(D,a)}{IV(a)}</script><p>其中</p>
-<script type="math/tex; mode=display">
-IV(a)=-\sum^V_{v=1}\frac{|D^v|}{|D|}log_2\frac{|D^v|}{|D|}</script><p>称为属性a的固有属性值</p>
+<li><p>Install hexo</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm  install -g hexo</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Gini系数</strong></p>
-<script type="math/tex; mode=display">
-Gini(D)=\sum^{|y|}_{k=1}\sum_{k'\neq k}p_kp_{k'}=1-\sum^{|y|}_{k=1}p_k^2</script><p>反应了从数据集D中随机抽取两个样本，其类别标记不一致的概率</p>
-<p>基尼指数(选择最小的)</p>
-<script type="math/tex; mode=display">
-Gini\_index(D,a)=\sum^V_{v=1}\frac{|D^v|}{|D|}Gini(D^v)</script></li>
-</ul>
-<h3 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h3><ul>
-<li><p><strong>预剪枝</strong></p>
+<li><p>Download latest version in my Gituhb</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/yantijin/yantijin.github.io.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Download latest themes configuration in another foler</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/yantijin/Theme_Next.git</span><br></pre></td></tr></table></figure>
+<p>Then copy the theme into <strong>github.yantijin.io/themes</strong></p>
+</li>
+<li><p>Install  dependencies for your blog</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Something needs to modifiy</p>
 <ul>
-<li>若当前划分不能带来决策树泛化性能的提升，则停止划分并将当前结点标记为叶结点</li>
-</ul>
-</li>
-<li><p><strong>后剪枝</strong></p>
-<ul>
-<li><p>自底向上对非叶子节点进行考察，若将该节点对应的子树替换为叶结点能带来泛化能力的提升，则将该子树替换为叶结点</p>
-</li>
-<li><p><strong>代价复杂性剪枝</strong>：对于每个非叶子节点计算它的表面误差率增益值$\alpha$。</p>
-<script type="math/tex; mode=display">
-\alpha = \frac{R(t)-R(T_t)}{|N_{T_t}|-1}</script><p>$|N_{T_t}|$为子树中包含的叶子结点的个数</p>
-<p>$R(t)=r(t)*p(t)$为结点的误差代价，如果该结点被剪枝,r(t)为结点t的误差率；p(t)为结点t上的数据占所有数据的比例</p>
-<p>$R(T_t)$是子树Tt的误差代价，如果该节点不被剪枝。它等于子树Tt上所有叶子节点的误差代价之和。</p>
-<p>找到$\alpha$值最小的非叶子节点，令其左右孩子为NULL</p>
-</li>
-<li><p><strong>最小误差剪枝</strong></p>
-</li>
-<li><p><strong>悲观误差剪枝</strong></p>
+<li><p>About <strong>MATHJAX</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-readerer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+<p> Next step is to modify the files in <strong>node_modules/kramed/lib/rules/inlime.js</strong>.</p>
+<p>Change line 10 and line 20:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"><span class="built_in">escape</span>: <span class="regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</span><br><span class="line"><span class="comment">// em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line"> em: <span class="regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br></pre></td></tr></table></figure>
+<p>​</p>
 </li>
 </ul>
+</li>
+<li><p><a href="https://juejin.im/post/5acf22e6f265da23994eeac9" target="_blank" rel="noopener">REF for Detail</a></p>
 </li>
 </ul>
 ]]></content>
       <categories>
-        <category>machine learning</category>
-        <category>决策树</category>
+        <category>Entertainment</category>
       </categories>
       <tags>
-        <tag>machine learning</tag>
+        <tag>Try4New</tag>
       </tags>
   </entry>
   <entry>
@@ -3281,44 +3304,58 @@ Gini\_index(D,a)=\sum^V_{v=1}\frac{|D^v|}{|D|}Gini(D^v)</script></li>
       </tags>
   </entry>
   <entry>
-    <title>神经了的ODE: Neural CDE</title>
-    <url>/2020/09/23/%E7%A5%9E%E7%BB%8F%E4%BA%86%E7%9A%84ODE-Neural-CDE/</url>
-    <content><![CDATA[<h3 id="Neural-Controlled-Differential-Equations-for-Irregular-Time-Series"><a href="#Neural-Controlled-Differential-Equations-for-Irregular-Time-Series" class="headerlink" title="Neural Controlled Differential Equations for Irregular Time Series"></a>Neural Controlled Differential Equations for Irregular Time Series</h3><blockquote>
-<p>Neural ODE的缺点是一旦初值确定，轨迹便确定，中间无法对轨迹进行修正，本文引入受控微分方程概念，使得后续拿到的数据得到进一步利用。<a href="http://arxiv.org/abs/2005.08926" target="_blank" rel="noopener">ArXiv</a>, <a href="https://github.com/patrick-kidger/NeuralCDE" target="_blank" rel="noopener">code</a>. <a id="more"></a></p>
-</blockquote>
-<ul>
-<li><p>假设$\tau, T\in R$, 且$\tau &lt;T$, $v,\omega$为正整数， $X:[\tau, T]\rightarrow R^v$为一个有界连续函数(即X是满足Lipschitz性质的)。$f:R^\omega \rightarrow R^{\omega\times v}$是连续映射函数，$\zeta\in R^\omega$, 且有连续映射 $z:[\tau, T]\rightarrow R^{\omega\times v}$, 并定义</p>
+    <title>决策树</title>
+    <url>/2018/11/17/%E5%86%B3%E7%AD%96%E6%A0%91/</url>
+    <content><![CDATA[<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><h3 id="决策树建树的基本流程"><a href="#决策树建树的基本流程" class="headerlink" title="决策树建树的基本流程"></a>决策树建树的基本流程</h3><p><img src="/2018/11/17/决策树/1.png" alt="1"></p>
+<h3 id="划分选择（为使”纯度”越来越高）"><a href="#划分选择（为使”纯度”越来越高）" class="headerlink" title="划分选择（为使”纯度”越来越高）"></a>划分选择（为使”纯度”越来越高）</h3><ul>
+<li><p><strong>信息增益</strong></p>
+<p>信息熵为(越小则纯度越高)</p>
 <script type="math/tex; mode=display">
-z_t = z_\tau + \int^t_{\tau} f(z_s)dX_s~~~\text{for}~~t\in (\tau, T]</script><p>其中 $X_s\in R^v, f(Z_s)\in R^{\omega \times v}$, 上式被称作 $\text{Controlled differential equation}$.</p>
-</li>
-<li><p>与一般基于ODE的时序预测方法不同，本文在考虑后续状态的同时，可以保证隐藏状态z是连续变化的。</p>
-</li>
-<li><p>对(1)式进行扩展，可以得到$\text{Neural Controlled Differenrial Equations}$的定义为：</p>
+Ent(D)=-\sum^{|y|}_{k=1}p_klog_2p_k</script><p>信息增益为</p>
 <script type="math/tex; mode=display">
-z_t = z_{t_0} + \int^t_{t_0} f_{\theta}(z_s)dX_s~~~\text{for}~~t\in (t_0, t_n]</script><p>其中$z_{t_0} = \zeta_{\theta}(x_0, t_0)$</p>
+Gain(D)=Ent(D)-\sum^V_{v=1}\frac{|D^v|}{|D|}Ent(D^v)</script><p><strong>缺点</strong>：对于可以取值数目较多的属性有所偏好。</p>
+</li>
+<li><p><strong>信息增益率</strong>（克服上述所述缺点）</p>
+<script type="math/tex; mode=display">
+Gain\_ratio(D,a)=\frac{Gain(D,a)}{IV(a)}</script><p>其中</p>
+<script type="math/tex; mode=display">
+IV(a)=-\sum^V_{v=1}\frac{|D^v|}{|D|}log_2\frac{|D^v|}{|D|}</script><p>称为属性a的固有属性值</p>
+</li>
+<li><p><strong>Gini系数</strong></p>
+<script type="math/tex; mode=display">
+Gini(D)=\sum^{|y|}_{k=1}\sum_{k'\neq k}p_kp_{k'}=1-\sum^{|y|}_{k=1}p_k^2</script><p>反应了从数据集D中随机抽取两个样本，其类别标记不一致的概率</p>
+<p>基尼指数(选择最小的)</p>
+<script type="math/tex; mode=display">
+Gini\_index(D,a)=\sum^V_{v=1}\frac{|D^v|}{|D|}Gini(D^v)</script></li>
+</ul>
+<h3 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h3><ul>
+<li><p><strong>预剪枝</strong></p>
 <ul>
-<li><strong>本文中$X:[\tau, T]\rightarrow R^v$是通过自然边界下三次样条插值法来确定的</strong></li>
-<li><strong>$f_{\theta}:R^\omega \rightarrow R^{\omega\times (v+1)}$表示任意神经网络</strong>，<strong>$w$是超参数，表示隐藏状态的维度</strong></li>
-<li><strong>$\zeta_{\theta}: R^{v+1}\rightarrow R^{\omega}$表示任意依赖于参数$\theta$的神经网络</strong></li>
+<li>若当前划分不能带来决策树泛化性能的提升，则停止划分并将当前结点标记为叶结点</li>
 </ul>
 </li>
-<li><p>本文将 $\text{Controlled differential equation}$转化为普通的ODE方程，从而能够通过$\text{Neural ODE}$中的方法进行求解，假设</p>
+<li><p><strong>后剪枝</strong></p>
+<ul>
+<li><p>自底向上对非叶子节点进行考察，若将该节点对应的子树替换为叶结点能带来泛化能力的提升，则将该子树替换为叶结点</p>
+</li>
+<li><p><strong>代价复杂性剪枝</strong>：对于每个非叶子节点计算它的表面误差率增益值$\alpha$。</p>
 <script type="math/tex; mode=display">
-g_{\theta, X}(z,s) = f_{\theta}\frac{dX}{ds}(s)</script><p>则很容易得到</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\begin{aligned}
-z_t &= z_{t_0} + \int^t_{t_0} f_{\theta}(z_s)dX_s \\
-&= z_{t_0} + \int^t_{t_0}f_{\theta}(z_s)\frac{dX}{ds}(s)ds\\
-&= z_{t_0} + \int^t_{t_0} g_{\theta,X}(z_s, s)ds.
-\end{aligned}
-\end{equation}</script></li>
+\alpha = \frac{R(t)-R(T_t)}{|N_{T_t}|-1}</script><p>$|N_{T_t}|$为子树中包含的叶子结点的个数</p>
+<p>$R(t)=r(t)*p(t)$为结点的误差代价，如果该结点被剪枝,r(t)为结点t的误差率；p(t)为结点t上的数据占所有数据的比例</p>
+<p>$R(T_t)$是子树Tt的误差代价，如果该节点不被剪枝。它等于子树Tt上所有叶子节点的误差代价之和。</p>
+<p>找到$\alpha$值最小的非叶子节点，令其左右孩子为NULL</p>
+</li>
+<li><p><strong>最小误差剪枝</strong></p>
+</li>
+<li><p><strong>悲观误差剪枝</strong></p>
+</li>
 </ul>
-<p><img src="/2020/09/23/神经了的ODE-Neural-CDE/1.png" alt=""></p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>machine learning</category>
-        <category>Neural ODE</category>
+        <category>决策树</category>
       </categories>
       <tags>
         <tag>machine learning</tag>
@@ -3732,6 +3769,50 @@ S_b\omega=\lambda(\mu_0-\mu_1)</script><p>故而，有</p>
       <categories>
         <category>machine learning</category>
         <category>线性模型</category>
+      </categories>
+      <tags>
+        <tag>machine learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>神经了的ODE: Neural CDE</title>
+    <url>/2020/09/23/%E7%A5%9E%E7%BB%8F%E4%BA%86%E7%9A%84ODE-Neural-CDE/</url>
+    <content><![CDATA[<h3 id="Neural-Controlled-Differential-Equations-for-Irregular-Time-Series"><a href="#Neural-Controlled-Differential-Equations-for-Irregular-Time-Series" class="headerlink" title="Neural Controlled Differential Equations for Irregular Time Series"></a>Neural Controlled Differential Equations for Irregular Time Series</h3><blockquote>
+<p>Neural ODE的缺点是一旦初值确定，轨迹便确定，中间无法对轨迹进行修正，本文引入受控微分方程概念，使得后续拿到的数据得到进一步利用。<a href="http://arxiv.org/abs/2005.08926" target="_blank" rel="noopener">ArXiv</a>, <a href="https://github.com/patrick-kidger/NeuralCDE" target="_blank" rel="noopener">code</a>. <a id="more"></a></p>
+</blockquote>
+<ul>
+<li><p>假设$\tau, T\in R$, 且$\tau &lt;T$, $v,\omega$为正整数， $X:[\tau, T]\rightarrow R^v$为一个有界连续函数(即X是满足Lipschitz性质的)。$f:R^\omega \rightarrow R^{\omega\times v}$是连续映射函数，$\zeta\in R^\omega$, 且有连续映射 $z:[\tau, T]\rightarrow R^{\omega\times v}$, 并定义</p>
+<script type="math/tex; mode=display">
+z_t = z_\tau + \int^t_{\tau} f(z_s)dX_s~~~\text{for}~~t\in (\tau, T]</script><p>其中 $X_s\in R^v, f(Z_s)\in R^{\omega \times v}$, 上式被称作 $\text{Controlled differential equation}$.</p>
+</li>
+<li><p>与一般基于ODE的时序预测方法不同，本文在考虑后续状态的同时，可以保证隐藏状态z是连续变化的。</p>
+</li>
+<li><p>对(1)式进行扩展，可以得到$\text{Neural Controlled Differenrial Equations}$的定义为：</p>
+<script type="math/tex; mode=display">
+z_t = z_{t_0} + \int^t_{t_0} f_{\theta}(z_s)dX_s~~~\text{for}~~t\in (t_0, t_n]</script><p>其中$z_{t_0} = \zeta_{\theta}(x_0, t_0)$</p>
+<ul>
+<li><strong>本文中$X:[\tau, T]\rightarrow R^v$是通过自然边界下三次样条插值法来确定的</strong></li>
+<li><strong>$f_{\theta}:R^\omega \rightarrow R^{\omega\times (v+1)}$表示任意神经网络</strong>，<strong>$w$是超参数，表示隐藏状态的维度</strong></li>
+<li><strong>$\zeta_{\theta}: R^{v+1}\rightarrow R^{\omega}$表示任意依赖于参数$\theta$的神经网络</strong></li>
+</ul>
+</li>
+<li><p>本文将 $\text{Controlled differential equation}$转化为普通的ODE方程，从而能够通过$\text{Neural ODE}$中的方法进行求解，假设</p>
+<script type="math/tex; mode=display">
+g_{\theta, X}(z,s) = f_{\theta}\frac{dX}{ds}(s)</script><p>则很容易得到</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+z_t &= z_{t_0} + \int^t_{t_0} f_{\theta}(z_s)dX_s \\
+&= z_{t_0} + \int^t_{t_0}f_{\theta}(z_s)\frac{dX}{ds}(s)ds\\
+&= z_{t_0} + \int^t_{t_0} g_{\theta,X}(z_s, s)ds.
+\end{aligned}
+\end{equation}</script></li>
+</ul>
+<p><img src="/2020/09/23/神经了的ODE-Neural-CDE/1.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+        <category>Neural ODE</category>
       </categories>
       <tags>
         <tag>machine learning</tag>
