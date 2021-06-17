@@ -27,6 +27,11 @@ categories:
 * **n Signal-to-Noise Ratio Issues in Variational Inference for Deep Gaussian Processes**
 * **Generative Particle Variational Inference via Estimation of Functional Gradients**
 * **Simple and Effective VAE Training with Calibrated Decoders**
+* **Variational (Gradient) Estimate of the Score Function in Energy-based Latent Variable Models**
+* **On Energy-Based Models with Overparametrized Shallow Neural Networks**
+* **Improved Contrastive Divergence Training of Energy-Based Models**
+* **Conjugate Energy-Based Models**
+* **Adversarial Purification with Score-based Generative Models**
 
 ### Dynamic systems
 
