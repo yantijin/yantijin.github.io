@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yantijin.github.io/"/>
-  <updated>2021-06-17T08:22:40.441Z</updated>
+  <updated>2021-06-21T07:46:59.344Z</updated>
   <id>https://yantijin.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>KDD 21 paperlist</title>
+    <link href="https://yantijin.github.io/2021/06/21/KDD2021%20Accepted%20Paper%20List/"/>
+    <id>https://yantijin.github.io/2021/06/21/KDD2021 Accepted Paper List/</id>
+    <published>2021-06-21T07:30:05.000Z</published>
+    <updated>2021-06-21T07:46:59.344Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;KDD2021-Accepted-Paper-List&quot;&gt;&lt;a href=&quot;#KDD2021-Accepted-Paper-List&quot; class=&quot;headerlink&quot; title=&quot;KDD2021 Accepted Paper List&quot;&gt;&lt;/a&gt;KDD2021 Accepted Paper List&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+      <category term="PaperList" scheme="https://yantijin.github.io/categories/machine-learning/PaperList/"/>
+    
+    
+      <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>ICML 21 paperlist</title>
@@ -486,33 +508,6 @@ r = \frac{\sum^{n}_{i=1}(X_i-\bar X)(Y_i-\bar Y)}{\sqrt{\sum^{n}_{i=1}(X_i-\bar 
     
     
       <category term="安装教程" scheme="https://yantijin.github.io/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VIM快捷键配置</title>
-    <link href="https://yantijin.github.io/2018/12/04/VIM%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE/"/>
-    <id>https://yantijin.github.io/2018/12/04/VIM快捷键配置/</id>
-    <published>2018-12-04T12:45:18.000Z</published>
-    <updated>2018-12-21T14:52:14.134Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;VIM常用快捷键设置&quot;&gt;&lt;a href=&quot;#VIM常用快捷键设置&quot; class=&quot;headerlink&quot; title=&quot;VIM常用快捷键设置&quot;&gt;&lt;/a&gt;VIM常用快捷键设置&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;,nn:打开文件树&lt;br&gt;​    打开文件树之后，在新的分栏打开光标文件按s，在新的tab打开用t&lt;/li&gt;
-&lt;li&gt;空格：查找&lt;/li&gt;
-&lt;li&gt;gt：切换tab&lt;/li&gt;
-&lt;li&gt;&lt;c-h j=&quot;&quot; k=&quot;&quot; l=&quot;&quot;&gt;切换分栏&lt;/c-h&gt;&lt;/li&gt;
-&lt;li&gt;shift+3: 查找当前光标位置的字符&lt;/li&gt;
-&lt;li&gt;调整分栏占比：&lt;br&gt;:vertical res 50  # 纵向分栏&lt;br&gt;:res 50  # 横向分栏&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Life" scheme="https://yantijin.github.io/categories/Life/"/>
-    
-    
-      <category term="Interesting Things" scheme="https://yantijin.github.io/tags/Interesting-Things/"/>
     
   </entry>
   
