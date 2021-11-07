@@ -3,7 +3,7 @@ title: GPU透传
 date: 2020-12-29 21:05:01
 tags: 安装教程
 ---
-<!--more-->
+## GPU透传教程<!--more-->
 
 > 参考[链接](https://medium.com/@MARatsimbazafy/journey-to-deep-learning-nvidia-gpu-passthrough-to-lxc-container-97d0bc474957)
 
