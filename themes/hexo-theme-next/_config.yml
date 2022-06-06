@@ -198,11 +198,12 @@ social_icons:
 # Blog rolls
 links_settings:
   icon: fa fa-link
-  title: Links
+  title: 友情链接
   # Available values: block | inline
   layout: block
 
 links:
+  卡拉云后台系统: https://kalacloud.com
   #Title: http://yoursite.com
 
 # Table of Contents in the Sidebar
