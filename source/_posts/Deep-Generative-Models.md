@@ -9,6 +9,10 @@ categories:
 
 
 
-## Deep Generative Models
+## Deep Generative Models<!--more-->
 
-{% pdf Deep-Generative-Models/DGM.pdf %}
+<br>
+
+{% pdf DGM.pdf %}
+
+</br>
