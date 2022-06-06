@@ -11,8 +11,4 @@ categories:
 
 ## Deep Generative Models<!--more-->
 
-<br>
-
 {% pdf DGM.pdf %}
-
-</br>
