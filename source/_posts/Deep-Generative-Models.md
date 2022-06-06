@@ -11,4 +11,4 @@ categories:
 
 ## Deep Generative Models
 
-{% pdf https://github.com/yantijin/yantijin.github.io/tree/hexo/files/DGM.pdf %}
+{% pdf https://github.com/yantijin/yantijin.github.io/blob/hexo/files/DGM.pdf %}
