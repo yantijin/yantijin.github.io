@@ -1,5 +1,5 @@
 ---
-title: ICLR 22 submitted paper list
+title: ICML 22 accepted paper list
 date: 2022-06-19 22:31:08
 tags: machine learning
 categories:
