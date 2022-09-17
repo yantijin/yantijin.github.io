@@ -12,9 +12,9 @@ categories:
 
 ### EBM
 
-* **Diffusion Models as Plug-and-Play Priors**
+* Diffusion Models as Plug-and-Play Priors
 * video diffusion models
-* **Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding**
+* Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding
 * On analyzing generative and denoising capabilities of diffusion-based generative models
 * BinauralGrad: A two stage conditional diffusion probabilistic model for binaural audio synthesis
 * Thompson sampling efficiently learns to control diffusion process
