@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "504bcfc3"
+    });
+  daovoice('update');
+  </script>
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yantijin.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+  <meta name="description" content="概述 包括三个步骤：  (1)从数据集中采样; (2)在采样的数据集上面进行聚类算法; (3)将数据集中其他的数据根据采样数据集的类别进行分类   现在的聚类算法可以大致分为两类：根据相似性度量是否是直接用在输入的数据集上的还是用在从数据集中提取的特征上的  第一类： Golay et al 研究了三种时间序列的相似性度量，欧氏距离，两个基于互相关性的距离； Liao et all 采用DTW(D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yading: fast clustering of large-scale time series data">
+<meta property="og:url" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/index.html">
+<meta property="og:site_name" content="Tijin Yan">
+<meta property="og:description" content="概述 包括三个步骤：  (1)从数据集中采样; (2)在采样的数据集上面进行聚类算法; (3)将数据集中其他的数据根据采样数据集的类别进行分类   现在的聚类算法可以大致分为两类：根据相似性度量是否是直接用在输入的数据集上的还是用在从数据集中提取的特征上的  第一类： Golay et al 研究了三种时间序列的相似性度量，欧氏距离，两个基于互相关性的距离； Liao et all 采用DTW(D">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/2.png">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/1.jpg">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/3.jpg">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/4.jpg">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/5.jpg">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/6.jpg">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/7.jpg">
+<meta property="og:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/8.jpg">
+<meta property="article:published_time" content="2018-12-21T01:34:18.000Z">
+<meta property="article:modified_time" content="2022-10-14T14:22:14.685Z">
+<meta property="article:author" content="Tijin Yan">
+<meta property="article:tag" content="Clustering Algorithm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/2.png">
+
+<link rel="canonical" href="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Yading: fast clustering of large-scale time series data | Tijin Yan</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Tijin Yan" type="application/atom+xml">
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Tijin Yan</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Ph.D. candidate in BIT</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-resume">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>Resume</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/yantijin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Tijin Yan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tijin Yan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Yading: fast clustering of large-scale time series data
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-21 09:34:18" itemprop="dateCreated datePublished" datetime="2018-12-21T09:34:18+08:00">2018-12-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-10-14 22:22:14" itemprop="dateModified" datetime="2022-10-14T22:22:14+08:00">2022-10-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm-Library/" itemprop="url" rel="index"><span itemprop="name">Algorithm Library</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm-Library/Clustering-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Clustering Algorithm</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/" class="post-meta-item leancloud_visitors" data-flag-title="Yading: fast clustering of large-scale time series data" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>3 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li><p>包括三个步骤：</p>
+<ul>
+<li>(1)从数据集中采样;</li>
+<li>(2)在采样的数据集上面进行聚类算法;</li>
+<li>(3)将数据集中其他的数据根据采样数据集的类别进行分类</li>
+</ul>
+</li>
+<li><p>现在的聚类算法可以大致分为两类：根据<strong>相似性度量</strong>是否是直接用在输入的数据集上的还是用在从数据集中提取的特征上的</p>
+<ul>
+<li>第一类： Golay et al 研究了三种时间序列的相似性度量，欧氏距离，两个基于互相关性的距离； Liao et all 采用DTW(Dynamic Time Warping)动态时间弯曲和遗传聚类来对时间序列进行分类</li>
+<li>第二类：是基于时间序列是根据内在的模型和概率分布的假设来进行聚类的。比如ARMA(Auto-Aggressive Integrated Moving Average)算法,高斯混合算法，缺点是是模型的学习的计算复杂度很高</li>
+</ul>
+</li>
+<li><p>相似性度量：</p>
+<ul>
+<li><p>(1)Lp范数： 其中L1范数对于冲击噪声是鲁棒的；但是对于$p\geq 3$来说会遇到维数灾问题</p>
+</li>
+<li><p>(2)Pearson’s correlation：取值范围是[-1,1],两个变量之间的<strong>皮尔逊相关系数</strong>定义为两个变量之间的协方差和标准差的商：</p>
+<script type="math/tex; mode=display">
+\rho_{X,Y} = \frac{cov(X,Y)}{\sigma_x,\sigma_y}</script><p>上式是<strong>总体</strong>皮尔逊相关系数，下面是样本皮尔逊相关系数，一般用r表示：</p>
+<script type="math/tex; mode=display">
+r = \frac{\sum^{n}_{i=1}(X_i-\bar X)(Y_i-\bar Y)}{\sqrt{\sum^{n}_{i=1}(X_i-\bar X)^2}\sqrt{\sum^n_{i=1}(Y_i-\bar Y)^2}}=\frac{1}{n-1}\sum^n_{i=1}(\frac{X_i-\bar X}{\sigma_x})(\frac{Y_i-\bar Y}{\sigma_Y})</script></li>
+<li><p>(3)DTW(动态时间弯曲距离)：</p>
+<p><img src="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/2.png" alt="2"></p>
+</li>
+</ul>
+</li>
+<li><p>Data Reduction:分为降维或者减少时间序列的数量(size)</p>
+<ul>
+<li><p>离散傅里叶变换(DFT)用于在频域中表示时间序列；离散小波变换用于提供额外的信息；奇异值分解(SVD)和分段聚合近似（PAA）</p>
+<p><img src="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/1.jpg" alt="1"></p>
+<p><img src="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/3.jpg" alt="1"></p>
+</li>
+<li><p>采样可以减少时间序列数据集的大小：随机采样/有偏采样</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="算法详解"><a href="#算法详解" class="headerlink" title="算法详解"></a>算法详解</h2><h3 id="Data-Reduction"><a href="#Data-Reduction" class="headerlink" title="Data Reduction"></a>Data Reduction</h3><ul>
+<li><p>N个时间序列，$T_{N\times D}:=\{T_1,T_2,…,T_N\}$,每个时间序列是一个D维的序列，现在就是要确定采样序列$T_{s\times d}，s\leq N,d\leq D$</p>
+</li>
+<li><p>提出了关于s选择的上下界的理论证明，可以引导我们选择合适的s：</p>
+<p>假设所有$T_i\in T_{N\times D}$属于k个已知的分类，$n_i$代表第i个分组中时间序列的个数，$p_i = \frac{n_i}{N}$代表第i个分组的占比，$p_i’=\frac{n_i’}{s}$代表采样数据集中第i个分组的占比，则$|p_i-p_i’|$代表了数据集和采样数据集中的占比偏差。现在定义s的上界$s_l$和下界$s_u$。</p>
+<p>对于给定的$\epsilon$和置信水平$1-\alpha$</p>
+<p>(1)对于$p_i&lt; \epsilon$的类来说，对于$s&lt;s_l$不能保证有足够多的instance数量，直观上解释就是下界越低，那么越有可能找到小型的类</p>
+<p>(2)对于$s&gt;s_u$来说，最大的占比偏差应该是在$\epsilon$之内的，直观上，根据大数定律，大于某一个阈值后，样本的分布和总体的分布是一致的</p>
+<ul>
+<li><p><strong>Lemma 1(lower bound)</strong>:m是采样数据及group i中最小的instance数量，给定置信水平$1-\alpha$，那么采样的size $s\geq \frac{m+z_{\alpha}(\frac{z_{\alpha}}{2}+\sqrt{m+\frac{z_{\alpha}^2}{4}})}{p_i}$满足$P(n_i’\geq m)&gt;1-\alpha$,这里$z_{\alpha/2} = P(Z&gt;z_{\alpha/2})=\alpha/2$其中Z是标准正态分布</p>
+<p>注意：m的确定取决于用在采样数据集上的聚类算法</p>
+<p><strong>证明</strong>：由于是随机采样，那么一个样本属于第i类的概率为$p_i$,由于每个样本都是独立的，那么在所有采样中，采样属于第i个类的样本服从二项分布$n_i’\sim B (s,p_i)$,当s足够大的时候，二项分布$B(s,p_i) \sim N(sp_i,sp_i(1-p_i))$，此时$n_i’$近似服从$N(sp_i,sp_i(1-p_i))$,那么对于事件$\{n_i’\geq m\}\leftrightarrow \{ \frac{n_i’-sp_i}{\sigma}\geq \frac{m-sp_i}{\sigma}\}\leftrightarrow \{Z\geq \frac{m-sp_i}{\sigma}\}$,故而</p>
+<script type="math/tex; mode=display">
+P(n_i'\geq m)>1-\alpha \leftrightarrow P(Z\geq \frac{m-sp_i}{\sigma})>1-\alpha \leftrightarrow \frac{m-sp_i}{\sigma}\leq -z_{\alpha},\\
+where~~~ m\leq sp_i,~~~\sigma = \sqrt{sp_i(1-p_i)}</script><p>那么根据上面的不等式</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\frac{(m-sp_i)^2}{sp_i(1-p_i)} &\geq& z_\alpha^2\\
+m^2+s^2p_i^2-2msp_i&\geq& sp_iz_{\alpha}^2-sp_i^2z_{\alpha}^2\\
+\frac{m^2}{s}+sp_i^2-2mp_i&\geq& p_iz_\alpha^2-p_i^2z_\alpha^2\\
+p_i^2-2p_i\frac{m+z_{\alpha}^2/2}{s+z_\alpha^2}&\geq& -\frac{m^2}{s(s+z_{\alpha}^2)}\\
+(p_i-\frac{m+z_{\alpha}^2/2}{s+z_\alpha^2})^2&\geq&(\frac{m+z_{\alpha}^2/2}{s+z_\alpha^2})^2-\frac{m^2}{s(s+z_\alpha^2)},m\leq sp_i
+\end{aligned}
+\end{equation}</script><p>由于$z_\alpha$经常落在[0,3]范围内，也就是说$s &gt;&gt;z_\alpha^2\leftrightarrow s+z_{\alpha}^2\approx s   $</p>
+<p>因此，得到$s\geq \frac{m+z_{\alpha}(\frac{z_\alpha}{2}+\sqrt{m+\frac{z_\alpha^2}{4}})}{p_i}$</p>
+</li>
+<li><p><strong>Lemma 2(upper bound)</strong>:对于给定的$\epsilon\in [0,1]$,置信水平为$1-\alpha$,那么$s\geq \frac{z_{\alpha/2}^2}{4\epsilon^2}$能够满足$P(|p_i-p_i’| &lt; \epsilon) &gt; 1-\alpha, 1\leq i\leq k$</p>
+<p>定理2说明<strong>s仅取决于给定的阈值和置信水平，和输入数据集的大小无关</strong></p>
+<p><strong>Proof</strong>:由于$p_i’ = \frac{n_i’}{s}\sim N(p_i,\frac{p_i(1-p_i)}{s})\leftrightarrow p_i’-p_i\sim N(p_i,\frac{p_i(1-p_i)}{s})$,故而</p>
+<script type="math/tex; mode=display">
+\{|p_i-p_i'|< \epsilon\}\leftrightarrow \{|Y|<\epsilon\}\leftrightarrow \{|Z|<\frac{\epsilon}{\sigma}\}\\
+where~~\sigma =\sqrt{\frac{p_i(1-p_i)}{s}},\\
+So~~when~~\frac{\epsilon}{\sigma}>z_{\alpha/2}, ~~P(|Z|<\frac{\epsilon}{\sigma})>1-\alpha\\
+s\geq \frac{z_{\alpha/2}^2}{p_i(1-p_i)\epsilon^2}\geq \frac{z_{\alpha/2}^2}{4\epsilon^2}</script></li>
+</ul>
+</li>
+</ul>
+<h3 id="降维度"><a href="#降维度" class="headerlink" title="降维度"></a>降维度</h3><ul>
+<li><p>采用分段聚合近似(PAA)，从$T_i := (t_{i1},t_{i2},…,t_{iD})$转换为$T_i’ := (\tau_{i1},…,\tau_{id})$公式如下</p>
+<script type="math/tex; mode=display">
+\tau_{ij} = \frac{d}{D}\sum^{\frac{D}{d}j}_{k = \frac{D}{d}(j-1)+1}t_{ik}</script><p>一个关键的步骤就是要确定d的大小，根据<strong>香农采样定理</strong>，如果最高频率为B，那么采样频率为2B时可以无损复原，文章中提出了<strong>基于自相关性的方法来大概确定时间序列的频率上界</strong>，首先根据自相关曲线$g_i$的第一个局部最小点确定临界频率，为$g_i(y) = \sum^{D-y}_{j=1}t_{ij}t_{i(j+y)}$,其中y是滞后。如果对于某一个$y’$,$g_i$存在一个极小值，如果$g_i(y’)&lt;0$,$y’$与典型半衰期有关，在此情况下，我们把$1/y_i’$叫做$T_i$的临界频率。$y_i’$越小，代表着他的临界频率越大，找到所有的临界频率之后，我们按照降序进行排列，选择一个较高的百分比，如80%，来对所有的时间序列的上界进行估计，不用小的临界频率值的原因是降低额外噪声的影响。</p>
+</li>
+<li><p>自相关曲线可以通过快速傅里叶变换求取</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+F_g(f) = FFT[T_i]\\
+S(f)=F_g(f)F_g^{*}(f)\\
+g(y) = IFFT[S(f)]</script><p><img src="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/4.jpg" alt="4"></p>
+<h3 id="基于密度的聚类"><a href="#基于密度的聚类" class="headerlink" title="基于密度的聚类"></a>基于密度的聚类</h3><ul>
+<li><p>采用L1范数作为距离相似性度量（因为对于冲击噪声的鲁棒性和计算简便性）</p>
+</li>
+<li><p>对于数据集的分布没有假设</p>
+</li>
+<li><p>用PCA来对数据集降维到两个维度的子空间上来观察它的空间分布D</p>
+</li>
+<li><p>实际的时间序列有相位的变化，随机的噪声，影响聚类的效果</p>
+</li>
+<li><p>如果两个时间序列相位差别很小，那么他的L1范数也很小，随着数据集size的增大，对于有很大相位差的两个时间序列，基于密度的聚类算法可以保证将两个时间序列聚类，因为他们可以通过一系列的中间的有小相位扰动的时间序列实例相连</p>
+</li>
+<li><p><strong>给出了关于相位扰动和噪声理论上的边界，找到了数据size n，相位扰动上界</strong>$\Delta$<strong>以及事件：时间序列之间相位差别小于</strong>$\Delta$<strong>的可以被聚类在一起 发生的概率P之间的关系，从而</strong>$\Delta$<strong>可以根据P和n来确定</strong></p>
+<p>定义时间序列$T(a) = \{f(a+b),…f(a+mb)\}$,a是初始相位，b是时间序列采样的间隔，m是时间序列的长度。假设T(a)是根据f(t)来采样得到的，这里假设f(t)是一个解析函数，另外一个时间序列为$T(a-\delta) = \{f(a+b-\delta),..,f(a+mb-\delta)\}$,假设现在有n个时间序列$T(a-\delta_i)$,其中$\delta_i \in [0,\Delta]$,假设这些时间序列之间是相互独立的，$\delta_i$是在$[0,\Delta]$之间均匀分布的，现在定义基于密度的聚类算法中的距离阈值为$\epsilon$，定义下面事件为</p>
+<script type="math/tex; mode=display">
+E_n := \{T(a-\delta_i),i=1,2,...n. belong~to~same~cluster\}</script><p><strong>Lemma 3:</strong>$P(E_n)\geq 1-n(1-\frac{\epsilon}{mMk\Delta})^n$</p>
+<p><strong>证明</strong>：(1)首先证明$\exist M,s.t., L_1(T(a),T(a-\delta)) := \sum^m_{i=1}|f(a+ib)-f(a+ib-\delta|\leq mM\delta$，意义就是只要相位误差足够小，那么他们两个之间的$L_1$距离就可以足够小。</p>
+<p>(2)把区间$[0,\Delta]$分为若干个小区间，长度为$\frac{\epsilon}{mMk}$,下面分情况进行讨论， 如果每个小区间对应最少一个时间序列，那么$L_1(T(a),its~KNN)\leq  mM\times \frac{\epsilon}{mMk}\times k =\epsilon$,此时，所有的时间序列都是密度相连的，他们可以被聚类到一起。</p>
+<p>(3)定义事件$U_j = \{j^{th} ~bucket~is~empty\}$，那么</p>
+<script type="math/tex; mode=display">
+P(at~least~one~bucket~is~empty)=P(\cup_j U_j)\leq \sum_jP(U_j)=n(1-\frac{\epsilon}{mMk\Delta})^n</script><p>因为每个bucket的长度为$\frac{\epsilon}{mMk}$,那么对于$\Delta$区域之内bucket的数量为$\frac{\Delta}{\frac{\epsilon}{mMk}}$，</p>
+<p><strong>这个地方存疑，我觉得是</strong>$C_n^1(1-\frac{\epsilon}{mMk\Delta})^{n -1}\frac{\epsilon}{mMk\Delta}$.</p>
+<p>注意到事件：没有空的bucket  是事件$E_n$的子集，因此</p>
+<script type="math/tex; mode=display">
+P(E_n) \geq P(no~empty~bucket) = 1-p(\cup_j U_j)\geq 1-n(1-\frac{\epsilon}{mMk\Delta})^n</script></li>
+</ul>
+<ul>
+<li><p>密度估计：思想是画出$k_{dis}$图来，根据斜率来进行density radius的选择，定义经验分布函数为</p>
+<script type="math/tex; mode=display">
+EDF_k(r):=\frac{|\{objeccts~whose~k_{dis}~\leq r\}|}{N}</script><p><strong> Lemma 4</strong>: $EDF_k(r)\approx \sum^N_{m=k+1}P(E_{m,r})$，其中$P(E_{m,r}) = C_{N-1}^{m-1}P_r^{m-1}(1-P_r)^{N-m}, P_r = \frac{V_r}{V}=\frac{c_d\times r^d}{V}$,$V_r$是在d维$L_p$空间上的超球面的体积，例如在欧氏空间上， $c_d = \frac{\pi^{d/2}}{\Gamma(\frac{d}{2}+1)}$,(注意 $\Gamma(n) = (n-1)!$)，注意到$k_{dis}$图中的Y轴拐点在$EDF_k\sim r$图中对应的是x轴拐点</p>
+<p><strong>Lemma 5</strong>：$k_{dis}$图上面Y轴的拐点是density radius</p>
+<p><img src="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/5.jpg" alt="5"></p>
+</li>
+</ul>
+<p><img src="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/6.jpg" alt="6"></p>
+<h3 id="分配"><a href="#分配" class="headerlink" title="分配"></a>分配</h3><ul>
+<li><p>在采样数据集上聚类完成之后，需要对数据集中其他没有标签的数据进行分类</p>
+<p>分配过程需要计算每一对有标记和无标记数据之间的距离，这样它的时间复杂度是O(Nsd)，文章中提出了一种修建策略，如下图所示，如果一个无标签数据a距离一个有标签数据b的距离dis大于$\epsilon$,那么对于距离b为$\epsilon$的有标签数据与a点的距离来说，根据三角不等式,$distance -(distance-\epsilon)&lt;new_dis$,也就是说也是大于$\epsilon$的</p>
+<p><img src="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/7.jpg" alt="7"></p>
+<p>并且设计了一个叫做 Sorted Neighbor Graph(SNG)的数据结构来实现上述的修剪策略。在样本集进行聚类的时候，如果点b是一个核心点，那么把他加进SNG，并且把b点和样本集中其他实例之间的距离按照降序排列，在这过程中用到了<strong>快速排序</strong>的方法，因此SNG的时间复杂度为$O(s^2logs)$.</p>
+<p><img src="/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/8.jpg" alt="8"></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpg" alt="Tijin Yan WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Tijin Yan
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/" title="Yading: fast clustering of large-scale time series data">https://yantijin.github.io/2018/12/21/Yading-fast-clustering-of-large-scale-time-series-data/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Clustering-Algorithm/" rel="tag"># Clustering Algorithm</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/12/17/A-Novel-Task-Duplication-Based-Clustering-Algorithm-for-Heterogeneous-Computing-Environments/" rel="prev" title="A Novel Task-Duplication Based Clustering Algorithm for Heterogeneous Computing Environments">
+      <i class="fa fa-chevron-left"></i> A Novel Task-Duplication Based Clustering Algorithm for Heterogeneous Computing Environments
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/27/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/" rel="next" title="概率图模型">
+      概率图模型 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">算法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Reduction"><span class="nav-number">2.1.</span> <span class="nav-text">Data Reduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%8D%E7%BB%B4%E5%BA%A6"><span class="nav-number">2.2.</span> <span class="nav-text">降维度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%AF%86%E5%BA%A6%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="nav-number">2.3.</span> <span class="nav-text">基于密度的聚类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E9%85%8D"><span class="nav-number">2.4.</span> <span class="nav-text">分配</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tijin Yan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Tijin Yan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yantijin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yantijin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yantijin@163.com" title="E-Mail → mailto:yantijin@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/chang-an-yi-hun" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;chang-an-yi-hun" rel="noopener" target="_blank"><i class="fa fa-comment fa-fw"></i>Zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://kalacloud.com/" title="https:&#x2F;&#x2F;kalacloud.com" rel="noopener" target="_blank">卡拉云后台系统</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tijin Yan</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">140k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">2:07</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+       TeX: {equationNumbers: {autoNumber: ["AMS"], useLabelIds: true}},
+       "HTML-CSS": {linebreaks: {automatic: true}},
+       SVG: {linebreaks: {automatic: true}}
+   });
+</script>
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz',
+      appKey     : 'MHEhvjPuKazCLe7uCI9f3rpf',
+      placeholder: "Welcome for comments",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'en' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

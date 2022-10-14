@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "504bcfc3"
+    });
+  daovoice('update');
+  </script>
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yantijin.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+  <meta name="description" content="本节将会介绍生成模型中非常典型的一类方法，流模型 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flow based Models">
+<meta property="og:url" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/index.html">
+<meta property="og:site_name" content="Tijin Yan">
+<meta property="og:description" content="本节将会介绍生成模型中非常典型的一类方法，流模型 。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/NICE.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/test.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/REALNVP.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/squeeze.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/scaleMulti.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/radial%20flow.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/radial%20flow.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/mad.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/wavenet.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/wavenet_conv.gif">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/IAF.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/IAF_alg.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/GRU.jpg">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/GRU_hidden.png">
+<meta property="og:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/GRU_ODE_Bayes.png">
+<meta property="article:published_time" content="2020-09-06T12:23:55.000Z">
+<meta property="article:modified_time" content="2022-10-14T14:22:14.659Z">
+<meta property="article:author" content="Tijin Yan">
+<meta property="article:tag" content="machine learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yantijin.github.io/2020/09/06/Flow-based-Models/NICE.png">
+
+<link rel="canonical" href="https://yantijin.github.io/2020/09/06/Flow-based-Models/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Flow based Models | Tijin Yan</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Tijin Yan" type="application/atom+xml">
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Tijin Yan</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Ph.D. candidate in BIT</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-resume">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>Resume</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/yantijin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yantijin.github.io/2020/09/06/Flow-based-Models/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Tijin Yan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tijin Yan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Flow based Models
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-09-06 20:23:55" itemprop="dateCreated datePublished" datetime="2020-09-06T20:23:55+08:00">2020-09-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-10-14 22:22:14" itemprop="dateModified" datetime="2022-10-14T22:22:14+08:00">2022-10-14</time>
+              </span>
+
+          
+            <span id="/2020/09/06/Flow-based-Models/" class="post-meta-item leancloud_visitors" data-flag-title="Flow based Models" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/09/06/Flow-based-Models/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/06/Flow-based-Models/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>6.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>6 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>本节将会介绍生成模型中非常典型的一类方法，流模型 。<span id="more"></span></p>
+</blockquote>
+<h3 id="NICE-Non-linear-Independent-Components-Estimation"><a href="#NICE-Non-linear-Independent-Components-Estimation" class="headerlink" title="NICE: Non-linear Independent Components Estimation"></a>NICE: Non-linear Independent Components Estimation</h3><ul>
+<li>对于一个数据分布 x，通过一个可逆映射 f(x), 可以变成另外一个分布y，则两者之间概率密度分布之间的关系为</li>
+</ul>
+<script type="math/tex; mode=display">
+p(x) = p(y)|\det \frac{\partial f(x)}{\partial x}|\\</script><ul>
+<li><p>对于函数f有两个要求：</p>
+<ul>
+<li>可逆，且容易求其逆函数</li>
+<li>对应的雅可比行列式容易计算</li>
+</ul>
+</li>
+<li><p>NICE采用加性耦合层</p>
+<script type="math/tex; mode=display">
+h_1= x_1\\h_2= x_2+m(x_1)</script><p>可以算出，对应的雅可比矩阵是下三角阵，且对角元素为1，故而行列式为1，采用多个耦合层相连，可以增加表达能力。</p>
+<p>但是上述存在一定问题，即使多次连接，第一部分仍然是<strong>恒等变换</strong>，故而作者提出交换顺序来进行耦合。</p>
+<p><img src="/2020/09/06/Flow-based-Models/NICE.png" alt="NICE"></p>
+</li>
+<li><p>然而，正是由于模型是可逆的，因此最终z和x的维度是一致的，然而实际上，往往数据具有高维空间的低维流形，因此，引入尺度变换层，对于编码出来的每个维度的特征做尺度变换即</p>
+<script type="math/tex; mode=display">
+z = s\otimes h^{(n)}</script><p>其中s也是要训练优化的参数，可以识别出该维度的重要性，可以起到压缩流形的作用。</p>
+<p>此时行列式变为了 $\Pi_i s_i$</p>
+<p>实际上<strong>尺度变换层等价于将先验分布的方差（标准差）也作为训练参数，如果方差足够小，我们就可以认为该维度所表示的流形坍缩为一个点，从而总体流形的维度减1，暗含了降维的可能</strong>。</p>
+</li>
+<li><p>实验结果：</p>
+<p><img src="/2020/09/06/Flow-based-Models/test.png" alt="test"></p>
+</li>
+</ul>
+<h3 id="REALNVP"><a href="#REALNVP" class="headerlink" title="REALNVP"></a>REALNVP</h3><ul>
+<li><p>REAL NVP是在NICE基础上进行改进的结果</p>
+</li>
+<li><p>仿射耦合层</p>
+<script type="math/tex; mode=display">
+h_1 = x_1\\
+h_2 = s(x_1)\otimes x_2 +t(x_1)</script><p>此时，对应的雅可比行列式的值为$\Pi_i s(x_1)_i$, 注意，为了保持可逆性，一般将s各个元素约束为大于0.</p>
+</li>
+<li><p>在NICE中，是交替进行混合信息流，REALNVP则是采用shuffle的方式，将信息充分耦合</p>
+<p><img src="/2020/09/06/Flow-based-Models/REALNVP.png" alt="REALNVP"></p>
+</li>
+<li><p>引入卷积层，对于图像来说，随意shuffle会打乱空间之间的相关性，因此作者引入以下几种方式来进行分割</p>
+<p><img src="/2020/09/06/Flow-based-Models/squeeze.png" alt></p>
+</li>
+<li><p>多尺度结构： 启发于VGG网络，有点分形的味道</p>
+<p><img src="/2020/09/06/Flow-based-Models/scaleMulti.png" alt="scaleMulti" style="zoom:50%;"><img src="/2020/09/06/Flow-based-Models/radial flow.png" alt></p>
+</li>
+</ul>
+<p>可以得到</p>
+<script type="math/tex; mode=display">
+p(z_1, z_3, z_5)=p(z_1|z_2)p(z_3|z_4)p(z_5)\\</script><p>并假设$\hat z_1, \hat z_3, \hat z_5$服从标准正态分布，相较于直接输出，条件概率输出具有更大的灵活性。</p>
+<script type="math/tex; mode=display">
+\hat z_1 = \frac{z_1-\mu(z_2)}{\sigma(z_2)}\\
+\hat z_3 = \frac{z_3-\mu(z_4)}{\sigma (z_4)}\\
+\hat z_5 = \frac{z_5-\mu}{\sigma_z}\</script><h3 id="GLOW"><a href="#GLOW" class="headerlink" title="GLOW"></a>GLOW</h3><ul>
+<li><p>GLOW模型是在NICE及REALNVP基础上改的，NICE和REALNVP中采用不同的方式打乱顺序，而注意到<strong>向量的置换操作，可以看作是向量乘一个置换矩阵得到的</strong>，GLOW中<strong>将置换矩阵作为一个可训练的参数矩阵</strong>，并因此引入了<strong>可逆$1\times1$卷积</strong></p>
+</li>
+<li><p>另一点是引入<strong>ActNorm</strong>， 也就是对于z进行缩放平移变换</p>
+<script type="math/tex; mode=display">
+\hat z = \frac{z-\mu}{\sigma}</script><p>其中$\mu$和$\sigma$都是训练参数，在<strong>初始化的时候是数据的均值和方差</strong></p>
+</li>
+</ul>
+<h3 id="Variational-inference-with-normalizing-flows"><a href="#Variational-inference-with-normalizing-flows" class="headerlink" title="Variational inference with normalizing flows"></a>Variational inference with normalizing flows</h3><ul>
+<li><p>Invertible Linear-Time Transformations（可逆线性变换层）<strong>planar flows</strong></p>
+<script type="math/tex; mode=display">
+f(z)=z+uh(w^Tz+b)</script><p>其中h为线性变换， 则可知</p>
+<script type="math/tex; mode=display">
+\psi(z)=h'(w^Tz+b)w\\
+\det |\frac{\partial f}{\partial z}| = |\det(I +u\psi(z)^T)|=|1+u^T\psi(z)|</script><p>其中$u^T\psi(z)$是一个数。</p>
+<script type="math/tex; mode=display">
+z_k= f_k\circ f_{k-1}\circ\cdots\circ f_1(z)\\
+\ln q_k(z_k)=\ln q_0(z) -\sum^K_{k=1}\ln |1+u_k^T\psi_k(z_k)|</script></li>
+<li><p>改变变换形式，将变换改为将$q_0$绕某一个参考点去变化，</p>
+<script type="math/tex; mode=display">
+f(z)=z+\beta h(\alpha,r)(z-z_0)\\
+\det |\frac{\partial f}{\partial z}|=(1+\beta h +\beta h' r)(1+\beta)^{d-1}</script></li>
+<li></li>
+</ul>
+<p><img src="/2020/09/06/Flow-based-Models/radial flow.png" style="zoom:50%;"></p>
+<h3 id="MADE-Masked-Autoencoder-for-Distribution-Estimation"><a href="#MADE-Masked-Autoencoder-for-Distribution-Estimation" class="headerlink" title="MADE: Masked Autoencoder for Distribution Estimation"></a>MADE: Masked Autoencoder for Distribution Estimation</h3><p><img src="/2020/09/06/Flow-based-Models/mad.png" style="zoom:80%;"></p>
+<p>参考<a target="_blank" rel="noopener" href="https://github.com/karpathy/pytorch-made">https://github.com/karpathy/pytorch-made</a></p>
+<h3 id="wavenet-a-generative-model-for-raw-audio"><a href="#wavenet-a-generative-model-for-raw-audio" class="headerlink" title="wavenet: a generative model for raw audio"></a>wavenet: a generative model for raw audio</h3><p><img src="/2020/09/06/Flow-based-Models/wavenet.png" alt></p>
+<p>可参考<a target="_blank" rel="noopener" href="https://github.com/ibab/tensorflow-wavenet，其中causal">https://github.com/ibab/tensorflow-wavenet，其中causal</a> conv可以表示为</p>
+<p><img src="/2020/09/06/Flow-based-Models/wavenet_conv.gif" alt></p>
+<h3 id="Improved-Variational-Inference-with-Inverse-Autoregressive-Flow"><a href="#Improved-Variational-Inference-with-Inverse-Autoregressive-Flow" class="headerlink" title="Improved Variational Inference with Inverse Autoregressive Flow"></a>Improved Variational Inference with Inverse Autoregressive Flow</h3><p><img src="/2020/09/06/Flow-based-Models/IAF.png" alt></p>
+<ul>
+<li><p>相比于normalizing flow中常见的planar nf采用mlp的形式，表达能力欠缺，且在更高维度下需要更长的链转换概率密度，因此不适应于高维空间。</p>
+</li>
+<li><p>算法结构如下</p>
+<p><img src="/2020/09/06/Flow-based-Models/IAF_alg.png" alt></p>
+<ul>
+<li>其中AutogressiveNN可以选择很多种，<strong>对于MLP类型的，可以选择MADE的形式</strong>；<strong>对于卷积类型的，可采用pixel cnn中的形式</strong>，参考<a target="_blank" rel="noopener" href="https://github.com/pclucas14/iaf-vae">https://github.com/pclucas14/iaf-vae</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Sylvestrer-Normalizing-flows-for-Variance-Inference"><a href="#Sylvestrer-Normalizing-flows-for-Variance-Inference" class="headerlink" title="Sylvestrer Normalizing flows for Variance Inference"></a>Sylvestrer Normalizing flows for Variance Inference</h3><ul>
+<li><p>首先提出<strong>Sylvester determinant identity</strong>，对于$A\in R^{D\times M}, B\in R^{M\times D}$, 有</p>
+<script type="math/tex; mode=display">
+\det (I_D+AB) = \det (I_M+BA)</script></li>
+<li><p>对于形如（13）的形式，其中$A\in R^{D\times M}, B\in R^{M\times D}, b\in R^{M}, M&lt;D$根据（1）式可以得到(14)，从而降低计算量。</p>
+<script type="math/tex; mode=display">
+z'= z + Ah(Bz+b)</script><script type="math/tex; mode=display">
+\det (\frac{\partial z'}{\partial z}) = \det (I_M + diag (h'(Bz+b)BA))</script></li>
+<li><p>需要解决的问题是，(12)式一般是不可逆的，且行列式不好计算，因此引入QR分解，考虑如下特殊形式</p>
+<script type="math/tex; mode=display">
+z' = z + QR^Ah(R^BQ^Tz=b)\\
+\det (\frac{\partial z'}{\partial z}) = \det (I_M + diag(h')R^BR^A)</script><p>下面<strong>证明可逆</strong>：如果$R^A, R^B$是上三角阵，且h是光滑有界的函数，且导数为正，则如果$R^A, R^B$对角元素满足$R^A_{ii}R^B_{ii}&gt;-1/||h’||_{\infty}$，则(15)式可以保证是可逆的</p>
+</li>
+</ul>
+<h3 id="Continuous-Normalizing-Flow"><a href="#Continuous-Normalizing-Flow" class="headerlink" title="Continuous  Normalizing Flow"></a>Continuous  Normalizing Flow</h3><ul>
+<li>Neural ODE中提出CNF的概念<script type="math/tex; mode=display">
+\frac{d\vec z}{dt}=\vec f(\vec z(t), t)\\
+\vec z(0)\sim p_o(\vec z(0))\\
+\vec z(T) = \vec z(0) + \int _0^T\vec f(\vec z(t), t)dt\\
+\frac{d\log p(\vec z(t))}{dt} = -tr(\frac{df}{dz(t)})</script></li>
+</ul>
+<h4 id="FFJORD-free-form-continuous-dynamics-for-scalable-reversible-generative-models"><a href="#FFJORD-free-form-continuous-dynamics-for-scalable-reversible-generative-models" class="headerlink" title="FFJORD: free form continuous dynamics for scalable reversible generative models"></a>FFJORD: free form continuous dynamics for scalable reversible generative models</h4><p>对于CNF，根据neural ode 中有</p>
+<script type="math/tex; mode=display">
+\frac{d\log p(\vec z(t))}{dt} = -tr(\frac{df}{dz(t)})</script><p>因此，对于增广状态有，</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+z_0\\
+\log p(x) - \log p_{z_0}(z_0) 
+\end{bmatrix} = \int_{t_1}^{t_0}
+\begin{bmatrix}
+f(z(t),t;\theta)\\
+-Tr(\frac{\partial f}{\partial z(t)})
+\end{bmatrix}dt\\
+\begin{bmatrix}
+z(t_1)\\
+\log p(x)-\log p(z(t_1))
+\end{bmatrix} = \begin{bmatrix}
+x\\0
+\end{bmatrix}</script><p>根据下述重要推论中的第二条，可知</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\log p(z(t_1)) &= \log p(z(t_0)) - \int_{t_0}^{t_1}Tr(\frac{\partial f}{\partial z(t)})dt\\
+&= \log p(z(t_0)) - \mathbb{E}_{p(\epsilon)}\big[ \int_{t_0}^{t_1}\epsilon^T \frac{\partial f}{\partial z(t)}\epsilon dt \big]
+\end{aligned}
+\end{equation}</script><ul>
+<li>上述对$Tr(A)$估计中的variance渐进趋向于 $||A||_F^2$,为了减少Hutchinson估计器的variance,作者提出用降低维度的方式，设 $f=g\circ h(z)$,则有<script type="math/tex; mode=display">
+Tr(\frac{\partial f}{\partial z}) = Tr(\frac{\partial g}{\partial h}\frac{\partial h}{\partial z}) = Tr(\frac{\partial h}{\partial z}\frac{\partial g}{\partial h}) = \mathbb{E}_{p(\epsilon)}[\epsilon^T\frac{\partial h}{\partial z}\frac{\partial g}{\partial h}\epsilon]</script>第二项是$D\times D$维的，第三项则是 $H\times H$维的，如果H是很小的，那么我们就可以减少估计器的方差。</li>
+</ul>
+<h3 id="GRU-ODE-Bayes"><a href="#GRU-ODE-Bayes" class="headerlink" title="GRU-ODE_Bayes"></a>GRU-ODE_Bayes</h3><ul>
+<li>特点：<ul>
+<li>快速推断潜在随机过程的位置参数</li>
+<li>学习变量中的相关性</li>
+</ul>
+</li>
+<li>GRU-ODE包括两部分：<ul>
+<li>GRU-ODE：基于GRU的ODE模型，使得隐状态h能够沿时间传播</li>
+<li>GRU-Bayes：通过观测数据来更新当前的因状态</li>
+</ul>
+</li>
+</ul>
+<h4 id="GRU-ODE-推导"><a href="#GRU-ODE-推导" class="headerlink" title="GRU-ODE 推导"></a>GRU-ODE 推导</h4><ul>
+<li><p>对于基本GRU单元，其结构如图所示：</p>
+<p><img src="/2020/09/06/Flow-based-Models/GRU.jpg" style="zoom:50%;"></p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+r_t &= \sigma(W_rx_t + U_rh_{t-1}+b_r)\\
+z_t &= \sigma(W_zx_t + U_zh_{t-1}+b_z)\\
+g_t &= tanh(W_h x_t + U_h(r_t\odot h_{t-1})+b_h)\\
+h_t &= z_t\odot h_{t-1} + (1-z_t)\odot g_t\\
+\end{aligned}
+\end{equation}</script><p>因此，可得隐状态变化为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\Delta h_t &= h_t - h_{t-1} = z_t\odot h_{t-1} + (1-z_t)\odot g_t -h_{t-1}\\
+&=(1-z_t)\odot (g_t-h_{t-1})
+\end{aligned}</script><p>可将隐状态微分方程变为</p>
+<script type="math/tex; mode=display">
+\frac{dh(t)}{dt} =(1-z(t))\odot (g(t)-h(t))</script></li>
+<li><p>GRU-ODE 特性：</p>
+<ul>
+<li>有界性： 如果初始状态 $h(0)_j\in [-1, 1]$, 则$h(t)_j$则一直在此界内</li>
+<li>连续性： GRU-ODE是李普希兹连续的，且K=2</li>
+<li>支持各种数值求解器：例如欧拉解法，中值法等</li>
+</ul>
+</li>
+</ul>
+<h4 id="GRU-bayes"><a href="#GRU-bayes" class="headerlink" title="GRU-bayes"></a>GRU-bayes</h4><ul>
+<li><p>为了用观测值对隐状态进行更新， 并估计$Y(t)$的概率密度函数； 采用标准GRU模块并在[-1,1]内进行变换</p>
+</li>
+<li><p>定义$f_{prep}$函数对于观测数据进行预处理：（通过隐状态h计算观测值概率密度函数的参数，假设是高斯函数）</p>
+<script type="math/tex; mode=display">
+\theta = [mean, logvar] = f_{obs}(h(t))\\
+error = (y[k]_d - mean)/e^{0.5*logvar}\\
+q_d = [y[k]_d, mean, logvar, error]\\
+f_{prep} = ReLU(W_dq_d + bias) * m_d\\
+h(t_+) = GRU(h(t_-), f_{prep}(y[k], m[k], h(t_-))\\</script><p>其中$h(t_-)$和 $h(t_+)$为GRU-Bayes前后的状态，因此，状态在此时会有一个跳跃。m是mask‘函数，结果中没有观测值的位置直接置0</p>
+<p><img src="/2020/09/06/Flow-based-Models/GRU_hidden.png" alt></p>
+</li>
+<li><p>目标函数： $Loss_{pre} + \lambda Loss_{post}$</p>
+<script type="math/tex; mode=display">
+Loss_{pre} = -\sum^D_{j=1}m_j\log p(y_j|\theta=f_{obs}(h_-)_j)\\
+Loss_{post} = \sum^D_{j=1}m_jD_{KL}(p_{Bayes,j}||p_{post,j})</script><p>其中第一项假设的是高斯分布；第二项损失中$p_{Bayes,j} \propto p_{pre,j}p_{obs,j}$, $p_{pre}$为GRU-Bayes之前的预测分布， $p_{post,j}$表示GRU-Bayes之后的预测分布。</p>
+</li>
+</ul>
+<p><img src="/2020/09/06/Flow-based-Models/GRU_ODE_Bayes.png" alt></p>
+<ul>
+<li>$p_{Bayes,j} $计算：对于二项式和高斯分布，可以解析表示：<script type="math/tex; mode=display">
+\mu_{bayes} = \frac{\sigma_{obs}^2}{\sigma^2_{pre} +  \sigma_{obs}^2}\mu_{pre} + \frac{\sigma_{pre}^2}{\sigma^2_{pre} +  \sigma_{obs}^2}\mu_{obs}\\
+\sigma_{bayes}^2 = \frac{\sigma^2_{pre} \sigma^2_{obs}}{\sigma^2_{pre} + \sigma^2_{obs}}</script>实际上，往往观测值的方差$\sigma^2_{obs}&lt;&lt;\sigma^2_{pre}$,此时 $\mu_{bayes}=\mu_{obs}, \sigma_{bayes}^2 = \sigma^2_{obs}$</li>
+</ul>
+<h3 id="重要推论："><a href="#重要推论：" class="headerlink" title="重要推论："></a>重要推论：</h3><ul>
+<li><p>CNF中的结论</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\frac{d\vec z}{dt}=&\vec f(\vec z(t), t)\\
+\vec z(0)\sim p_o(\vec z(0))&~~~\vec z(T) = \vec z(0) + \int _0^T\vec f(\vec z(t), t)dt\\
+\frac{d\log p(\vec z(t))}{dt} =& -tr(\frac{df}{dz(t)})
+\end{aligned}
+\end{equation}</script></li>
+<li><p>假设p(u)是多元概率分布，均值为0，协方差为单位阵，则对于任意矩阵A，有</p>
+<script type="math/tex; mode=display">
+Tr(A)=E_{u\sim p(u)}[u^TAu]</script><p>证明如下</p>
+<script type="math/tex; mode=display">
+u^TAu = \sum_{j=1}^N\sum_{i=1}^Nu_{i}u_{j}A_{ij}</script><script type="math/tex; mode=display">
+\begin{equation}
+E[u_iu_j] = \left\{
+\begin{aligned}
+1,i=j\\
+0, i\neq j
+\end{aligned}
+\right.
+\end{equation}</script></li>
+<li><p>证明恒等式</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\det (exp(A)) = exp(Tr(A))\\
+  ln (\det B) = Tr(\ln B)</script>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpg" alt="Tijin Yan WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Tijin Yan
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yantijin.github.io/2020/09/06/Flow-based-Models/" title="Flow based Models">https://yantijin.github.io/2020/09/06/Flow-based-Models/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/12/27/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/" rel="prev" title="概率图模型">
+      <i class="fa fa-chevron-left"></i> 概率图模型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/06/Dynamic-Systems-for-Deep-Learning/" rel="next" title="Dynamic Systems for Deep Learning">
+      Dynamic Systems for Deep Learning <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NICE-Non-linear-Independent-Components-Estimation"><span class="nav-number">1.</span> <span class="nav-text">NICE: Non-linear Independent Components Estimation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REALNVP"><span class="nav-number">2.</span> <span class="nav-text">REALNVP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GLOW"><span class="nav-number">3.</span> <span class="nav-text">GLOW</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variational-inference-with-normalizing-flows"><span class="nav-number">4.</span> <span class="nav-text">Variational inference with normalizing flows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MADE-Masked-Autoencoder-for-Distribution-Estimation"><span class="nav-number">5.</span> <span class="nav-text">MADE: Masked Autoencoder for Distribution Estimation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wavenet-a-generative-model-for-raw-audio"><span class="nav-number">6.</span> <span class="nav-text">wavenet: a generative model for raw audio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Improved-Variational-Inference-with-Inverse-Autoregressive-Flow"><span class="nav-number">7.</span> <span class="nav-text">Improved Variational Inference with Inverse Autoregressive Flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sylvestrer-Normalizing-flows-for-Variance-Inference"><span class="nav-number">8.</span> <span class="nav-text">Sylvestrer Normalizing flows for Variance Inference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Continuous-Normalizing-Flow"><span class="nav-number">9.</span> <span class="nav-text">Continuous  Normalizing Flow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FFJORD-free-form-continuous-dynamics-for-scalable-reversible-generative-models"><span class="nav-number">9.1.</span> <span class="nav-text">FFJORD: free form continuous dynamics for scalable reversible generative models</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GRU-ODE-Bayes"><span class="nav-number">10.</span> <span class="nav-text">GRU-ODE_Bayes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GRU-ODE-%E6%8E%A8%E5%AF%BC"><span class="nav-number">10.1.</span> <span class="nav-text">GRU-ODE 推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GRU-bayes"><span class="nav-number">10.2.</span> <span class="nav-text">GRU-bayes</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tijin Yan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Tijin Yan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yantijin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yantijin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yantijin@163.com" title="E-Mail → mailto:yantijin@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/chang-an-yi-hun" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;chang-an-yi-hun" rel="noopener" target="_blank"><i class="fa fa-comment fa-fw"></i>Zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://kalacloud.com/" title="https:&#x2F;&#x2F;kalacloud.com" rel="noopener" target="_blank">卡拉云后台系统</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tijin Yan</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">140k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">2:07</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+       TeX: {equationNumbers: {autoNumber: ["AMS"], useLabelIds: true}},
+       "HTML-CSS": {linebreaks: {automatic: true}},
+       SVG: {linebreaks: {automatic: true}}
+   });
+</script>
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz',
+      appKey     : 'MHEhvjPuKazCLe7uCI9f3rpf',
+      placeholder: "Welcome for comments",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'en' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

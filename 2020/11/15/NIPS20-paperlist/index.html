@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "504bcfc3"
+    });
+  daovoice('update');
+  </script>
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yantijin.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+  <meta name="description" content="NeuraIPS’20">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NIPS 20 paperlist">
+<meta property="og:url" content="https://yantijin.github.io/2020/11/15/NIPS20-paperlist/index.html">
+<meta property="og:site_name" content="Tijin Yan">
+<meta property="og:description" content="NeuraIPS’20">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-15T03:45:08.000Z">
+<meta property="article:modified_time" content="2022-10-14T14:22:14.679Z">
+<meta property="article:author" content="Tijin Yan">
+<meta property="article:tag" content="machine learning">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yantijin.github.io/2020/11/15/NIPS20-paperlist/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>NIPS 20 paperlist | Tijin Yan</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Tijin Yan" type="application/atom+xml">
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Tijin Yan</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Ph.D. candidate in BIT</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-resume">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>Resume</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/yantijin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yantijin.github.io/2020/11/15/NIPS20-paperlist/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Tijin Yan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tijin Yan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NIPS 20 paperlist
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-15 11:45:08" itemprop="dateCreated datePublished" datetime="2020-11-15T11:45:08+08:00">2020-11-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-10-14 22:22:14" itemprop="dateModified" datetime="2022-10-14T22:22:14+08:00">2022-10-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index"><span itemprop="name">machine learning</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/PaperList/" itemprop="url" rel="index"><span itemprop="name">PaperList</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/11/15/NIPS20-paperlist/" class="post-meta-item leancloud_visitors" data-flag-title="NIPS 20 paperlist" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/11/15/NIPS20-paperlist/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/15/NIPS20-paperlist/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>7.4k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>7 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="NeuraIPS’20"><a href="#NeuraIPS’20" class="headerlink" title="NeuraIPS’20"></a>NeuraIPS’20<span id="more"></span></h2><h3 id="Time-Series"><a href="#Time-Series" class="headerlink" title="Time Series"></a>Time Series</h3><ul>
+<li><strong>Probabilistic Time Series Forecasting with Shape and Temporal Diversity</strong></li>
+<li><strong>Deep reconstruction of strange attractors from time series</strong></li>
+<li><strong>Neural Controlled Differential Equations for Irregular Time Series</strong></li>
+<li><strong>Adversarial Sparse Transformer for Time Series Forecasting</strong></li>
+<li><strong>Learning Long-Term Dependencies in Irregularly-Sampled Time Series</strong></li>
+<li><strong>Benchmarking Deep Learning Interpretability in Time Series Predictions</strong></li>
+<li><strong>High-recall causal discovery for autocorrelated time series with latent confounders</strong></li>
+<li><strong>Deep Rao-Blackwellised Particle Filters for Time Series Forecasting</strong></li>
+<li><strong>Normalizing Kalman Filters for Multivariate Time Series Analysis</strong></li>
+<li><strong>Spectral Temporal Graph Neural Network for Multivariate Time-series Forecasting</strong></li>
+<li><strong>Learning Continuous System Dynamics from Irregularly-Sampled Partial Observations</strong></li>
+<li><strong>Gamma-Models: Generative Temporal Difference Learning for Infinite-Horizon Prediction</strong></li>
+</ul>
+<h3 id="GNN"><a href="#GNN" class="headerlink" title="GNN"></a>GNN</h3><ul>
+<li><strong>Open Graph Benchmark: Datasets for Machine Learning on Graphs</strong></li>
+<li><strong>Path Integral Based Convolution and Pooling for Graph Neural Networks</strong></li>
+<li><strong>Stochastic Deep Gaussian Processes over Graphs</strong></li>
+<li><strong>Scalable Graph Neural Networks via Bidirectional Propagation</strong></li>
+<li><strong>Set2Graph: Learning Graphs From Sets</strong></li>
+<li><strong>Multipole Graph Neural Operator for Parametric Partial Differential Equations</strong></li>
+<li><strong>Parameterized Explainer for Graph Neural Network</strong></li>
+<li><strong>Random Walk Graph Neural Networks</strong></li>
+<li><strong>Dirichlet Graph Variational Autoencoder</strong></li>
+<li><strong>Natural Graph Networks</strong></li>
+<li><strong>Optimization and Generalization Analysis of Transduction through Gradient Boosting and Application to Multi-scale Graph Neural Networks</strong></li>
+<li><strong>Weisfeiler and Leman go sparse: Towards scalable higher-order graph embeddings</strong></li>
+<li><strong>Unsupervised Joint k-node Graph Representations with Compositional Energy-Based Models</strong></li>
+<li><strong>PGM-Explainer: Probabilistic Graphical Model Explanations for Graph Neural Networks</strong></li>
+<li><strong>Implicit Graph Neural Networks</strong></li>
+<li><p><strong>Towards Deeper Graph Neural Networks with Differentiable Group Normalization</strong></p>
+</li>
+<li><p><strong>COPT: Coordinated Optimal Transport on Graphs</strong></p>
+</li>
+<li><strong>Less is More: A Deep Graph Metric Learning Perspective Using Few Proxies</strong></li>
+<li><strong>Probabilistic Circuits for Variational Inference in Discrete Graphical Models</strong></li>
+<li><strong>Deep Relational Topic Modeling via Graph Poisson Gamma Belief Network</strong></li>
+<li><strong>Graph Stochastic Neural Networks for Semi-supervised Learning</strong></li>
+<li><strong>Community detection in sparse time-evolving graphs with a dynamical Bethe-Hessian</strong></li>
+<li><strong>Graph Random Neural Networks for Semi-Supervised Learning on Graphs</strong></li>
+<li><strong>Learning of Discrete Graphical Models with Neural Networks</strong></li>
+<li><strong>Building powerful and equivariant graph neural networks with message-passing</strong></li>
+<li><strong>Manifold structure in graph embeddings</strong></li>
+<li><p><strong>Attribution for Graph Neural Networks</strong></p>
+</li>
+<li><p><strong>Factorizable Graph Convolutional Networks</strong></p>
+</li>
+<li><strong>Handling Missing Data with Graph Representation Learning</strong></li>
+<li><p><strong>EvolveGraph: Multi-Agent Trajectory Prediction with Dynamic Relational Reasoning</strong></p>
+</li>
+<li><p><strong>Design Space for Graph Neural Networks</strong></p>
+</li>
+<li><strong>Pointer Graph Networks</strong></li>
+<li><strong>Reward Propagation Using Graph Convolutional Networks</strong></li>
+<li><strong>Subgraph Neural Networks</strong></li>
+<li><p><strong>Beyond Homophily in Graph Neural Networks: Current Limitations and Effective Designs</strong></p>
+</li>
+<li><p><strong>Efficient Learning of Discrete Graphical Models</strong></p>
+</li>
+<li><strong>Adaptive Graph Convolutional Recurrent Network for Traffic Forecasting</strong></li>
+<li><strong>Learning to Execute Programs with Instruction Pointer Attention Graph Neural Networks</strong></li>
+<li><strong>Scattering GCN: Overcoming Oversmoothness in Graph Convolutional Networks</strong></li>
+<li><strong>Pre-Training Graph Neural Networks: A Contrastive Learning Framework with Augmentations</strong></li>
+<li><strong>Variational Inference for Graph Convolutional Networks in the Absence of Graph Data and Adversarial Settings</strong></li>
+<li><strong>A Novel Approach for Constrained Optimization in Graphical Models</strong></li>
+<li><strong>Adversarially-learned Inference via an Ensemble of Discrete Undirected Graphical Models</strong></li>
+<li><strong>Nonconvex Sparse Graph Learning under Laplacian-structured Graphical Model</strong></li>
+<li><strong>Graph Geometry Interaction Learning</strong></li>
+<li><strong>Bandit Samplers for Training Graph Neural Networks</strong></li>
+<li><strong>Factor Graph Neural Networks</strong></li>
+<li><strong>DiffGCN: Graph Convolutional Networks via Differential Operators and Algebraic Multigrid Pooling</strong></li>
+<li><strong>Spectral Temporal Graph Neural Network for Multivariate Time-series Forecasting</strong></li>
+<li><strong>Curvature Regularization to Prevent Distortion in Graph Embedding</strong></li>
+<li><strong>Generalized Independent Noise Condition for Estimating Linear Non-Gaussian Latent Variable Graphs</strong></li>
+<li><strong>Higher-Order Spectral Clustering of Directed Graphs</strong></li>
+<li><strong>Iterative Deep Graph Learning for Graph NeuralNetworks: Better and Robust Node Embeddings</strong></li>
+<li><strong>Graph Information Bottleneck</strong></li>
+<li><strong>Rethinking pooling in graph neural networks</strong></li>
+</ul>
+<h2 id="连续-Flow"><a href="#连续-Flow" class="headerlink" title="连续+Flow"></a>连续+Flow</h2><ul>
+<li><strong>Modeling Continuous Stochastic Processes with Dynamic Normalizing Flows</strong></li>
+<li><strong>Inverse Rational Control with Partially Observable Continuous Nonlinear Dynamics</strong></li>
+<li><strong>Riemannian Continuous Normalizing Flows</strong></li>
+<li><strong>Continual Deep Learning by Functional Regularisation of Memorable Past</strong></li>
+<li><strong>Scalable and Consistent Estimation in Continuous-time Networks of Relational Events</strong></li>
+<li><strong>DAGs with No Fears: A Closer Look at Continuous Optimization for Learning Bayesian Networks</strong></li>
+<li><strong>Hypersolvers: Toward Fast Continuous-Depth Models</strong></li>
+<li><strong>Learning Continuous System Dynamics from Irregularly-Sampled Partial Observations</strong></li>
+<li><strong>A mathematical model for automatic differentiation in machine learning</strong></li>
+<li><strong>Neural Manifold Ordinary Differential Equations</strong></li>
+<li><strong>Multipole Graph Neural Operator for Parametric Partial Differential Equations</strong></li>
+<li><strong>Learning Differential Equations that are Fast to Solve</strong></li>
+<li><strong>Interpolation technique to speed up gradients propagation in Neural Ordinary Differential Equations</strong></li>
+<li><strong>JAX MD: A Framework for Differentiable Physics</strong></li>
+<li><strong>Training Generative Adversarial Networks by Solving Ordinary Differential Equations</strong></li>
+<li><strong>Numerically Solving Parametric Families of High-Dimensional Kolmogorov Partial Differential Equations via Deep Learning</strong></li>
+<li><strong>Improved Variational Bayesian Phylogenetic Inference with Normalizing Flows</strong></li>
+<li><strong>Flows for simultaneous manifold learning and density estimation</strong></li>
+<li><strong>Wavelet Flow: Fast Training of High Resolution Normalizing Flows</strong></li>
+<li><strong>Advances in Black-Box VI: Normalizing Flows, Importance Weighting, and Optimization</strong></li>
+<li><strong>Woodbury Transformations for Deep Generative Flows</strong></li>
+<li><strong>SoftFlow: Probabilistic Framework for Normalizing Flow on Manifolds</strong></li>
+<li><p><strong>Glow-TTS: A Generative Flow for Text-to-Speech via Monotonic Alignment Search</strong></p>
+</li>
+<li><p><strong>The Convolution Exponential and Generalized Sylvester Flows</strong></p>
+</li>
+<li><strong>NanoFlow: scalable normalizing flows with sublinear parameter complexity</strong></li>
+<li><strong>Training Normalizing Flows with the Information Bottleneck for Competitive Generative Classification</strong></li>
+<li><strong>Log-Likelihood Ratio Minimizing Flows: Towards Robust and Quantifiable Neural Distribution Alignment</strong></li>
+<li><strong>Why Normalizing Flows Fail to Detect Out-of-Distribution Data</strong></li>
+<li><strong>Stochastic Normalizing Flows</strong></li>
+<li><strong>SurVAE Flows: Surjections to Bridge the Gap between VAEs and Flows</strong></li>
+<li><strong>Closing the Dequantization Gap: PixelCNN as a Single-Layer Flow</strong></li>
+<li><strong>SVGD as a kernelized gradient flow of the chi-squared divergence</strong></li>
+<li><strong>Gradient Boosted Normalizing Flows</strong></li>
+</ul>
+<h2 id="ICLR2021投稿"><a href="#ICLR2021投稿" class="headerlink" title="ICLR2021投稿"></a>ICLR2021投稿</h2><h3 id="ODE-Flow-Dyna"><a href="#ODE-Flow-Dyna" class="headerlink" title="ODE + Flow + Dyna"></a>ODE + Flow + Dyna</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=DlPnp5_1JMI">Neural Partial Differential Equations </a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=Q1jmmQz72M2">Neural Delay Differential Equations </a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=c_YKhwEdUcq">A neural method for symbolically solving partial differential equations</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=JFKR3WqwyXR">Neural Jump Ordinary Differential Equation </a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=bzVsk7bnGdh">“Hey, that’s not an ODE’”: Faster ODE Adjoints with 12 Lines of Code</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=dcktlmtcM7">Neural Time-Dependent Partial Differential Equation</a></p>
+</li>
+<li><h4 id="Score-Based-Generative-Modeling-through-Stochastic-Differential-Equations"><a href="#Score-Based-Generative-Modeling-through-Stochastic-Differential-Equations" class="headerlink" title="Score-Based Generative Modeling through Stochastic Differential Equations "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=PxTIG12RRHS">Score-Based Generative Modeling through Stochastic Differential Equations </a></h4></li>
+<li><h4 id="Neural-Partial-Differential-Equations-with-Functional-Convolution"><a href="#Neural-Partial-Differential-Equations-with-Functional-Convolution" class="headerlink" title="Neural Partial Differential Equations with Functional Convolution"></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=D4A-v0kltaX">Neural Partial Differential Equations with Functional Convolution</a></h4></li>
+<li><h4 id="Learning-Neural-Event-Functions-for-Ordinary-Differential-Equations"><a href="#Learning-Neural-Event-Functions-for-Ordinary-Differential-Equations" class="headerlink" title="Learning Neural Event Functions for Ordinary Differential Equations"></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=kW_zpEmMLdP">Learning Neural Event Functions for Ordinary Differential Equations</a></h4></li>
+<li><h4 id="Fourier-Neural-Operator-for-Parametric-Partial-Differential-Equations"><a href="#Fourier-Neural-Operator-for-Parametric-Partial-Differential-Equations" class="headerlink" title="Fourier Neural Operator for Parametric Partial Differential Equations "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=c8P9NQVtmnO">Fourier Neural Operator for Parametric Partial Differential Equations </a></h4></li>
+<li><h4 id="Learning-continuous-time-PDEs-from-sparse-data-with-graph-neural-networks"><a href="#Learning-continuous-time-PDEs-from-sparse-data-with-graph-neural-networks" class="headerlink" title="Learning continuous-time PDEs from sparse data with graph neural networks"></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=aUX5Plaq7Oy">Learning continuous-time PDEs from sparse data with graph neural networks</a></h4></li>
+<li><h4 id="Parameterized-Pseudo-Differential-Operators-for-Graph-Convolutional-Neural-Networks"><a href="#Parameterized-Pseudo-Differential-Operators-for-Graph-Convolutional-Neural-Networks" class="headerlink" title="Parameterized Pseudo-Differential Operators for Graph Convolutional Neural Networks "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=Y45i-hDynr">Parameterized Pseudo-Differential Operators for Graph Convolutional Neural Networks </a></h4></li>
+<li><h4 id="Neural-CDEs-for-Long-Time-Series-via-the-Log-ODE-Method"><a href="#Neural-CDEs-for-Long-Time-Series-via-the-Log-ODE-Method" class="headerlink" title="Neural CDEs for Long Time Series via the Log-ODE Method "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=65MxtdJwEnl">Neural CDEs for Long Time Series via the Log-ODE Method </a></h4></li>
+<li><h4 id="Neural-ODE-Processes"><a href="#Neural-ODE-Processes" class="headerlink" title="Neural ODE Processes"></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=27acGyyI1BY">Neural ODE Processes</a></h4></li>
+<li><h4 id="Neural-SDEs-Made-Easy-SDEs-are-Infinite-Dimensional-GANs"><a href="#Neural-SDEs-Made-Easy-SDEs-are-Infinite-Dimensional-GANs" class="headerlink" title="Neural SDEs Made Easy: SDEs are Infinite-Dimensional GANs"></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=padYzanQNbg">Neural SDEs Made Easy: SDEs are Infinite-Dimensional GANs</a></h4></li>
+<li><h4 id="Multiplicative-Filter-Networks"><a href="#Multiplicative-Filter-Networks" class="headerlink" title="Multiplicative Filter Networks"></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=OmtmcPkkhT">Multiplicative Filter Networks</a></h4></li>
+<li><h4 id="ResNet-After-All-Neural-ODEs-and-Their-Numerical-Solution"><a href="#ResNet-After-All-Neural-ODEs-and-Their-Numerical-Solution" class="headerlink" title="ResNet After All: Neural ODEs and Their Numerical Solution "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=HxzSxSxLOJZ">ResNet After All: Neural ODEs and Their Numerical Solution </a></h4></li>
+<li><h4 id="Go-with-the-flow-Adaptive-control-for-Neural-ODEs"><a href="#Go-with-the-flow-Adaptive-control-for-Neural-ODEs" class="headerlink" title="Go with the flow: Adaptive control for Neural ODEs "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=giit4HdDNa">Go with the flow: Adaptive control for Neural ODEs </a></h4></li>
+<li><h4 id="MALI-A-memory-efficient-and-reverse-accurate-integrator-for-Neural-ODEs"><a href="#MALI-A-memory-efficient-and-reverse-accurate-integrator-for-Neural-ODEs" class="headerlink" title="MALI: A memory efficient and reverse accurate integrator for Neural ODEs "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=blfSjHeFM_e">MALI: A memory efficient and reverse accurate integrator for Neural ODEs </a></h4></li>
+<li><h4 id="Deep-Continuous-Networks"><a href="#Deep-Continuous-Networks" class="headerlink" title="Deep Continuous Networks "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=L5b6jUonKFB">Deep Continuous Networks </a></h4></li>
+<li><h4 id="Learning-Continuous-Time-Dynamics-by-Stochastic-Differential-Networks"><a href="#Learning-Continuous-Time-Dynamics-by-Stochastic-Differential-Networks" class="headerlink" title="Learning Continuous-Time Dynamics by Stochastic Differential Networks "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=U850oxFSKmN">Learning Continuous-Time Dynamics by Stochastic Differential Networks </a></h4></li>
+<li><h4 id="Implicit-Normalizing-Flows"><a href="#Implicit-Normalizing-Flows" class="headerlink" title="Implicit Normalizing Flows "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=8PS8m9oYtNy">Implicit Normalizing Flows </a></h4></li>
+<li><h4 id="Directional-graph-networks"><a href="#Directional-graph-networks" class="headerlink" title="Directional graph networks"></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=FUdBF49WRV1">Directional graph networks</a></h4></li>
+</ul>
+<h3 id="TS"><a href="#TS" class="headerlink" title="TS"></a>TS</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=JVs1OrQgR3A">Time Series Counterfactual Inference with Hidden Confounders </a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=vLaHRtHvfFp">PDE-Driven Spatiotemporal Disentanglement </a></p>
+</li>
+<li><h4 id="Neural-Spatio-Temporal-Point-Processes"><a href="#Neural-Spatio-Temporal-Point-Processes" class="headerlink" title="Neural Spatio-Temporal Point Processes"></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=XQQA6-So14">Neural Spatio-Temporal Point Processes</a></h4></li>
+<li><h4 id="Anomaly-detection-in-dynamical-systems-from-measured-time-series"><a href="#Anomaly-detection-in-dynamical-systems-from-measured-time-series" class="headerlink" title="Anomaly detection in dynamical systems from measured time series"></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=Whq-nTgCbNR">Anomaly detection in dynamical systems from measured time series</a></h4></li>
+<li><h4 id="Cubic-Spline-Smoothing-Compensation-for-Irregularly-Sampled-Sequences"><a href="#Cubic-Spline-Smoothing-Compensation-for-Irregularly-Sampled-Sequences" class="headerlink" title="Cubic Spline Smoothing Compensation for Irregularly Sampled Sequences "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=muu0gF6BW-">Cubic Spline Smoothing Compensation for Irregularly Sampled Sequences </a></h4></li>
+<li><h4 id="Generative-Time-series-Modeling-with-Fourier-Flows"><a href="#Generative-Time-series-Modeling-with-Fourier-Flows" class="headerlink" title="Generative Time-series Modeling with Fourier Flows "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=PpshD0AXfA">Generative Time-series Modeling with Fourier Flows </a></h4></li>
+</ul>
+<h3 id="GNN-1"><a href="#GNN-1" class="headerlink" title="GNN"></a>GNN</h3><ul>
+<li><h4 id="Generalizing-Graph-Convolutional-Networks"><a href="#Generalizing-Graph-Convolutional-Networks" class="headerlink" title="Generalizing Graph Convolutional Networks "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=yBJihVXahXc">Generalizing Graph Convolutional Networks </a></h4></li>
+<li><h4 id="Polynomial-Graph-Convolutional-Networks"><a href="#Polynomial-Graph-Convolutional-Networks" class="headerlink" title="Polynomial Graph Convolutional Networks "></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=uqD-un_Mzd-">Polynomial Graph Convolutional Networks </a></h4></li>
+</ul>
+<h3 id="MPC"><a href="#MPC" class="headerlink" title="MPC"></a>MPC</h3><ul>
+<li><h4 id="Neural-Lyapunov-Model-Predictive-Control"><a href="#Neural-Lyapunov-Model-Predictive-Control" class="headerlink" title="Neural Lyapunov Model Predictive Control"></a><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=N5Zacze7uru">Neural Lyapunov Model Predictive Control</a></h4></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpg" alt="Tijin Yan WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Tijin Yan
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://yantijin.github.io/2020/11/15/NIPS20-paperlist/" title="NIPS 20 paperlist">https://yantijin.github.io/2020/11/15/NIPS20-paperlist/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/15/Irregular-Time-Series-Papers/" rel="prev" title="Irregular Time Series Papers">
+      <i class="fa fa-chevron-left"></i> Irregular Time Series Papers
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/29/GPU%E9%80%8F%E4%BC%A0%E6%95%99%E7%A8%8B/" rel="next" title="GPU透传">
+      GPU透传 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NeuraIPS%E2%80%9920"><span class="nav-number">1.</span> <span class="nav-text">NeuraIPS’20</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Time-Series"><span class="nav-number">1.1.</span> <span class="nav-text">Time Series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GNN"><span class="nav-number">1.2.</span> <span class="nav-text">GNN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD-Flow"><span class="nav-number">2.</span> <span class="nav-text">连续+Flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ICLR2021%E6%8A%95%E7%A8%BF"><span class="nav-number">3.</span> <span class="nav-text">ICLR2021投稿</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ODE-Flow-Dyna"><span class="nav-number">3.1.</span> <span class="nav-text">ODE + Flow + Dyna</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Score-Based-Generative-Modeling-through-Stochastic-Differential-Equations"><span class="nav-number">3.1.1.</span> <span class="nav-text">Score-Based Generative Modeling through Stochastic Differential Equations </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-Partial-Differential-Equations-with-Functional-Convolution"><span class="nav-number">3.1.2.</span> <span class="nav-text">Neural Partial Differential Equations with Functional Convolution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Learning-Neural-Event-Functions-for-Ordinary-Differential-Equations"><span class="nav-number">3.1.3.</span> <span class="nav-text">Learning Neural Event Functions for Ordinary Differential Equations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fourier-Neural-Operator-for-Parametric-Partial-Differential-Equations"><span class="nav-number">3.1.4.</span> <span class="nav-text">Fourier Neural Operator for Parametric Partial Differential Equations </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Learning-continuous-time-PDEs-from-sparse-data-with-graph-neural-networks"><span class="nav-number">3.1.5.</span> <span class="nav-text">Learning continuous-time PDEs from sparse data with graph neural networks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parameterized-Pseudo-Differential-Operators-for-Graph-Convolutional-Neural-Networks"><span class="nav-number">3.1.6.</span> <span class="nav-text">Parameterized Pseudo-Differential Operators for Graph Convolutional Neural Networks </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-CDEs-for-Long-Time-Series-via-the-Log-ODE-Method"><span class="nav-number">3.1.7.</span> <span class="nav-text">Neural CDEs for Long Time Series via the Log-ODE Method </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-ODE-Processes"><span class="nav-number">3.1.8.</span> <span class="nav-text">Neural ODE Processes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-SDEs-Made-Easy-SDEs-are-Infinite-Dimensional-GANs"><span class="nav-number">3.1.9.</span> <span class="nav-text">Neural SDEs Made Easy: SDEs are Infinite-Dimensional GANs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiplicative-Filter-Networks"><span class="nav-number">3.1.10.</span> <span class="nav-text">Multiplicative Filter Networks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ResNet-After-All-Neural-ODEs-and-Their-Numerical-Solution"><span class="nav-number">3.1.11.</span> <span class="nav-text">ResNet After All: Neural ODEs and Their Numerical Solution </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Go-with-the-flow-Adaptive-control-for-Neural-ODEs"><span class="nav-number">3.1.12.</span> <span class="nav-text">Go with the flow: Adaptive control for Neural ODEs </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MALI-A-memory-efficient-and-reverse-accurate-integrator-for-Neural-ODEs"><span class="nav-number">3.1.13.</span> <span class="nav-text">MALI: A memory efficient and reverse accurate integrator for Neural ODEs </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deep-Continuous-Networks"><span class="nav-number">3.1.14.</span> <span class="nav-text">Deep Continuous Networks </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Learning-Continuous-Time-Dynamics-by-Stochastic-Differential-Networks"><span class="nav-number">3.1.15.</span> <span class="nav-text">Learning Continuous-Time Dynamics by Stochastic Differential Networks </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Implicit-Normalizing-Flows"><span class="nav-number">3.1.16.</span> <span class="nav-text">Implicit Normalizing Flows </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Directional-graph-networks"><span class="nav-number">3.1.17.</span> <span class="nav-text">Directional graph networks</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TS"><span class="nav-number">3.2.</span> <span class="nav-text">TS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-Spatio-Temporal-Point-Processes"><span class="nav-number">3.2.1.</span> <span class="nav-text">Neural Spatio-Temporal Point Processes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Anomaly-detection-in-dynamical-systems-from-measured-time-series"><span class="nav-number">3.2.2.</span> <span class="nav-text">Anomaly detection in dynamical systems from measured time series</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cubic-Spline-Smoothing-Compensation-for-Irregularly-Sampled-Sequences"><span class="nav-number">3.2.3.</span> <span class="nav-text">Cubic Spline Smoothing Compensation for Irregularly Sampled Sequences </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Generative-Time-series-Modeling-with-Fourier-Flows"><span class="nav-number">3.2.4.</span> <span class="nav-text">Generative Time-series Modeling with Fourier Flows </span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GNN-1"><span class="nav-number">3.3.</span> <span class="nav-text">GNN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Generalizing-Graph-Convolutional-Networks"><span class="nav-number">3.3.1.</span> <span class="nav-text">Generalizing Graph Convolutional Networks </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Polynomial-Graph-Convolutional-Networks"><span class="nav-number">3.3.2.</span> <span class="nav-text">Polynomial Graph Convolutional Networks </span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MPC"><span class="nav-number">3.4.</span> <span class="nav-text">MPC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-Lyapunov-Model-Predictive-Control"><span class="nav-number">3.4.1.</span> <span class="nav-text">Neural Lyapunov Model Predictive Control</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tijin Yan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Tijin Yan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yantijin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yantijin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yantijin@163.com" title="E-Mail → mailto:yantijin@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/chang-an-yi-hun" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;chang-an-yi-hun" rel="noopener" target="_blank"><i class="fa fa-comment fa-fw"></i>Zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://kalacloud.com/" title="https:&#x2F;&#x2F;kalacloud.com" rel="noopener" target="_blank">卡拉云后台系统</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tijin Yan</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">140k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">2:07</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+       TeX: {equationNumbers: {autoNumber: ["AMS"], useLabelIds: true}},
+       "HTML-CSS": {linebreaks: {automatic: true}},
+       SVG: {linebreaks: {automatic: true}}
+   });
+</script>
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'j5QbQ0FAORsFL1LEAuLPJYlG-gzGzoHsz',
+      appKey     : 'MHEhvjPuKazCLe7uCI9f3rpf',
+      placeholder: "Welcome for comments",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'en' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
