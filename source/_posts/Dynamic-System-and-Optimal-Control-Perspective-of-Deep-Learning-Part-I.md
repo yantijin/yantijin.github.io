@@ -1,6 +1,6 @@
 ---
-title: Deep Generative Models
-date: 2021-01-03 10:50:03
+title: Dynamic system and optimal control perspective of deep learning (Part I)
+date: 2020-07-15 16:22:19
 tags: machine learning
 top: 10
 categories:
@@ -14,5 +14,5 @@ categories:
 
 ## Dynamic system and optimal control perspective of deep learning (Part I)<!--more-->
 
-{% pdf Review2.pdf %}
+{% pdf Review1.pdf %}
 
