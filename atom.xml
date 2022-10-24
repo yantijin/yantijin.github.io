@@ -6,7 +6,7 @@
   <link href="https://yantijin.github.io/atom.xml" rel="self"/>
   
   <link href="https://yantijin.github.io/"/>
-  <updated>2022-10-14T14:22:14.680Z</updated>
+  <updated>2022-10-24T07:05:22.393Z</updated>
   <id>https://yantijin.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ICLR23 submitted papers list</title>
+    <link href="https://yantijin.github.io/2022/10/24/ICLR23-submitted-papers-list/"/>
+    <id>https://yantijin.github.io/2022/10/24/ICLR23-submitted-papers-list/</id>
+    <published>2022-10-24T06:22:12.000Z</published>
+    <updated>2022-10-24T07:05:22.393Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;ICLR23-submitted-paper-list&quot;&gt;&lt;a href=&quot;#ICLR23-submitted-paper-list&quot; class=&quot;headerlink&quot; title=&quot;ICLR23 submitted paper list&quot;&gt;&lt;/a&gt;ICLR23 submitted paper list&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
+    
+    <category term="PaperList" scheme="https://yantijin.github.io/categories/machine-learning/PaperList/"/>
+    
+    
+    <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>NeurIPS 22 accepted paper list</title>
@@ -419,27 +440,6 @@
     
     
     <category term="machine learning" scheme="https://yantijin.github.io/tags/machine-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TS prediction</title>
-    <link href="https://yantijin.github.io/2020/09/06/TS-prediction/"/>
-    <id>https://yantijin.github.io/2020/09/06/TS-prediction/</id>
-    <published>2020-09-06T14:14:53.000Z</published>
-    <updated>2022-10-14T14:22:14.683Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;TS-Prediction&quot;&gt;&lt;a href=&quot;#TS-Prediction&quot; class=&quot;headerlink&quot; title=&quot;TS Prediction&quot;&gt;&lt;/a&gt;TS Prediction&lt;/h2&gt;&lt;h3 id=&quot;TS-prediction-with-code&quot;&gt;&lt;a href=&quot;#TS-prediction-with-code&quot; class=&quot;headerlink&quot; title=&quot;TS_prediction with code&quot;&gt;&lt;/a&gt;TS_prediction with code&lt;/h3&gt;</summary>
-    
-    
-    
-    <category term="machine learning" scheme="https://yantijin.github.io/categories/machine-learning/"/>
-    
-    <category term="PaperList" scheme="https://yantijin.github.io/categories/machine-learning/PaperList/"/>
-    
-    
-    <category term="Applications" scheme="https://yantijin.github.io/tags/Applications/"/>
     
   </entry>
   
